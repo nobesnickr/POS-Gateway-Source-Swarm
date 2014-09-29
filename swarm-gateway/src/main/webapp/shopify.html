@@ -1,0 +1,126 @@
+<!--
+  Copyright (c) 2014 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in 
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Shopify Registration | Swarm-Mobile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+	var shopifyBaseUrl = ".myshopify.com/admin/oauth/authorize";
+
+	/**
+	 * Changes the action URL of the registration form to
+	 * send the request to the given store.
+	 */
+	function chgAction() {
+		// name of the shopify store 
+		storeName = document.getElementById('storeNameInput').value;
+		// change the action URL of form 
+		document.getElementById('regForm').action = "https://" + storeName
+				+ shopifyBaseUrl;
+	}
+
+	$(function() {
+		$('#redirect_uri').val(
+				window.location.origin + "/swarm/api/shopify/oauth");
+	});
+</script>
+<style type="text/css">
+section.main-block {
+	max-width: 900px;
+	margin: 15px auto;
+	padding: 30px;
+	background-color: #f2f2ff;
+}
+</style>
+</head>
+<body>
+	<section class="main-block">
+
+		<h1>Shopify Store Registration</h1>
+
+		<p>Connect your Shopify POS data to your Swarm account. By
+			installing the Swarm application you'll be able to continuously track
+			the transactions and revenue of your store.</p>
+			
+		<form action="#" id="regForm" method="GET">
+
+			<div class="form-group">
+				<label for="storeNameInput" class="col-sm-5 control-label">Shopify
+					store name</label>
+				<div class="col-sm-11">
+					<input id="storeNameInput" type="text" class="form-control" /> <span
+						class="help-block">Unique name of the Shopify Store, it can
+						be extracted from your administation URL: <strong>https://STORE_NAME.myshopify.com/admin</strong>
+					</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="scope" class="col-sm-5 control-label">Required
+					scopes</label>
+				<div class="col-sm-11">
+					<input id="scope" name="scope" type="text"
+						value="read_orders,read_products,read_customers" readonly="true"
+						class="form-control" /> <span class="help-block">Through
+						OAuth2 you can request various access scopes for your app. For
+						example, an app that only deals with orders can request just the
+						order scope and not gain access to extra info like products,
+						themes, or blogs. This predefined value contains all the scopes
+						the Gateway needs.</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="client_id" class="col-sm-5 control-label">API
+					key for Swarm Mobile app</label>
+				<div class="col-sm-11">
+					<input id="client_id" name="client_id" type="text" size="30"
+						value="42f9adfe84ecba76ee0d3f4e9464b752" readonly="readonly"
+						class="form-control" /> <span class="help-block">Unique
+						API key of the Shopify application. See:
+						https://app.shopify.com/services/partners/api_clients <br />
+						E.g.: 42f9adfe84ecba76ee0d3f4e9464b752
+					</span>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="redirect_uri" class="col-sm-5 control-label">Redirect
+					URI:</label>
+				<div class="col-sm-11">
+					<input id="redirect_uri" name="redirect_uri" type="text" size="50"
+						readonly="readonly" class="form-control" /> <span
+						class="help-block">The URL that the shop owner will be sent
+						to once authentication is complete. This URL must be the address
+						of the Gateway's "shopify/oauth" web service and the same host as
+						the Return URL specified in the Shopify application settings. See:
+						https://app.shopify.com/services/partners/api_clients <br />
+					</span>
+				</div>
+			</div>
+
+			<p class="clearfix"></p>
+			<button type="submit" onclick="chgAction();" class="btn btn-default">Submit</button>
+		</form>
+	</section>
+</body>
+</html>

@@ -1,0 +1,82 @@
+/**
+ *  Copyright (c) 2014 Sonrisa Informatikai Kft. All Rights Reserved.
+ * 
+ *  This software is the confidential and proprietary information of
+ *  Sonrisa Informatikai Kft. ("Confidential Information").
+ *  You shall not disclose such Confidential Information and shall use it only in
+ *  accordance with the terms of the license agreement you entered into
+ *  with Sonrisa.
+ * 
+ *  SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ *  THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ *  TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ *  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ *  ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ *  DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+ * 
+ *  CSS functions for the POS status demo
+ */
+ 
+h3 {
+	padding-top: 15px;
+}
+
+div.wrapper {
+	max-width: 1200px;
+	margin: 15px auto;
+	padding: 30px;
+	background-color: #fafafc;
+}
+
+table.status-table {
+	width: 100%;
+}
+
+table.status-table td {
+	padding: 10px 5px;
+}
+
+table.status-table td.cell-status,table.status-table td.cell-name {
+	font-weight: bold;
+}
+
+table.status-table td ul {
+	margin: 5px 0px;
+}
+
+table.status-table th {
+	text-align: center;
+}
+
+table.status-table tr.status-ok {
+	background-color: rgb(217, 255, 175);
+}
+
+table.status-table tr.status-warning {
+	background-color: rgb(255, 221, 175);
+}
+
+table.status-table tr.status-error {
+	background-color: rgb(255, 193, 175);
+}
+
+table.status-table td.cell-name {
+	width: 20%;
+}
+
+table.status-table td.cell-store_id {
+	width: 60px;
+	text-align: right;
+}
+
+table.status-table td.cell-api {
+	width: 80px;
+}
+
+table.status-table td.cell-created {
+	width: 15%;
+}
+
+div.trimmed-value {
+	cursor:pointer;
+}

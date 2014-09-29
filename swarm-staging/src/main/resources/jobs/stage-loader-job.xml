@@ -1,0 +1,288 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+This software is the confidential and proprietary information of
+Sonrisa Informatikai Kft. ("Confidential Information").
+You shall not disclose such Confidential Information and shall use it only in
+accordance with the terms of the license agreement you entered into
+with Sonrisa.
+
+   SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+   THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+   TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+   PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+   ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+   DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans" 
+             xmlns:aop="http://www.springframework.org/schema/aop"
+             xmlns:tx="http://www.springframework.org/schema/tx" 
+             xmlns:p="http://www.springframework.org/schema/p" 
+             xmlns:batch="http://www.springframework.org/schema/batch"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+             xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/batch 
+        http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/jdbc 
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+  
+    <!-- Logger of the skipped items. -->
+    <bean id="skippedStagingEntityListener" class="com.sonrisa.swarm.staging.job.listener.SkippedStagingEntityListener" />
+  
+    <!-- Loader job which loads the data from the stage area to the analytics DB-->
+    <batch:job id="loaderJob">   
+        <batch:description>
+            This job loads entities in the staging tables into the legacy DB. 
+        </batch:description>
+        
+        <!-- Category loader step -->
+        <batch:step id="stageCategoryProcessing"  next="stageManufacturerProcessing">
+            <batch:tasklet transaction-manager="transactionManager" >
+                <batch:chunk commit-interval="${loaderjob.categoryloader.batch.size}" 
+                             skip-limit="${loaderjob.skip.limit.unlimited}"> 
+                    <batch:reader>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityReader" 
+                                                      p:pageSize="${loaderjob.categoryloader.batch.size}"
+                                                      p:sql="select id from staging_categories order by id desc"
+                                                      p:stageService-ref="categoryStagingServiceImpl"                
+                        />
+                    </batch:reader>
+                    <batch:processor>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityProcessor">
+                            <property name="stagingService" ref="categoryStagingServiceImpl"/>
+                            <property name="legacyService" ref="categoryServiceImpl"/>
+                            <property name="stagingConverter" ref="categoryStagingConverterImpl"/>
+                        </bean>
+                    </batch:processor>
+                    <batch:writer>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityWriter" >
+                            <property name="legacyService" ref="categoryServiceImpl"/>
+                            <property name="stagingService" ref="categoryStagingServiceImpl"/>
+                        </bean>
+                    </batch:writer>
+                    <batch:skippable-exception-classes>
+                        <batch:include class="java.lang.Exception"/>
+                    </batch:skippable-exception-classes>
+                </batch:chunk>    
+                <batch:no-rollback-exception-classes>
+                    <batch:include class="com.sonrisa.swarm.staging.job.exception.AlreadyExistsException"/>                    
+                </batch:no-rollback-exception-classes>                
+                <batch:listeners>
+                    <batch:listener ref="stepLoggingListener"/>
+                    <batch:listener ref="skippedStagingEntityListener"/>
+                </batch:listeners>                             
+            </batch:tasklet>            
+        </batch:step>
+        
+        <batch:step id="stageManufacturerProcessing" next="stageCustomerProcessing">
+            <batch:tasklet transaction-manager="transactionManager" >
+                <batch:chunk commit-interval="${loaderjob.manufacturerloader.batch.size}" 
+                             skip-limit="${loaderjob.skip.limit.unlimited}"> 
+                    <batch:reader>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityReader" 
+                                                      p:pageSize="${loaderjob.manufacturerloader.batch.size}"
+                                                      p:sql="select id from staging_manufacturers order by id desc"
+                                                      p:stageService-ref="manufacturerStagingServiceImpl"                
+                        />
+                    </batch:reader>
+                    <batch:processor>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityProcessor">
+                            <property name="stagingService" ref="manufacturerStagingServiceImpl"/>
+                            <property name="legacyService" ref="manufacturerServiceImpl"/>
+                            <property name="stagingConverter" ref="manufacturerStagingConverterImpl"/>
+                        </bean>
+                    </batch:processor>
+                    <batch:writer>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityWriter" >
+                            <property name="legacyService" ref="manufacturerServiceImpl"/>
+                            <property name="stagingService" ref="manufacturerStagingServiceImpl"/>
+                        </bean>
+                    </batch:writer>
+                    <batch:skippable-exception-classes>
+                        <batch:include class="java.lang.Exception"/>
+                    </batch:skippable-exception-classes>
+                </batch:chunk>    
+                <batch:no-rollback-exception-classes>
+                    <batch:include class="com.sonrisa.swarm.staging.job.exception.AlreadyExistsException"/>                    
+                </batch:no-rollback-exception-classes>                
+                <batch:listeners>
+                    <batch:listener ref="stepLoggingListener"/>
+                    <batch:listener ref="skippedStagingEntityListener"/>
+                </batch:listeners>                             
+            </batch:tasklet>            
+        </batch:step>
+        
+        <!-- Customer loader step -->
+        <batch:step id="stageCustomerProcessing" next="stageProductProcessing">
+            <batch:tasklet transaction-manager="transactionManager" >
+                <batch:chunk commit-interval="${loaderjob.customerloader.batch.size}" 
+                             skip-limit="${loaderjob.skip.limit.unlimited}"> 
+                    <batch:reader>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityReader" 
+                              p:pageSize="${loaderjob.customerloader.batch.size}"
+                              p:sql="select id from staging_customers order by id desc"
+                              p:stageService-ref="customerStagingServiceImpl"                
+                        />
+                    </batch:reader>
+                    <batch:processor>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityProcessor">
+                            <property name="stagingService" ref="customerStagingServiceImpl"/>
+                            <property name="legacyService" ref="customerServiceImpl"/>
+                            <property name="stagingConverter" ref="customerStagingConverterImpl"/>
+                        </bean>
+                    </batch:processor>
+                    <batch:writer>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityWriter" >
+                            <property name="stagingService" ref="customerStagingServiceImpl"/>
+                            <property name="legacyService" ref="customerServiceImpl"/>
+                        </bean>
+                    </batch:writer>
+                    <batch:skippable-exception-classes>
+                        <batch:include class="java.lang.Exception"/>
+                    </batch:skippable-exception-classes>
+                </batch:chunk>           
+                <batch:listeners>
+                    <batch:listener ref="stepLoggingListener"/>
+                    <batch:listener ref="skippedStagingEntityListener"/>
+                </batch:listeners>                  
+            </batch:tasklet>
+        </batch:step>        
+        
+        <!-- Product loader step -->
+        <batch:step id="stageProductProcessing" next="stageInvoiceProcessing">
+            <batch:tasklet transaction-manager="transactionManager" >
+                <batch:chunk commit-interval="${loaderjob.productloader.batch.size}" 
+                             skip-limit="${loaderjob.skip.limit.unlimited}"> 
+                    <batch:reader>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityReader" 
+                              p:pageSize="${loaderjob.productloader.batch.size}"
+                              p:sql="select id from staging_products order by id desc"
+                              p:stageService-ref="productStagingServiceImpl"                
+                        />
+                    </batch:reader>
+                    <batch:processor>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityProcessor">
+                            <property name="stagingService" ref="productStagingServiceImpl"/>
+                            <property name="legacyService" ref="productServiceImpl"/>
+                            <property name="stagingConverter" ref="productStagingConverterImpl"/>
+                        </bean>
+                    </batch:processor>
+                    <batch:writer>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityWriter" >
+                            <property name="stagingService" ref="productStagingServiceImpl"/>
+                            <property name="legacyService" ref="productServiceImpl"/>
+                        </bean>
+                    </batch:writer>
+                    <batch:skippable-exception-classes>
+                        <batch:include class="java.lang.Exception"/>
+                    </batch:skippable-exception-classes>
+                </batch:chunk>                 
+                <batch:listeners>
+                    <batch:listener ref="stepLoggingListener"/>
+                    <batch:listener ref="skippedStagingEntityListener"/>
+                </batch:listeners>               
+            </batch:tasklet>            
+        </batch:step>
+        
+        <!-- Invoice loader step -->
+        <batch:step id="stageInvoiceProcessing" next="stageInvoiceLineProcessing">
+            <batch:tasklet transaction-manager="transactionManager" >
+                <batch:chunk commit-interval="${loaderjob.invoiceloader.batch.size}" 
+                             skip-limit="${loaderjob.skip.limit.unlimited}"> 
+                    <batch:reader>
+                    <!-- The query return invoices that can be processed by the loader job.
+                          Explanation of the WHERE clause: 
+                          Invoices received from erply, MOS, etc.. has a not null store_id 
+                          or invoices received from retailPro but with a predefined store timezone. 
+                        -->
+                    <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityReader"
+                        p:pageSize="${loaderjob.invoiceloader.batch.size}"
+                        p:sql="SELECT invoice.id FROM staging_invoices invoice
+                                                            LEFT JOIN stores_rp store ON 
+                                                                    invoice.swarm_id = store.swarm_id 
+                                                                AND invoice.ls_store_no = store.ls_store_no 
+                                                                AND invoice.ls_sbs_no = store.ls_sbs_no
+                                                            WHERE 
+                                                                    
+                                                                    invoice.store_id IS NOT NULL 
+                                                                 OR store.timezone IS NOT NULL
+                                                            ORDER BY invoice.id DESC;"
+                        p:stageService-ref="invoiceStagingServiceImpl" />
+                    </batch:reader>
+                    <batch:processor>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityProcessor">
+                            <property name="stagingService" ref="invoiceStagingServiceImpl"/>
+                            <property name="legacyService" ref="invoiceServiceImpl"/>
+                            <property name="stagingConverter" ref="invoiceStagingConverterImpl"/>
+                        </bean>
+                    </batch:processor>
+                    <batch:writer>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityWriter" >
+                            <property name="stagingService" ref="invoiceStagingServiceImpl"/>
+                            <property name="legacyService" ref="invoiceServiceImpl"/>
+                        </bean>
+                    </batch:writer>
+                    <batch:skippable-exception-classes>
+                        <batch:include class="java.lang.Exception"/>
+                    </batch:skippable-exception-classes>
+                </batch:chunk>     
+                <batch:no-rollback-exception-classes>
+                    <batch:include class="com.sonrisa.swarm.staging.job.exception.AlreadyExistsException"/>                    
+                </batch:no-rollback-exception-classes>                
+                <batch:listeners>
+                    <batch:listener ref="stepLoggingListener"/>
+                    <batch:listener ref="skippedStagingEntityListener"/>
+                </batch:listeners>          
+            </batch:tasklet>            
+        </batch:step>
+        
+        <!-- InvoiceLine loader step -->
+        <batch:step id="stageInvoiceLineProcessing">
+            <batch:tasklet transaction-manager="transactionManager" >
+                <batch:chunk commit-interval="${loaderjob.invoiceLineloader.batch.size}" 
+                             skip-limit="${loaderjob.skip.limit.unlimited}"> 
+                    <batch:reader>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityReader" 
+                                                      p:pageSize="${loaderjob.invoiceLineloader.batch.size}"
+                                                      p:sql="select id from staging_invoice_lines order by id desc"
+                                                      p:stageService-ref="invoiceLineStagingServiceImpl"                
+                        />
+                    </batch:reader>
+                    <batch:processor>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityProcessor">
+                            <property name="stagingService" ref="invoiceLineStagingServiceImpl"/>
+                            <property name="legacyService" ref="invoiceLineServiceImpl"/>
+                            <property name="stagingConverter" ref="invoiceLineStagingConverterImpl"/>
+                        </bean>
+                    </batch:processor>
+                    <batch:writer>
+                        <bean class="com.sonrisa.swarm.staging.job.loader.StagingEntityWriter" >
+                            <property name="legacyService" ref="invoiceLineServiceImpl"/>
+                            <property name="stagingService" ref="invoiceLineStagingServiceImpl"/>
+                        </bean>
+                    </batch:writer>
+                    <batch:skippable-exception-classes>
+                        <batch:include class="java.lang.Exception"/>
+                    </batch:skippable-exception-classes>
+                </batch:chunk>    
+                <batch:no-rollback-exception-classes>
+                    <batch:include class="com.sonrisa.swarm.staging.job.exception.AlreadyExistsException"/>                    
+                </batch:no-rollback-exception-classes>                
+                <batch:listeners>
+                    <batch:listener ref="stepLoggingListener"/>
+                    <batch:listener ref="skippedStagingEntityListener"/>
+                </batch:listeners>                             
+            </batch:tasklet>            
+        </batch:step>
+    </batch:job>
+</beans>

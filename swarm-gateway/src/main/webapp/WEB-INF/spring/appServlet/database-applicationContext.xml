@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd">
+        
+    <bean id="legacyJdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate" c:dataSource-ref="swarmDataSource" />
+    
+    <!-- Datasources for production environment -->    
+    <beans profile="production">
+       <bean id="swarmDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+            <property name="jndiName" value="java:comp/env/jdbc/swarm"/>
+        </bean>        
+         <bean id="userDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
+            <property name="jndiName" value="java:comp/env/jdbc/eeuser"/>
+        </bean>
+    </beans>
+    
+    <!-- Datasources for unit and integration testing --> 
+    <beans profile="inmemory-test-db">         
+         <bean id="swarmDataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="driverClassName" value="${inmemorydb.test.swarm.db.driver}"/>
+            <property name="url" value="${inmemorydb.test.swarm.db.url}"/>
+            <property name="username" value="${inmemorydb.test.swarm.db.user}"/>
+            <property name="password" value="${inmemorydb.test.swarm.db.password}"/>
+        </bean>
+        <bean id="userDataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+            <property name="driverClassName" value="${inmemorydb.test.eeuser.db.driver}"/>
+            <property name="url" value="${inmemorydb.test.eeuser.db.url}"/>
+            <property name="username" value="${inmemorydb.test.eeuser.db.user}"/>
+            <property name="password" value="${inmemorydb.test.eeuser.db.password}"/>
+        </bean>
+    </beans>
+</beans>

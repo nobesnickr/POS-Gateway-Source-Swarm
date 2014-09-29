@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+This software is the confidential and proprietary information of
+Sonrisa Informatikai Kft. ("Confidential Information").
+You shall not disclose such Confidential Information and shall use it only in
+accordance with the terms of the license agreement you entered into
+with Sonrisa.
+
+   SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+   THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+   TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+   PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+   ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+   DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans" 
+             xmlns:aop="http://www.springframework.org/schema/aop"
+             xmlns:tx="http://www.springframework.org/schema/tx" 
+             xmlns:p="http://www.springframework.org/schema/p" 
+             xmlns:batch="http://www.springframework.org/schema/batch"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+             xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/batch 
+        http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/jdbc 
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+    
+
+    <batch:job id="erplyExtractorJob">   
+        <batch:description>
+            This job is responsible for launching the extration from Erply stores.
+        </batch:description>
+         <batch:step id="eplyExtractionStep">
+        
+         <batch:tasklet transaction-manager="transactionManager" >
+                <batch:chunk reader="erplyExtractorLauncherReader" 
+                             processor="erplyExtractorLauncherProcessor"
+                             writer="extractorLauncherWriter"                              
+                             commit-interval="1"/>   <!-- pageSize=1 because we want to commit after every store -->
+            </batch:tasklet>
+        
+         </batch:step>
+         <batch:listeners>
+             <batch:listener ref="stepLoggingListener"/>
+         </batch:listeners>
+    </batch:job>
+    
+     <!-- Reader, writer, processor -->
+    <bean id="erplyExtractorLauncherReader" class="com.sonrisa.swarm.job.ExtractorLauncherReader">
+        <property name="apiName" value="${api.name.erply}"/>
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="queryString" value="select object(t) from StoreEntity t where t.apiId = :apiId and t.active = true"/>
+        <property name="pageSize" value="1"/> <!-- pageSize=1 because we want to commit after every store -->
+    </bean>    
+    <bean id="erplyExtractorLauncherProcessor" class="com.sonrisa.swarm.erply.job.ErplyExtractorLauncher" />
+    <bean id="extractorLauncherWriter" class="com.sonrisa.swarm.job.ExtractorLauncherWriter"/>
+        
+</beans>

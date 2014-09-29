@@ -1,0 +1,49 @@
+{
+   "@attributes":{
+      "count":"4",
+      "offset":"0",
+      "limit":"100"
+   },
+   "Category":[
+      {
+         "categoryID":"2",
+         "name":"Jedi weaponary",
+         "nodeDepth":"0",
+         "fullPathName":"Jedi weaponary",
+         "leftNode":"3",
+         "rightNode":"8",
+         "timeStamp":"2013-10-08T08:10:21+00:00",
+         "parentID":"0"
+      },
+      {
+         "categoryID":"4",
+         "name":"Dark side",
+         "nodeDepth":"1",
+         "fullPathName":"Jedi weaponary\/Dark side",
+         "leftNode":"4",
+         "rightNode":"5",
+         "timeStamp":"2013-10-08T08:10:21+00:00",
+         "parentID":"2"
+      },
+      {
+         "categoryID":"6",
+         "name":"Good side",
+         "nodeDepth":"1",
+         "fullPathName":"Jedi weaponary\/Good side",
+         "leftNode":"6",
+         "rightNode":"7",
+         "timeStamp":"2013-10-08T08:10:21+00:00",
+         "parentID":"2"
+      },
+      {
+         "categoryID":"8",
+         "name":"Futuristic stuff",
+         "nodeDepth":"0",
+         "fullPathName":"Futuristic stuff",
+         "leftNode":"1",
+         "rightNode":"2",
+         "timeStamp":"2013-10-08T08:10:21+00:00",
+         "parentID":"0"
+      }
+   ]
+}

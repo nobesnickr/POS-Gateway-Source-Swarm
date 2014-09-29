@@ -1,0 +1,14 @@
+{"Items":
+    [
+        {
+        "InvoiceSid": "invoice_id",
+        "ProductSid": "product_id",
+        "ItemPos": "line_id",
+        "Quantity": "2",
+        "Price": "0.99",
+        "TaxAmt": "5",
+        "SbsNo": "sbs1",
+        "StoreNo": "123456"
+        }
+    ]
+}

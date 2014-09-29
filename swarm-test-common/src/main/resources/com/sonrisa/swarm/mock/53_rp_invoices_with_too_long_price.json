@@ -1,0 +1,44 @@
+{
+   "Customers":[
+
+   ],
+   "Items":[
+   ],
+   "Products":[
+   ],
+   "Invoices":[
+      {
+         "InvoiceSid":-2893114178799103477,
+         "CreatedDate":"2014-07-17T10:02:37",
+         "StoreNo":"GWF",
+         "SbsNo":0,
+         "InvoiceNo":47955,
+         "Total":-7.1054273576010019E-15,
+         "ReceiptType":0,
+         "ReceiptStatus":2,
+         "Tender":1
+      },
+      {
+         "InvoiceSid":-2893114178799103477,
+         "CreatedDate":"2014-07-17T10:02:37",
+         "StoreNo":"GWF",
+         "SbsNo":0,
+         "InvoiceNo":47955,
+         "Total":-7.10542735760100195E-15,
+         "ReceiptType":0,
+         "ReceiptStatus":2,
+         "Tender":1
+      },
+      {
+         "InvoiceSid":-2893114178799103477,
+         "CreatedDate":"2014-07-17T10:02:37",
+         "StoreNo":"GWF",
+         "SbsNo":0,
+         "InvoiceNo":47955,
+         "Total":-7.105427357601001955E-15,
+         "ReceiptType":0,
+         "ReceiptStatus":2,
+         "Tender":1
+      }
+   ]
+}

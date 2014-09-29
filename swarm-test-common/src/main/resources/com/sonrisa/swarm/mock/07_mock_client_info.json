@@ -1,0 +1,9 @@
+[
+    {   
+        "ComponentId": "myComponentId",
+        "ComponentType": "myComponentType",
+        "Version": "myVersion",
+        "Comments": "myComments",
+        "InstallDate": "1375183494123"
+    }
+]

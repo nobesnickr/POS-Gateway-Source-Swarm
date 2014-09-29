@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+This software is the confidential and proprietary information of
+Sonrisa Informatikai Kft. ("Confidential Information").
+You shall not disclose such Confidential Information and shall use it only in
+accordance with the terms of the license agreement you entered into
+with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+    
+    <bean id="loaderJobTestUtil" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="loaderJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+    
+    <bean id="storeJobTestUtil" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="storeJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+    
+    <bean id="erplyExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="erplyExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>    
+    
+    <bean id="mosExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="mosExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+    
+    <bean id="shopifyExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="shopifyExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>  
+    
+    <bean id="revelExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="revelExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>  
+    
+    <bean id="lsProExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="lsProExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+    
+    <bean id="ricsExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="ricsExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>  
+    
+    <bean id="lsProStoreJobTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="lsProStoreJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean> 
+    
+    <bean id="kountaExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="kountaExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+    
+    <bean id="kountaProcessorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="kountaProcessingJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean> 
+    
+    <bean id="kountaStoreJobTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="kountaStoreJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean> 
+    
+    <bean id="stageCleanerLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="cleanerJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>    
+</beans>

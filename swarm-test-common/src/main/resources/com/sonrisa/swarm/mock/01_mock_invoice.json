@@ -1,0 +1,11 @@
+{"Invoices":
+            [
+                {
+                    "CustSid": "123456",
+                    "InvoiceNo": "i123456",
+                    "CreatedDate": "01/10/2013",
+                    "SbsNo": "sbs1",
+                    "StoreNo": "123456"
+                }
+            ]
+}

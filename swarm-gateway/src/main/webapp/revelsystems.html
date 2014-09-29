@@ -1,0 +1,112 @@
+<!--
+  Copyright (c) 2014 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Revel Systems Registration | Swarm-Mobile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+//<![CDATA[
+
+	function verifySingleInput(field, regexp){
+		var value = field.val();
+		
+		var errorMsg = [];
+		
+		// Input fields are inside divs, which are inside the .form-group
+		var grandparent = field.parent().parent();
+		
+		grandparent.addClass("has-feedback");
+		if(!regexp.test(value)){
+			grandparent.addClass('has-error');
+			grandparent.removeClass('has-success');
+			return false;
+		} else {
+			grandparent.removeClass('has-error');
+			grandparent.addClass('has-success');
+			return true;
+		}
+	}
+           
+	/**
+	 * Form verification done when submit button is clicked
+	 */
+	function verifyInputFields(){
+		
+		var urlPattern = /^[\w~\-\.]+$/i
+		var hexaPattern = /^[0-9a-f]+$/i;
+		
+		var retVal = verifySingleInput($('#username'), urlPattern);
+		retVal = verifySingleInput($('#apikey'), hexaPattern) && retVal;
+		retVal = verifySingleInput($('#apisecret'), hexaPattern) && retVal;
+		
+		return retVal;			
+	}
+//]]>
+</script>
+<style type="text/css">
+section.main-block {
+	max-width: 900px;
+	margin: 15px auto;
+	padding: 30px;
+	background-color: #f2f2ff;
+}
+</style>
+</head>
+<body>
+    <section class="main-block">
+        <h1>Revel Systems Registration</h1>
+        
+		<p>Connect your Revel POS data to your Swarm account. By
+			integrating with the Swarm application you'll be able to continuously
+			track the transactions and revenue of your store.</p>
+        
+            <form action="api/revel/register" method="POST">
+                <div class="form-group">
+                    <label for="username" class="col-sm-5 control-label">Revel Systems store name:</label>
+                    <div class="col-sm-11">
+                        <input id="username" name="username" type="text" class="form-control"/>
+                        <span class="help-block">Unique name of your Revel store. If your Revel URL is https://XXXX.revelup.com, then XXXX is your unique name.</span>
+                    </div>   
+                </div>
+                
+                <div class="form-group">
+                    <label for="apikey" class="col-sm-5 control-label">Revel API Key:</label>
+                    <div class="col-sm-11">
+                        <input id="apikey" name="apikey" type="text" class="form-control"/>
+                        <span class="help-block">API key to access your sales data.</span>
+                    </div>   
+                </div>
+                
+                <div class="form-group">
+                    <label for="apisecret" class="col-sm-5 control-label">Revel API Secret:</label>
+                    <div class="col-sm-11">
+                        <input id="apisecret" name="apisecret" type="text" class="form-control"/>
+                        <span class="help-block">API secret to access your sales data.</span>
+                    </div>   
+                </div>
+                
+				<p class="clearfix"></p>
+                <button type="submit" class="btn btn-default" onclick="return verifyInputFields()">Submit</button>
+            </form>
+		<p class="clearfix"></p>
+	</section>
+ </body>
+</html>

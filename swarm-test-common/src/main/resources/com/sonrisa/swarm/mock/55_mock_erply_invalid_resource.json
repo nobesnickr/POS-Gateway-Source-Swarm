@@ -1,0 +1,11 @@
+{  
+   "status":{  
+      "request":"getSalesDocuments2",
+      "requestUnixTime":1406726122,
+      "responseStatus":"error",
+      "errorCode":1005,
+      "generationTime":0.011102914810181,
+      "recordsTotal":0,
+      "recordsInResponse":0
+   }
+}

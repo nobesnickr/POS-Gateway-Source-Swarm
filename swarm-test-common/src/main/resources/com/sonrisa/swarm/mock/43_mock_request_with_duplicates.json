@@ -1,0 +1,31 @@
+{  
+   "Invoices":[  
+      {  
+         "InvoiceSid":"1",
+         "CustSid":"123456",
+         "InvoiceNo":"1234",
+         "CreatedDate":"2014-06-15T07:07:41",
+         "SbsNo":"sbs1",
+         "StoreNo":"123456",
+         "Total":"222"
+      },
+      {  
+         "InvoiceSid":"2",
+         "CustSid":"123456",
+         "InvoiceNo":"567",
+         "CreatedDate":"2014-06-15T07:07:41",
+         "SbsNo":"sbs1",
+         "StoreNo":"123456",
+         "Total":"111"
+      },
+      {  
+         "InvoiceSid":"2",
+         "CustSid":"123456",
+         "InvoiceNo":"5555",
+         "CreatedDate":"2014-06-15T07:07:41",
+         "SbsNo":"sbs1",
+         "StoreNo":"123456",
+         "Total":"222"
+      }
+   ]
+}

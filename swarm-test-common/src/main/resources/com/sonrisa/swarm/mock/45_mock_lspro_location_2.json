@@ -1,0 +1,13 @@
+{
+    "odata.metadata":"http://localhost/Data/oData.svc/$metadata#Invoices",
+    "value":
+    [
+        {
+            "Id":"9446",
+            "DateCreated":"2014-01-10T13:27:22",
+            "DateModified":"2014-01-10T13:36:36.317",
+            "LocationName":"LS-Store2"
+        }
+    ],
+    "odata.nextLink":"../../data/oData.svc/Invoices?$filter=DateModified%20ge%20datetime'2013-12-25'&$expand=LineItems,Customer&$orderby=DateModified%20asc&$skiptoken=datetime'2014-01-02T17%3A02%3A59.553',9409L"
+}

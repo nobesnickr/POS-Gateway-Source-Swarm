@@ -1,0 +1,37 @@
+{
+   "@attributes":{
+      "count":"2",
+      "offset":"0",
+      "limit":"100"
+   },
+   "Customer":[
+      {
+         "customerID":"2",
+         "firstName":"Obi-wan",
+         "lastName":"Kenobi",
+         "archived":"false",
+         "title":"",
+         "company":"",
+         "createTime":"2013-10-08T08:18:16+00:00",
+         "timeStamp":"2013-10-08T08:18:16+00:00",
+         "creditAccountID":"0",
+         "customerTypeID":"0",
+         "discountID":"0",
+         "taxCategoryID":"0"
+      },
+      {
+         "customerID":"4",
+         "firstName":"Darth",
+         "lastName":"Vader",
+         "archived":"false",
+         "title":"",
+         "company":"",
+         "createTime":"2013-10-08T08:19:15+00:00",
+         "timeStamp":"2013-10-08T08:19:15+00:00",
+         "creditAccountID":"0",
+         "customerTypeID":"0",
+         "discountID":"0",
+         "taxCategoryID":"0"
+      }
+   ]
+}

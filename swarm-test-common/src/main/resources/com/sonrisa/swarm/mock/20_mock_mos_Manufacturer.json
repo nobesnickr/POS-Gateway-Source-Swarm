@@ -1,0 +1,19 @@
+{
+   "@attributes":{
+      "count":"2",
+      "offset":"0",
+      "limit":"100"
+   },
+   "Manufacturer":[
+      {
+         "manufacturerID":"2",
+         "name":"Imperial Industries",
+         "timeStamp":"2013-10-08T08:11:06+00:00"
+      },
+      {
+         "manufacturerID":"4",
+         "name":"Rebels",
+         "timeStamp":"2013-10-08T08:11:55+00:00"
+      }
+   ]
+}

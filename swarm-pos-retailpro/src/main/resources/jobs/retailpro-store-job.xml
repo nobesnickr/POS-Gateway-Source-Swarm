@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved. This 
+    software is the confidential and proprietary information of Sonrisa Informatikai 
+    Kft. ("Confidential Information"). You shall not disclose such Confidential 
+    Information and shall use it only in accordance with the terms of the license 
+    agreement you entered into with Sonrisa. SONRISA MAKES NO REPRESENTATIONS 
+    OR WARRANTIES ABOUT THE SUITABILITY OF THE SOFTWARE, EITHER EXPRESS OR IMPLIED, 
+    INCLUDING BUT NOT LIMITED TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS 
+    FOR A PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE 
+    FOR ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR DISTRIBUTING 
+    THIS SOFTWARE OR ITS DERIVATIVES. -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:aop="http://www.springframework.org/schema/aop" xmlns:tx="http://www.springframework.org/schema/tx"
+    xmlns:p="http://www.springframework.org/schema/p" xmlns:batch="http://www.springframework.org/schema/batch"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+    xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/batch 
+        http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/jdbc 
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+
+    <batch:job id="storeJob">
+        <batch:description>
+            This step creates store entities in the analytics DB area (in the legacy DB) for those 
+            RetailPro stores that do not have one already and sets the storeId on them
+            to be able to maintain this relation.
+        </batch:description>
+
+        <batch:step id="storeCheck">
+            <batch:tasklet transaction-manager="transactionManager">
+                <batch:chunk reader="rpStoreReader"
+                    processor="rpStoreProcessor" writer="rpStoreWriter"
+                    commit-interval="${loaderjob.storeCheck.batch.size}"
+                    skip-limit="${loaderjob.skip.limit.unlimited}">
+                    <batch:skippable-exception-classes>
+                        <batch:include class="java.lang.Exception" />
+                    </batch:skippable-exception-classes>
+                </batch:chunk>
+                <batch:listeners>
+                    <batch:listener ref="stepLoggingListener" />
+                    <batch:listener ref="skippedStagingEntityListener" />
+                </batch:listeners>
+            </batch:tasklet>
+        </batch:step>
+    </batch:job>
+
+
+    <!-- Reader, writer, processor of storeCheck step -->
+    <bean id="rpStoreReader"
+        class="org.springframework.batch.item.database.JpaPagingItemReader">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="queryString" value="${loaderjob.storecheck.reader.query}" />
+        <property name="pageSize" value="${loaderjob.storeCheck.paging.size}" />
+    </bean>
+    <bean id="rpStoreProcessor"
+        class="com.sonrisa.swarm.retailpro.loader.store.RpStoreProcessor" />
+    <bean id="rpStoreWriter"
+        class="org.springframework.batch.item.database.JpaItemWriter">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+    </bean>
+</beans>

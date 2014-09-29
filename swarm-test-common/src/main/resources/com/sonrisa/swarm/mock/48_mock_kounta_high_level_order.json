@@ -1,0 +1,62 @@
+{
+  "id": 12267739,
+  "sale_number": "SP-1",
+  "status": "COMPLETE",
+  "notes": "",
+   "customer": {
+    "id": 3842,
+    "first_name": "Lucy",
+    "last_name": "Lavender",
+    "email": "lucy@kounta.com",
+    "image": "http://www.gravatar.com/avatar/cb9532c3d6f3f835d2253b5fcaa68340.jpg"
+  },
+  "register_id": 1000797,
+  "site_id": 1410,
+  "lines": [
+    {
+      "number": 1,
+      "product": {
+        "id": 56078,
+        "name": "Swarm Mobile"
+      },
+      "quantity": 1,
+      "price_variation": 1,
+      "modifiers": [
+        
+      ],
+      "notes": "",
+      "unit_price": 199.99,
+      "unit_tax": 0
+    },
+    {
+      "number": 2,
+      "product": {
+        "id": 5607,
+        "name": "Swarm Mobile 2."
+      },
+      "quantity": 1,
+      "price_variation": 1,
+      "modifiers": [
+        
+      ],
+      "notes": "",
+      "unit_price": 399.99,
+      "unit_tax": 0
+    }
+  ],
+  "price_variation": 1,
+  "payments": [
+    {
+      "number": 1,
+      "method": {
+        "id": 2516,
+        "name": "Cash"
+      },
+      "amount": 399.98,
+      "created_at": "2014-03-12T04:16:08+11:00"
+    }
+  ],
+  "staff_member_id": 5536,
+  "created_at": "2014-03-12T04:16:08+11:00",
+  "updated_at": "2014-03-12T04:16:08+11:00"
+}

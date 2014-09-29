@@ -1,0 +1,29 @@
+[
+  {
+    "id": 12267739,
+    "sale_number": "SP-1",
+    "status": "COMPLETE",
+    "total": 399.98,
+    "paid": 399.98,
+    "created_at": "2014-03-12T04:16:08+11:00",
+    "updated_at": "2014-03-12T04:16:08+11:00"
+  },
+  {
+    "id": 42267739,
+    "sale_number": "SP-2",
+    "status": "COMPLETE",
+    "total": 299.98,
+    "paid": 299.98,
+    "created_at": "2014-03-13T04:16:08+11:00",
+    "updated_at": "2014-03-13T04:16:08+11:00"
+  },
+  {
+    "id": 52267239,
+    "sale_number": "SP-3",
+    "status": "COMPLETE",
+    "total": 1399.98,
+    "paid": 1399.98,
+    "created_at": "2014-03-14T04:16:08+11:00",
+    "updated_at": "2014-03-14T04:16:08+11:00"
+  }
+]

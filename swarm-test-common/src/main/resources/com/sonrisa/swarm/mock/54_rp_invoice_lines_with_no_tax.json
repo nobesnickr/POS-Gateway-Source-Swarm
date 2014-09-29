@@ -1,0 +1,44 @@
+{"Invoices":
+            [{
+                    "InvoiceSid": "1",
+                    "CreatedDate": "2013-09-01 01:47:17",
+                    "StoreNo": "SMF",
+                    "SbsNo": "0",
+                    "CustSid": "1",
+                    "InvoiceNo": "10",
+                    "Total": "9876"
+                }
+            ],
+    "Items":
+            [
+                {
+                    "InvoiceSid": "1",
+                    "ProductSid": "12",
+                    "ItemPos": "1",
+                    "Quantity": "2",
+                    "Price": "0.99",
+                    "TaxAmt": "",
+                    "SbsNo": "0",
+                    "StoreNo": "SMF"
+                },
+                {
+                    "InvoiceSid": "1",
+                    "ProductSid": "12",
+                    "ItemPos": "2",
+                    "Quantity": "1",
+                    "Price": "0.99",
+                    "SbsNo": "0",
+                    "StoreNo": "SMF"
+                },
+                {
+                    "InvoiceSid": "1",
+                    "ProductSid": "46",
+                    "ItemPos": "3",
+                    "Quantity": "2",
+                    "Price": "9",
+                    "TaxAmt": null,
+                    "SbsNo": "0",
+                    "StoreNo": "SMF"
+                }
+            ]
+}

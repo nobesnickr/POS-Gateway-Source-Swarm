@@ -1,0 +1,3549 @@
+{
+  "Sales": [
+    {
+      "BatchStartDate": "2013-09-23T14:24:06.923",
+      "BatchEndDate": "2013-09-23T15:17:25.047",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-09-23T20:24:17.64",
+      "BatchModifiedOn": "2013-09-23T21:17:34.107",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 337.5,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-09-23T14:27:43.07",
+          "TicketNumber": 1,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/23/2013 03:27 PM           104461/20/1\r\n\r\nRegular Sale\r\nAlthea, in WHISKEY\r\n  D11637 085 M            1       100.00\r\n           Discount 10%           -10.00\r\n           Net Price               90.00\r\n\r\n                     Subtotal:     90.00\r\n                         Total:    90.00\r\n                       1 - Cash    50.00\r\n                   7 - Discover    40.00\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-23T14:27:43.07",
+          "TicketModifiedOn": "2013-09-23T20:27:43.07",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 100,
+              "RetailPrice": 100,
+              "DiscountRate": 10,
+              "CommissionAmount": 1.8,
+              "PerkAmount": 0,
+              "AmountPaid": 90,
+              "Cost": 43.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T20:27:43.093",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 100,
+              "NetSales": 90,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Senior ",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "20",
+                "FirstName": "DINO",
+                "LastName": "CIARLETTA",
+                "Login": "DCIARLETTA"
+              },
+              "ProductItem": {
+                "Sku": "D11637",
+                "SupplierCode": "BORN",
+                "Supplier": "Born Shoe Co",
+                "Summary": "Althea",
+                "Colors": [
+                  {
+                    "TagTree": "WHISKEY"
+                  }
+                ],
+                "Column": "085",
+                "ColumnOrdinal": 10,
+                "Row": "M",
+                "RowOrdinal": 4,
+                "UPC": "440199222911"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 40,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "7 - Discover"
+            },
+            {
+              "AmountTendered": 50,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "20",
+            "FirstName": "DINO",
+            "LastName": "CIARLETTA",
+            "Login": "DCIARLETTA"
+          }
+        },
+        {
+          "TicketDateTime": "2013-09-23T15:11:38.733",
+          "TicketNumber": 2,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/23/2013 04:11 PM           104461/20/2\r\n\r\nFIRE\r\nDan Dinneen\r\nFire Station #1\r\n521 So Broadway\r\nRochester, MN 55902\n\r\n\r\nRegular Sale\r\nGel-Kayano 19, in TIT/ROYL/B\r\n  T300N-9759 095 D        1       150.00\r\n           Discount 15%           -22.50\r\n           Net Price              127.50\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\n           Discount 0%              0.00\r\n           Net Price              160.00\r\n\r\n                     Subtotal:    287.50\r\n                         Total:   287.50\r\n                       1 - Cash   100.00\r\n                      2 - Check   187.50\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-23T15:11:38.733",
+          "TicketModifiedOn": "2013-09-23T21:11:38.733",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "DiscountRate": 15,
+              "CommissionAmount": 2.55,
+              "PerkAmount": 0,
+              "AmountPaid": 127.5,
+              "Cost": 82.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:11:38.743",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 150,
+              "NetSales": 127.5,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "20",
+                "FirstName": "DINO",
+                "LastName": "CIARLETTA",
+                "Login": "DCIARLETTA"
+              },
+              "ProductItem": {
+                "Sku": "T300N-9759",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel-Kayano 19",
+                "Colors": [
+                  {
+                    "TagTree": "TIT/ROYL/B"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199051719"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "DiscountRate": 0,
+              "CommissionAmount": 3.2,
+              "PerkAmount": 0,
+              "AmountPaid": 160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:11:38.883",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 160,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "20",
+                "FirstName": "DINO",
+                "LastName": "CIARLETTA",
+                "Login": "DCIARLETTA"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 187.5,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            },
+            {
+              "AmountTendered": 100,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "20",
+            "FirstName": "DINO",
+            "LastName": "CIARLETTA",
+            "Login": "DCIARLETTA"
+          },
+          "Customer": {
+            "AccountNumber": "4599497",
+            "FirstName": "JEWEL",
+            "LastName": "TYRE"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-09-23T15:17:43.97",
+      "BatchEndDate": "2013-09-23T15:27:20.78",
+      "BatchOverShort": -113.5,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-09-23T21:17:59.38",
+      "BatchModifiedOn": "2013-09-23T21:27:35.07",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 0,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-09-23T15:20:39.573",
+          "TicketNumber": 1,
+          "TicketComment": "l6258 Name name",
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/23/2013 04:20 PM           104461/19/1\r\n\r\nFIRE\r\nDan Dinneen\r\nFire Station #1\r\n521 So Broadway\r\nRochester, MN 55902\n\r\n\r\nRegular Sale\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\n           Discount 15%           -24.00\r\n           Net Price              136.00\r\nGel-Kayano 19, in TIT/ROYL/B\r\n  T300N-9759 095 D        1       150.00\r\n           Discount 15%           -22.50\r\n           Net Price              127.50\r\n\r\n                     Subtotal:    263.50\r\n                         Total:   263.50\r\n               9 - House Charge   150.00\r\n                       1 - Cash   113.50\r\n\r\n             Items Sold: 2\r\n\r\n               Charge Balance: -$8,310.42\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bFl6258 Name name\r\n\r\n\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-23T15:20:39.573",
+          "TicketModifiedOn": "2013-09-23T21:20:39.573",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "DiscountRate": 15,
+              "CommissionAmount": 2.72,
+              "PerkAmount": 0,
+              "AmountPaid": 136,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:20:39.577",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 136,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "19",
+                "FirstName": "LOGAN",
+                "LastName": "FLAIM",
+                "Login": "LFLAIM"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "DiscountRate": 15,
+              "CommissionAmount": 2.55,
+              "PerkAmount": 0,
+              "AmountPaid": 127.5,
+              "Cost": 82.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:20:39.727",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 150,
+              "NetSales": 127.5,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "19",
+                "FirstName": "LOGAN",
+                "LastName": "FLAIM",
+                "Login": "LFLAIM"
+              },
+              "ProductItem": {
+                "Sku": "T300N-9759",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel-Kayano 19",
+                "Colors": [
+                  {
+                    "TagTree": "TIT/ROYL/B"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199051719"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 150,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "9 - House Charge"
+            },
+            {
+              "AmountTendered": 113.5,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "19",
+            "FirstName": "LOGAN",
+            "LastName": "FLAIM",
+            "Login": "LFLAIM"
+          },
+          "Customer": {
+            "AccountNumber": "4599497",
+            "FirstName": "JEWEL",
+            "LastName": "TYRE"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-09-23T15:27:51.093",
+      "BatchEndDate": "2013-09-23T15:33:36.97",
+      "BatchOverShort": -250,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 100,
+      "BatchCreatedOn": "2013-09-23T21:28:00.247",
+      "BatchModifiedOn": "2013-09-23T21:33:46.253",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 0,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-09-23T15:30:10.467",
+          "TicketNumber": 2,
+          "Change": 40,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/23/2013 04:29 PM           104461/19/2\r\n\r\nRegular Sale\r\nGel-Kayano 19, in TIT/ROYL/B\r\n  T300N-9759 095 D        1       150.00\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\n\r\n                     Subtotal:    310.00\r\n                         Total:   310.00\r\n                      2 - Check   250.00\r\n                       1 - Cash   100.00\r\n                        Change:    40.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-23T15:30:10.467",
+          "TicketModifiedOn": "2013-09-23T21:30:10.467",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "CommissionAmount": 3,
+              "PerkAmount": 0,
+              "AmountPaid": 150,
+              "Cost": 82.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:30:10.47",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 150,
+              "NetSales": 150,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "19",
+                "FirstName": "LOGAN",
+                "LastName": "FLAIM",
+                "Login": "LFLAIM"
+              },
+              "ProductItem": {
+                "Sku": "T300N-9759",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel-Kayano 19",
+                "Colors": [
+                  {
+                    "TagTree": "TIT/ROYL/B"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199051719"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": 3.2,
+              "PerkAmount": 0,
+              "AmountPaid": 160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:30:10.59",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 160,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "19",
+                "FirstName": "LOGAN",
+                "LastName": "FLAIM",
+                "Login": "LFLAIM"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 250,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            },
+            {
+              "AmountTendered": 100,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "19",
+            "FirstName": "LOGAN",
+            "LastName": "FLAIM",
+            "Login": "LFLAIM"
+          }
+        },
+        {
+          "TicketDateTime": "2013-09-23T15:31:20.96",
+          "TicketNumber": 3,
+          "Change": 160,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/23/2013 04:31 PM           104461/19/3\r\n\r\nReturn\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D         -1       160.00\r\n\r\n                    Subtotal:    -160.00\r\n                        Total:   -160.00\r\n                        Change:   160.00\r\n\r\n             Items Sold: 0\r\n\r\n\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-23T15:31:20.96",
+          "TicketModifiedOn": "2013-09-23T21:31:20.963",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": -1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": -3.2,
+              "PerkAmount": 0,
+              "AmountPaid": -160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:31:20.97",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "IsSellable": true,
+              "NetSales": -160,
+              "ReturnDescription": "Customer Didn't Like",
+              "TransactionSaleDescription": "Return",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "19",
+                "FirstName": "LOGAN",
+                "LastName": "FLAIM",
+                "Login": "LFLAIM"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            }
+          ],
+          "Tenders": [],
+          "Cashier": {
+            "UserCashierCode": "19",
+            "FirstName": "LOGAN",
+            "LastName": "FLAIM",
+            "Login": "LFLAIM"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-09-23T15:33:53.11",
+      "BatchEndDate": "2013-09-23T15:35:43.687",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 100,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-09-23T21:34:11.423",
+      "BatchModifiedOn": "2013-09-23T21:36:01.95",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 0,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-09-23T15:35:36.617",
+          "TicketNumber": 1,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/23/2013 04:35 PM           104461/19/1\r\n\r\nRegular Sale\r\nGel-Kayano 19, in TIT/ROYL/B\r\n  T300N-9759 095 D        1       150.00\r\n           Discount               -50.00\r\n           Net Price              100.00\r\n\r\n                     Subtotal:    100.00\r\n                         Total:   100.00\r\n                       1 - Cash   100.00\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-23T15:35:36.617",
+          "TicketModifiedOn": "2013-09-23T21:35:36.617",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 100,
+              "RetailPrice": 150,
+              "CommissionAmount": 2,
+              "PerkAmount": 0,
+              "AmountPaid": 100,
+              "Cost": 82.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-23T21:35:36.627",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 150,
+              "NetSales": 100,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Senior ",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "19",
+                "FirstName": "LOGAN",
+                "LastName": "FLAIM",
+                "Login": "LFLAIM"
+              },
+              "ProductItem": {
+                "Sku": "T300N-9759",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel-Kayano 19",
+                "Colors": [
+                  {
+                    "TagTree": "TIT/ROYL/B"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199051719"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 100,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "19",
+            "FirstName": "LOGAN",
+            "LastName": "FLAIM",
+            "Login": "LFLAIM"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-09-24T13:45:48.297",
+      "BatchEndDate": "2013-09-24T13:57:53.89",
+      "BatchOverShort": -180,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-09-24T19:46:03.553",
+      "BatchModifiedOn": "2013-09-24T19:58:09.58",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 0,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-09-24T13:49:29",
+          "TicketNumber": 1,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/24/2013 02:49 PM            104461/2/1\r\n\r\nRegular Sale\r\nGel-Kayano 19, in TIT/ROYL/B\r\n  T300N-9759 130 D        1       150.00\r\n           Discount 20%           -30.00\r\n           Net Price              120.00\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\n\r\n                     Subtotal:    280.00\r\n                         Total:   280.00\r\n                    6 - Visa/MC   100.00\r\n                      2 - Check   180.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-24T13:49:29",
+          "TicketModifiedOn": "2013-09-24T19:49:29",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "DiscountRate": 20,
+              "CommissionAmount": 2.4,
+              "PerkAmount": 0,
+              "AmountPaid": 120,
+              "Cost": 82.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-24T19:49:29.01",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 150,
+              "NetSales": 120,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "2",
+                "FirstName": "JOANIE",
+                "LastName": "TONDRE",
+                "Login": "JTONDRE"
+              },
+              "ProductItem": {
+                "Sku": "T300N-9759",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel-Kayano 19",
+                "Colors": [
+                  {
+                    "TagTree": "TIT/ROYL/B"
+                  }
+                ],
+                "Column": "130",
+                "ColumnOrdinal": 15,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199052341"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": 3.2,
+              "PerkAmount": 0,
+              "AmountPaid": 160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-24T19:49:29.17",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 160,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "2",
+                "FirstName": "JOANIE",
+                "LastName": "TONDRE",
+                "Login": "JTONDRE"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 100,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "6 - Visa/MC"
+            },
+            {
+              "AmountTendered": 180,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "2",
+            "FirstName": "JOANIE",
+            "LastName": "TONDRE",
+            "Login": "JTONDRE"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-09-24T13:58:10.923",
+      "BatchEndDate": "2013-09-25T09:20:01.703",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-09-24T19:58:19.773",
+      "BatchModifiedOn": "2013-09-25T15:20:12.843",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 0,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-09-24T14:00:14.9",
+          "TicketNumber": 1,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/24/2013 02:59 PM            104461/2/1\r\n\r\nRegular Sale\r\nGel-Kayano 19, in TIT/ROYL/B\r\n  T300N-9759 130 D        1       150.00\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\n\r\n                     Subtotal:    310.00\r\n                         Total:   310.00\r\n                    6 - Visa/MC   310.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-24T14:00:14.9",
+          "TicketModifiedOn": "2013-09-24T20:00:14.9",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "CommissionAmount": 3,
+              "PerkAmount": 0,
+              "AmountPaid": 150,
+              "Cost": 82.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-24T20:00:14.903",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 150,
+              "NetSales": 150,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "2",
+                "FirstName": "JOANIE",
+                "LastName": "TONDRE",
+                "Login": "JTONDRE"
+              },
+              "ProductItem": {
+                "Sku": "T300N-9759",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel-Kayano 19",
+                "Colors": [
+                  {
+                    "TagTree": "TIT/ROYL/B"
+                  }
+                ],
+                "Column": "130",
+                "ColumnOrdinal": 15,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199052341"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": 3.2,
+              "PerkAmount": 0,
+              "AmountPaid": 160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-24T20:00:15.02",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 160,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "2",
+                "FirstName": "JOANIE",
+                "LastName": "TONDRE",
+                "Login": "JTONDRE"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 310,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "6 - Visa/MC"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "2",
+            "FirstName": "JOANIE",
+            "LastName": "TONDRE",
+            "Login": "JTONDRE"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-09-25T09:21:03.733",
+      "BatchEndDate": "2013-09-25T16:17:40.75",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-09-25T15:21:23.05",
+      "BatchModifiedOn": "2013-09-25T22:17:56.69",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 362.5,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-09-25T15:49:38.347",
+          "TicketNumber": 1,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/25/2013 04:49 PM            104461/4/1\r\n\r\nRegular Sale\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\nGT-2000, in BLK/BLU/LM\r\n  T2K2N-9062 130 D        1       120.00\r\n\r\n                     Subtotal:    280.00\r\n                         Total:   280.00\r\n                    6 - Visa/MC   280.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-25T15:49:38.347",
+          "TicketModifiedOn": "2013-09-25T21:49:38.347",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": 3.2,
+              "PerkAmount": 0,
+              "AmountPaid": 160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T21:49:38.357",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 160,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "4",
+                "FirstName": "MARY",
+                "LastName": "LANCEY",
+                "Login": "MLANCEY"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 120,
+              "RetailPrice": 120,
+              "CommissionAmount": 2.4,
+              "PerkAmount": 0,
+              "AmountPaid": 120,
+              "Cost": 66,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T21:49:38.713",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 120,
+              "NetSales": 120,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "4",
+                "FirstName": "MARY",
+                "LastName": "LANCEY",
+                "Login": "MLANCEY"
+              },
+              "ProductItem": {
+                "Sku": "T2K2N-9062",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "GT-2000",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/BLU/LM"
+                  }
+                ],
+                "Column": "130",
+                "ColumnOrdinal": 15,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199054321"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 280,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "6 - Visa/MC"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "4",
+            "FirstName": "MARY",
+            "LastName": "LANCEY",
+            "Login": "MLANCEY"
+          }
+        },
+        {
+          "TicketDateTime": "2013-09-25T15:53:34.27",
+          "TicketNumber": 2,
+          "TicketComment": "fire bob",
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/25/2013 04:53 PM            104461/4/2\r\n\r\nFIRE\r\nDan Dinneen\r\nFire Station #1\r\n521 So Broadway\r\nRochester, MN 55902\n\r\n\r\nRegular Sale\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\n           Discount 20%           -32.00\r\n           Net Price              128.00\r\n\r\n                     Subtotal:    128.00\r\n                         Total:   128.00\r\n               9 - House Charge   128.00\r\n\r\n             Items Sold: 1\r\n\r\n               Charge Balance: -$8,182.42\r\n\r\n\u001bE\u001bF\u001bE\u001bFfire bob\r\n\r\n\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-25T15:53:34.27",
+          "TicketModifiedOn": "2013-09-25T21:53:34.27",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "DiscountRate": 20,
+              "CommissionAmount": 2.56,
+              "PerkAmount": 0,
+              "AmountPaid": 128,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T21:53:34.277",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 128,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "4",
+                "FirstName": "MARY",
+                "LastName": "LANCEY",
+                "Login": "MLANCEY"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 128,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "9 - House Charge"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "4",
+            "FirstName": "MARY",
+            "LastName": "LANCEY",
+            "Login": "MLANCEY"
+          },
+          "Customer": {
+            "AccountNumber": "4599497",
+            "FirstName": "JEWEL",
+            "LastName": "TYRE"
+          }
+        },
+        {
+          "TicketDateTime": "2013-09-25T16:02:29.763",
+          "TicketNumber": 3,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/25/2013 05:02 PM            104461/4/3\r\n\r\n507-282-8143\r\nj ohn  butrum\r\n\r\nRegular Sale\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D          1       160.00\r\nGT-2000, in BLK/BLU/LM\r\n  T2K2N-9062 130 D        1       120.00\r\n\r\n                     Subtotal:    280.00\r\n                         Total:   280.00\r\n                       1 - Cash   280.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-25T16:02:29.763",
+          "TicketModifiedOn": "2013-09-25T22:02:29.763",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": 3.2,
+              "PerkAmount": 0,
+              "AmountPaid": 160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T22:02:29.79",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 160,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "4",
+                "FirstName": "MARY",
+                "LastName": "LANCEY",
+                "Login": "MLANCEY"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 120,
+              "RetailPrice": 120,
+              "CommissionAmount": 2.4,
+              "PerkAmount": 0,
+              "AmountPaid": 120,
+              "Cost": 66,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T22:02:29.923",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 120,
+              "NetSales": 120,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "4",
+                "FirstName": "MARY",
+                "LastName": "LANCEY",
+                "Login": "MLANCEY"
+              },
+              "ProductItem": {
+                "Sku": "T2K2N-9062",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "GT-2000",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/BLU/LM"
+                  }
+                ],
+                "Column": "130",
+                "ColumnOrdinal": 15,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199054321"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 280,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "4",
+            "FirstName": "MARY",
+            "LastName": "LANCEY",
+            "Login": "MLANCEY"
+          },
+          "Customer": {
+            "AccountNumber": "4602994",
+            "FirstName": "FLORINDA",
+            "LastName": "KALLIN"
+          }
+        },
+        {
+          "TicketDateTime": "2013-09-25T16:06:10.353",
+          "TicketNumber": 4,
+          "Change": 40,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/25/2013 05:05 PM            104461/4/4\r\n\r\n507-282-8143\r\nj ohn  butrum\r\n\r\nReturn by ANTHONY:Anthony, Anthony\r\nHiking Lite, in BROWN\r\n  WW1569BR 070 D         -1       160.00\r\nRegular Sale by ANTHONY:Anthony, Anthony\r\nGT-2000, in BLK/BLU/LM\r\n  T2K2N-9062 130 D        1       120.00\r\n\r\n                     Subtotal:    -40.00\r\n                         Total:   -40.00\r\n                        Change:    40.00\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-25T16:06:10.353",
+          "TicketModifiedOn": "2013-09-25T22:06:10.353",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": -1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": -160,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T22:06:10.357",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "IsSellable": false,
+              "NetSales": -160,
+              "ReturnDescription": "Defective/Damaged",
+              "TransactionSaleDescription": "Return",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "ANTHONY",
+                "FirstName": "ADELL",
+                "LastName": "VILLALOVOS",
+                "Login": "AVILLALOVOS"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "070",
+                "ColumnOrdinal": 7,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440199453193"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 120,
+              "RetailPrice": 120,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 120,
+              "Cost": 66,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T22:06:10.577",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 120,
+              "NetSales": 120,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "ANTHONY",
+                "FirstName": "ADELL",
+                "LastName": "VILLALOVOS",
+                "Login": "AVILLALOVOS"
+              },
+              "ProductItem": {
+                "Sku": "T2K2N-9062",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "GT-2000",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/BLU/LM"
+                  }
+                ],
+                "Column": "130",
+                "ColumnOrdinal": 15,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "440199054321"
+              }
+            }
+          ],
+          "Tenders": [],
+          "Cashier": {
+            "UserCashierCode": "4",
+            "FirstName": "MARY",
+            "LastName": "LANCEY",
+            "Login": "MLANCEY"
+          },
+          "Customer": {
+            "AccountNumber": "4602994",
+            "FirstName": "FLORINDA",
+            "LastName": "KALLIN"
+          }
+        },
+        {
+          "TicketDateTime": "2013-09-25T16:11:35.937",
+          "TicketNumber": 5,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n9/25/2013 05:11 PM            104461/4/5\r\n\r\nRegular Sale\r\nBout Time, in BLACK\r\n  BOUT T BL 115 W         1       175.00\r\n           Discount 30%           -52.50\r\n           Net Price              122.50\r\n\r\n                     Subtotal:    122.50\r\n                         Total:   122.50\r\n                       1 - Cash   122.50\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\r\n\r\n\r\n\r\n",
+          "SaleDateTime": "2013-09-25T16:11:35.937",
+          "TicketModifiedOn": "2013-09-25T22:11:35.937",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 175,
+              "RetailPrice": 175,
+              "DiscountRate": 30,
+              "CommissionAmount": 2.45,
+              "PerkAmount": 0,
+              "AmountPaid": 122.5,
+              "Cost": 87.06,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-09-25T22:11:35.94",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 175,
+              "NetSales": 122.5,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Damaged",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "4",
+                "FirstName": "MARY",
+                "LastName": "LANCEY",
+                "Login": "MLANCEY"
+              },
+              "ProductItem": {
+                "Sku": "BOUT T BL",
+                "SupplierCode": "SAS",
+                "Supplier": "S.A.S.",
+                "Summary": "Bout Time",
+                "Colors": [
+                  {
+                    "TagTree": "BLACK"
+                  }
+                ],
+                "Column": "115",
+                "ColumnOrdinal": 12,
+                "Row": "W",
+                "RowOrdinal": 4,
+                "UPC": "440191692606"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 122.5,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "4",
+            "FirstName": "MARY",
+            "LastName": "LANCEY",
+            "Login": "MLANCEY"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-11-26T14:09:54.86",
+      "BatchEndDate": "2013-11-26T14:16:57.253",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-11-26T20:10:08.613",
+      "BatchModifiedOn": "2013-11-26T20:17:17.417",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 88,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-11-26T14:13:08.11",
+          "TicketNumber": 1,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n11/26/2013 02:13 PM          104461/15/1\r\n\r\nFIRE\r\nDan Dinneen\r\nFire Station #1\r\n521 So Broadway\r\nRochester, MN 55902\n\r\n\r\nRegular Sale\r\nGT-2000, in BLK/BLU/LM\r\n  T2K2N-9062 105 EE       1       120.00\r\n           Discount 15.00 %       -18.00\r\n           Net Price              102.00\r\nHiking Lite, in BROWN\r\n  WW1569BR 075 B          1       160.00\r\n           Discount 15.00 %       -24.00\r\n           Net Price              136.00\r\n\r\n                     Subtotal:    238.00\r\n                         Total:   238.00\r\n               9 - House Charge   150.00\r\n                      2 - Check    88.00\r\n\r\n             Items Sold: 2\r\n\r\n               Charge Balance: -$8,032.42\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2013-11-26T14:13:08.11",
+          "TicketModifiedOn": "2013-11-26T20:13:20.41",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 120,
+              "RetailPrice": 120,
+              "DiscountRate": 15,
+              "CommissionAmount": 2.04,
+              "PerkAmount": 0,
+              "AmountPaid": 102,
+              "Cost": 66,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-11-26T20:13:20.58",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 120,
+              "NetSales": 102,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "15",
+                "FirstName": "BRIANNE",
+                "LastName": "HOYING",
+                "Login": "BHOYING"
+              },
+              "ProductItem": {
+                "Sku": "T2K2N-9062",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "GT-2000",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/BLU/LM"
+                  }
+                ],
+                "Column": "105",
+                "ColumnOrdinal": 10,
+                "Row": "EE",
+                "RowOrdinal": 6,
+                "UPC": "440199053898"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "DiscountRate": 15,
+              "CommissionAmount": 2.72,
+              "PerkAmount": 0,
+              "AmountPaid": 136,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-11-26T20:13:21.303",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 136,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "15",
+                "FirstName": "BRIANNE",
+                "LastName": "HOYING",
+                "Login": "BHOYING"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "075",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 4,
+                "UPC": "440199453254"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 150,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "9 - House Charge"
+            },
+            {
+              "AmountTendered": 88,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "15",
+            "FirstName": "BRIANNE",
+            "LastName": "HOYING",
+            "Login": "BHOYING"
+          },
+          "Customer": {
+            "AccountNumber": "4599497",
+            "FirstName": "JEWEL",
+            "LastName": "TYRE"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2013-11-26T15:17:14.673",
+      "BatchEndDate": "2013-11-26T15:22:53.017",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 200,
+      "BatchEndingBalance": 200,
+      "BatchCreatedOn": "2013-11-26T21:17:22.99",
+      "BatchModifiedOn": "2013-11-26T21:22:59.897",
+      "BatchModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+      "BatchTotalDeposit": 88,
+      "TerminalDescription": "P1 - POS1",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "21",
+        "FirstName": "ASA",
+        "MiddleName": "",
+        "LastName": "KUR",
+        "Login": "AKUR"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2013-11-26T15:19:57.753",
+          "TicketNumber": 2,
+          "TicketComment": "4165 john",
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n11/26/2013 03:19 PM           104461/7/2\r\n\r\nFIRE\r\nDan Dinneen\r\nFire Station #1\r\n521 So Broadway\r\nRochester, MN 55902\n\r\n\r\nRegular Sale\r\nGT-2000, in BLK/BLU/LM\r\n  T2K2N-9062 105 EE       1       120.00\r\n           Discount 15.00 %       -18.00\r\n           Net Price              102.00\r\nHiking Lite, in BROWN\r\n  WW1569BR 075 B          1       160.00\r\n           Discount 15.00 %       -24.00\r\n           Net Price              136.00\r\n\r\n                     Subtotal:    238.00\r\n                         Total:   238.00\r\n               9 - House Charge   150.00\r\n                      2 - Check    88.00\r\n\r\n             Items Sold: 2\r\n\r\n               Charge Balance: -$7,882.42\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF4165 john\r\n\r\n\u001bE\u001bF",
+          "SaleDateTime": "2013-11-26T15:19:57.753",
+          "TicketModifiedOn": "2013-11-26T21:20:18.53",
+          "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 120,
+              "RetailPrice": 120,
+              "DiscountRate": 15,
+              "CommissionAmount": 2.04,
+              "PerkAmount": 0,
+              "AmountPaid": 102,
+              "Cost": 66,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-11-26T21:20:18.573",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 120,
+              "NetSales": 102,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "7",
+                "FirstName": "BUSTER",
+                "LastName": "STAINBACH",
+                "Login": "BSTAINBACH"
+              },
+              "ProductItem": {
+                "Sku": "T2K2N-9062",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "GT-2000",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/BLU/LM"
+                  }
+                ],
+                "Column": "105",
+                "ColumnOrdinal": 10,
+                "Row": "EE",
+                "RowOrdinal": 6,
+                "UPC": "440199053898"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "DiscountRate": 15,
+              "CommissionAmount": 2.72,
+              "PerkAmount": 0,
+              "AmountPaid": 136,
+              "Cost": 80,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2013-11-26T21:20:19.4",
+              "ModifiedBy": "obshoes / O&B Shoe Store Inc. : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 160,
+              "NetSales": 136,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "7",
+                "FirstName": "BUSTER",
+                "LastName": "STAINBACH",
+                "Login": "BSTAINBACH"
+              },
+              "ProductItem": {
+                "Sku": "WW1569BR",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Hiking Lite",
+                "Colors": [
+                  {
+                    "TagTree": "BROWN"
+                  }
+                ],
+                "Column": "075",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 4,
+                "UPC": "440199453254"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 150,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "9 - House Charge"
+            },
+            {
+              "AmountTendered": 88,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "7",
+            "FirstName": "BUSTER",
+            "LastName": "STAINBACH",
+            "Login": "BSTAINBACH"
+          },
+          "Customer": {
+            "AccountNumber": "4599497",
+            "FirstName": "JEWEL",
+            "LastName": "TYRE"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2014-04-15T08:52:00.453",
+      "BatchEndDate": "2014-04-17T10:05:59.197",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 0,
+      "BatchEndingBalance": 0,
+      "BatchCreatedOn": "2014-04-15T14:52:04.68",
+      "BatchModifiedOn": "2014-04-17T16:06:00.687",
+      "BatchModifiedBy": "straub / RICS Retail #1 : POS",
+      "BatchTotalDeposit": 0,
+      "TerminalDescription": "ST Test POS",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "32",
+        "FirstName": "Shawn",
+        "MiddleName": "",
+        "LastName": "Traub",
+        "Login": "straub"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2014-04-17T08:13:36.31",
+          "TicketNumber": 1,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n4/17/2014 09:13 AM           100001/32/1\r\n\r\nReturn\r\nWomens Performance, in BLACK\r\n  N454-BLK MED           -1        12.00\r\n           Net Price              -12.00\r\nRegular Sale\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -72.25\r\n           Net Price               42.75\r\nBeast-Control, in ANT/WHT/BK\r\n  110079-099 120 EE       1       130.00\r\n           Discount               -20.00\r\n           Net Price              110.00\r\n\r\n                     Subtotal:    140.75\r\n                         Total:   140.75\r\n                  8 - Amer.Expr   140.75\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-17T08:13:36.31",
+          "TicketModifiedOn": "2014-04-17T14:13:36.31",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": -1,
+              "SalePrice": 12,
+              "RetailPrice": 12,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": -12,
+              "Cost": 5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T14:13:36.33",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 12,
+              "IsSellable": false,
+              "NetSales": -12,
+              "ReturnDescription": "Defective/Damaged",
+              "TransactionSaleDescription": "Return",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "N454-BLK",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Womens Performance",
+                "Colors": [
+                  {
+                    "TagTree": "BLACK"
+                  }
+                ],
+                "Column": "MED",
+                "ColumnOrdinal": 2,
+                "UPC": "440197126778"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "DiscountRate": 25,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 42.75,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T14:13:36.47",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 42.75,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Downtown Employee",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            },
+            {
+              "TicketLineNumber": 3,
+              "Quantity": 1,
+              "SalePrice": 110,
+              "RetailPrice": 130,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 110,
+              "Cost": 51.72,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T14:13:36.51",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 130,
+              "NetSales": 110,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Damaged",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "110079-099",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Beast-Control",
+                "Colors": [
+                  {
+                    "TagTree": "ANT/WHT/BK"
+                  }
+                ],
+                "Column": "120",
+                "ColumnOrdinal": 13,
+                "Row": "EE",
+                "RowOrdinal": 6,
+                "UPC": "440197816594"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 140.75,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "8 - Amer.Expr"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          }
+        },
+        {
+          "TicketDateTime": "2014-04-17T08:14:46.753",
+          "TicketNumber": 2,
+          "Shipping": 0,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n4/17/2014 09:14 AM           100001/32/2\r\n\r\nRegular Sale\r\nBeast-Control, in ANT/WHT/BK\r\n  110079-099 120 EE       1       130.00\r\nClassic Runner, in GRAY\r\n  MR993GL 105 E           1       145.00\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n\r\n                     Subtotal:    332.00\r\n                         Total:   332.00\r\n                  8 - Amer.Expr   332.00\r\n\r\n             Items Sold: 3\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-17T08:14:46.753",
+          "TicketModifiedOn": "2014-04-17T14:14:46.753",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 130,
+              "RetailPrice": 130,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 130,
+              "Cost": 51.72,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T14:14:46.757",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 130,
+              "NetSales": 130,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "110079-099",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Beast-Control",
+                "Colors": [
+                  {
+                    "TagTree": "ANT/WHT/BK"
+                  }
+                ],
+                "Column": "120",
+                "ColumnOrdinal": 13,
+                "Row": "EE",
+                "RowOrdinal": 6,
+                "UPC": "440197816594"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 145,
+              "RetailPrice": 145,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 145,
+              "Cost": 76.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T14:14:46.797",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 145,
+              "NetSales": 145,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "MR993GL",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Classic Runner",
+                "Colors": [
+                  {
+                    "TagTree": "GRAY"
+                  }
+                ],
+                "Column": "105",
+                "ColumnOrdinal": 10,
+                "Row": "E",
+                "RowOrdinal": 5,
+                "UPC": "440192437480"
+              }
+            },
+            {
+              "TicketLineNumber": 3,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 57,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T14:14:46.85",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 57,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 332,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "8 - Amer.Expr"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2014-04-15T17:03:05.84",
+      "BatchEndDate": "2014-04-16T09:50:17.847",
+      "BatchOverShort": 1.52,
+      "BatchStartingBalance": 0,
+      "BatchEndingBalance": 0,
+      "BatchCreatedOn": "2014-04-15T23:03:15.227",
+      "BatchModifiedOn": "2014-04-16T15:50:28.15",
+      "BatchModifiedBy": "bgraham / RICS Retail #1 : POS",
+      "BatchTotalDeposit": 33.75,
+      "TerminalDescription": "BG Test POS",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "30",
+        "FirstName": "Brian",
+        "MiddleName": "",
+        "LastName": "Graham",
+        "Login": "bgraham"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2014-04-15T17:11:52",
+          "TicketNumber": 2,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n4/15/2014 06:11 PM           100001/30/2\r\n\r\n373706\r\nBONNY GOEN\r\n3805 Meadowridge Drive SW\r\nIndianapolis, IN 46256\n\r\n\r\nRegular Sale\r\nWomens Performance, in BLACK\r\n  N454-BLK MED            1        12.00\r\nClassic Runner, in GRAY\r\n  MR993GL 105 E           1       145.00\r\nBeast-Control, in ANT/WHT/BK\r\n  110079-099 120 EE       1       130.00\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        1       100.00\r\n\r\n                     Subtotal:    444.00\r\n                         Total:   444.00\r\n                    6 - Visa/MC   444.00\r\n\r\n             Items Sold: 5\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-15T17:11:52",
+          "TicketModifiedOn": "2014-04-15T23:11:52",
+          "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 12,
+              "RetailPrice": 12,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 12,
+              "Cost": 5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-15T23:11:52",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 12,
+              "NetSales": 12,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "N454-BLK",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Womens Performance",
+                "Colors": [
+                  {
+                    "TagTree": "BLACK"
+                  }
+                ],
+                "Column": "MED",
+                "ColumnOrdinal": 2,
+                "UPC": "440197126778"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 145,
+              "RetailPrice": 145,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 145,
+              "Cost": 76.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-15T23:11:52.083",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 145,
+              "NetSales": 145,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "MR993GL",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Classic Runner",
+                "Colors": [
+                  {
+                    "TagTree": "GRAY"
+                  }
+                ],
+                "Column": "105",
+                "ColumnOrdinal": 10,
+                "Row": "E",
+                "RowOrdinal": 5,
+                "UPC": "440192437480"
+              }
+            },
+            {
+              "TicketLineNumber": 3,
+              "Quantity": 1,
+              "SalePrice": 130,
+              "RetailPrice": 130,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 130,
+              "Cost": 71.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-15T23:11:52.16",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 130,
+              "NetSales": 130,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "110079-099",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Beast-Control",
+                "Colors": [
+                  {
+                    "TagTree": "ANT/WHT/BK"
+                  }
+                ],
+                "Column": "120",
+                "ColumnOrdinal": 13,
+                "Row": "EE",
+                "RowOrdinal": 6,
+                "UPC": "440197816594"
+              }
+            },
+            {
+              "TicketLineNumber": 4,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 57,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-15T23:11:52.23",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 57,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            },
+            {
+              "TicketLineNumber": 5,
+              "Quantity": 1,
+              "SalePrice": 100,
+              "RetailPrice": 100,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 100,
+              "Cost": 55,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-15T23:11:52.317",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 100,
+              "NetSales": 100,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "110088-621",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Adrenaline-Support",
+                "Colors": [
+                  {
+                    "TagTree": "WT/BK/SLV"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 2,
+                "UPC": "440199455210"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 444,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "6 - Visa/MC"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "30",
+            "FirstName": "Brian",
+            "MiddleName": "",
+            "LastName": "Graham",
+            "Login": "bgraham"
+          },
+          "Customer": {
+            "AccountNumber": "373706",
+            "FirstName": "BONNY",
+            "LastName": "GOEN"
+          }
+        },
+        {
+          "TicketDateTime": "2014-04-16T09:19:04.6",
+          "TicketNumber": 3,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n4/16/2014 10:18 AM           100001/31/3\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n     Promotion Code : PC H\r\nRegular Sale\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        1       100.00\r\n  Coupon: Holiday Post Card        -5.92\r\n           Net Price               94.08\r\nRegular Sale by 32:Traub, Shawn\r\nWomens Performance, in BLACK\r\n  N454-BLK MED            1        12.00\r\n  Coupon: Holiday Post Card        -0.71\r\n           Net Price               11.29\r\n\u001bESpecial Order Deposit by 32:Traub, Shawn\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n  Coupon: Holiday Post Card        -3.37\r\n           Net Price               53.63\r\n                        Deposit    11.40\r\n                    Balance Due    42.23\r\n\u001bFGift Card Internal by 32:Traub, Shawn\r\n  12345                           100.00\r\n\r\n                     Subtotal:    216.77\r\n                         Total:   216.77\r\n                    6 - Visa/MC   216.77\r\n\r\n             Items Sold: 3\r\n\r\n\u001bE\u001bF\r\nGift Cards:\r\n  12345 - Current Balance: $100\r\n\r\n\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (1), Balance Due $42.23\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-16T09:19:04.6",
+          "TicketModifiedOn": "2014-04-16T15:19:04.6",
+          "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+          "PromotionCode": "PC H",
+          "PromotionDescription": "Post Card",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 100,
+              "RetailPrice": 100,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 100,
+              "Cost": 55,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-16T15:19:04.67",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 100,
+              "NetSales": 100,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "31",
+                "FirstName": "Reid",
+                "MiddleName": "",
+                "LastName": "Garlock",
+                "Login": "rgarlock"
+              },
+              "ProductItem": {
+                "Sku": "110088-621",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Adrenaline-Support",
+                "Colors": [
+                  {
+                    "TagTree": "WT/BK/SLV"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 2,
+                "UPC": "440199455210"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 12,
+              "RetailPrice": 12,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 12,
+              "Cost": 5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-16T15:19:04.78",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 12,
+              "NetSales": 12,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "N454-BLK",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Womens Performance",
+                "Colors": [
+                  {
+                    "TagTree": "BLACK"
+                  }
+                ],
+                "Column": "MED",
+                "ColumnOrdinal": 2,
+                "UPC": "440197126778"
+              }
+            },
+            {
+              "TicketLineNumber": 3,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "PerkAmount": 0,
+              "AmountPaid": 11.4,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-16T15:19:04.847",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Special Order Deposit",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 3,
+                "OriginalAmount": 57,
+                "AmountPaidToDate": 57,
+                "Price": 57,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 1,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 0
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 216.77,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "6 - Visa/MC"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "31",
+            "FirstName": "Reid",
+            "MiddleName": "",
+            "LastName": "Garlock",
+            "Login": "rgarlock"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        },
+        {
+          "TicketDateTime": "2014-04-16T09:34:15.853",
+          "TicketNumber": 4,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": false,
+          "TicketSuspended": false,
+          "ReceiptEmailed": true,
+          "ReceiptText": "\u001bE\u001bF\r\n4/16/2014 10:34 AM           100001/31/4\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n     Promotion Code : PC H\r\nLayaway Sale\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n                        Payment    11.40\r\n                    Balance Due    45.60\r\n\r\n                     Subtotal:     11.40\r\n                         Total:    11.40\r\n                      2 - Check    11.40\r\n\r\n             Items Sold: 0\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nLayaway (1), Balance Due $45.60\r\nOrders (1), Balance Due $42.23\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-16T09:34:15.853",
+          "TicketModifiedOn": "2014-04-16T15:34:15.853",
+          "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+          "PromotionCode": "PC H",
+          "PromotionDescription": "Post Card",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 11.4,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-16T15:34:15.857",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 57,
+              "TransactionSaleDescription": "Layaway Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "31",
+                "FirstName": "Reid",
+                "MiddleName": "",
+                "LastName": "Garlock",
+                "Login": "rgarlock"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 4,
+                "OriginalAmount": 57,
+                "AmountPaidToDate": 11.4,
+                "Price": 57,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 0,
+                "CancelledQuantity": 1,
+                "RemainingAmountPaid": 0
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 11.4,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "31",
+            "FirstName": "Reid",
+            "MiddleName": "",
+            "LastName": "Garlock",
+            "Login": "rgarlock"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        },
+        {
+          "TicketDateTime": "2014-04-16T09:36:41.453",
+          "TicketNumber": 5,
+          "TicketComment": "",
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": true,
+          "ReceiptText": "\u001bE\u001bF\r\n4/16/2014 10:36 AM           100001/31/5\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n     Promotion Code : PC H\r\nLayaway Cancel\r\nGel Resolution 3\r\n  E150N-9091 065 D       -1       -57.00\r\n             Refund                11.40\r\nSpecial Order Pickup by 32:Traub, Shawn\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n  Coupon: Holiday Post Card        -3.37\r\n           Net Price               53.63\r\n Amt. paid remaining               11.40\r\n            Payment                42.23\r\n\r\n                     Subtotal:     30.83\r\n                         Total:    30.83\r\n                      2 - Check    30.83\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-16T09:36:41.453",
+          "TicketModifiedOn": "2014-04-16T15:39:59.23",
+          "ModifiedBy": "bgraham / RICS Retail : Online",
+          "PromotionCode": "PC H",
+          "PromotionDescription": "Post Card",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": -1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": -11.4,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "SKUComment": "",
+              "ModifiedOn": "2014-04-16T15:39:59.323",
+              "ModifiedBy": "bgraham / RICS Retail : Online",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": -57,
+              "TransactionSaleDescription": "Layaway Cancel",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "31",
+                "FirstName": "Reid",
+                "MiddleName": "",
+                "LastName": "Garlock",
+                "Login": "rgarlock"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 4,
+                "OriginalAmount": 57,
+                "AmountPaidToDate": 11.4,
+                "Price": 57,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 0,
+                "CancelledQuantity": 1,
+                "RemainingAmountPaid": 0
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 45.6,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "SKUComment": "ordered4/1, received4-15, picked up",
+              "ModifiedOn": "2014-04-16T15:39:59.327",
+              "ModifiedBy": "bgraham / RICS Retail : Online",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 57,
+              "TransactionSaleDescription": "Special Order Pickup",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 3,
+                "OriginalAmount": 57,
+                "AmountPaidToDate": 57,
+                "Price": 57,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 1,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 0
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 30.83,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "31",
+            "FirstName": "Reid",
+            "MiddleName": "",
+            "LastName": "Garlock",
+            "Login": "rgarlock"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2014-04-17T07:39:50.09",
+      "BatchEndDate": "2014-04-21T12:24:30.877",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 0,
+      "BatchEndingBalance": 0,
+      "BatchCreatedOn": "2014-04-17T13:39:55.23",
+      "BatchModifiedOn": "2014-04-21T18:24:44.573",
+      "BatchModifiedBy": "bgraham / RICS Retail #1 : POS",
+      "BatchTotalDeposit": 87.2,
+      "TerminalDescription": "BG Test POS",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "30",
+        "FirstName": "Brian",
+        "MiddleName": "",
+        "LastName": "Graham",
+        "Login": "bgraham"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2014-04-17T07:52:36.883",
+          "TicketNumber": 6,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": true,
+          "ReceiptText": "\u001bE\u001bF\r\n4/17/2014 08:52 AM           100001/30/6\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n\u001bESpecial Order Deposit\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        1       100.00\r\n                        Deposit    20.00\r\n                    Balance Due    80.00\r\n\u001bFRegular Sale by 32:Traub, Shawn\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n\r\n                     Subtotal:     77.00\r\n                         Total:    77.00\r\n                       1 - Cash    77.00\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (1), Balance Due $80.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-17T07:52:36.883",
+          "TicketModifiedOn": "2014-04-17T13:52:36.883",
+          "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 100,
+              "RetailPrice": 100,
+              "PerkAmount": 0,
+              "AmountPaid": 20,
+              "Cost": 55,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T13:52:36.937",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 100,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Special Order Deposit",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 6,
+                "OriginalAmount": 100,
+                "AmountPaidToDate": 100,
+                "Price": 100,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 1,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 0
+              },
+              "ProductItem": {
+                "Sku": "110088-621",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Adrenaline-Support",
+                "Colors": [
+                  {
+                    "TagTree": "WT/BK/SLV"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 2,
+                "UPC": "440199455210"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 57,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T13:52:36.953",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 57,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 77,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "30",
+            "FirstName": "Brian",
+            "MiddleName": "",
+            "LastName": "Graham",
+            "Login": "bgraham"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        },
+        {
+          "TicketDateTime": "2014-04-17T07:55:17.33",
+          "TicketNumber": 7,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": true,
+          "ReceiptText": "\u001bE\u001bF\r\n4/17/2014 08:55 AM           100001/30/7\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\nRegular Sale\r\nWomens Performance, in BLACK\r\n  N454-BLK MED            1        12.00\r\n           Discount 15.00 %        -1.80\r\n           Net Price               10.20\r\n\r\n                     Subtotal:     10.20\r\n                         Total:    10.20\r\n                       1 - Cash    10.20\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (1), Balance Due $80.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-17T07:55:17.33",
+          "TicketModifiedOn": "2014-04-17T13:55:17.33",
+          "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 12,
+              "RetailPrice": 12,
+              "DiscountRate": 15,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 10.2,
+              "Cost": 5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-17T13:55:17.33",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 12,
+              "NetSales": 10.2,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Damaged",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "N454-BLK",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Womens Performance",
+                "Colors": [
+                  {
+                    "TagTree": "BLACK"
+                  }
+                ],
+                "Column": "MED",
+                "ColumnOrdinal": 2,
+                "UPC": "440197126778"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 10.2,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "30",
+            "FirstName": "Brian",
+            "MiddleName": "",
+            "LastName": "Graham",
+            "Login": "bgraham"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        }
+      ]
+    },
+    {
+      "BatchStartDate": "2014-04-21T12:24:32.877",
+      "BatchEndDate": "2014-04-22T08:36:43.797",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 0,
+      "BatchEndingBalance": 0,
+      "BatchCreatedOn": "2014-04-21T18:24:44.75",
+      "BatchModifiedOn": "2014-04-22T14:36:49.47",
+      "BatchModifiedBy": "bgraham / RICS Retail #1 : POS",
+      "BatchTotalDeposit": 257.38,
+      "TerminalDescription": "BG Test POS",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "30",
+        "FirstName": "Brian",
+        "MiddleName": "",
+        "LastName": "Graham",
+        "Login": "bgraham"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2014-04-21T13:46:58.43",
+          "TicketNumber": 8,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": true,
+          "ReceiptText": "\u001bE\u001bF\r\n4/21/2014 02:46 PM           100001/30/8\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\nRegular Sale\r\n\r\n  BIKINI TOP SM           1        26.00\r\n           Discount 10.00 %        -2.60\r\n           Net Price               23.40\r\n\r\n  PP HOODIE LBI SM BLU    1        25.00\r\n           Discount                -7.01\r\n           Net Price               17.99\r\n\r\n  PP HOODIE LBI MED PNK   1        25.00\r\n           Discount                -7.01\r\n           Net Price               17.99\r\n\r\n  BIKINI BOTTOM SM        1        20.00\r\n           Discount 10.00 %        -2.00\r\n           Net Price               18.00\r\nGLD Bilfsh 3 Eye, in DK BRN\r\n  0638718 080 M           1       180.00\r\n           Discount 0.00 %          0.00\r\n\r\n                     Subtotal:    257.38\r\n                         Total:   257.38\r\n                      2 - Check   257.38\r\n\r\n             Items Sold: 5\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (1), Balance Due $80.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-04-21T13:46:58.43",
+          "TicketModifiedOn": "2014-04-21T19:46:58.43",
+          "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 26,
+              "RetailPrice": 26,
+              "DiscountRate": 10,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 23.4,
+              "Cost": 12,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-21T19:46:58.463",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 26,
+              "NetSales": 23.4,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Senior ",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "BIKINI TOP",
+                "Style": "",
+                "SupplierCode": "BONG",
+                "Supplier": "Billabong",
+                "Summary": "",
+                "Colors": [],
+                "Column": "SM",
+                "ColumnOrdinal": 1,
+                "UPC": "440199455234"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 19.99,
+              "RetailPrice": 25,
+              "DiscountRate": 10,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 17.99,
+              "Cost": 12.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-21T19:46:58.503",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 19.99,
+              "NetSales": 17.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Senior ",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "PP HOODIE LBI",
+                "Style": "",
+                "SupplierCode": "GILD",
+                "Supplier": "Gildan",
+                "Summary": "",
+                "Colors": [],
+                "Column": "SM",
+                "ColumnOrdinal": 1,
+                "Row": "BLU",
+                "RowOrdinal": 1,
+                "UPC": "440199455241"
+              }
+            },
+            {
+              "TicketLineNumber": 3,
+              "Quantity": 1,
+              "SalePrice": 19.99,
+              "RetailPrice": 25,
+              "DiscountRate": 10,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 17.99,
+              "Cost": 12.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-21T19:46:58.543",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 19.99,
+              "NetSales": 17.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Senior ",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "PP HOODIE LBI",
+                "Style": "",
+                "SupplierCode": "GILD",
+                "Supplier": "Gildan",
+                "Summary": "",
+                "Colors": [],
+                "Column": "MED",
+                "ColumnOrdinal": 2,
+                "Row": "PNK",
+                "RowOrdinal": 2,
+                "UPC": "440199455258"
+              }
+            },
+            {
+              "TicketLineNumber": 4,
+              "Quantity": 1,
+              "SalePrice": 20,
+              "RetailPrice": 20,
+              "DiscountRate": 10,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 18,
+              "Cost": 11,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-21T19:46:58.593",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 20,
+              "NetSales": 18,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Senior ",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "BIKINI BOTTOM",
+                "Style": "",
+                "SupplierCode": "BONG",
+                "Supplier": "Billabong",
+                "Summary": "",
+                "Colors": [],
+                "Column": "SM",
+                "ColumnOrdinal": 1,
+                "UPC": "440199455227"
+              }
+            },
+            {
+              "TicketLineNumber": 5,
+              "Quantity": 1,
+              "SalePrice": 180,
+              "RetailPrice": 180,
+              "DiscountRate": 0,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 180,
+              "Cost": 15,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-04-21T19:46:58.647",
+              "ModifiedBy": "bgraham / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 180,
+              "NetSales": 180,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Senior ",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "30",
+                "FirstName": "Brian",
+                "MiddleName": "",
+                "LastName": "Graham",
+                "Login": "bgraham"
+              },
+              "ProductItem": {
+                "Sku": "0638718",
+                "SupplierCode": "SPRY",
+                "Supplier": "Sperry",
+                "Summary": "GLD Bilfsh 3 Eye",
+                "Colors": [
+                  {
+                    "TagTree": "DK BRN"
+                  }
+                ],
+                "Column": "080",
+                "ColumnOrdinal": 5,
+                "Row": "M",
+                "RowOrdinal": 3,
+                "UPC": "440192661090"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 257.38,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "2 - Check"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "30",
+            "FirstName": "Brian",
+            "MiddleName": "",
+            "LastName": "Graham",
+            "Login": "bgraham"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        }
+      ]
+    }
+  ],
+  "ResultStatistics": {
+    "StartRecord": 0,
+    "EndRecord": 50,
+    "TotalRecords": 92
+  },
+  "IsSuccessful": true
+}

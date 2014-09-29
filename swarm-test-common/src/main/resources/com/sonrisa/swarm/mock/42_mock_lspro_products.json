@@ -1,0 +1,49 @@
+{
+   "odata.metadata":"https://accumula.co/Data/oData.svc/$metadata#Products",
+   "value":[
+      {
+         "Id":"766494",
+         "DateCreated":"2011-08-10T14:35:20.58",
+         "DateModified":"2014-01-03T14:52:23.463",
+         "PosProductId":"P-10773",
+         "SKU":"661-5535",
+         "Description":"Battery, Lithium Ion, US / Canada",
+         "Family":"Apple",
+         "ShortDescription":"",
+         "WebDescription":"",
+         "ClassName":"Parts",
+         "Weight":"0.00000",
+         "InventoryAmount":"1.0000000000",
+         "Web":false,
+         "WebPrice":"0.0000000000",
+         "SellPrice":"169.00000",
+         "LocationName":"Mac911",
+         "Size":"",
+         "Color":"",
+         "Current":true,
+         "Notes":""
+      },
+      {
+         "Id":"766495",
+         "DateCreated":"2010-07-12T11:21:27.873",
+         "DateModified":"2014-01-03T15:49:14.213",
+         "PosProductId":"P-9950",
+         "SKU":"661-5557",
+         "Description":"Battery, Lithium Ion, 63.5 Wh, US / Canada",
+         "Family":"Apple",
+         "ShortDescription":"",
+         "WebDescription":"",
+         "ClassName":"Parts",
+         "Weight":"0.00000",
+         "InventoryAmount":"0.0000000000",
+         "Web":false,
+         "WebPrice":"0.0000000000",
+         "SellPrice":"0.00000",
+         "LocationName":"Mac911",
+         "Size":"",
+         "Color":"",
+         "Current":false,
+         "Notes":""
+      }
+   ]
+}

@@ -1,0 +1,21 @@
+{"Invoices":
+        [{
+                "InvoiceSid": "1",
+                "CreatedDate": "2013-09-01 01:47:17",
+                "StoreNo": "SMF",
+                "SbsNo": "0",
+                "CustSid": "1",
+                "InvoiceNo": "10",
+                "Total": "9876"
+            },
+            {
+                "InvoiceSid": "2",
+                "CreatedDate":"1601-06-15T07:07:41",
+                "StoreNo": "SMF",
+                "SbsNo": "0",
+                "CustSid": "2",
+                "InvoiceNo": "15",
+                "Total": "98763"
+            }           
+        ]    
+}

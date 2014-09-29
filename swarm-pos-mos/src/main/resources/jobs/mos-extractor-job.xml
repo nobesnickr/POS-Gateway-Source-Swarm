@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+This software is the confidential and proprietary information of
+Sonrisa Informatikai Kft. ("Confidential Information").
+You shall not disclose such Confidential Information and shall use it only in
+accordance with the terms of the license agreement you entered into
+with Sonrisa.
+
+   SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+   THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+   TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+   PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+   ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+   DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans" 
+             xmlns:aop="http://www.springframework.org/schema/aop"
+             xmlns:tx="http://www.springframework.org/schema/tx" 
+             xmlns:p="http://www.springframework.org/schema/p" 
+             xmlns:batch="http://www.springframework.org/schema/batch"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+             xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/batch 
+        http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/jdbc 
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+    
+
+    <batch:job id="mosExtractorJob">   
+        <batch:description>
+            This job is responsible for launching the extraction from Merchant OS stores.
+        </batch:description>
+        <batch:step id="mosExtractionMaster">
+            <batch:partition step="mosExtractionSlave" partitioner="mosTaskPartitioner">
+                <batch:handler grid-size="5" task-executor="taskExecutor" />
+            </batch:partition>
+        </batch:step>
+    </batch:job>
+    
+    <batch:step id="mosExtractionSlave">
+             <batch:tasklet transaction-manager="transactionManager" >
+                    <batch:chunk reader="mosExtractorLauncherReader" 
+                                 processor="mosExtractorLauncherProcessor"
+                                 writer="extractorLauncherWriter"                              
+                                 commit-interval="1"/>
+            </batch:tasklet>
+            <batch:listeners>
+                 <batch:listener ref="stepLoggingListener"/>
+            </batch:listeners>
+    </batch:step>
+     
+    <bean id="taskExecutor" class="org.springframework.core.task.SimpleAsyncTaskExecutor" />
+    
+    <bean id="mosTaskPartitioner" class="com.sonrisa.swarm.job.partitioner.SimpleExtractorJobPartitioner" >
+        <property name="apiName" value="${api.name.mos}"/>
+       <property name="queryString" value="SELECT store_id FROM stores WHERE api_id = ? AND active='1' ORDER BY store_id ASC"/>
+    </bean>
+        
+     <!-- Reader, writer, processor -->
+    <bean id="mosExtractorLauncherReader" class="com.sonrisa.swarm.job.ExtractorLauncherReader" scope="step">
+        <property name="fromId" value="#{stepExecutionContext[fromId]}" />
+        <property name="toId" value="#{stepExecutionContext[toId]}" />
+        <property name="apiName" value="${api.name.mos}"/>
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+        <property name="queryString" value="select object(t) from StoreEntity t where t.apiId = :apiId and t.active = true and t.id &gt;= :fromId and t.id &lt;= :toId"/>
+        <property name="pageSize" value="1"/> <!-- pageSize=1 because we want to commit after every store -->
+    </bean>    
+    <bean id="mosExtractorLauncherProcessor" class="com.sonrisa.swarm.mos.job.MosExtractorLauncher" />
+    <bean id="extractorLauncherWriter" class="com.sonrisa.swarm.job.ExtractorLauncherWriter"/>
+</beans>

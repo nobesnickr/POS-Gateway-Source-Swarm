@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<actions>
+        <action>
+            <actionName>CUSTOM-clean install</actionName>
+            <displayName>clean install</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+        </action>
+        <action>
+            <actionName>CUSTOM-jetty debug</actionName>
+            <displayName>jetty debug</displayName>
+            <goals>
+                <goal>jetty:run</goal>
+            </goals>
+            <properties>
+                <maven.test.skip>true</maven.test.skip>
+                <jpda.listen>maven</jpda.listen>
+                <netbeans.deploy.debugmode>true</netbeans.deploy.debugmode>
+                
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-tomcat run</actionName>
+            <displayName>tomcat run</displayName>
+            <goals>
+                <goal>tomcat:run</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+        <action>
+            <actionName>CUSTOM-clean install -skipTests</actionName>
+            <displayName>clean install -skipTests</displayName>
+            <goals>
+                <goal>clean</goal>
+                <goal>install</goal>
+            </goals>
+            <properties>
+                <skipTests>true</skipTests>
+            </properties>
+        </action>
+    </actions>

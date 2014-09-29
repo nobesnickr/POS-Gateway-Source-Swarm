@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:c="http://www.springframework.org/schema/c"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-2.5.xsd"
+
+        default-autowire="byName"
+        default-lazy-init="true">
+
+    <tx:annotation-driven transaction-manager="transactionManager"/>
+    <!--<tx:jta-transaction-manager />-->
+    
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="entityManagerFactory" ref="entityManagerFactory" />
+        <property name="dataSource" ref="swarmDataSource"/>
+        <property name="jpaDialect" ref="jpaDialect"/>
+        
+    </bean>
+
+    <bean id="entityManagerFactory" depends-on="swarmLiquibase" 
+          class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="dataSource" ref="swarmDataSource" />
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter" >
+                <property name="showSql" value="true"/>
+            </bean>
+        </property>
+        <property name="jpaDialect" ref="jpaDialect"/>
+        <property name="packagesToScan" >
+            <list>
+                <value>com.sonrisa.swarm</value>
+            </list>
+        </property>
+        <property name="loadTimeWeaver" ref="loadTimeWeaver"/>
+        <property name="jpaProperties">
+            <props>
+                <prop key="eclipselink.logging.level">INFO</prop>
+                <prop key="eclipselink.ddl-generation">none</prop>
+                <prop key="eclipselink.weaving">static</prop>    
+            </props>
+        </property>
+    </bean>
+    
+    <bean id="jpaDialect" class="org.springframework.orm.jpa.vendor.EclipseLinkJpaDialect " />
+    <bean id="loadTimeWeaver" class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+</beans>

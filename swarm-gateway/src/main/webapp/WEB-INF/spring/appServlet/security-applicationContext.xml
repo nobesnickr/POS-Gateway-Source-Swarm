@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+<beans:beans xmlns="http://www.springframework.org/schema/security"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:beans="http://www.springframework.org/schema/beans"
+	xmlns:sec="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="
+      http://www.springframework.org/schema/security 
+      http://www.springframework.org/schema/security/spring-security-3.2.xsd
+      http://www.springframework.org/schema/beans 
+      http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+      
+    <global-method-security secured-annotations="enabled" />
+
+	<http auto-config="true">
+		<http-basic />
+	</http>
+
+	<authentication-manager>
+		<authentication-provider user-service-ref="userDetailsService">
+			<password-encoder ref="passwordEncoder">
+				<salt-source ref="saltSource" />
+			</password-encoder>
+		</authentication-provider>
+	</authentication-manager>
+
+	<beans:bean id="userDetailsService" class="com.sonrisa.swarm.security.ExpressionEngindeUserDetailsService" />
+	<beans:bean id="passwordEncoder" class="com.sonrisa.swarm.security.ExpressionEnginePasswordEncoder" />
+	<beans:bean id="saltSource" class="com.sonrisa.swarm.security.ExpressionEngineSaltSource" />
+</beans:beans>

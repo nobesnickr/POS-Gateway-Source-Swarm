@@ -1,0 +1,24 @@
+{
+   "status":{
+      "request":"verifyUser",
+      "requestUnixTime":1406721847,
+      "responseStatus":"ok",
+      "errorCode":0,
+      "generationTime":0.10163497924805,
+      "recordsTotal":1,
+      "recordsInResponse":1
+   },
+   "records":[
+      {
+         "userID":"1",
+         "userName":"mock",
+         "employeeID":"2",
+         "employeeName":"Sonrisa",
+         "groupID":"1",
+         "groupName":"administrators \/ management",
+         "sessionKey":"qwertyuiopasdfghjk",
+         "sessionLength":3600,
+         "loginUrl":"https:\/\/s1.erply.com\/98765\/"
+      }
+   ]
+}

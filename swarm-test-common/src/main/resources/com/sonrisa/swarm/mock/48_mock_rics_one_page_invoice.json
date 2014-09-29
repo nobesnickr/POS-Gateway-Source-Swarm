@@ -1,0 +1,738 @@
+{
+  "Sales": [
+    {
+      "BatchStartDate": "2014-05-13T09:54:06.777",
+      "BatchEndDate": "2014-05-16T07:48:12.497",
+      "BatchOverShort": 0,
+      "BatchStartingBalance": 0,
+      "BatchEndingBalance": 0,
+      "BatchCreatedOn": "2014-05-13T15:54:12.22",
+      "BatchModifiedOn": "2014-05-16T13:48:21.513",
+      "BatchModifiedBy": "straub / RICS Retail #1 : POS",
+      "BatchTotalDeposit": 251,
+      "TerminalDescription": "ST Test POS",
+      "StoreCode": 100001,
+      "StoreName": "RICS Retail #1",
+      "User": {
+        "UserCashierCode": "32",
+        "FirstName": "Shawn",
+        "MiddleName": "",
+        "LastName": "Traub",
+        "Login": "straub"
+      },
+      "SaleHeaders": [
+        {
+          "TicketDateTime": "2014-05-13T12:12:29.73",
+          "TicketNumber": 19,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 01:12 PM          100001/32/19\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n\u001bESpecial Order Deposit\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        1       100.00\r\n                        Deposit    25.00\r\n                    Balance Due    75.00\r\n    Open Text Field, Customer \r\ninformation and specifics\r\ncan be added.\r\n\u001bF\r\n                     Subtotal:     25.00\r\n                         Total:    25.00\r\n                    6 - MC/Visa    25.00\r\n\r\n             Items Sold: 0\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (5), Balance Due $275.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-05-13T12:12:29.73",
+          "TicketModifiedOn": "2014-05-13T18:12:29.73",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 100,
+              "RetailPrice": 100,
+              "PerkAmount": 0,
+              "AmountPaid": 25,
+              "Cost": 55,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "SKUComment": "Open Text Field, Customer information and specifics\r\ncan be added.",
+              "ModifiedOn": "2014-05-13T18:12:29.787",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 100,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Special Order Deposit",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 19,
+                "OriginalAmount": 100,
+                "AmountPaidToDate": 25,
+                "Price": 100,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 0,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 25
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 25,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "6 - MC/Visa"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        },
+        {
+          "TicketDateTime": "2014-05-13T12:13:25.22",
+          "TicketNumber": 20,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 01:13 PM          100001/32/20\r\n\r\n9073369\r\nVERNA ATTAWAY\r\n822 Fox Point Lane SW\r\nIndianapolis, IN 46256\n\r\n\r\n\u001bESpecial Order Deposit\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n                        Deposit     0.00\r\n                    Balance Due    57.00\r\n    Customization needed....XYZ...\r\n\u001bF\r\n                     Subtotal:      0.00\r\n                         Total:     0.00\r\n\r\n             Items Sold: 0\r\n\r\n\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (1), Balance Due $57.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-05-13T12:13:25.22",
+          "TicketModifiedOn": "2014-05-13T18:13:25.22",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "PerkAmount": 0,
+              "AmountPaid": 0,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "SKUComment": "Customization needed....XYZ...",
+              "ModifiedOn": "2014-05-13T18:13:25.243",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Special Order Deposit",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 20,
+                "OriginalAmount": 57,
+                "AmountPaidToDate": 0,
+                "Price": 57,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 0,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 0
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            }
+          ],
+          "Tenders": [],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          },
+          "Customer": {
+            "AccountNumber": "9073369",
+            "FirstName": "VERNA",
+            "LastName": "ATTAWAY"
+          }
+        },
+        {
+          "TicketDateTime": "2014-05-13T13:03:02.64",
+          "TicketNumber": 22,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:03 PM          100001/32/22\r\n\r\nReturn by 35:Travis, Randy\r\nWomens Performance, in BLACK\r\n  N454-BLK MED           -2        24.00\r\n           Net Price              -24.00\r\nRegular Sale by 37:Brown, Darrin\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        3       345.00\r\n           Discount              -174.00\r\n           Net Price              171.00\r\nRegular Sale by 5:MAHUSAY, ABE\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        2       200.00\r\n           Discount 10.00 %       -20.00\r\n           Net Price              180.00\r\n\r\n                     Subtotal:    327.00\r\n                         Total:   327.00\r\n                       1 - Cash   100.00\r\n                   7 - Discover   227.00\r\n\r\n             Items Sold: 5\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-05-13T13:03:02.64",
+          "TicketModifiedOn": "2014-05-13T19:03:02.64",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 2,
+              "SalePrice": 12,
+              "RetailPrice": 12,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 24,
+              "Cost": 5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-05-13T19:03:02.657",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 12,
+              "IsSellable": false,
+              "NetSales": 24,
+              "ReturnDescription": "Wrong Size",
+              "TransactionSaleDescription": "Return",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "35",
+                "FirstName": "Randy",
+                "MiddleName": "IToldYouSo1!",
+                "LastName": "Travis",
+                "Login": "RTravis"
+              },
+              "ProductItem": {
+                "Sku": "N454-BLK",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Womens Performance",
+                "Colors": [
+                  {
+                    "TagTree": "BLACK"
+                  }
+                ],
+                "Column": "MED",
+                "ColumnOrdinal": 2,
+                "UPC": "440197126778"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 3,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 171,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-05-13T19:03:02.77",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 171,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "37",
+                "FirstName": "Darrin",
+                "MiddleName": "",
+                "LastName": "Brown",
+                "Login": "Darrin"
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            },
+            {
+              "TicketLineNumber": 3,
+              "Quantity": 2,
+              "SalePrice": 100,
+              "RetailPrice": 100,
+              "DiscountRate": 10,
+              "CommissionAmount": 3.6,
+              "PerkAmount": 0,
+              "AmountPaid": 180,
+              "Cost": 55,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-05-13T19:03:02.857",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 100,
+              "NetSales": 180,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "City of Rochester",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "5",
+                "FirstName": "ABE",
+                "LastName": "MAHUSAY",
+                "Login": "AMAHUSAY"
+              },
+              "ProductItem": {
+                "Sku": "110088-621",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Adrenaline-Support",
+                "Colors": [
+                  {
+                    "TagTree": "WT/BK/SLV"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 2,
+                "UPC": "440199455210"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 227,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "7 - Discover"
+            },
+            {
+              "AmountTendered": 100,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          }
+        },
+        {
+          "TicketDateTime": "2014-05-13T13:16:58.58",
+          "TicketNumber": 23,
+          "TicketComment": "This is an open text field.",
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:16 PM          100001/32/23\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n\u001bESpecial Order Deposit\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n                        Deposit    25.00\r\n                    Balance Due    32.00\r\n\u001bF\u001bEGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n                        Deposit    57.00\r\n                    Balance Due     0.00\r\n\u001bF\r\n                     Subtotal:     82.00\r\n                         Total:    82.00\r\n                       1 - Cash    82.00\r\n\r\n             Items Sold: 0\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (7), Balance Due $307.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bFThis is an open text field.\r\n\r\n\u001bE\u001bF",
+          "SaleDateTime": "2014-05-13T13:16:58.58",
+          "TicketModifiedOn": "2014-05-13T19:16:58.58",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "PerkAmount": 0,
+              "AmountPaid": 25,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-05-13T19:16:58.587",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Special Order Deposit",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 23,
+                "OriginalAmount": 57,
+                "AmountPaidToDate": 25,
+                "Price": 57,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 0,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 25
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "PerkAmount": 0,
+              "AmountPaid": 57,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-05-13T19:16:58.59",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Special Order Deposit",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 23,
+                "OriginalAmount": 57,
+                "AmountPaidToDate": 57,
+                "Price": 57,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 0,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 57
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 82,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        },
+        {
+          "TicketDateTime": "2014-05-13T13:22:23.94",
+          "TicketNumber": 24,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:22 PM          100001/32/24\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n\u001bESpecial Order Deposit\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        1       100.00\r\n                        Deposit     0.00\r\n                    Balance Due   100.00\r\n    coffee brown, dog bed Xl, supplier \r\nxyz\r\n\u001bF\r\n                     Subtotal:      0.00\r\n                         Total:     0.00\r\n\r\n             Items Sold: 0\r\n\r\n\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (8), Balance Due $407.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-05-13T13:22:23.94",
+          "TicketModifiedOn": "2014-05-13T19:22:23.94",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 100,
+              "RetailPrice": 100,
+              "PerkAmount": 0,
+              "AmountPaid": 0,
+              "Cost": 55,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "SKUComment": "coffee brown, dog bed Xl, supplier xyz",
+              "ModifiedOn": "2014-05-13T19:22:23.943",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 100,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Special Order Deposit",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "SpecialOrderLayaway": {
+                "OriginalQuantity": 1,
+                "OriginalTicketNumber": 24,
+                "OriginalAmount": 100,
+                "AmountPaidToDate": 0,
+                "Price": 100,
+                "TaxApplied": 0,
+                "PickedUpQuantity": 0,
+                "CancelledQuantity": 0,
+                "RemainingAmountPaid": 0
+              },
+              "ProductItem": {
+                "Sku": "110088-621",
+                "SupplierCode": "BROK",
+                "Supplier": "Brooks",
+                "Summary": "Adrenaline-Support",
+                "Colors": [
+                  {
+                    "TagTree": "WT/BK/SLV"
+                  }
+                ],
+                "Column": "095",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 2,
+                "UPC": "440199455210"
+              }
+            }
+          ],
+          "Tenders": [],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          },
+          "Customer": {
+            "AccountNumber": "olesen",
+            "FirstName": "Brian",
+            "LastName": "Olesen"
+          }
+        },
+        {
+          "TicketDateTime": "2014-05-13T13:33:14.767",
+          "TicketNumber": 26,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:33 PM          100001/32/26\r\n\r\nRegular Sale\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\nWomens Performance, in BLACK\r\n  N454-BLK MED            1        12.00\r\n\r\n                     Subtotal:     69.00\r\n                         Total:    69.00\r\n                       1 - Cash    69.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
+          "SaleDateTime": "2014-05-13T13:33:14.767",
+          "TicketModifiedOn": "2014-05-13T19:33:14.767",
+          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 57,
+              "RetailPrice": 115,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 57,
+              "Cost": 52.36,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-05-13T19:33:14.77",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 57,
+              "NetSales": 57,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "E150N-9091",
+                "SupplierCode": "ASIC",
+                "Supplier": "ASICS",
+                "Summary": "Gel Resolution 3",
+                "Colors": [
+                  {
+                    "TagTree": "BLK/LGHTNG"
+                  }
+                ],
+                "Column": "065",
+                "ColumnOrdinal": 6,
+                "Row": "D",
+                "RowOrdinal": 6,
+                "UPC": "440197745382"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 12,
+              "RetailPrice": 12,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 12,
+              "Cost": 5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-05-13T19:33:14.813",
+              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 12,
+              "NetSales": 12,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "State"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "32",
+                "FirstName": "Shawn",
+                "MiddleName": "",
+                "LastName": "Traub",
+                "Login": "straub"
+              },
+              "ProductItem": {
+                "Sku": "N454-BLK",
+                "SupplierCode": "N.B.",
+                "Supplier": "new balance",
+                "Summary": "Womens Performance",
+                "Colors": [
+                  {
+                    "TagTree": "BLACK"
+                  }
+                ],
+                "Column": "MED",
+                "ColumnOrdinal": 2,
+                "UPC": "440197126778"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 69,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "32",
+            "FirstName": "Shawn",
+            "MiddleName": "",
+            "LastName": "Traub",
+            "Login": "straub"
+          }
+        }
+      ]
+    }
+  ],
+  "ResultStatistics": {
+    "StartRecord": 0,
+    "EndRecord": 10,
+    "TotalRecords": 10
+  },
+  "IsSuccessful": true
+}

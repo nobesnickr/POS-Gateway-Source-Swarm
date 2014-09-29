@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+        xmlns:p="http://www.springframework.org/schema/p"
+        xmlns:context="http://www.springframework.org/schema/context"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd">
+
+    <!-- Properties for production environment -->    
+    <beans profile="production">
+		<bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+			<property name="ignoreResourceNotFound" value="true" />
+			<property name="locations">
+				<list>
+					<value>classpath*:db.properties</value>
+                    <value>classpath*:/batchProperties/*-batch.properties</value>
+                    <value>classpath*:/batchProperties/*-batch.properties</value>
+					<value>file:///${user.home}/swarm.properties</value>
+				</list>
+			</property>
+
+			<!-- Default values to prevent exception if the key is not set 
+				in the properties file. -->
+
+			<property name="properties">
+				<props>
+					<prop key="encryption.aes.key">NOKEY</prop>
+					<prop key="extractor.ignoreEarlier.invoices">2013-01-01</prop>
+					
+                    <prop key="retailpro.skip.invoices.with.null.invoice_number">true</prop>
+                    <prop key="admin.status.retailpro.ignore.names">Company,Selection,Default0,Default1</prop>
+                    
+					<prop key="shopify.api.rest.uri.base">https://%s.myshopify.com/admin/</prop>
+                    <prop key="shopify.swarm.app.api.key"></prop>
+                    <prop key="shopify.swarm.app.shared.secret"></prop>
+					<prop key="shopify.shop.admin.base.url">.myshopify.com</prop>
+					<prop key="shopify.shop.admin.base.url.full">https://%s.myshopify.com/admin/</prop>
+					<prop key="shopify.temp.token.exchange.url.postfix">oauth/access_token</prop>
+					<prop key="shopify.rest.shop.url.postfix">shop.json</prop>
+					
+					<prop key="erply.api.rest.uri.base">https://%s.erply.com/api/</prop>
+					<prop key="revel.api.rest.uri.base">https://%s.revelup.com/</prop>
+					<prop key="lspro.api.rest.uri.base">https://accumula.co/data/oData.svc/</prop>
+					
+					<!-- 
+						 Never actually worked, just a guess, that this might be the real URL.
+					 -->
+					<prop key="rics.api.rest.uri.base">https://api-demo.pre-enterprise.ricssoftware.com/api/</prop>
+
+					<prop key="kounta.api.rest.uri.base">https://api.kounta.com/v1/</prop>
+					<prop key="kounta.api.rest.uri.token.refresh">https://api.kounta.com/v1/token.json</prop>
+					<prop key="kounta.api.rest.oauth.uri.authorize">https://my.kounta.com/authorize</prop>
+					<prop key="kounta.api.rest.oauth.uri.redirect">https://swarm-mobile.com/oauth2/</prop>
+					<prop key="kounta.api.rest.oauth.client.id"></prop>
+					<prop key="kounta.api.rest.oauth.client.secret"></prop>
+				</props>
+			</property>
+		</bean>
+    </beans>
+	
+    <!-- Properties for unit and integration testing -->    
+    <beans profile="inmemory-test-db">
+        <bean class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+            <property name="locations">
+                <list>
+                    <value>classpath*:batch-test.properties</value>
+                    <value>classpath*:db.properties</value>
+                    <value>classpath*:swarm.properties</value>
+                    <value>classpath*:/batchProperties/*-batch-test.properties</value>
+                </list>         
+            </property>      
+        </bean>
+    </beans>   
+</beans>
+

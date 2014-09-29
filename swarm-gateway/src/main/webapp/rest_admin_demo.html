@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Gateway Admin Demo | Swarm-Mobile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+
+	// Execute REST request and construct table from the result
+	function executeRequest(){
+		
+		// Construct REST resource URI from input fields
+		var url = '/swarm/api/admin/' + $('#resource').val();
+		$('#result').show();
+		$('#result_body').html("In Chrome/Safari press Ctrl+Shift+J for debugging the browser...");
+
+		// Execute REST command
+		$.ajax({
+			url: url,
+			type: "GET",
+			username: $('#username').val(),
+			password: $('#password').val(),
+			success: function(data) {
+				$('#result_body').html(JSON.stringify(data, null, 4));
+			}, 
+			error : function(request){			
+				var data = JSON.parse(request.responseText);
+				$('#result_body').html(JSON.stringify(data, null, 4));
+			}
+		});
+		
+		return false;
+	}
+
+</script>
+<style type="text/css">
+section.main-block, section.result {
+	max-width: 900px;
+	margin: 15px auto;
+	padding: 30px;
+	background-color: #f2f2ff;
+}
+</style>
+<body>
+	<section class="main-block">
+		<h1>Gateway Admin Demo</h1>
+	
+		<form action="#" id="regForm" method="GET">
+			<div class="form-group">
+				<label for="username" class="col-sm-5 control-label">Username</label>
+				<div class="col-sm-11">
+					<input id="username" type="text" class="form-control"/>
+					<p class="help-block">Swarm username, has to be administrator on the Swarm website</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="password" class="col-sm-5 control-label">Password</label>
+				<div class="col-sm-11">
+					<input id="password" type="password" class="form-control"/>
+					<p class="help-block">
+						Swarm password, has to be administrator on the Swarm website
+					</p>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="resource" class="col-sm-5 control-label">Query</label>
+				<div class="col-sm-11">
+					<input id="resource" type="text" class="form-control" value="stores"/>
+					<p class="help-block">REST query, e.g. <code>stores</code>, <code>retailpro/stores?swarm_id=nashua</code> or <code>stores?status=ERROR</code></p>
+				</div>
+			</div>
+			<p class="clearfix"></p>
+            
+            <button type="submit" class="btn btn-default" onclick="return executeRequest()">Submit</button>
+	</section>
+	
+	<section id="result" class="result" style="display:none;">
+		<h1>Result</form>
+		<pre id="result_body"></pre>
+	</section>
+</body>
+</body>
+</html>

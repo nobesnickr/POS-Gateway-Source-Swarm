@@ -1,0 +1,14 @@
+{
+   "odata.error":{
+      "code":"",
+      "message":{
+         "lang":"en-US",
+         "value":"An error occurred while processing this request."
+      },
+      "innererror":{
+         "message":"User was not found or doesn't have access",
+         "type":"System.UnauthorizedAccessException",
+         "stacktrace":"A/B/C"
+      }
+   }
+}

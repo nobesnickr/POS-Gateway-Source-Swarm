@@ -1,0 +1,27 @@
+{
+   "Invoices":[
+      {
+         "InvoiceSid": "-11111111111111111",
+         "CustSid":"123456",
+         "InvoiceNo":"123456",
+         "CreatedDate":"01/10/2013",
+         "SbsNo":"sbs1",
+         "StoreNo":"123456",
+         "Total":"222,22"
+      }
+   ],
+   "Customers":[
+      {
+         "CustSid":"123456",
+         "SbsNo":"sbs1",
+         "StoreNo":"123456",
+         "FirstName":"Foo",
+         "LastName":"Bar",
+         "Email":"foo@bar.com",
+         "Phone":"06201234567",
+         "Address1":"Beg utca",
+         "Address2":"Budapest",
+         "Address3":"32"
+      }
+   ]
+}

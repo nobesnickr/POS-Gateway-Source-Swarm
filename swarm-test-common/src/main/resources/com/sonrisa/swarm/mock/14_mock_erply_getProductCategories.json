@@ -1,0 +1,55 @@
+{
+   "status":{
+      "request":"getProductCategories",
+      "requestUnixTime":1375705509,
+      "responseStatus":"ok",
+      "errorCode":0,
+      "generationTime":0.12879109382629,
+      "recordsTotal":6,
+      "recordsInResponse":6
+   },
+   "records":[
+      {
+         "productCategoryID":1,
+         "parentCategoryID":0,
+         "productCategoryName":"Default category",
+         "added":0,
+         "lastModified":0
+      },
+      {
+         "productCategoryID":2,
+         "parentCategoryID":0,
+         "productCategoryName":"New Category",
+         "added":1375696324,
+         "lastModified":1375696328
+      },
+      {
+         "productCategoryID":3,
+         "parentCategoryID":0,
+         "productCategoryName":"Newer category",
+         "added":1375696330,
+         "lastModified":1375696337
+      },
+      {
+         "productCategoryID":4,
+         "parentCategoryID":2,
+         "productCategoryName":"Many products",
+         "added":1375696338,
+         "lastModified":1375696341
+      },
+      {
+         "productCategoryID":5,
+         "parentCategoryID":4,
+         "productCategoryName":"Lower subcategory",
+         "added":1375696346,
+         "lastModified":1375696350
+      },
+      {
+         "productCategoryID":6,
+         "parentCategoryID":5,
+         "productCategoryName":"Something very very specific",
+         "added":1375696354,
+         "lastModified":1375696363
+      }
+   ]
+}

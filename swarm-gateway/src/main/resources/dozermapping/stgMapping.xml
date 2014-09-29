@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+<mappings xmlns="http://dozer.sourceforge.net"
+          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:schemaLocation="http://dozer.sourceforge.net
+          http://dozer.sourceforge.net/schema/beanmapping.xsd">
+    
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.CustomerStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.CustomerEntity</class-b>   
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+    </mapping>  
+    
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.ProductStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.ProductEntity</class-b>           
+        <field>
+            <a>modifiedAt</a>
+            <b>lastModified</b>
+            <!-- The other fields can be mapped by their names. -->
+        </field>
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+    </mapping>   
+       
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.InvoiceStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.InvoiceEntity</class-b>   
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+        <field custom-converter=" com.sonrisa.swarm.retailpro.dozer.converter.StringToBigDecimalConverter">
+            <a>total</a>
+            <b>total</b>            
+        </field>
+    </mapping>  
+    
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.InvoiceLineStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.InvoiceLineEntity</class-b>   
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+        <field custom-converter=" com.sonrisa.swarm.retailpro.dozer.converter.StringToBigDecimalConverter">
+            <a>price</a>
+            <b>price</b>            
+        </field>
+        <field custom-converter=" com.sonrisa.swarm.retailpro.dozer.converter.StringToBigDecimalConverter">
+            <a>tax</a>
+            <b>tax</b>            
+        </field>        
+    </mapping>
+    
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.CategoryStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.CategoryEntity</class-b>   
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+    </mapping>    
+    
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.ManufacturerStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.ManufacturerEntity</class-b>   
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+    </mapping>              
+    
+</mappings>

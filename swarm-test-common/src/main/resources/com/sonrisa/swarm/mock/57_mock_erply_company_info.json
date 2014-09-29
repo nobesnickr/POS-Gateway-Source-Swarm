@@ -1,0 +1,37 @@
+{  
+   "status":{  
+      "request":"getCompanyInfo",
+      "requestUnixTime":1406797658,
+      "responseStatus":"ok",
+      "errorCode":0,
+      "generationTime":0.075604915618896,
+      "recordsTotal":1,
+      "recordsInResponse":1
+   },
+   "records":[  
+      {  
+         "id":"1",
+         "name":"Sonrisa",
+         "code":"",
+         "VAT":"",
+         "phone":"(315) 471-4237",
+         "mobile":"",
+         "fax":"",
+         "email":"jmichaelshoes@yahoo.com",
+         "web":"www.jmichaelshoes.com",
+         "bankAccountNumber":"",
+         "bankName":"",
+         "bankSWIFT":"",
+         "bankIBAN":"",
+         "bankAccountNumber2":"",
+         "bankName2":"",
+         "bankSWIFT2":"",
+         "bankIBAN2":"",
+         "address":"173 Marshall Street,  Syracuse, NY 13210",
+         "country":"EU",
+         "defaultClientID":398,
+         "invoiceRounding":0.01,
+         "defaultCurrency":"USD"
+      }
+   ]
+}

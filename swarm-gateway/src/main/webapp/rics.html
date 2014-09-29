@@ -1,0 +1,238 @@
+<!--
+  Copyright (c) 2014 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in 
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>RICS POS Integration | Swarm-Mobile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+//<![CDATA[
+    
+/**
+ * Show error message
+ */
+function showError(message){
+	$('#error').text(message);
+	$('#error').show();
+}
+           
+/**
+ * Get account entity from inputs
+ */
+function getAccount() {
+	return {
+		login: $('#login_name').val().trim(),
+	    password: $('#password').val().trim(),
+		serial_num: $('#serial_number').val().trim(),
+		store_code: $('#store_code').val().trim()
+	};
+}
+
+/**
+ * Handle AJAX error
+ */
+function handleError(request){
+	var data = JSON.parse(request.responseText);
+	if(data.error !== undefined){
+		showError(data.error);
+	} else {
+		showError("Unexpected error");
+	}
+	$('#submit_button').removeAttr('disabled');
+	$('#result').hide();
+}
+
+/**
+ * Test store credentials
+ */
+function testStores(callback){
+	// Execute REST command to test values
+	$.ajax({
+		url: "api/rics/info",
+		type: "POST",
+		dataType: 'json',
+	    contentType:"application/json; charset=utf-8",
+		data: JSON.stringify(getAccount()),
+		success: callback,
+		error : handleError
+	});
+}
+           
+/**
+ * Verifies fields, executes REST query and 
+ * presents its result.
+ */
+function registerStores() {
+	$('#result').show();
+	$('#submit_button').attr('disabled','disabled');
+	testStores(function(data){
+		if(data.error !== undefined){
+			$(".credentials").addClass("has-error");
+			$(".credentials").addClass("has-feedback");
+			$(".credentails form-control-feedback").text(data.error);
+		} else {
+			$(".credentials").removeClass("has-error");
+			$(".credentails form-control-feedback").text("");
+		}
+		
+		// Execute REST command to test values
+		$.ajax({
+			url: "api/rics/account",
+			type: "PUT",
+			dataType: 'json',
+		    contentType:"application/json; charset=utf-8",
+			data: JSON.stringify([getAccount()]),
+			success: createTable,
+			error : handleError
+		});
+	});
+}
+
+/**
+ * Create result table
+ */
+function createTable(data){
+	
+	$('#error').hide();
+	$('#submit_button').removeAttr('disabled');
+	
+	// Copy content to an array
+	var content = [];
+	for(key in data){
+		content[content.length] = [key,data[key]];
+	}
+	
+	// Sort by store id
+	content.sort(function(a,b){return a[1].store_id-b[1].store_id;});
+	 
+	// Prepare table
+	var table = $('<table>');
+	$(table).addClass('table');
+	$(table).addClass('table-striped');
+
+	// Add header to row
+	table.append($('<tr>').html($('<th>').text('Store Name')).append($('<th>').text('Swarm Store Id')));
+
+	for(row in content){
+		$(table).append(
+				$('<tr>').html($('<td>').text(content[row][1].name)).append($('<td>').text(content[row][1].store_id)));
+	}
+
+	// Show title and comment
+	$('#result_header').show();
+	$('#result_comment').show();
+	$('#result_body').html(table);
+}
+
+//]]>
+</script>
+<style type="text/css">
+section.main-block {
+	max-width: 900px;
+	margin: 15px auto;
+	padding: 30px;
+	background-color: #f2f2ff;
+}
+
+div#result,div#error {
+	margin-top: 15px;
+}
+
+div#error {
+	color: red;
+	font-family: Courier New, monospace;
+}
+
+</style>
+</head>
+<body>
+	<section class="main-block">
+
+		<h1>RICS Administration Panel</h1>
+
+		<p>Connect your RICS POS data to your Swarm account. By
+			integrating with the Swarm application you'll be able to continuously
+			track the transactions and revenue of your store.</p>
+
+		<form action="#" id="regForm" method="GET">
+			<div class="form-group credentials">
+				<label for="serial_number" class="col-sm-5 control-label">Serial number:</label>
+				<div class="col-sm-11">
+					<input id="serial_number" type="text" class="form-control" />
+					<p class="help-block">Serial number of store owner.</p>
+				</div>
+      			<span class="form-control-feedback"></span>
+			</div>
+			
+			<div class="form-group credentials">
+				<label for="login_name" class="col-sm-5 control-label">Login name:</label>
+				<div class="col-sm-11">
+					<input id="login_name" type="text" class="form-control" />
+					<p class="help-block">Login name for the user to access sales data.</p>
+				</div>
+				<span class="form-control-feedback"></span>
+			</div>
+			
+			<div class="form-group credentials">
+				<label for="password" class="col-sm-5 control-label">Password:</label>
+				<div class="col-sm-11">
+					<input id="password" type="text" class="form-control" />
+					<p class="help-block">Password for the user to access sales data.</p>
+				</div>
+				<span class="form-control-feedback"></span>
+			</div>
+			
+			<div class="form-group credentials">
+				<label for="store_code" class="col-sm-5 control-label">Store code:</label>
+				<div class="col-sm-11">
+					<input id="store_code" type="text" class="form-control" />
+					<p class="help-block">
+						Store code to be integrated with Swarm, e.g.
+						<code>100001</code>
+					</p>
+				</div>
+				<span class="form-control-feedback"></span>
+			</div>
+
+			<p class="clearfix"></p>
+			
+			<button type="button" onclick="registerStores()" class="btn btn-default" id="submit_button">Submit</button>
+		</form>
+
+		<div id="error"></div>
+
+		<div id="result" class="clearfix" style="display: none;">
+			<div id="result_header" style="display: none;">
+				<h4>Result</h4>
+			</div>
+			<div id="result_body" class="col-md-12">
+				<p style="text-align: center">
+					<img src="loading.gif" alt="Loading..."
+						style="margin: auto; text-align: center;" />
+				</p>
+			</div>
+			<div id="result_comment" style="display: none;">
+				<p>Now you only need to ask your Swarm Mobile administrator to activate your store.
+				Please attach your store id and your store name to the activation request.</p>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

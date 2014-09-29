@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+
+This software is the confidential and proprietary information of
+Sonrisa Informatikai Kft. ("Confidential Information").
+You shall not disclose such Confidential Information and shall use it only in
+accordance with the terms of the license agreement you entered into
+with Sonrisa.
+
+   SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+   THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+   TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+   PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+   ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+   DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+  -->
+<beans xmlns="http://www.springframework.org/schema/beans" 
+             xmlns:aop="http://www.springframework.org/schema/aop"
+             xmlns:tx="http://www.springframework.org/schema/tx" 
+             xmlns:p="http://www.springframework.org/schema/p" 
+             xmlns:batch="http://www.springframework.org/schema/batch"
+             xmlns:context="http://www.springframework.org/schema/context"
+             xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+             xmlns:jdbc="http://www.springframework.org/schema/jdbc"
+             xsi:schemaLocation="http://www.springframework.org/schema/aop 
+        http://www.springframework.org/schema/aop/spring-aop.xsd
+        http://www.springframework.org/schema/batch 
+        http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+        http://www.springframework.org/schema/beans 
+        http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/tx 
+        http://www.springframework.org/schema/tx/spring-tx.xsd
+        http://www.springframework.org/schema/context 
+        http://www.springframework.org/schema/context/spring-context-3.2.xsd
+        http://www.springframework.org/schema/jdbc 
+        http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
+  
+    <!--Spring job infrastructure--> 
+    <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
+        <property name="jobRepository" ref="jobRepository" />
+    </bean>
+    
+    <batch:job-repository id="jobRepository" 
+                          data-source="swarmDataSource" 
+                          transaction-manager="transactionManager" 
+                          isolation-level-for-create="DEFAULT" 
+    />
+    
+    <bean id="jobRegistry" class="org.springframework.batch.core.configuration.support.MapJobRegistry" />
+        
+    <bean class="org.springframework.batch.core.configuration.support.JobRegistryBeanPostProcessor">
+        <property name="jobRegistry" ref="jobRegistry"/>
+    </bean>    
+    
+    <!-- Step execution logging for debugging purposes -->
+    <bean id="stepLoggingListener" class="com.sonrisa.swarm.job.listener.StepLoggingListener" />
+    
+    <!--  Module specific jobs -->
+    <import resource="classpath*:/jobs/*-job.xml" />
+</beans>

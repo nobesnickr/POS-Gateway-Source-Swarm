@@ -1,0 +1,66 @@
+{
+   "Customers":[
+      {
+         "Address1":"3696 E. Jane Drive",
+         "Address2":"",
+         "Address3":"Midland, MI, USA",
+         "Email":"",
+         "FirstName":"David",
+         "LastName":"Smith",
+         "Phone":"989-859-5633",
+         "Phone2":"",
+         "Zip":"48642",
+         "CustSid":"",
+         "SbsNo":0,
+         "StoreNo":"GWF"
+      }
+   ],
+   "Items":[
+      {
+         "ProductSid":"-4455110993893991440",
+         "TaxAmt":"2.4960000001",
+         "Quantity":"1",
+         "Price":"8.86479290759E11",
+         "ItemPos":-3491993343896052736,
+         "SbsNo":0,
+         "StoreNo":"GWF",
+         "InvoiceSid":"-3155929888909245689"
+      }
+   ],
+   "Products":[
+      {
+         "Upc":"",
+         "Sku":"1418A002",
+         "Desc":"INSIDER HYBRID",
+         "Price":"8.86479290759E11",
+         "ProductSid":"-4455110993893991440",
+         "StoreNo":"GWF",
+         "SbsNo":0,
+         "Department":{
+            "Keys":[
+               "DepartmentCode",
+               "DepartmentName"
+            ]
+         }
+      }
+   ],
+   "Invoices":[
+      {
+         "PostDate":"5/9/2014 1:55:50 AM",
+         "CreatedDate":"5/8/2014 12:00:00 AM",
+         "CreatedTime":"12/30/1899 2:20:34 PM",
+         "InvoiceNo":"78064",
+         "Total":"181.76",
+         "SONumber":"",
+         "SOType":"",
+         "ReceiptType":"0",
+         "ReceiptStatus":"2",
+         "Tender":"2",
+         "InvoiceSid":"-3155929888909245689",
+         "SbsNo":0,
+         "StoreNo":"GWF",
+         "ModifiedDate":"5/8/2014 2:20:34 PM",
+         "CustSid":""
+      }
+   ]
+}

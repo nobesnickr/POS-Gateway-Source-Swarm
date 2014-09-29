@@ -1,0 +1,39 @@
+{"Invoices":
+            [{
+                    "InvoiceSid": "-00000000000000000",
+                    "CreatedDate": "2013-09-01 01:47:17",
+                    "StoreNo": "SMF",
+                    "SbsNo": "0",
+                    "CustSid": "1",
+                    "InvoiceNo": "10",
+                    "Total": "8.8"
+                },
+                {
+                    "InvoiceSid": "-11111111111111111",
+                    "CreatedDate": "2013-09-01 02:49:22",
+                    "StoreNo": "SMF",
+                    "SbsNo": "0",
+                    "CustSid": "1",
+                    "InvoiceNo": "1",
+                    "Total": "12"
+                },
+                {
+                    "InvoiceSid": "-222222222222222",
+                    "CreatedDate": "2013-09-02 02:17:37",
+                    "StoreNo": "SMF",
+                    "SbsNo": "0",
+                    "CustSid": "1",
+                    "InvoiceNo": "2",                    
+                    "Total": "8.8625202983804E11"   
+                },
+                 {
+                    "InvoiceSid": "-333333333333333333",
+                    "CreatedDate": "2013-10-01 03:29:12",
+                    "StoreNo": "SMF",
+                    "SbsNo": "0",
+                    "CustSid": "1",
+                    "InvoiceNo": "3",
+                    "Total": "12"
+                }
+            ]
+}

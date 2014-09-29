@@ -1,0 +1,9 @@
+[   
+    {
+    "ComponentId" : "myComponentId",
+    "ComponentType" : "type modified",
+    "Version" : "myVersion",
+    "Comments" : "myComments - modified",
+    "InstallDate" : "1375183494123"
+    }
+]

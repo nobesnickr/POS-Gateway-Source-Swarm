@@ -1,0 +1,57 @@
+{
+   "odata.metadata":"https://accumula.co/Data/oData.svc/$metadata#LineItems",
+   "value":[
+      {
+         "Id":"914805",
+         "DateCreated":"2014-02-25T00:13:29.117",
+         "DateModified":"2014-02-25T00:13:29.117",
+         "LocationName":"Mac911",
+         "Quantity":"1.00000",
+         "SellPrice":"749.00000",
+         "InvoiceId":"639552",
+         "SerialNumbers":[
+
+         ],
+         "Total":"749.00000",
+         "Discount":"0.00000",
+         "TotalTaxes":"0.00000",
+         "TotalTaxRate":null,
+         "ProductId":"766494",
+         "Sku":null,
+         "Upc":null,
+         "Cost":"561.75",
+         "ProductDescription":null,
+         "Class":null,
+         "Family":null,
+         "DateCreatedUtc":"2014-02-25T12:13:29",
+         "DateModifiedUtc":"2014-02-25T12:13:29",
+         "CloudImportDate":"2014-02-25T00:13:29.117"
+      },
+      {
+         "Id":"914806",
+         "DateCreated":"2014-02-25T00:13:29.837",
+         "DateModified":"2014-02-25T00:13:29.837",
+         "LocationName":"Mac911",
+         "Quantity":"1.00000",
+         "SellPrice":"399.00000",
+         "InvoiceId":"639552",
+         "SerialNumbers":[
+
+         ],
+         "Total":"399.00000",
+         "Discount":"0.00000",
+         "TotalTaxes":"0.00000",
+         "TotalTaxRate":null,
+         "ProductId":"766494",
+         "Sku":null,
+         "Upc":null,
+         "Cost":"299.25",
+         "ProductDescription":null,
+         "Class":null,
+         "Family":null,
+         "DateCreatedUtc":"2014-02-25T12:13:29",
+         "DateModifiedUtc":"2014-02-25T12:13:29",
+         "CloudImportDate":"2014-02-25T00:13:29.837"
+      }
+   ]
+}

@@ -1,0 +1,14 @@
+{
+   "Invoices":[
+      {
+         "InvoiceSid": "-11111111111111111",
+         "CustSid":"",
+         "InvoiceNo":"123456",
+         "SbsNo":"sbs1",
+         "StoreNo":"123456",
+         "Total":"222.22",
+         "CreatedDate": "2013.09.07 12:00:00 AM",
+         "CreatedTime": "1899.12.30 11:30:51 PM"
+      }
+   ]
+}

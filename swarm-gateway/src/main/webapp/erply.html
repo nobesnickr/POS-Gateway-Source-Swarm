@@ -1,0 +1,198 @@
+<!--
+  Copyright (c) 2014 Sonrisa Informatikai Kft. All Rights Reserved.
+
+ This software is the confidential and proprietary information of
+ Sonrisa Informatikai Kft. ("Confidential Information").
+ You shall not disclose such Confidential Information and shall use it only in 
+ accordance with the terms of the license agreement you entered into
+ with Sonrisa.
+
+ SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
+ THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
+ TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
+ PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
+ ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
+ DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+<title>Erply Registration | Swarm-Mobile</title>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script>
+//<![CDATA[
+	/**
+	 * Process JSON response, and present it as a <table>
+	 */
+	function showResponse(data) {
+		
+		// Prepare table
+		var table = $('<table>');
+		$(table).addClass('table');
+		$(table).addClass('table-striped');
+
+		// Add header to row
+		$(table).append($('<tr>').html($('<th>').text('Store Name')).append($('<th>').text('Swarm Store Id')));
+		$(table).append($('<tr>').html($('<td>').text(data.store_name)).append($('<td>').text(data.store_id)));
+
+		// Show title and comment
+		$('#result_header').show();
+		$('#result_comment').show();
+		$('#result_body').html(table);
+	}
+
+	/**
+	 * Process Error message, and present it in the #error div
+	 */
+	function showError(message) {
+		$('#error').text(message);
+		$('#error').show();
+	}
+
+	/**
+	 * Verifies fields, executes REST query and 
+	 * presents its result.
+	 */
+	function registerStores() {
+		var clientCode = $('#client_code').val().trim();
+		var username = $('#username').val().trim();
+		var password = $('#password').val().trim();
+
+		// Basic validity check
+		if (username.length == 0) {
+			showError("Missing username");
+			return;
+		}
+		
+		if (password.length == 0) {
+			showError("Missing password");
+			return;
+		}
+
+		if (clientCode.length == 0) {
+			showError("Missing clientCode");
+			return;
+		}
+		
+		$('#error').hide();
+
+		// Disable future actions
+		$('#result').show();
+		$('#submit_button').attr('disabled', 'disabled');
+		$(':input').attr('readonly', 'readonly');
+
+		// Execute REST command
+		$.ajax({
+			url: "api/erply/account",
+			type: "PUT",
+			dataType: 'json',
+		    contentType:"application/json; charset=utf-8",
+			data: JSON.stringify({
+				username: username,
+				password: password,
+				client_code: clientCode
+			}),
+			success: function(data){
+				showResponse(data);
+			}, 
+			error : function(request){
+				var data = JSON.parse(request.responseText);
+				if(data.error_type !== undefined){
+					showError(data.error_message);
+				} else {
+					showError("Unexpected error");
+				}
+				$('#result').hide();
+				$('#submit_button').removeAttr('disabled');
+				$(':input').removeAttr('readonly');
+			}
+		});
+	}
+//]]>
+</script>
+<style type="text/css">
+section.main-block {
+	max-width: 900px;
+	margin: 15px auto;
+	padding: 30px;
+	background-color: #f2f2ff;
+}
+
+div#result,div#error {
+	margin-top: 15px;
+}
+
+div#error {
+	color: red;
+	font-family: Courier New, monospace;
+}
+
+</style>
+</head>
+<body>
+	<section class="main-block">
+
+		<h1>Erply Administration Panel</h1>
+
+		<p>Connect your Erply data to your Swarm account. By
+			integrating with the Swarm application you'll be able to continuously
+			track the transactions and revenue of your store.</p>
+
+		<form action="#" id="regForm" method="GET">
+			<div class="form-group">
+				<label for="username" class="col-sm-5 control-label">Erply username:</label>
+				<div class="col-sm-11">
+					<input id="username" type="text" class="form-control" />
+					<p class="help-block">Erply username for the account you wish to use to access the POS data</p>
+				</div>
+			</div>
+
+			<div class="form-group">
+				<label for="password" class="col-sm-5 control-label">Erply password:</label>
+				<div class="col-sm-11">
+					<input id="password" type="password" class="form-control" />
+					<p class="help-block">
+						Erply password for the account you wish to use to access the POS data
+					</p>
+				</div>
+			</div>
+			
+			<div class="form-group">
+				<label for="client_code" class="col-sm-5 control-label">Customer code:</label>
+				<div class="col-sm-11">
+					<input id="client_code" type="text" class="form-control" />
+					<p class="help-block">
+						Erply customer code
+					</p>
+				</div>
+			</div>
+
+			<p class="clearfix"></p>
+			<button type="button" onclick="registerStores()" class="btn btn-default" id="submit_button">Submit</button>
+		</form>
+
+		<div id="error"></div>
+
+		<div id="result" class="clearfix" style="display: none;">
+			<div id="result_header" style="display: none;">
+				<h4>Result</h4>
+			</div>
+			<div id="result_body" class="col-md-12">
+				<p style="text-align: center">
+					<img src="loading.gif" alt="Loading..."
+						style="margin: auto; text-align: center;" />
+				</p>
+			</div>
+			<div id="result_comment" style="display: none;">
+				<p>Now you only need to ask your Swarm Mobile administrator to activate your store.
+				Please attach your store id and your store name to the activation request.</p>
+			</div>
+		</div>
+
+		<p class="clearfix"></p>
+	</section>
+</body>
+</html>

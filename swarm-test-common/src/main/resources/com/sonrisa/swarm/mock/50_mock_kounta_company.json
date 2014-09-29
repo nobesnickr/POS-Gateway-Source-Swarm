@@ -1,0 +1,34 @@
+{
+   "id":1151,
+   "name":"Swarm-Mobile",
+   "shipping_address":null,
+   "postal_address":null,
+   "addresses": {
+      "count":0
+   },
+   "business_number": null,
+   "contact_staff_member": {
+      "id":3456,
+      "first_name":"Conor",
+      "last_name":"Fraher",
+      "email":"conor@swarm-mobile.com"
+   },
+   "image":"",
+   "website":"",
+   "currency":"AUD",
+   "timezone":{
+      "name":"Australia/Sydney",
+      "offset":"+10:00"
+   },
+   "sites": {
+      "count":1,
+      "updated_at":"2014-04-29T23:04:36+10:00"
+   },
+   "registers": {
+      "count":3,
+      "limit":"-1",
+      "updated_at":"2014-05-01T01:34:36+10:00"
+   },
+   "created_at":"2013-10-02T07:59:26+10:00",
+   "updated_at":"2013-10-02T08:02:37+10:00"
+}

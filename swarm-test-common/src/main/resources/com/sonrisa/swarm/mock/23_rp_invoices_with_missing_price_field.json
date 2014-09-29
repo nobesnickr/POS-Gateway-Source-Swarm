@@ -1,0 +1,60 @@
+{
+   "Customers":[
+      {
+         "Address1":"",
+         "Address2":"",
+         "Address3":"",
+         "Email":"",
+         "FirstName":"",
+         "LastName":"",
+         "Phone1":"",
+         "Phone2":"",
+         "Zip":"",
+         "CustSid":"1",
+         "SbsNo":0,
+         "StoreNo":"001"
+      }
+   ],
+   "Items":[
+      {
+         "ProductSid":"-4175270015772929808",
+         "TaxAmt":"2000,00",
+         "Quantity":"1",
+         "ItemPos":6398808123704066048,
+         "SbsNo":0,
+         "StoreNo":"001",
+         "InvoiceSid":"-3956918836027731728"
+      }
+   ],
+   "Products":[
+      {
+         "Upc":"",
+         "Sku":"jjjjhhhhll8g8zg",
+         "Desc":"Spaceship",
+         "Price":"1000",
+         "ProductSid":"-4175270015772929808",
+         "StoreNo":"001",
+         "SbsNo":0,
+         "Department":{
+            "Keys":[
+               "DepartmentCode",
+               "DepartmentName"
+            ]
+         }
+      }
+   ],
+   "Invoices":[
+      {
+         "PostDate":"2013.10.09. 17:51:46",
+         "CreatedDate":"2013.10.09. 0:00:00",
+         "CreatedTime":"1899.12.30. 17:51:46",
+         "InvoiceNo":"14",
+         "Total":"8000",
+         "InvoiceSid":"-3956918836027731728",
+         "SbsNo":0,
+         "StoreNo":"001",
+         "ModifiedDate":"2013.10.24. 11:56:06",
+         "CustSid":"1"
+      }
+   ]
+}

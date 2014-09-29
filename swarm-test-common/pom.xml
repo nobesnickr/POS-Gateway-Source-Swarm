@@ -1,0 +1,53 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <parent>
+        <groupId>com.sonrisa.swarm</groupId>
+        <artifactId>swarm-parent</artifactId>
+        <version>14.09.15-2</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.sonrisa.swarm</groupId>
+    <artifactId>swarm-test-common</artifactId>
+    <packaging>jar</packaging>
+    <name>Swarm Test Common</name>
+    <description>Common resources shared by most of the swarm test classes.</description>
+
+    <build>
+        <resources>
+            <resource>
+                <directory>${basedir}/src/main/resources</directory>
+                <filtering>true</filtering>
+            </resource>
+        </resources>
+    </build>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.sonrisa.swarm</groupId>
+            <artifactId>swarm-model</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.sonrisa.swarm</groupId>
+            <artifactId>swarm-pos-integration</artifactId>
+        </dependency>
+        
+        <!--  JUnit -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+        </dependency>
+
+        <!-- Jackson JSON Mapper -->
+        <dependency>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+        </dependency>
+
+        <!-- Mockito -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>1.9.5</version>
+        </dependency>
+    </dependencies>
+</project>
