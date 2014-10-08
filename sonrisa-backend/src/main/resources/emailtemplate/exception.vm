@@ -1,0 +1,24 @@
+<HTML>
+	<HEAD>
+		<STYLE type="text/css">
+                    $css
+		</Style>
+		<TITLE>#msg("mail.exception.title")</TITLE>
+	</HEAD>
+<BODY>
+
+	<table>
+		<tr>
+			<td>
+				<p>#msg("mail.exception.title")</p>
+
+				<pre>${info}</pre>
+
+				<pre>${stacktrace}</pre>
+
+				</br>
+			</td>
+		</tr>
+	</table>
+</BODY>
+</HTML>

@@ -4,16 +4,23 @@ POS-Gateway-Source
 This folder contains the POS gateway's source files. It uses Maven for build management. Should you wish to compile the WAR file of the gateway follow these steps:
 
 
-### 1. Edit the **pom.xml** file in your the root folder
+### 1. Edit the **pom.xml** file in your root folder
 
 Replace parts with the appropriate repository and source control management configuration or delete them (recommended for one-time compiling). 
 
 * If you install all the non-standard dependencies manually into your local Maven repository, you can delete the **distributionManagement** field, as all JAR files will be found either in your local repository or in the central Maven repository. 
 * If you do not want to create releases of the gateway it's not necessary to set up source control management, therefore you can delete the **scm** field.
 
-### 2. Install non-standard dependencies
+### 2. a Install non-standard dependencies
 
-Currently this is only the *sonrisa-backend.jar* which I placed in the **lib folder** for convenience. Google *"install maven dependency manually"* for guides on how the install the jar file. 
+Currently this is only the *sonrisa-backend.jar* which I placed in the **lib folder** for convenience. Google *"install maven dependency manually"* for guides on how to install the jar file.
+
+### 2. b Compile non-standard dependencies
+
+The source code for *sonrisa-backend* can be found in the *sonrisa-backend* folder. Run this command to compile and deploy the jar file to your local Maven repository:
+
+    cd sonrisa-backend
+    mvn clean install
 
 ### 3. Build a snapshot
 
