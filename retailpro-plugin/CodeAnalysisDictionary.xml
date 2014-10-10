@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Dictionary>
+  <Words>
+    <Recognized>
+      <Word>Api</Word>
+      <Word>Auth</Word>
+      <Word>Captcha</Word>
+      <Word>Cdn</Word>
+      <Word>Cms</Word>
+      <Word>Cust</Word>
+      <Word>Cvc</Word>      
+      <Word>db</Word>
+      <Word>Faq</Word>
+      <Word>Faqs</Word>
+      <Word>Invoice</Word>
+      <Word>Ji</Word>
+      <Word>Mef</Word>
+      <Word>Microdata</Word>
+      <Word>Mvc</Word>
+      <Word>Notifier</Word>
+      <Word>Param</Word>
+      <Word>Pos</Word>
+      <Word>Sbs</Word>
+      <Word>Sku</Word>
+      <Word>Sms</Word>
+      <Word>Sql</Word>
+      <Word>Sub</Word>
+      <Word>Subdomain</Word>
+      <Word>Title</Word>
+      <Word>Ttl</Word>
+      <Word>Upc</Word>
+      <Word>Utils</Word>      
+    </Recognized>
+    <Compound>
+      <Term PreferredAlternate="DateTime">datetime</Term>
+    </Compound>
+  </Words>
+  <Acronyms>
+    <CasingExceptions>
+      <Acronym>RDA</Acronym>
+    </CasingExceptions>
+  </Acronyms>
+</Dictionary>
