@@ -22,7 +22,6 @@ import java.sql.Timestamp;
 import com.sonrisa.swarm.posintegration.dto.InvoiceLineDTO;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
 import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
-import com.sonrisa.swarm.rics.util.RicsIdGenerator;
 
 public class RicsInvoiceLineDTO extends InvoiceLineDTO {
 	/**
@@ -61,19 +60,13 @@ public class RicsInvoiceLineDTO extends InvoiceLineDTO {
 	private Timestamp modifiedOn;
 	
 	/**
-	 * generated id to use as ls_line_id (RICS doesn't supply unique id)
-	 */
-	private Long generatedId;
-
-	/**
-	 * 
+	 * The line id can't be derived from an external field, as ticketLineNumber
+	 * restarts from 1 for each invoice. This implementation matches Erply's implementation
+	 * which also assumes that there are no more than 9999 lines/invoice.
 	 */
 	@Override
 	public long getRemoteId() {
-		if (generatedId == null) {
-			generatedId = RicsIdGenerator.generateLineId(invoiceId.longValue(), ticketLineNumber.shortValue()); 
-		}
-		return generatedId;
+		return 10000 * invoiceId + ticketLineNumber;
 	}
 
 	@Override

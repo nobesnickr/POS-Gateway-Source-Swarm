@@ -23,7 +23,6 @@ import java.sql.Timestamp;
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
 import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
-import com.sonrisa.swarm.rics.util.RicsIdGenerator;
 
 public class RicsInvoiceDTO extends InvoiceDTO {
 
@@ -38,15 +37,7 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 
 	private BigDecimal total;
 
-	private Timestamp batchStart;
-	
 	private Long customerId;
-	
-	/**
-	 * we use a custom generated id because RICS doesn't supply one.
-	 * Lazy calculated field.
-	 */
-	private Long generatedRemoteId;
 
 	@ExternalField(value = "TicketNumber", required = true)
 	public void setTicketNumber(long ticketNumber) {
@@ -72,16 +63,9 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 		this.total = total;
 	}
 
-	public void setBatchStart(Timestamp batchStart) {
-		this.batchStart = batchStart;
-	}
-
 	@Override
 	public long getRemoteId() {
-		if (generatedRemoteId == null) {
-			generatedRemoteId = Long.valueOf(RicsIdGenerator.generateInvoiceId(batchStart.getTime(), ticketNumber.shortValue()));
-		}
-		return generatedRemoteId.longValue();
+		return ticketNumber;
 	}
 
 	@Override

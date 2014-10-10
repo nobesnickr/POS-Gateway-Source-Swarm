@@ -41,7 +41,7 @@ import com.sonrisa.swarm.test.service.store.BaseStoreServiceTest;
 public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> {
 
     /**
-     * Mock Lightspeed Pro API
+     * Mock RICS API
      */
     @Mock
     protected ExternalAPI<RicsAccount> mockApi;
@@ -61,7 +61,10 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
      */
     private static final Long RICS_API_ID = 80L;
     
-    final String storeName = "RICS Retail #1";
+    /**
+     * Name of the store in the mock JSON files
+     */
+    private static final String STORE_NAME = "Legends Owensboro";
     
     /**
      * Sets up target and its dependencies
@@ -91,8 +94,7 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
     public void testNewSingleLocationStore() throws Exception {
         
         final String userName = "sonrisa";
-        final String password = "password";
-        final String serialNum = "123000";
+        final String token = "token";
         final String storeCode = "0001";
         
         // Arrange
@@ -104,15 +106,14 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
         
         
         // Act
-        RicsAccount account = target.getAccount(userName, password, serialNum, storeCode);
+        RicsAccount account = target.getAccount(userName, token, storeCode);
         StoreEntity store = target.getStore(account);
         
         // Assert
         assertEquals(RICS_API_ID, store.getApiId());
-        assertEquals(serialNum, aesUtility.aesDecrypt(store.getUsername()));
-        assertEquals(password, aesUtility.aesDecrypt(store.getPassword()));
-        assertEquals(userName, aesUtility.aesDecrypt(store.getApiKey()));
-        assertEquals(storeName, store.getName());
+        assertEquals(userName, aesUtility.aesDecrypt(store.getUsername()));
+        assertEquals(token, aesUtility.aesDecrypt(store.getApiKey()));
+        assertEquals(STORE_NAME, store.getName());
         assertEquals(storeCode, store.getStoreFilter());
         assertEquals(Boolean.FALSE, store.getActive());
     }
@@ -129,8 +130,14 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
     public void testExistingMultiLocationStore() throws Exception {
         
         final String userName = "sonrisa";
-        final String password = "password";
+        final String token = "token";
         final String serialNum = "123000";
+        
+        /**
+         * Password can be any value it doesn't matter, since both the password and the
+         * API is automatically overridden once a matching user name is found in the DB.
+         */
+        final String password = "ANY-VALUE";
         
         // Arrange
         when(mockApi.sendRequest(argThat(new ExternalCommandMatcher<RicsAccount>(RicsUri.INVOICES.uri))))
@@ -140,13 +147,13 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
         
         
         // Act
-        RicsAccount account = target.getAccount(userName, password, serialNum, null);
+        RicsAccount account = target.getAccount(userName, token, null);
         StoreEntity store = target.getStore(account);
         
         // Assert
         assertEquals(RICS_API_ID, store.getApiId());
         assertEquals("Store userName should be serialNum", aesUtility.aesDecrypt(store.getUsername()), serialNum);
-        assertEquals("Credentials should be updated", aesUtility.aesDecrypt(store.getApiKey()),userName);
+        assertEquals("Credentials should be updated", aesUtility.aesDecrypt(store.getApiKey()),token);
         assertEquals("Name shouldn't be changed", existingEntity.getName(), store.getName());
         assertNull(store.getStoreFilter());
         assertEquals(Boolean.TRUE, store.getActive());

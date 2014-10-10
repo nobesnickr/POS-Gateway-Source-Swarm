@@ -18,6 +18,7 @@ package com.sonrisa.swarm.job.shopify;
 
 import static com.github.tomakehurst.wiremock.client.WireMock.*;
 import static org.junit.Assert.*;
+import static org.mockito.Mockito.*;
 import hu.sonrisa.backend.dao.filter.FilterParameter;
 import hu.sonrisa.backend.dao.filter.SimpleFilter;
 
@@ -32,6 +33,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.beans.factory.annotation.Value;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.sonrisa.shopify.ShopifyAccount;
 import com.sonrisa.shopify.ShopifyExtractor;
 import com.sonrisa.swarm.BaseExtractionIntegrationTest;
 import com.sonrisa.swarm.job.ExtractorLauncherWriter;
@@ -39,11 +42,15 @@ import com.sonrisa.swarm.mock.MockDataUtil;
 import com.sonrisa.swarm.mock.MockPosDataDescriptor;
 import com.sonrisa.swarm.mock.shopify.MockShopifyData;
 import com.sonrisa.swarm.model.staging.InvoiceStage;
+import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
 import com.sonrisa.swarm.posintegration.service.ExtractorMonitoringService;
-
+import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
+import com.sonrisa.swarm.posintegration.warehouse.DWFilter;
+import com.sonrisa.swarm.posintegration.warehouse.SwarmDataWarehouse;
+ 
 /**
- * Integration test for the {@link ShopifyExtractor} class.
+ *  Integration test for the {@link ShopifyExtractor} class.
  * 
  * @author barna
  */
@@ -55,6 +62,9 @@ public class ShopifyExtractorFullTest extends BaseExtractionIntegrationTest {
     @Autowired
     @Qualifier("loaderJobTestUtil")
     private JobLauncherTestUtils loaderJobUtil;
+    
+    @Autowired
+    private SwarmDataWarehouse dataWarehouse;
 
     @Value("${api.name.shopify}")
     private String shopifyApiName;
@@ -100,17 +110,20 @@ public class ShopifyExtractorFullTest extends BaseExtractionIntegrationTest {
     @Test
 	public void testUsedPrice() {
 		launchJob(shopifyExtratorJobUtil);
-		InvoiceStage invoice = invoiceStgService.findSingle(new SimpleFilter<InvoiceStage>(InvoiceStage.class, new FilterParameter("lsInvoiceId", "208831129")));
-		assertEquals(Double.parseDouble(invoice.getTotal()), 745, 0.01d);
+		InvoiceStage invoice = invoiceStgService.findSingle(new SimpleFilter<InvoiceStage>(InvoiceStage.class, new FilterParameter("lsInvoiceId", "346656160")));
+		assertEquals(Double.parseDouble(invoice.getTotal()), 388.93D, 0.01D);
 	}
     
     /**
      * Test case: 
-     *  - starts a mock Shopify server
-     *  - extracts data from them into the staging db
-     *  - asserts the number of the records inserted into the staging db
-     *  - launches the loader job which moves the records from the staging db to the legacy db
-     *  - asserts the number of the records inserted into the legacy db
+     * <ul>
+     *  <li>Starts a mock Shopify server</li>
+     *  <li>Extracts data from them into the staging DB</li>
+     *  <li>Asserts the number of the records inserted into the staging DB</li>
+     *  <li>Launches the loader job which moves the records from the staging DB to the legacy DB
+     *  <li>Asserts the number of the records inserted into the legacy DB</li>
+     *  <li>Asserts the new timestamp filter for invoices</li>
+     * </ul>
      */
     @Test
     public void testExecution() {       
@@ -138,5 +151,20 @@ public class ShopifyExtractorFullTest extends BaseExtractionIntegrationTest {
         final Date monitoringValue = extractorMonitoringService.getLastSuccessfulExecution(storeId);
         assertNotNull("Monitoring value for " + storeId + " is missing ", monitoringValue);
         assertTrue("New monitoring value should've been added for store " + storeId, testStart.before(monitoringValue));
+        
+        // Assert new time filter
+        JsonNode jsonNode = MockDataUtil.getResourceAsJson(MockShopifyData.MOCK_SHOPIFY_ORDERS).get("orders").get(0);
+        
+        // Actual timestamp
+        ShopifyAccount nextAccount = mock(ShopifyAccount.class);
+        when(nextAccount.getStoreId()).thenReturn(storeId);
+        final DWFilter filter = dataWarehouse.getFilter(nextAccount, InvoiceDTO.class);
+        
+        // Expected timestamp
+        final Date expected = ISO8061DateTimeConverter.stringToDate(jsonNode.get("updated_at").asText());
+        
+        assertEquals(ISO8061DateTimeConverter.dateToMySqlStringWithTimezone(expected),
+                    ISO8061DateTimeConverter.dateToMySqlStringWithTimezone(new Date(filter.getTimestamp().getTime())));
+        
     }
 }

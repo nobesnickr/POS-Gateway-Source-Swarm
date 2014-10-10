@@ -64,9 +64,6 @@ public class RicsStoreControllerTest extends BaseControllerTest {
     public void setUp() {
         stubFor(post(urlMatching(RicsUri.INVOICES.uri)).willReturn(
                 aResponse().withBody(MockDataUtil.getResourceAsString(MockRicsData.MOCK_INVOICES_ONE_PAGE_RESPONSE))));
-
-        stubFor(post(urlMatching(RicsUri.LOGIN.uri)).willReturn(
-                aResponse().withBody(MockDataUtil.getResourceAsString(MockRicsData.MOCK_TOKEN))));
     }
     
 
@@ -122,7 +119,7 @@ public class RicsStoreControllerTest extends BaseControllerTest {
      */
     @Test
     public void testStoreInfoWithBadCredentials() throws Exception {
-        stubFor(post(urlMatching(RicsUri.LOGIN.uri)).willReturn(
+        stubFor(post(urlMatching(RicsUri.INVOICES.uri)).willReturn(
                 aResponse().withBody(MockDataUtil.getResourceAsString(MockRicsData.MOCK_UNSUCCESS))));
         
         mockMvc.perform(post(RicsStoreController.INFO_PATH)
@@ -141,9 +138,8 @@ public class RicsStoreControllerTest extends BaseControllerTest {
      */
     private static final RicsAccountEntity mockAccountEntity(){
         RicsAccountEntity account = new RicsAccountEntity();
-        account.setLoginName("sonrisa");
-        account.setPassword("password");
-        account.setSerialNum("88888888");
+        account.setUserName("sonrisa");
+        account.setToken("88888888");
         return account;
 
     }

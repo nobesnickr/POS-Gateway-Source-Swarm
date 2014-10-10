@@ -18,9 +18,10 @@ package com.sonrisa.swarm.rics.dto;
 
 import java.sql.Timestamp;
 
+import org.springframework.util.StringUtils;
+
 import com.sonrisa.swarm.posintegration.dto.CustomerDTO;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
-import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
 
 public class RicsCustomerDTO extends CustomerDTO {
 	/**
@@ -51,7 +52,17 @@ public class RicsCustomerDTO extends CustomerDTO {
 
 	@Override
 	public String getName() {
-		return firstName.concat(" ").concat(lastName);
+	    StringBuilder retVal = new StringBuilder();
+	    if(StringUtils.hasLength(firstName)){
+	        retVal.append(firstName);
+	    }
+	    if(retVal.length() > 0){
+	        retVal.append(" ");
+	    }
+	    if(StringUtils.hasLength(lastName)){
+            retVal.append(lastName);
+        }
+	    return retVal.toString();
 	}
 
 	@Override

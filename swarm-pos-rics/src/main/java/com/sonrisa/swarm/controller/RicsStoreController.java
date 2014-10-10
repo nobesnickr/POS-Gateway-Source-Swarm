@@ -82,12 +82,11 @@ public class RicsStoreController {
         
         for(RicsAccountEntity account : accountList){
             RicsAccount realAccount = ricsStoreService.getAccount(
-                    account.getLoginName(),
-                    account.getPassword(),
-                    account.getSerialNum(), 
+                    account.getUserName(),
+                    account.getToken(),
                     account.getStoreCode());
             
-            LOGGER.debug("Found valid RICS store: {} for userName: {}", realAccount.getStoreName(), account.getLoginName());
+            LOGGER.debug("Found valid RICS store: {} for userName: {}", realAccount.getStoreName(), account.getUserName());
             
             // Create or find store for account
             StoreEntity store = ricsStoreService.getStore(realAccount);
@@ -109,10 +108,9 @@ public class RicsStoreController {
     @RequestMapping(value = INFO_PATH, method = RequestMethod.POST)
     public @ResponseBody RicsAccountResponseEntity testStore(@RequestBody RicsAccountEntity request) throws RicsStoreServiceException {
         RicsAccount account = ricsStoreService.getAccount(
-                request.getLoginName(),
-                request.getPassword(),
-                request.getSerialNum(), 
-                request.getStoreCode());
+        		request.getUserName(),
+        		request.getToken(),
+        		request.getStoreCode());
         
         RicsAccountResponseEntity response = new RicsAccountResponseEntity();
         response.setStoreCode(account.getStoreCode());

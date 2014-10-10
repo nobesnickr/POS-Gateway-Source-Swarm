@@ -70,6 +70,8 @@ public abstract class BaseStagingConverterImpl<U extends BaseStageEntity, T exte
                     if (errorMessage.length() != 0) {
                         errorMessage.append(" ");
                     }
+                    errorMessage.append(violation.getPropertyPath());
+                    errorMessage.append(' ');
                     errorMessage.append(violation.getMessage());
                 }
                 result = EntityValidationResult.failure(errorMessage.toString());

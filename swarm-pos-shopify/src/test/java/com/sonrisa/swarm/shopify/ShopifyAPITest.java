@@ -91,12 +91,12 @@ public class ShopifyAPITest {
     @Ignore
     public void testExecute() throws ExternalExtractorException{
         ShopifyAccount account = new ShopifyAccount();
-        account.setOauthToken("cb3552064c3a56f4983d34bcd2e5937c");
-        account.setAccountId("amandamay");
+        account.setOauthToken("5423b9dabc330b336b203c91e80db953");
+        account.setAccountId("wrightwood-furniture-co");
         
         ShopifyAPI api = new ShopifyAPI();
         api.setApiBaseUrl("https://%s.myshopify.com/admin/");
         
-        api.sendRequest(new ExternalCommand<ShopifyAccount>(account, "products.json?limit=2&page=0&updated_at_min=&updated_at_min=2014-05-21 19:26:30"));
+        api.sendRequest(new ExternalCommand<ShopifyAccount>(account, "orders.json?&created_at_min=2014-10-08T02:05:20 CEST&status=any"));
     }
 }

@@ -29,26 +29,16 @@ public class RicsAccount extends BaseSwarmAccount {
      * Store's name
      */
     private String storeName;
-
-	/**
-	 * Used for get the authorization token
-	 */
-	private String loginName = "";
-
-	/**
-	 * Used for get the authorization token
-	 */
-	private String password = "";
-
-	/**
-	 * Used for get the authorization token
-	 */
-	private String serialNum = "";
+    
+    /**
+     * Username
+     */
+    private String userName;
 
 	/**
 	 * The authorization token for access the RICS's REST service set last time
 	 */
-	private String lastToken = "";
+	private String token = "";
 
 	/**
 	 * store identifier 
@@ -62,73 +52,44 @@ public class RicsAccount extends BaseSwarmAccount {
 	public RicsAccount(long storeId) {
 		super(storeId);
 	}
+	
+	/**
+	 * Set token number from encrypted field
+	 * @param token encrypted token
+	 * @param aesUtility encryption utility
+	 */
+	public void setEncryptedToken(byte[] token, AESUtility aesUtility) {
+		this.token = aesUtility.aesDecrypt(token);
+	}
+	
+	/**
+	 * Set username
+	 * @param username encrypted username
+	 * @param aesUtility encryption utility
+	 */
+	public void setEncryptedUsername(byte[] userName, AESUtility aesUtility) {
+		this.userName = aesUtility.aesDecrypt(userName);
+	}
+	
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
 
-	public String getSerialNum() {
-		return serialNum;
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getUserName() {
+		return userName;
 	}
 
 	public String getStoreCode() {
 		return storeCode;
 	}
 
-	/**
-	 * Set serial number from encrypted database
-	 * @param serialNum encrypted serial number
-	 * @param aesUtility encryption utility
-	 */
-	public void setEncryptedSerialNum(byte[] serialNum, AESUtility aesUtility) {
-		this.serialNum = aesUtility.aesDecrypt(serialNum);
-	}
 
-    /**
-	 * Set userName from encrypted database value
-	 * @param apiKey Encrypted username
-	 * @param aesUtility Encryption utility
-	 */
-	public void setEncryptedLoginName(byte[] apiKey, AESUtility aesUtility) {
-		this.loginName = aesUtility.aesDecrypt(apiKey);
-	}
-
-	/**
-	 * Set password from encrypted database value
-	 * @param password Encrypted password
-	 * @param aesUtility Encryption utility
-	 */
-	public void setEncryptedPassword(byte[] password, AESUtility aesUtility) {
-		this.password = aesUtility.aesDecrypt(password);
-	}
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public void setSerialNum(String serialNum) {
-        this.serialNum = serialNum;
-    }
-
-	public String getLoginName() {
-		return loginName;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	/**
-	 * sets the token, that is used in every request sent to RICS
-	 * Note: this class remembers the Date when the token was last set. You can use {@code getTokenBirth()} to determine its age
-	 * @param token the token received from RICS authentication service.
-	 */
-	public void setToken(String token) {
-		this.lastToken = token;
-	}
-
-	public String getLastToken() {
-		return lastToken;
+	public String getToken() {
+		return token;
 	}
 
 	public void setStoreCode(String storeCode) {
@@ -145,6 +106,6 @@ public class RicsAccount extends BaseSwarmAccount {
 
     @Override
     public String getAccountId() {
-        return getSerialNum();
+        return getUserName();
     }
 }

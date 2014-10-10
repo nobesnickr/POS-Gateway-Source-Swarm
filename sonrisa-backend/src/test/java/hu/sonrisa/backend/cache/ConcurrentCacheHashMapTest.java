@@ -20,6 +20,7 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import static org.junit.Assert.*;
+import org.junit.Ignore;
 
 /**
  *
@@ -48,6 +49,9 @@ public class ConcurrentCacheHashMapTest {
         testMap(map.getCacheSize()+1, map);
     }
 
+	/**
+	 * @TODO: This unit test fails with Java 8!
+	 */
     @Test
     public void testConstruction(){
         ConcurrentCacheHashMap<String, String> map = new ConcurrentCacheHashMap<String, String>(10001);

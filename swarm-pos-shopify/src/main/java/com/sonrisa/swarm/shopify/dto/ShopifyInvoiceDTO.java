@@ -48,7 +48,13 @@ public class ShopifyInvoiceDTO extends InvoiceDTO {
     /**
      * The amount of currency payed for purchasing the items of the invoice
      */
-    private double netTotal;
+    private double total;
+    
+    /**
+     * The amount of current payed for the sum of the lines
+     */
+    private double lineNetTotal;
+    
     /**
      * The time of the purchase
      */
@@ -93,7 +99,7 @@ public class ShopifyInvoiceDTO extends InvoiceDTO {
      */
     @Override
     public double getTotal() {
-        return netTotal;
+        return total;
     }
 
     /**
@@ -116,6 +122,10 @@ public class ShopifyInvoiceDTO extends InvoiceDTO {
     @Override
     public Timestamp getInvoiceTimestamp() {
         return this.createdDate;
+    }
+
+    public double getLineNetTotal() {
+        return lineNetTotal;
     }
 
     /**
@@ -174,10 +184,15 @@ public class ShopifyInvoiceDTO extends InvoiceDTO {
     }
 
     /**
-     * @param netTotal the netTotal to set
+     * @param total the netTotal to set
      */
     @ExternalField(value = "total_price", required = true)
-    public void setNetTotal(double netTotal) {
-        this.netTotal = netTotal;
+    public void setTotal(double total) {
+        this.total = total;
+    }
+    
+    @ExternalField(value = "total_line_items_price", required = true)
+    public void setLineNetTotal(double lineNetTotal) {
+        this.lineNetTotal = lineNetTotal;
     }
 }

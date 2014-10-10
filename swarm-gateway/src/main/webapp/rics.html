@@ -38,9 +38,8 @@ function showError(message){
  */
 function getAccount() {
 	return {
-		login: $('#login_name').val().trim(),
-	    password: $('#password').val().trim(),
-		serial_num: $('#serial_number').val().trim(),
+		user_name: $('#user_name').val().trim(),
+	    token: $('#token').val().trim(),
 		store_code: $('#store_code').val().trim()
 	};
 }
@@ -173,28 +172,19 @@ div#error {
 
 		<form action="#" id="regForm" method="GET">
 			<div class="form-group credentials">
-				<label for="serial_number" class="col-sm-5 control-label">Serial number:</label>
+				<label for="user_name" class="col-sm-5 control-label">User name:</label>
 				<div class="col-sm-11">
-					<input id="serial_number" type="text" class="form-control" />
-					<p class="help-block">Serial number of store owner.</p>
-				</div>
-      			<span class="form-control-feedback"></span>
-			</div>
-			
-			<div class="form-group credentials">
-				<label for="login_name" class="col-sm-5 control-label">Login name:</label>
-				<div class="col-sm-11">
-					<input id="login_name" type="text" class="form-control" />
+					<input id="user_name" type="text" class="form-control" />
 					<p class="help-block">Login name for the user to access sales data.</p>
 				</div>
 				<span class="form-control-feedback"></span>
 			</div>
 			
 			<div class="form-group credentials">
-				<label for="password" class="col-sm-5 control-label">Password:</label>
+				<label for="token" class="col-sm-5 control-label">Token:</label>
 				<div class="col-sm-11">
-					<input id="password" type="text" class="form-control" />
-					<p class="help-block">Password for the user to access sales data.</p>
+					<input id="token" type="text" class="form-control" />
+					<p class="help-block">Each API call submitted to RICS is authenticated using this Token.</p>
 				</div>
 				<span class="form-control-feedback"></span>
 			</div>
@@ -205,7 +195,7 @@ div#error {
 					<input id="store_code" type="text" class="form-control" />
 					<p class="help-block">
 						Store code to be integrated with Swarm, e.g.
-						<code>100001</code>
+						<code>1</code>
 					</p>
 				</div>
 				<span class="form-control-feedback"></span>

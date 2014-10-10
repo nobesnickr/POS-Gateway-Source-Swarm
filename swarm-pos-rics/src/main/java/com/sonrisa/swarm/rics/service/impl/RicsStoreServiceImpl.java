@@ -65,16 +65,15 @@ public class RicsStoreServiceImpl extends BaseStoreRegistrationService implement
      */
     @Override
     public StoreEntity getStore(RicsAccount dummyAccount) {
-        StoreEntity store = findOrCreateStore(dummyAccount.getStoreName(), dummyAccount.getSerialNum(), dummyAccount.getStoreCode(), ricsApiName);
+        StoreEntity store = findOrCreateStore(dummyAccount.getStoreName(), dummyAccount.getUserName(), dummyAccount.getStoreCode(), ricsApiName);
         
         if(store.getId() != null){
-            LOGGER.info("Found existing Rics store for {} with store id:", dummyAccount.getLoginName(), store.getId());
+            LOGGER.info("Found existing Rics store for {} with store id:", dummyAccount.getUserName(), store.getId());
         } else {
-            LOGGER.info("Creating new Rics store entry for {}", dummyAccount.getLoginName());
+            LOGGER.info("Creating new Rics store entry for {}", dummyAccount.getUserName());
         }
         
-        store.setPassword(aesUtility.aesEncryptToBytes(dummyAccount.getPassword()));
-        store.setApiKey(aesUtility.aesEncryptToBytes(dummyAccount.getLoginName()));
+        store.setApiKey(aesUtility.aesEncryptToBytes(dummyAccount.getToken()));
         store.setStoreFilter(dummyAccount.getStoreCode());
         return store;
     }
@@ -84,16 +83,14 @@ public class RicsStoreServiceImpl extends BaseStoreRegistrationService implement
      * @throws RicsStoreServiceException 
      */
     @Override
-    public RicsAccount getAccount(String loginName, String password, String serialNum, String storeCode)
-            throws RicsStoreServiceException {
+    public RicsAccount getAccount(String userName, String token, String storeCode) throws RicsStoreServiceException {
 
         RicsAccount account = new RicsAccount(0L);
-        account.setLoginName(loginName);
-        account.setPassword(password);
-        account.setSerialNum(serialNum);
+        account.setUserName(userName);
+        account.setToken(token);
         account.setStoreCode(storeCode);
 
-        LOGGER.info("Resolving account for RICS, serialNum: {}, loginName: {}", serialNum, loginName);
+        LOGGER.info("Resolving account for RICS, userName: {}", userName);
 
         try {
             // Create filter for store
@@ -118,10 +115,10 @@ public class RicsStoreServiceImpl extends BaseStoreRegistrationService implement
                 throw new RicsStoreServiceException(getNoInvoicesError(storeCode));
             }
         } catch (ExternalApiException e) {
-            LOGGER.debug("API exception occured for loginName: {}", loginName, e);
+            LOGGER.debug("API exception occured for loginName: {}", userName, e);
             throw new RicsStoreServiceException(e.getMessage());
         } catch (ExternalExtractorException e) {
-            LOGGER.warn("Failed to resolve account for serialNum: {} with loginName: {}", serialNum, loginName, e);
+            LOGGER.warn("Failed to resolve account for userName: {}", userName, e);
             throw new RicsStoreServiceException("Unexpected error while trying to communicate with RICS");
         }
     }

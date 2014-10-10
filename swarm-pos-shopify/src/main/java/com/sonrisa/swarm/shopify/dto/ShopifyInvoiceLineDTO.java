@@ -35,8 +35,10 @@ public class ShopifyInvoiceLineDTO extends InvoiceLineDTO {
     private Long productId;
     /** The quantity purchased from this particular product */
     private int quantity = 0;
+    
     /** Product price when item was purchased */
-    private double localCurrencyPrice = 0.0;
+    private double netPrice = 0.0;
+    
     /** Tax included for this item */
     private double tax = 0.0;
     
@@ -70,13 +72,19 @@ public class ShopifyInvoiceLineDTO extends InvoiceLineDTO {
     public int getQuantity() {
         return quantity;
     }
+    
+    public double getNetPrice() {
+        return netPrice;
+    }
+    
     /**
      * @return the price
      */
     @Override
     public double getPrice() {
-        return localCurrencyPrice;
+        return netPrice + tax;
     }
+    
     /**
      * @return the tax
      */
@@ -87,7 +95,7 @@ public class ShopifyInvoiceLineDTO extends InvoiceLineDTO {
 
     @Override
     public Timestamp getLastModified() {
-            return lastModified;
+        return lastModified;
     }
     
     /**
@@ -123,7 +131,7 @@ public class ShopifyInvoiceLineDTO extends InvoiceLineDTO {
      */
     @ExternalField(value = "price", required = true)
     public void setLocalCurrencyPrice(double price) {
-        this.localCurrencyPrice = price;
+        this.netPrice = price;
     } 
     /**
      * @param tax the tax to set

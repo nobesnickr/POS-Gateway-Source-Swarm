@@ -19,7 +19,6 @@
  
 <Configure class="org.eclipse.jetty.webapp.WebAppContext">
     <New id="DSTest" class="org.eclipse.jetty.plus.jndi.Resource">
-        <Arg></Arg>
         <Arg>jdbc/swarm</Arg>
         <Arg>
             <New class="org.apache.commons.dbcp.BasicDataSource">
@@ -30,4 +29,15 @@
             </New>
         </Arg>
     </New>
+    <New id="DSETest" class="org.eclipse.jetty.plus.jndi.Resource">
+        <Arg>jdbc/eeuser</Arg>
+        <Arg>
+            <New class="org.apache.commons.dbcp.BasicDataSource">
+                <Set name="driverClassName">com.mysql.jdbc.Driver</Set>
+                <Set name="url">jdbc:mysql://localhost:3306/eeuser</Set>
+                <Set name="username">swarm</Set>
+                <Set name="password">swarm</Set>
+            </New>
+        </Arg>
+    </New> 
 </Configure>

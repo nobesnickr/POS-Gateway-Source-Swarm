@@ -109,10 +109,61 @@ public class RpLogMonitoringServiceImplTest {
     public void testIgnoringSettingsFileNotFound(){
         final String[] messages = MockDataUtil.getResourceAsString(MockTestData.TEST_RP_LOG_WITH_SETTINGS_FILE_NOT_FOUND).split("\\n");
         
-        uploadLogsToTarget(messages, "tst-swm-id");
+        final String swarmId = "tst-swm-id";
+        uploadLogsToTarget(messages, swarmId);
         
         // Act
-        RpLogEntity result = target.getRecentClientError("something-else");
+        RpLogEntity result = target.getRecentClientError(swarmId);
+        
+        // Assert
+        assertNull(result);
+    }
+    
+    /**
+     * Test case:
+     *  Uploading log entries to the {@link RpLogMonitoringService}, with only 
+     *  a single error saying the the SettingsV9.xml is not found on the machine
+     *  
+     *  This is a variation of the previous unit test for certain Retail Pro 9 instances. 
+     *  
+     * Expected: 
+     *  This error is ignored and the recent client error request returns 0L 
+     *  as timestamp.
+     */
+    @Test
+    public void testIgnoringSettingsFileNotFoundForRetailPro8(){
+        final String message = MockDataUtil.getResourceAsString(MockTestData.TEST_RP_LOG_WITH_SETTINGS_XML_ERROR);
+        
+        final String swarmId = "tst-swm-Frye";
+        uploadLogsToTarget(new String[]{message}, swarmId);
+        
+        // Act
+        RpLogEntity result = target.getRecentClientError(swarmId);
+        
+        // Assert
+        assertNull(result);
+    }
+    
+    /**
+     * Test case:
+     *  Uploading log entries to the {@link RpLogMonitoringService}, with only 
+     *  a single error saying the the SettingsV.xml is not found on the machine
+     *  
+     *  This is a variation of the previous unit test for certain Retail Pro 8 instances. 
+     *  
+     * Expected: 
+     *  This error is ignored and the recent client error request returns 0L 
+     *  as timestamp.
+     */
+    @Test
+    public void testIgnoringSettingsFileNotFoundForRetailPro9(){
+        final String message = MockDataUtil.getResourceAsString(MockTestData.TEST_RP9_LOG_WITH_SETTINGS_XML_ERROR);
+        
+        final String swarmId = "tst-swm-id-rp8";
+        uploadLogsToTarget(new String[]{message}, swarmId);
+        
+        // Act
+        RpLogEntity result = target.getRecentClientError(swarmId);
         
         // Assert
         assertNull(result);

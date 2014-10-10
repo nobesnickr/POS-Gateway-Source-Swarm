@@ -84,18 +84,12 @@ function createTable(rows, columns) {
 
 			for (j in rows[i].reason) {
 				var value = rows[i].reason[j];
-				
-				var withSlashes = value.replace(/\\/g, '\\\\').
-								        replace(/\t/g, '\\t').
-								        replace(/\n/g, '\\n').
-								        replace(/\r/g, '\\r').
-								        replace(/'/g, '\\\'').
-								        replace(/"/g, '\\"');
+				var withSlashes = value.replace(/"/g, '&#8220;').replace(/'/g,'&#8217;');
 
 				var maxLength = 200;
 				if (value !== undefined && value.length > maxLength) {
-					value = "<div class='trimmed-value' onclick='$(this).html("+  withSlashes + ");'>" 
-							+ value.substr(0, maxLength) + "...</div>";
+					value = "<div class='trimmed-value' onclick='$(this).html(\""+  withSlashes + "\");'>"
+					+ value.substr(0, maxLength) + "...</div>";
 				}
 
 				var item = $('<li>');

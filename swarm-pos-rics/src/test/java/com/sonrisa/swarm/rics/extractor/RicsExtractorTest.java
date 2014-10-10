@@ -64,7 +64,7 @@ public class RicsExtractorTest extends BaseExtractorTest<RicsAccount> {
 	@Test
 	public void testQuantity() throws ExternalExtractorException {
 	    extractor.fetchData(account, dataStore);
-	    assertQuantityOfItemsExtracted(MockRicsData.getForQuantity());
+	    assertQuantityOfItemsExtracted(MockRicsData.getExtractionDescriptor());
 	}
 	
 	/**
@@ -83,6 +83,6 @@ public class RicsExtractorTest extends BaseExtractorTest<RicsAccount> {
 		for (InvoiceDTO invoice : invoices) {
 			sum = sum.add(new BigDecimal(invoice.getTotal()));
 		}
-		assertEquals(551d, sum.doubleValue(), 0.001);
+		assertEquals(1734.07, sum.doubleValue(), 0.001);
 	}
 }

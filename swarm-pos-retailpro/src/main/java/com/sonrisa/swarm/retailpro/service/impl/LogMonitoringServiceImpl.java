@@ -24,6 +24,7 @@ import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
 
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -55,9 +56,17 @@ public class LogMonitoringServiceImpl implements RpLogMonitoringService {
      */
     private static final Set<String> IGNORED_STACK_TRACES = new HashSet<String>(
             Arrays.asList(
-            // Stack trace when Settings.xml or SettingsV8.xml is not found,
+            // Stack trace when Settings.xml is not found,
             // always generated the first time the plugin runs.
-            "ReflectionComposablePart.CreateInstance => RuntimeConstructorInfo.Invoke => RuntimeMethodHandle.InvokeMethod => FileConfiguration..ctor => FileConfiguration.Load"));
+            "ReflectionComposablePart.CreateInstance => RuntimeConstructorInfo.Invoke => RuntimeMethodHandle.InvokeMethod => FileConfiguration..ctor",
+            // Stack trace when Settings.xml is not found,
+            // always generated the first time the plugin runs.
+            "ReflectionComposablePart.CreateInstance => RuntimeConstructorInfo.Invoke => RuntimeMethodHandle._InvokeConstructor => FileConfiguration.Load",
+		    // Stack trace when SettingsV8.xml is not found,
+		    // always generated the first time the plugin runs.
+            "RuntimeConstructorInfo.Invoke => RuntimeMethodHandle.InvokeConstructor => RuntimeMethodHandle.InvokeMethod => FileConfiguration..ctor",
+            // Different stack trace for other Entity Framework versions
+            "RuntimeConstructorInfo.Invoke => RuntimeMethodHandle.InvokeConstructor => RuntimeMethodHandle._InvokeConstructor => FileConfiguration..ctor"));
 
     /**
      * Cache for the most recent ERROR logs
@@ -73,7 +82,7 @@ public class LogMonitoringServiceImpl implements RpLogMonitoringService {
         RpLogEntity entity = RpLogEntity.fromClientString(message);
         entity.setServerTimestamp(date);
         
-        if(WATCHED_LEVELS.contains(entity.getLevel()) && !IGNORED_STACK_TRACES.contains(entity.getStackTrace())){
+        if(WATCHED_LEVELS.contains(entity.getLevel()) && !isIgnoredStackTrace(entity.getStackTrace())){
             
             LOGGER.info("Error log uploaded by {}", swarmId);
             if(!cache.containsKey(swarmId) || cache.get(swarmId).getServerTimestamp().before(entity.getServerTimestamp())){
@@ -93,5 +102,23 @@ public class LogMonitoringServiceImpl implements RpLogMonitoringService {
             return null;
         }
     }
-
+    
+    /**
+     * Returns 
+     * @param stackTrace
+     * @return
+     */
+    private static boolean isIgnoredStackTrace(String inspectedStackTrace){
+    	if(StringUtils.isEmpty(inspectedStackTrace)){
+    		return false;
+    	}
+    	
+    	for(String stackTrace : IGNORED_STACK_TRACES){
+    		if(inspectedStackTrace.startsWith(stackTrace)){
+    			return true;
+    		}
+    	}
+    	
+    	return false;
+    }
 }

@@ -75,9 +75,8 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
 	    
 	    // Register new store
         account = new RicsAccountEntity();
-        account.setLoginName("sonrisa");
-        account.setPassword("password");
-        account.setSerialNum("88888888");
+        account.setUserName("sonrisa");
+        account.setToken("88888888");
 	    
 		/**
 		 * REQUEST:
@@ -97,19 +96,6 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
 		 */
 		stubFor(post(urlMatching(RicsUri.CUSTOMERS.uri))
 		        .willReturn(aResponse().withBody(MockDataUtil.getResourceAsString(MockRicsData.MOCK_CUSTOMERS)).withStatus(200)));
-
-		/**
-		 * Request:
-		 * authentication data. Called before the extraction begins
-		 * 
-		 * Response:
-		 * token, that used in later queries
-		 */
-		stubFor(post(urlMatching(RicsUri.LOGIN.uri))
-                .withRequestBody(containing(getQuotedJsonLine("SerialNumber", account.getSerialNum())))
-                .withRequestBody(containing(getQuotedJsonLine("Login", account.getLoginName())))
-                .withRequestBody(containing(getQuotedJsonLine("Password", account.getPassword())))
-		        .willReturn(aResponse().withBody(MockDataUtil.getResourceAsString(MockRicsData.MOCK_TOKEN)).withStatus(200)));
 	}
 
 	/**
@@ -142,13 +128,13 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
 		// only the active store should be extracted
 		assertEquals(1, numOfExtractedStores);
 
-		assertStagingCount(MockRicsData.getExtractionDescriptor(true));
+		assertStagingCount(MockRicsData.getExtractionDescriptor());
 
 		// load staging content to legacy
 		launchJob(loaderJobUtil);
 
 		// assert the legacy
-		assertNonDummyLegacyCount(MockRicsData.getExtractionDescriptor(false));
+		assertNonDummyLegacyCount(MockRicsData.getLegacyExtractionDescriptor());
 		assertStagingIsEmpty();
 	}
 
@@ -162,11 +148,7 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
 	@Test
 	public void testManyStoresExecution() {
 	    
-        // Ignore matching credentials
-        stubFor(post(urlMatching(RicsUri.LOGIN.uri))
-                .willReturn(aResponse().withBody(MockDataUtil.getResourceAsString(MockRicsData.MOCK_TOKEN)).withStatus(200)));
-
-		// Create 21 >> 5 stores and 21 % 5 != 0
+		// Create 21 (which is much greater than 5) stores and also 21 % 5 != 0
 		final Long[] storeIds = new Long[21];
 		for (int i = 0; i < storeIds.length; i++) {
 			storeIds[i] = saveSingleMockStoreEntity(ricsApiName, "store" + i, true);
@@ -179,12 +161,5 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
 				.getInt(ExtractorLauncherWriter.NUM_OF_STORES_EXTRACTED);
 
 		assertEquals(storeIds.length, numOfExtractedStores);
-	}
-	
-	/**
-	 * Returns JSON like value, like this <code>"key":"value"</code> 
-	 */
-	private static String getQuotedJsonLine(String key, String value){
-	    return String.format("\"%s\":\"%s\"", key, value);
 	}
 }
