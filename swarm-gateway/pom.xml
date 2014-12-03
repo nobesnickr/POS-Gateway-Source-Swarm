@@ -5,7 +5,6 @@
         <version>14.09.15-2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
-    <groupId>com.sonrisa.swarm</groupId>
     <artifactId>swarm-gateway</artifactId>
     <packaging>war</packaging>
     <name>Swarm Gateway</name>
@@ -44,6 +43,10 @@
         <dependency>
             <groupId>com.sonrisa.swarm</groupId>
             <artifactId>swarm-pos-kounta</artifactId>
+        </dependency>
+		<dependency>
+            <groupId>com.sonrisa.swarm</groupId>
+            <artifactId>swarm-pos-vend</artifactId>
         </dependency>
         <dependency>
             <groupId>com.sonrisa.swarm</groupId>
@@ -118,7 +121,7 @@
 		<dependency>
 			<groupId>javax.validation</groupId>
 			<artifactId>validation-api</artifactId>
-		</dependency>
+			</dependency>
 		<dependency>
 	      <groupId>org.hibernate</groupId>
 	      <artifactId>hibernate-validator</artifactId>
@@ -269,6 +272,14 @@
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
 		</dependency>
+		
+		<!-- Spring Security 
+		<dependency>
+			<groupId>Hazelcast</groupId>
+			<artifactId>hazelcast</artifactId>
+			<version>3.3.1</version>
+		</dependency>
+				-->
     </dependencies>
 	
 	<build>

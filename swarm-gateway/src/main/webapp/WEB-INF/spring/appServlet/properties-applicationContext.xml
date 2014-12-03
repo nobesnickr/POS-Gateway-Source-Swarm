@@ -73,6 +73,14 @@
 					<prop key="kounta.api.rest.oauth.uri.redirect">https://swarm-mobile.com/oauth2/</prop>
 					<prop key="kounta.api.rest.oauth.client.id"></prop>
 					<prop key="kounta.api.rest.oauth.client.secret"></prop>
+					
+					
+					<prop key="vend.api.rest.uri.base">https://%s.vendhq.com/api/</prop>
+					<prop key="vend.api.rest.uri.token.refresh">https://%s.vendhq.com/api/1.0/token</prop>
+					<prop key="vend.api.rest.oauth.uri.authorize">https://secure.vendhq.com/connect</prop>
+					<prop key="vend.api.rest.oauth.uri.redirect">https://swarm-mobile.com/oauth2/</prop>
+					<prop key="vend.api.rest.oauth.client.id">MYvGY6FP9NOB6K6UJAb1Ek8zQzCcu2RO</prop>
+					<prop key="vend.api.rest.oauth.client.secret">pWz1QY7Qxz06gxzZ0Pvo6S9kGj6bSKOw</prop>
 				</props>
 			</property>
 		</bean>

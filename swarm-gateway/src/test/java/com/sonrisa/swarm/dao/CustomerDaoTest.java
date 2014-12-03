@@ -27,7 +27,6 @@ import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.hazelcast.examples.AllTest.Customer;
 import com.sonrisa.swarm.BaseIntegrationTest;
 import com.sonrisa.swarm.mock.MockDataUtil;
 import com.sonrisa.swarm.mock.MockTestData;

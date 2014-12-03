@@ -16,7 +16,39 @@
     xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog 
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
-    <changeSet author="generated" id="20131203_1200">
+	<changeSet id="20141112_1121" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists schemaName="pos_production" tableName="outlets"/>
+            </not>
+        </preConditions>
+        <comment> Creation of OUTLETS, a table that serves to store outlets.</comment>
+        <createTable tableName="outlets">
+            <column name="outlet_id" type="BIGINT(20)" autoIncrement="true">
+                <constraints nullable="false" unique="true" />
+            </column>
+            <column name="ls_outlet_id" type="BIGINT(20)" />
+            <column name="store_id" type="BIGINT(20)" />
+            <column name="name" type="varchar(50)" />
+            <column name="address1" type="varchar(50)" />
+            <column name="address2" type="varchar(50)" />
+            <column name="city" type="varchar(50)" />
+            <column name="state" type="varchar(50)" />
+            <column name="postcode" type="varchar(15)" />
+            <column name="country" type="varchar(50)" />
+            <column name="firstname" type="varchar(50)" />
+            <column name="lastname" type="varchar(50)" />
+            <column name="email" type="varchar(100)" />
+            <column name="phone" type="varchar(50)" />
+            <column name="fax" type="varchar(50)" />
+            <column name="website" type="varchar(255)" />
+            <column name="uuid" type="varchar(36)">
+            	<constraints nullable="false" unique="true" />
+            </column>
+        </createTable>
+    </changeSet>
+
+    <changeSet author="generated" id="20141112_1154">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="invoices" />
@@ -190,29 +222,6 @@
             </column>
             <column name="name" type="VARCHAR(100)" />
             <column name="last_modified" type="TIMESTAMP" />
-        </createTable>
-        <createTable tableName="outlets">
-            <column autoIncrement="true" name="outlet_id" type="BIGINT UNSIGNED">
-                <constraints nullable="false" primaryKey="true"/>
-            </column>
-            <column name="ls_outlet_id" type="BIGINT UNSIGNED" />
-            <column name="store_id" type="BIGINT UNSIGNED">
-                <constraints nullable="false" />
-            </column>
-            <column name="name" type="VARCHAR(50)" />
-            <column name="address1" type="VARCHAR(50)" />
-            <column name="address2" type="VARCHAR(50)" />
-            <column name="city" type="VARCHAR(50)" />
-            <column name="state" type="VARCHAR(50)" />
-            <column name="postcode" type="VARCHAR(15)" />
-            <column name="country" type="VARCHAR(50)" />
-            <column name="firstname" type="VARCHAR(50)" />
-            <column name="lastname" type="VARCHAR(50)" />
-            <column name="email" type="VARCHAR(100)" />
-            <column name="phone" type="VARCHAR(50)" />
-            <column name="fax" type="VARCHAR(50)" />
-            <column name="website" type="VARCHAR(255)" />
-            <column name="uuid" type="CHAR(36)" />
         </createTable>
         <createTable tableName="products">
             <column autoIncrement="true" name="product_id" type="BIGINT UNSIGNED">
@@ -401,8 +410,8 @@
             <column name="api_id" />
         </createIndex>
     </changeSet>
-    
-    <changeSet id="20131008_1004" author="joe">
+    <!--  
+    <changeSet id="20141015_1008" author="joe">
         <preConditions onFail="MARK_RAN">
             <not>
                 <dbms type="h2" />
@@ -411,7 +420,7 @@
                 SELECT COUNT(*)
                 FROM information_schema.triggers 
                 WHERE trigger_name LIKE 'customers_uuid_trigger';
-            </sqlCheck>           
+            </sqlCheck>
         </preConditions>
         <sql splitStatements="false">
             CREATE TRIGGER customers_uuid_trigger
@@ -423,8 +432,21 @@
                 END;
         </sql>
     </changeSet>
+-->
 
-    <changeSet id="20131203_1553" author="barna">
+    <changeSet id="20141121_1208" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists schemaName="pos_production" tableName="customers" columnName="postcode"/>
+            </not>
+        </preConditions>
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="customers">
+        	<column name="postcode" type="VARCHAR(15)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+
+    <changeSet id="20131203_1554" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">select count(*) from apis
                 where name LIKE 'ERPLY'</sqlCheck>
@@ -435,7 +457,7 @@
         </sql>
     </changeSet>
 
-    <changeSet id="20130808" author="joe">
+    <changeSet id="20130809" author="joe">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis
                 where name LIKE 'erply' OR name like 'ERPLY'</sqlCheck>
@@ -446,7 +468,7 @@
         </insert>
     </changeSet>
 
-    <changeSet id="20131002_1520" author="barna">
+    <changeSet id="20131002_1521" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis
                 where name LIKE 'merchantos'</sqlCheck>
@@ -457,7 +479,7 @@
         </insert>
     </changeSet>
     
-    <changeSet id="20131203_1555" author="barna">
+    <changeSet id="20131203_1556" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="1">select count(*) from apis
                 where name LIKE 'RetailPro8'</sqlCheck>
@@ -479,14 +501,19 @@
         </insert>
     </changeSet>
     
-     <changeSet id="20131002_1226" author="barna">
+    <changeSet id="20131002_1232" author="barna">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists schemaName="pos_production" tableName="stores" columnName="oauth_token"/>
+            </not>
+        </preConditions>
         <comment>OAuth token added to Stores table for Merchant OS</comment>
         <sql>
             ALTER TABLE stores ADD COLUMN oauth_token VARBINARY(256)
         </sql>
     </changeSet> 
     
-    <changeSet id="20131216_1534" author="barna">
+    <changeSet id="20131216_1535" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where name LIKE 'shopify'</sqlCheck>
         </preConditions>
@@ -497,7 +524,7 @@
     </changeSet>
     
     
-    <changeSet id="20140110_1005" author="barna">
+    <changeSet id="20140110_1006" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where name LIKE 'retailpro9'</sqlCheck>
         </preConditions>
@@ -507,7 +534,7 @@
         </insert>
     </changeSet>
     
-    <changeSet id="20140114_1413" author="barna">
+    <changeSet id="20140114_1414" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where name LIKE 'merchantos_gw'</sqlCheck>
         </preConditions>
@@ -517,7 +544,7 @@
         </insert>
     </changeSet>
     
-    <changeSet id="20140120_1007" author="barna">
+    <changeSet id="20140120_1008" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where name LIKE 'revel'</sqlCheck>
         </preConditions>
@@ -527,7 +554,7 @@
         </insert>
     </changeSet>
     
-    <changeSet id="20140121_1043" author="barna">
+    <changeSet id="20140121_1044" author="barna">
         <preConditions onFail="MARK_RAN">
               <columnExists columnName="id" tableName="manufacturers"/>
         </preConditions>
@@ -545,7 +572,7 @@
             tableName="manufacturers"/>
     </changeSet>
     
-    <changeSet id="20140304_1032" author="barna">
+    <changeSet id="20140304_1033" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where name LIKE 'lightspeed_pro'</sqlCheck>
         </preConditions>
@@ -555,20 +582,19 @@
         </insert>
     </changeSet>
     
-    <changeSet id="20140314_1653" author="barna">
+    <changeSet id="20140314_1655" author="barna">
+    	<preConditions onFail="MARK_RAN">
+    		<not>
+              <columnExists columnName="last_modified" tableName="invoices"/>
+            </not>
+        </preConditions>
         <comment>Adds last modified column to invoices for Shopify fix.</comment>
          <addColumn tableName="invoices">
         	<column name="last_modified" type="TIMESTAMP DEFAULT NULL"/>
     	</addColumn>
     </changeSet>
     
-    <changeSet id="20140320_1334" author="barna">
-        <comment>Retail Pro customer ids are 64 bit integeres</comment>
-         <sql>
-         	ALTER TABLE invoices MODIFY COLUMN customer_id BIGINT(64); 
-         </sql>
-    </changeSet>
-	<changeSet id="20140516_1442" author="barna">
+	<changeSet id="20140516_1443" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where name LIKE 'kounta'</sqlCheck>
         </preConditions>
@@ -578,14 +604,14 @@
         </insert>
     </changeSet>
 
-	<changeSet id="20140618_1712" author="barna">
+	<changeSet id="20140618_1713" author="barna">
 		<comment>Tagging stores for administartion page</comment>
 		<update tableName="apis">
 			<column name="notes" type="TEXT" value="gateway-plugin" />
 			<where>name IN ('revel', 'shopify', 'merchantos_gw', 'erply', 'lightspeed_pro', 'kounta')</where>
 		</update>
 	</changeSet>
-    <changeSet id="20140519_0001" author="tamas">
+    <changeSet id="20140519_0002" author="tamas">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where lower(name) LIKE 'rics'</sqlCheck>
         </preConditions>
@@ -595,11 +621,63 @@
         </insert>
     </changeSet>
 	
-	<changeSet id="20140630_1351" author="barna">
+	<changeSet id="20140630_1352" author="barna">
 		<comment>Tagging RICS as a gateway API.</comment>
 		<update tableName="apis">
 			<column name="notes" type="TEXT" value="gateway-plugin" />
 			<where>name = 'rics'</where>
 		</update>
 	</changeSet>
+	
+	<changeSet id="20141124_0144" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists schemaName="pos_production" tableName="invoices" columnName="ls_outlet_id"/>
+            </not>
+        </preConditions>
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="invoices">
+        	<column name="ls_outlet_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141124_0146" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists schemaName="pos_production" tableName="invoices" columnName="ls_register_id"/>
+            </not>
+        </preConditions>
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="invoices">
+        	<column name="ls_register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+
+    
+    <changeSet id="20141124_0148" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists schemaName="pos_production" tableName="invoices" columnName="register_id"/>
+            </not>
+        </preConditions>
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="invoices">
+        	<column name="register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141201_1429" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+    	    <dbms type="MYSQL" />
+            <sqlCheck expectedResult="1">select count(*) from information_schema.COLUMNS 
+				where TABLE_NAME='invoice_lines' 
+				and COLUMN_TYPE LIKE '%unsigned%' 
+				and TABLE_SCHEMA = 'pos_production'
+				and COLUMN_NAME LIKE 'quantity'</sqlCheck>
+        </preConditions>
+    	<comment>Changing quantity from unsigned to signed</comment>
+        <sql>
+            ALTER TABLE pos_production.invoice_lines CHANGE COLUMN quantity quantity SMALLINT(5) NULL DEFAULT NULL ;
+        </sql>
+    </changeSet>
 </databaseChangeLog>
