@@ -26,6 +26,7 @@ import hu.sonrisa.backend.dao.filter.JpaFilter;
 import hu.sonrisa.backend.dao.filter.SimpleFilter;
 
 import java.lang.reflect.Field;
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -249,12 +250,18 @@ public abstract class BaseStatusServiceTest {
             }
             
             assertTrue("Property not found in query: " + property, found);
-        } catch (ReflectiveOperationException e) {
-            throw new AssertionError(e);
         } catch (IllegalArgumentException e) {
             throw new AssertionError(e);
         } catch (SecurityException e) {
             throw new AssertionError(e);
-        }
+        } catch (NoSuchMethodException e) {
+        	throw new AssertionError(e);
+		} catch (IllegalAccessException e) {
+			throw new AssertionError(e);
+		} catch (InvocationTargetException e) {
+			throw new AssertionError(e);
+		} catch (NoSuchFieldException e) {
+			throw new AssertionError(e);
+		}
     }
 }

@@ -31,6 +31,15 @@
             <artifactId>swarm-test-common</artifactId>
             <scope>test</scope>
         </dependency>
+        
+        <!-- Apache dependencies -->
+        <dependency>
+			<groupId>commons-lang</groupId>
+			<artifactId>commons-lang</artifactId>
+			<version>2.3</version>
+		</dependency>
+        
+        
         <!-- Swarm modules -->
         <dependency>
             <groupId>com.sonrisa.swarm</groupId>
@@ -103,7 +112,9 @@
 		<dependency>
 			<groupId>org.springframework.security</groupId>
 			<artifactId>spring-security-config</artifactId>
-		</dependency>                         
+		</dependency>      
+		
+             
     </dependencies>
 
   </project>
