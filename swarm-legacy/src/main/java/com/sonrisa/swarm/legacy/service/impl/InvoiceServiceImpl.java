@@ -18,6 +18,8 @@ package com.sonrisa.swarm.legacy.service.impl;
 
 import hu.sonrisa.backend.service.GenericServiceImpl;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -36,7 +38,7 @@ import com.sonrisa.swarm.model.legacy.InvoiceEntity;
 @Service
 @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
 public class InvoiceServiceImpl extends GenericServiceImpl<Long, InvoiceEntity, InvoiceDao> implements InvoiceService {
-    
+	private static final Logger LOGGER = LoggerFactory.getLogger(InvoiceServiceImpl.class);
     /**
      * DAO of invoices in the data warehouse (aka legacy DB).
      */
@@ -82,8 +84,10 @@ public class InvoiceServiceImpl extends GenericServiceImpl<Long, InvoiceEntity, 
 
         if (invoice != null) {
             if (invoice.getId() != null) {
+            	LOGGER.debug("Doing merge for invoice with ID: "+ invoice.getId());
                 dao.merge(invoice);
             } else {
+            	LOGGER.debug("Doing persist for invoice with ID: "+ invoice);
                 dao.persist(invoice);  
             }        
         }
