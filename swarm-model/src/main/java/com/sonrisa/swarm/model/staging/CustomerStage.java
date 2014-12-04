@@ -37,7 +37,7 @@ import com.sonrisa.swarm.model.staging.retailpro.converter.FieldConcatenationCon
 @Table(name = CustomerStage.TABLE_NAME)
 @StageInsertableType(dbTableName = "customers")
 public class CustomerStage extends BaseStageEntity {
-    
+    	
     private static final long serialVersionUID = -2111237543641944660L;
 
     public static final String TABLE_NAME = "staging_customers";
@@ -109,6 +109,8 @@ public class CustomerStage extends BaseStageEntity {
     private String notes;
     
     private String lastModified;
+    
+    private String postalCode;
 
     // ------------------------------------------------------------------------
     // ~ Getters / setters
@@ -305,6 +307,16 @@ public class CustomerStage extends BaseStageEntity {
     public void setLastModified(String lastModified) {
         this.lastModified = lastModified;
     }
+    
+    @StageInsertableAttr(dbColumnName = "postcode")
+    @Column(name = "postcode")
+	public String getPostCode() {
+		return postalCode;
+	}
+
+	public void setPostCode(String postCode) {
+		this.postalCode = postCode;
+	}
 
     
     // ------------------------------------------------------------------------

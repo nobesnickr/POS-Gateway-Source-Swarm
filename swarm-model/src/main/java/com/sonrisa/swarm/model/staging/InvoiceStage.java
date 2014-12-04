@@ -102,6 +102,10 @@ public class InvoiceStage extends BaseStageEntity implements StageBatchInsertabl
     @RetailProAttr(value = "Tender", maxLength = 20)
     private String tender;
 
+	private Long outletId;
+	
+	private Long registerId;
+	
     /**  
      *  If the sale is completed the inventory will have been removed and the payments will have to equal the total. 
      */
@@ -387,5 +391,25 @@ public class InvoiceStage extends BaseStageEntity implements StageBatchInsertabl
 
     public void setLinesProcessed(String linesProcessed) {
         this.linesProcessed = linesProcessed;
-    } 
+    }
+
+    @StageInsertableAttr(dbColumnName="ls_outlet_id")
+    @Column(name = "ls_outlet_id")    
+	public Long getOutletId() {
+		return outletId;
+	}
+
+    @StageInsertableAttr(dbColumnName="ls_register_id")
+    @Column(name = "ls_register_id") 
+	public Long getRegisterId() {
+		return registerId;
+	}
+
+	public void setOutletId(Long outletId) {
+		this.outletId = outletId;
+	}
+
+	public void setRegisterId(Long registerId) {
+		this.registerId = registerId;
+	} 
 }

@@ -60,6 +60,10 @@ public class InvoiceEntity extends BaseLegacyEntity {
     private String customerPhone;
     private String customerEmail;
     private Date lastModified;
+    private OutletEntity outlet;
+    private Long lsOutletId;
+    private RegisterEntity register;
+    private Long lsRegisterId;
 
     @Override
     public String toString() {
@@ -93,6 +97,7 @@ public class InvoiceEntity extends BaseLegacyEntity {
     public StoreEntity getStore() {
         return super.getStore();
     }
+    
     /**
      * Even though the column is named <code>customer_id</code>,
      * it is actually a legacy id, and the value from remote
@@ -208,4 +213,42 @@ public class InvoiceEntity extends BaseLegacyEntity {
     public void setLastModified(Date ts) {
         this.lastModified = ts;
     }
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "outlet_id")
+    public OutletEntity getOutlet() {
+		return outlet;
+	}
+
+    @ManyToOne(cascade = {CascadeType.MERGE, CascadeType.REFRESH}, fetch = FetchType.EAGER)
+    @JoinColumn(name = "register_id")
+	public RegisterEntity getRegister() {
+		return register;
+	}
+
+	public void setOutlet(OutletEntity outlet) {
+		this.outlet = outlet;
+	}
+
+	public void setRegister(RegisterEntity register) {
+		this.register = register;
+	}
+
+	@Column(name = "ls_outlet_id")
+	public Long getLsOutletId() {
+		return lsOutletId;
+	}
+
+    @Column(name = "ls_register_id")
+	public Long getLsRegisterId() {
+		return lsRegisterId;
+	}
+
+	public void setLsOutletId(Long lsOutletId) {
+		this.lsOutletId = lsOutletId;
+	}
+
+	public void setLsRegisterId(Long lsRegisterId) {
+		this.lsRegisterId = lsRegisterId;
+	}
 }

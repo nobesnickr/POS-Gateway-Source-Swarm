@@ -36,8 +36,6 @@ import javax.validation.constraints.Min;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
-import com.sonrisa.swarm.model.constraint.AfterDate;
-
 
 /**
  * InvoiceLine entity.
@@ -191,7 +189,7 @@ public class InvoiceLineEntity extends BaseLegacyEntity {
 
     @Column(name = "quantity")
     @NotNull
-    @Min(0)
+    @Min(-32767)
     @Max(32767) // smallint(5)
     public Integer getQuantity() {
         return quantity;

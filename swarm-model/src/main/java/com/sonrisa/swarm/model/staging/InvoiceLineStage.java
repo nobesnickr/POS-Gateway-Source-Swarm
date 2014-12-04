@@ -17,12 +17,17 @@
 package com.sonrisa.swarm.model.staging;
 
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableAttr;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableType;
@@ -37,7 +42,7 @@ import com.sonrisa.swarm.model.staging.retailpro.RetailProAttr;
 @Table(name = "staging_invoice_lines")
 @StageInsertableType(dbTableName = "invoice_lines")
 public class InvoiceLineStage extends BaseStageEntity {
-    
+	private static final Logger LOGGER = LoggerFactory.getLogger(InvoiceLineStage.class);
     private static final long serialVersionUID = -5078889627224799866L;
 
     private Long id;
@@ -92,6 +97,10 @@ public class InvoiceLineStage extends BaseStageEntity {
     @RetailProAttr(value = "TaxAmt", maxLength = 10, truncatingAllowed = false)
     private String tax;
         
+    private String description;
+    
+    private Timestamp ts;
+        
     // ------------------------------------------------------------------------
     // ~ Getters / setters
     // ------------------------------------------------------------------------ 
@@ -104,6 +113,7 @@ public class InvoiceLineStage extends BaseStageEntity {
     }
 
     public void setId(Long id) {
+    	LOGGER.info("Staging invoice line id:"+id);
         this.id = id;
     }
 
@@ -218,6 +228,26 @@ public class InvoiceLineStage extends BaseStageEntity {
         this.lsSbsNo = lsSbsNo;
     }
 
+    @StageInsertableAttr(dbColumnName="description")
+    @Column(name = "description")
+	public String getDescription() {
+		return description;
+	}
+
+    @StageInsertableAttr(dbColumnName="ts")
+    @Column(name = "ts")
+	public Timestamp getTs() {
+		return ts;
+	}
+
+	public void setDescription(String name) {
+		this.description = name;
+	}
+
+	public void setTs(Timestamp ts) {
+		this.ts = ts;
+	}
+
     // ------------------------------------------------------------------------
     // ~ Object methods
     // ------------------------------------------------------------------------   
@@ -283,4 +313,5 @@ public class InvoiceLineStage extends BaseStageEntity {
                 + lsStoreNo + ", lsSbsNo=" + lsSbsNo + ", lsInvoiceId=" + lsInvoiceId + ", lsLineId=" + lsLineId
                 + ", lsProductId=" + lsProductId + ", quantity=" + quantity + ", price=" + price + ", tax=" + tax + "]";
     }
+
 }
