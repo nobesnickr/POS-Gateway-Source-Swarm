@@ -16,8 +16,14 @@
  */
 package com.sonrisa.swarm.test.extractor;
 
-import static org.mockito.Matchers.*;
-import static org.mockito.Mockito.*;
+import static org.mockito.Matchers.any;
+import static org.mockito.Matchers.argThat;
+import static org.mockito.Matchers.eq;
+import static org.mockito.Mockito.doAnswer;
+import static org.mockito.Mockito.mock;
+import static org.mockito.Mockito.times;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
 import java.util.Date;
@@ -39,7 +45,9 @@ import com.sonrisa.swarm.posintegration.dto.CustomerDTO;
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.dto.InvoiceLineDTO;
 import com.sonrisa.swarm.posintegration.dto.ManufacturerDTO;
+import com.sonrisa.swarm.posintegration.dto.OutletDTO;
 import com.sonrisa.swarm.posintegration.dto.ProductDTO;
+import com.sonrisa.swarm.posintegration.dto.RegisterDTO;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
 import com.sonrisa.swarm.posintegration.extractor.ExternalExtractor;
 import com.sonrisa.swarm.posintegration.extractor.ExternalProcessor;
@@ -164,5 +172,7 @@ public abstract class BaseWarehouseTest {
         assertDTOSaved(dataStore, posDataDescriptor, CustomerDTO.class);
         assertDTOSaved(dataStore, posDataDescriptor, InvoiceDTO.class);
         assertDTOSaved(dataStore, posDataDescriptor, InvoiceLineDTO.class);
+        assertDTOSaved(dataStore, posDataDescriptor, OutletDTO.class);
+        assertDTOSaved(dataStore, posDataDescriptor, RegisterDTO.class);
     }
 }
