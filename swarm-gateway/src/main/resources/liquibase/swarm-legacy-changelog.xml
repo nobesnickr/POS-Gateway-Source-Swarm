@@ -680,4 +680,16 @@
             ALTER TABLE pos_production.invoice_lines CHANGE COLUMN quantity quantity SMALLINT(5) NULL DEFAULT NULL ;
         </sql>
     </changeSet>
+    
+        <changeSet id="20141211_1055" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists schemaName="pos_production" tableName="outlets" columnName="last_modified"/>
+            </not>
+        </preConditions>
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="outlets">
+        	<column name="last_modified" type="TIMESTAMP"/>
+    	</addColumn>
+    </changeSet>
 </databaseChangeLog>
