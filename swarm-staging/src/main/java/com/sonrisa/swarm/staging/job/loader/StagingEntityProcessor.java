@@ -85,7 +85,6 @@ public class StagingEntityProcessor  implements ItemProcessor<BaseStageEntity, S
             return null;           
         }        
                 
-        LOGGER.debug("");
         return holder;
     }
     
