@@ -17,6 +17,9 @@
 
 package com.sonrisa.swarm.posintegration.api.request;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import com.sonrisa.swarm.posintegration.api.ExternalAPI;
 import com.sonrisa.swarm.posintegration.api.ExternalCommand;
 import com.sonrisa.swarm.posintegration.api.ExternalDTOIterator;
@@ -34,15 +37,17 @@ import com.sonrisa.swarm.posintegration.extractor.SwarmStore;
  */
 public class SimpleExternalDTOIterator<T extends SwarmStore> implements ExternalDTOIterator<SwarmStore> {
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(SimpleExternalDTOIterator.class);
+	
     /**
      * Data reader helps read segmented API result
      */
-    private ExternalAPIReader<T> dataReader;
+    protected ExternalAPIReader<T> dataReader;
 
     /**
      * Command used by the {@link ExternalAPI}
      */
-    private ExternalCommand<T> command;
+    protected ExternalCommand<T> command;
 
     /**
      * Judge judging if the iteration should terminate, because its over
@@ -53,7 +58,7 @@ public class SimpleExternalDTOIterator<T extends SwarmStore> implements External
      * Results are fetched in pages, each with e.g. 100 records, this shows the
      * 0..99 index within the page
      */
-    private int indexWithinPage = 0;
+    protected int indexWithinPage = 0;
     /**
      * If records exceed the limit of fetchSize, they can be requested with
      * specifying a page index
@@ -64,7 +69,7 @@ public class SimpleExternalDTOIterator<T extends SwarmStore> implements External
      * Current page's records, the cached result of
      * {@link ExternalAPIReader#getPage(int)}
      */
-    private ExternalResponse currentPage = null;
+    protected ExternalResponse currentPage = null;
 
     /**
      * Iterator over {@link ExternalDTO} entities.
@@ -98,19 +103,20 @@ public class SimpleExternalDTOIterator<T extends SwarmStore> implements External
     @Override
     public boolean hasNext() {
         try {
+        	
             // If the first page was never fetched, fetch it now
             if (currentPage == null) {
                 currentPage = dataReader.getPage(command, pageNumber);
                 indexWithinPage = 0;
+                LOGGER.debug(" Fetching first page");
             }
             
             final ExternalDTO currentContent = currentPage.getContent();
-
+            
             // If there are items on the current page, then
             // there are more items to iterate over globally
             if (indexWithinPage < currentContent.getNestedItemSize(dataReader.getDataKey(command))) {
                 return true;
-
                 // If we've reached the last item on the page
             } else {
                 // Use failsafe mechanism to always return false from
@@ -129,6 +135,7 @@ public class SimpleExternalDTOIterator<T extends SwarmStore> implements External
                     // one might be the last with zero elements and there
                     // are in fact no more items
                 } else {
+                	LOGGER.debug("Fetching new page. pageNumber="+pageNumber);
                     // Fetch next page
                     currentPage = dataReader.getPage(command, ++pageNumber);
                     indexWithinPage = 0;
@@ -149,7 +156,7 @@ public class SimpleExternalDTOIterator<T extends SwarmStore> implements External
         // reaching the end of each page
         if (hasNext()) {
             try {
-                return currentPage.getContent()
+            	return currentPage.getContent()
                         .getNestedItem(dataReader.getDataKey(command))
                         .getNestedArrayItem(indexWithinPage++);
             } catch (ExternalExtractorException e) {

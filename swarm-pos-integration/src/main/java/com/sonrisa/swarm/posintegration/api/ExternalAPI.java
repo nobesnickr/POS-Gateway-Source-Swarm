@@ -18,7 +18,6 @@
 package com.sonrisa.swarm.posintegration.api;
 
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
-import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
 import com.sonrisa.swarm.posintegration.extractor.SwarmStore;
 
 /**

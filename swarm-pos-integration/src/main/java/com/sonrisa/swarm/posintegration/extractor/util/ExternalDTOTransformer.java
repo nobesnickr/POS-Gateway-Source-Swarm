@@ -16,6 +16,7 @@
  */
 package com.sonrisa.swarm.posintegration.extractor.util;
 
+import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.math.BigDecimal;
 import java.sql.Timestamp;
@@ -29,6 +30,7 @@ import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTOPath;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
 import com.sonrisa.swarm.posintegration.warehouse.DWTransferable;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -168,7 +170,7 @@ public class ExternalDTOTransformer {
                     }
                 } catch (IllegalArgumentException e) {
                     throw new RuntimeException(e);
-                } catch (ReflectiveOperationException e) {
+                } catch ( InvocationTargetException e) {
                     LOGGER.debug("Error occured during trasformation into {}", clazz.getSimpleName(), e);
                     
                     // Certain setters might throw ExternalExtractorException
@@ -176,7 +178,9 @@ public class ExternalDTOTransformer {
                         throw (ExternalExtractorException)e.getCause();
                     }
                     throw new RuntimeException(e);
-                }
+                } catch (IllegalAccessException e) {
+                	throw new RuntimeException(e);
+				}
             }
         }
     }

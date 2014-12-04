@@ -1,29 +1,16 @@
-/*
- *   Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
- * 
- *  This software is the confidential and proprietary information of
- *  Sonrisa Informatikai Kft. ("Confidential Information").
- *  You shall not disclose such Confidential Information and shall use it only in
- *  accordance with the terms of the license agreement you entered into
- *  with Sonrisa.
- * 
- *  SONRISA MAKES NO REPRESENTATIONS OR WARRANTIES ABOUT THE SUITABILITY OF
- *  THE SOFTWARE, EITHER EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED
- *  TO THE IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A
- *  PARTICULAR PURPOSE, OR NON-INFRINGEMENT. SONRISA SHALL NOT BE LIABLE FOR
- *  ANY DAMAGES SUFFERED BY LICENSEE AS A RESULT OF USING, MODIFYING OR
- *  DISTRIBUTING THIS SOFTWARE OR ITS DERIVATIVES.
- */
 package com.sonrisa.swarm.posintegration.extractor.util;
 
 import java.sql.Timestamp;
+import java.util.HashMap;
 import java.util.Iterator;
+import java.util.Map;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
-import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTOPath;
+import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
 
 /**
  * Implementation of the ExternalDTO interface in a way, that this class 
@@ -36,6 +23,11 @@ public class ExternalJsonDTO implements ExternalDTO {
      * from this JsonNode
      */
     private JsonNode node;
+    
+    /**
+     * Additional parameters 
+     */
+    private Map<String, String> addParameters = new HashMap<String, String>();
     
     /**
      * Initilizes an instance of the ExternalJsonDTO class.
@@ -231,10 +223,14 @@ public class ExternalJsonDTO implements ExternalDTO {
     }
     
     /**
-     * Stringification calls the JsonNode's toString
+     * Stringfication calls the JsonNode's toString
      */
     @Override
     public String toString(){
         return node.toString();
+    }
+    
+    public void addParameter(String paramKey, String paramValue){
+    	((ObjectNode) node).put(paramKey, paramValue);
     }
 }

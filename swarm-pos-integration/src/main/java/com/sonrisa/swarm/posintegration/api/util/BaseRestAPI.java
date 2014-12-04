@@ -78,7 +78,7 @@ public abstract class BaseRestAPI {
         ObjectMapper mapper = new ObjectMapper();
         try {
             // Send HTTP request
-            LOGGER.debug("Remote remote request: {}", request.getURI());
+            LOGGER.debug("Remote request: {}", request.getURI());
             
             request.addHeader("Accept", MediaType.APPLICATION_JSON_VALUE);
             response = client.execute(request);

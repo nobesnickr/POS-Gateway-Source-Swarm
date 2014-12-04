@@ -36,22 +36,22 @@ public class SimpleApiRequest<T extends SwarmStore> implements Iterable<External
     /**
      * Data reader helps read segmented API result
      */
-    private ExternalAPIReader<T> dataReader;
+    protected ExternalAPIReader<T> dataReader;
 
     /**
      * Command used by the {@link ExternalAPI}
      */
-    private ExternalCommand<T> command;
+    protected ExternalCommand<T> command;
 
     /**
      * Judge judging if the iteration should terminate, because its over
      */
-    private ExternalIterationJudging judge;
+    protected ExternalIterationJudging judge;
     
     /**
      * Set first page of iteration
      */
-    private int firstPage = 0;
+    protected int firstPage = 0;
     
     /**
      * Iterable over {@link ExternalDTO} entities.

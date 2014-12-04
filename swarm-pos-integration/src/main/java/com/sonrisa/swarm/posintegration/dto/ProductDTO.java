@@ -63,4 +63,8 @@ public abstract class ProductDTO implements DWTransferable {
 
     @StageInsertableAttr(dbColumnName = "store_sku", maxLength = 50)
 	public abstract String getStoreSku();
+    
+    // Default behavior needed to avoid changes in previous integrations
+    @StageInsertableAttr(dbColumnName = "sku", maxLength = 50)
+	public String getSku(){return null;}
 }

@@ -36,6 +36,7 @@ import com.sonrisa.swarm.posintegration.extractor.util.ExternalDTOTransformer;
 import com.sonrisa.swarm.posintegration.warehouse.DWFilter;
 import com.sonrisa.swarm.posintegration.warehouse.DWTransferable;
 import com.sonrisa.swarm.posintegration.warehouse.SwarmDataWarehouse;
+
 import java.util.List;
 
 /**
@@ -83,6 +84,8 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
         fetchInvoiceLines(account, dataStore);
         fetchCustomers(account, dataStore);
         fetchManufacturers(account, dataStore);
+        fetchOutlets(account, dataStore);
+        fetchRegisters(account, dataStore);
     }
     
     /**
@@ -128,6 +131,22 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
     }
     
     /**
+     * Fetches the POS specific {@link OutletDTO}. Its current behavior is empty.
+     * This class can be override in order to import outlets
+     */
+    protected void fetchOutlets(T store, SwarmDataWarehouse dataStore) throws ExternalExtractorException{
+        return;
+    }
+    
+    /**
+     * Fetches the POS specific {@link OutletDTO}. Its current behavior is empty.
+     * This class can be override in order to import outlets
+     */
+    protected void fetchRegisters(T store, SwarmDataWarehouse dataStore) throws ExternalExtractorException{
+        return;
+    }  
+    
+    /**
      * Fired when the iteration needs a new kind of data, e.g. CustomerDTO
      * @param clazz Type of warehouse DTO
      * @param since Filtering based on this value
@@ -146,12 +165,13 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
      * @param clazz Class of the DTO expected from the REST URL request
      * @param timeStampClass Indicates which DTO class's timeStamp is used for filtering remote data
      */
-    private <W extends DWTransferable, S extends W>void fetchRemoteData(
+    protected <W extends DWTransferable, S extends W>void fetchRemoteData(
             T store, SwarmDataWarehouse dataStore, Class<W> dataStoreClass, Class<S> clazz){
 
         DWFilter filter = dataStore.getFilter(store, dataStoreClass);
 
         List<W> itemList = new ArrayList<W>();
+        logger().info("The filter timestamp is: "+filter.getTimestamp());
         Iterable<ExternalDTO> data = remoteRequest(dataStoreClass, store, filter);
  
         for(ExternalDTO node : data){
@@ -159,6 +179,7 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
                 W item = this.dtoTransformer.transformDTO(node, clazz);
                 itemList.add(item);
                 
+                item = preprocessItem(item, store);
                 // If list reaches a limit, save items into the stage, and 
                 // clear the list
                 if(itemList.size() > QUEUE_LIMIT){
@@ -171,8 +192,18 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
         }
         
         if(!itemList.isEmpty()){
+        	System.out.println("itemList size: "+ itemList.size());
             dataStore.save(store, itemList, dataStoreClass);
         }
+    }
+    
+    /**
+     * This function can be override to the additional preprocessing over the item.
+     * @param item
+     * @return
+     */
+    protected <W extends DWTransferable, T extends SwarmStore> W preprocessItem(W item, T store){
+    	return item;
     }
     
     protected abstract Logger logger();
@@ -184,7 +215,7 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
      * @return
      */
     @SuppressWarnings("unchecked")
-    private <T extends DWTransferable> Class<? extends T> getPosSpecificClass(Class<T> clazz){
+	protected <T extends DWTransferable> Class<? extends T> getPosSpecificClass(Class<T> clazz){
         Class<?> retval;
         try {
             retval = Class.forName(this.dtoClassPrefix + clazz.getSimpleName());
