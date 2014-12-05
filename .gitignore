@@ -115,3 +115,4 @@ bin
 .settings
 /swarm-pos-kounta/.classpath
 /swarm-admin/.classpath
+database-applicationContext.xml
