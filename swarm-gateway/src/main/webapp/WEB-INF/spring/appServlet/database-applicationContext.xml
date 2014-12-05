@@ -9,10 +9,10 @@
     <!-- Datasources for production environment -->    
     <beans profile="production">
        <bean id="swarmDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-            <property name="jndiName" value="java:comp/env/jdbc/swarm"/>
+            <property name="jndiName" value="jdbc/swarm"/>
         </bean>        
          <bean id="userDataSource" class="org.springframework.jndi.JndiObjectFactoryBean">
-            <property name="jndiName" value="java:comp/env/jdbc/eeuser"/>
+            <property name="jndiName" value="jdbc/eeuser"/>
         </bean>
     </beans>
     
