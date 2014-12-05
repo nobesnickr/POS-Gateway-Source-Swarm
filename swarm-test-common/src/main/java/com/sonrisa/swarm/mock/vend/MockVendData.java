@@ -43,10 +43,10 @@ public class MockVendData {
      */
     public static MockPosDataDescriptor getVendBatchMockDescriptor (){
         Map<String,Integer> count = new HashMap<String,Integer>();
-        count.put("CustomerDTO",50);
-        count.put("InvoiceDTO",50);
-        count.put("InvoiceLineDTO",81);
-        count.put("ProductDTO",50);
+        count.put("CustomerDTO",48);
+        count.put("InvoiceDTO",48);
+        count.put("InvoiceLineDTO",78);
+        count.put("ProductDTO",48);
         count.put("OutletDTO",7);
         count.put("RegisterDTO",12);
         return new MockPosDataDescriptor(count);
