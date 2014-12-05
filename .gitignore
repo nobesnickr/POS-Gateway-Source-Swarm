@@ -115,4 +115,4 @@ bin
 .settings
 /swarm-pos-kounta/.classpath
 /swarm-admin/.classpath
-/swarm-gateway/src/main/webapp/WEB-INF/spring/appServletdatabase-applicationContext.xml
+/swarm-gateway/src/main/webapp/WEB-INF/spring/appServlet/database-applicationContext.xml
