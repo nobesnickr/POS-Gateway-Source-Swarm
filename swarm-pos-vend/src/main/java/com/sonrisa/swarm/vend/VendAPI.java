@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
+import org.apache.http.HttpEntity;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -26,7 +27,6 @@ import com.sonrisa.swarm.posintegration.api.util.impl.SimpleRestVerifier;
 import com.sonrisa.swarm.posintegration.exception.ExternalApiBadCredentialsException;
 import com.sonrisa.swarm.posintegration.exception.ExternalApiException;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
-import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
 import com.sonrisa.swarm.posintegration.extractor.util.RestUrlBuilder;
 import com.sonrisa.swarm.vend.api.util.VendAPIReader;
 
@@ -130,7 +130,7 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
         params.put("grant_type", "refresh_token");
         params.put("refresh_token", code);
         
-        UrlEncodedFormEntity preparePost = (UrlEncodedFormEntity) RestUrlBuilder.preparePostFields(params);
+        HttpEntity preparePost = RestUrlBuilder.preparePostFields(params);
         
         httpPost.setEntity(preparePost);
         LOGGER.debug("Refresh token request:"+ httpPost.getURI());
@@ -145,16 +145,6 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
         return acc;
     }
     
-    /**
-     * Send post request to Vend
-     * @throws ExternalExtractorException 
-     * @returns Root JsonNode as ExternalDTO
-     */
-    private ExternalResponse sendSimplePostRequest(String uri, Map<String,String> params) throws ExternalExtractorException{
-        HttpPost httppost = new HttpPost(uri);
-        httppost.setEntity(RestUrlBuilder.preparePostFields(params));
-        return executeRequest(httppost);
-    }
     
     /**
      * Get access token from remote location

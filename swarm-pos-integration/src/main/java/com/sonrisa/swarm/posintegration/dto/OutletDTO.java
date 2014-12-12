@@ -1,7 +1,6 @@
 package com.sonrisa.swarm.posintegration.dto;
 
 import java.sql.Timestamp;
-import java.util.Date;
 
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableAttr;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableType;

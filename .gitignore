@@ -115,4 +115,7 @@ bin
 .settings
 /swarm-pos-kounta/.classpath
 /swarm-admin/.classpath
-*database-applicationContext.xml
+
+.project
+/.vagrant/machines/default/virtualbox/action_set_name
+provision_sec.sh
