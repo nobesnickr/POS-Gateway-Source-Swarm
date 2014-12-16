@@ -79,6 +79,15 @@ namespace RetailProV8SwarmExporter.Configuration
 
             this.SyncDaysLimit = syncLimit;
 
+            bool overrideTableHistory = false;
+            if (!bool.TryParse(ConfigurationManager.AppSettings["overrideTableHistory"], out overrideTableHistory))
+            {
+                Logger.Warn("Failed to read overrideTableHistory: " + ConfigurationManager.AppSettings["overrideTableHistory"]);
+                overrideTableHistory = false;
+            }
+
+            this.OverrideTableHistory = overrideTableHistory;
+
             // Setup string based preferences
             this.InstallationPath = ConfigurationManager.AppSettings["installationPath"];
         }
@@ -114,5 +123,10 @@ namespace RetailProV8SwarmExporter.Configuration
         /// Gets the maximum size of the date dictionary in days
         /// </summary>
         public int SyncDaysLimit { get; private set; }
+
+        /// <summary>
+        /// Gets a value indicating whether the RDA2Table.History is overriden when opening the table at start
+        /// </summary>
+        public bool OverrideTableHistory { get; private set; }
     }
 }

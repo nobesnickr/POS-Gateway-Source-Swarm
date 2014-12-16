@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Wix xmlns="http://schemas.microsoft.com/wix/2006/wi" xmlns:util="http://schemas.microsoft.com/wix/UtilExtension">
-    <Product Id="*" Name="RetailPro8SwarmExporter" Language="1033" Version="1.7.1.0" Manufacturer="Swarm-Mobile" UpgradeCode="2775383b-0087-4a5f-b92a-e3626f17a757">
+    <Product Id="*" Name="RetailPro8SwarmExporter" Language="1033" Version="1.7.2.0" Manufacturer="Swarm-Mobile" UpgradeCode="2775383b-0087-4a5f-b92a-e3626f17a757">
         <Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
         <MediaTemplate />
         <Feature Id="ProductFeature" Title="Swarm8Installer" Level="1">

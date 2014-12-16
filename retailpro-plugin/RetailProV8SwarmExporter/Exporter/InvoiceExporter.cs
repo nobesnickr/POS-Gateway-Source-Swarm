@@ -94,7 +94,16 @@ namespace RetailProV8SwarmExporter.Exporter
                 var storeFilters = this.configuration.LastModifiedInvoiceDate;
                 var oldestFilter = this.GetOldestFilter(storeFilters);
 
-                Logger.Info(System.Globalization.CultureInfo.InvariantCulture, "Preparing to extract invoices using {0} as timeFilter", oldestFilter);
+                Logger.Info(System.Globalization.CultureInfo.InvariantCulture, "Preparing to extract invoices using {0} as oldestFilter", oldestFilter);
+
+                // Log all entries in the storeFilters array
+                if (Logger.IsTraceEnabled)
+                {
+                    foreach (var entry in storeFilters.Entries)
+                    {
+                        Logger.Trace("Invoice exporter is using store filter for SBS: {0} and StoreNo: {1} with value: {2}", entry.Key.SbsNumber, entry.Key.StoreNumber, entry.Value);
+                    }
+                }
 
                 IEnumerable<Invoice> invoices;
 
@@ -199,7 +208,7 @@ namespace RetailProV8SwarmExporter.Exporter
         {
             var oldestFilter = storeFilters.Entries.Count > 0 ? storeFilters.Entries.Values.Min() : storeFilters.DefaultDate;
 
-            var mostRecentFilter = storeFilters.Entries.Count > 0 ? storeFilters.Entries.Values.Min() : storeFilters.DefaultDate;
+            var mostRecentFilter = storeFilters.Entries.Count > 0 ? storeFilters.Entries.Values.Max() : storeFilters.DefaultDate;
 
             // If the oldest entry is "not that old" then return it
             if (oldestFilter.AddDays(this.localConfig.SyncDaysLimit) > mostRecentFilter)

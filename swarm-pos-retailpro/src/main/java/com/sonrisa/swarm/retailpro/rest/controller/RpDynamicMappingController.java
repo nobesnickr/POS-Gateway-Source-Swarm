@@ -16,8 +16,6 @@
  */
 package com.sonrisa.swarm.retailpro.rest.controller;
 
-import com.sonrisa.swarm.common.rest.controller.BaseSwarmController;
-import com.sonrisa.swarm.retailpro.service.RpDynamicMappingService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -27,6 +25,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sonrisa.swarm.retailpro.service.RpDynamicMappingService;
+
 
 /**
  * REST controller for /config/mapping, used for Retail Pro V8 
@@ -35,7 +35,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  * @author barna
  */
 @Controller
-public class RpDynamicMappingController extends BaseSwarmController {
+public class RpDynamicMappingController extends BaseRetailProController {
     private static final Logger LOGGER = LoggerFactory.getLogger(InterfaceDescriptionController.class);
     
     @Autowired

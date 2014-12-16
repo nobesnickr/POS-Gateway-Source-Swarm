@@ -109,26 +109,20 @@ using RetailProCommon.Service;
                     this.lastRemoteVersion = remoteConfig.Version;
                     if (remoteConfig.LastInvoice.HasValue)
                     {
-                        if (remoteConfig.LastInvoice < this.LastModifiedInvoiceDate.DefaultDate)
-                        {
-                            this.LastModifiedInvoiceDate.DefaultDate = remoteConfig.LastInvoice.Value;
-                        }
+                        this.LastModifiedInvoiceDate.DefaultDate = remoteConfig.LastInvoice.Value;
 
                         foreach (var key in this.LastModifiedInvoiceDate.Entries.Keys.ToArray())
                         {
-                            if (remoteConfig.LastInvoice < this.LastModifiedInvoiceDate.Entries[key])
-                            {
-                                this.LastModifiedInvoiceDate.Entries[key] = remoteConfig.LastInvoice.Value;
-                            }
+                            this.LastModifiedInvoiceDate.Entries[key] = remoteConfig.LastInvoice.Value;
                         }
                     }
 
-                    if (remoteConfig.LastStore.HasValue && remoteConfig.LastStore < this.LastModifiedStoreDate)
+                    if (remoteConfig.LastStore.HasValue)
                     {
                         this.LastModifiedStoreDate = remoteConfig.LastStore.Value;
                     }
 
-                    if (remoteConfig.LastVersion.HasValue && remoteConfig.LastVersion < this.LastModifiedVersionDate)
+                    if (remoteConfig.LastVersion.HasValue)
                     {
                         this.LastModifiedVersionDate = remoteConfig.LastVersion.Value;
                     }
@@ -198,7 +192,7 @@ using RetailProCommon.Service;
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Design", "CA1031:DoNotCatchGeneralExceptionTypes", Justification = "Configuration loading should swallow all exceptions.")]
         private void Load()
         {
-            const int MonthLimit = 24;
+            const int MonthLimit = 4;
 
             try
             {
@@ -212,7 +206,6 @@ using RetailProCommon.Service;
                     // Default date can't be older than 4 months
                     if (this.LastModifiedInvoiceDate.DefaultDate < DateTime.Now.AddMonths(-MonthLimit))
                     {
-                        this.LastModifiedInvoiceDate = new DateDictionary();
                         this.LastModifiedInvoiceDate.DefaultDate = DateTime.Now.AddMonths(-MonthLimit);
                     }
 

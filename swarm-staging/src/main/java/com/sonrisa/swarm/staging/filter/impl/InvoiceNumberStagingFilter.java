@@ -46,6 +46,11 @@ public class InvoiceNumberStagingFilter implements InvoiceStagingFilter {
             throw new IllegalArgumentException("Entity is null");
         }
         
+        // This should only affect Retail Pro
+        if(StringUtils.isEmpty(entity.getSwarmId())){
+            return StagingFilterValue.APPROVED;
+        }
+        
         if(StringUtils.hasLength(entity.getInvoiceNo())){
            if(!skipInvoicesWithNullNumber || !entity.getInvoiceNo().equals("0")){
                return StagingFilterValue.APPROVED;

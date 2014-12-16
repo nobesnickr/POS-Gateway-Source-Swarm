@@ -81,6 +81,10 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="TestData\V8-1.5.0.917\Settings.xml" />
+    <Content Include="TestData\V8-1.7.1.0-Lajolla\Settings.xml" />
+  </ItemGroup>
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

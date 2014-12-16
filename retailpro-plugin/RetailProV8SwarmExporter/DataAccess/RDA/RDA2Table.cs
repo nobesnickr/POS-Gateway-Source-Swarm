@@ -69,8 +69,9 @@ namespace RetailProV8SwarmExporter.DataAccess.RDA
                 int index = 0;
                 while (!this.Last)
                 {
-                    Logger.Trace(System.Globalization.CultureInfo.InvariantCulture, "Iteration over {0} is at {1}", this.Name, index);
-                    yield return new RDA2Document(this.currentDocument, index++);
+                    var document = new RDA2Document(this.currentDocument, index++);
+                    Logger.Trace(System.Globalization.CultureInfo.InvariantCulture, "Iteration over {0} is at {1}: {2}", this.Name, index, document);
+                    yield return document;
                     this.Iterate();
                 }
             }
@@ -104,39 +105,6 @@ namespace RetailProV8SwarmExporter.DataAccess.RDA
         private string Name { get; set; }
 
         /// <summary>
-        /// Open the table, reset the iteration
-        /// </summary>
-        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "NLog.Logger.Debug(System.IFormatProvider,System.String,System.String)", Justification = "Reviewed.")]
-        public void Open()
-        {
-            this.Table.Open();
-            this.Last = false;
-
-            if (this.Forward)
-            {
-                this.Table.First();
-                if (this.Table.Eof)
-                {
-                    Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, "Opening table and iterating to first element for {0}", this.Name);
-                    this.Iterate();
-                }
-            }
-            else
-            {
-                this.Table.Last();
-                if (this.Table.Bof)
-                {
-                    Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, "Opening table and iterating to last element for {0}", this.Name);
-                    this.Iterate();
-                }
-            }
-
-            this.currentDocument = this.Table.Document();
-
-            Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, "Opened table {0}", this.Name);
-        }
-
-        /// <summary>
         /// Close the table, finalize the iteration
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "NLog.Logger.Info(System.IFormatProvider,System.String,System.String)", Justification = "Reviewed.")]
@@ -147,6 +115,20 @@ namespace RetailProV8SwarmExporter.DataAccess.RDA
             this.currentDocument = null;
 
             Logger.Info(System.Globalization.CultureInfo.InvariantCulture, "Closing table {0}", this.Name);
+        }
+
+        /// <summary>
+        /// Opens table for the first time
+        /// </summary>
+        public void Open()
+        {
+            // If needed override table history
+            if (this.localConfiguration.OverrideTableHistory)
+            {
+                this.DoOverrideTableHistory();
+            }
+
+            this.ReOpen();
         }
 
         /// <summary>
@@ -195,6 +177,41 @@ namespace RetailProV8SwarmExporter.DataAccess.RDA
         }
 
         /// <summary>
+        /// Open the table, reset the iteration
+        /// </summary>
+        [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Globalization", "CA1303:Do not pass literals as localized parameters", MessageId = "NLog.Logger.Debug(System.IFormatProvider,System.String,System.String)", Justification = "Reviewed.")]
+        private void ReOpen()
+        {
+            Logger.Info("Preparing to open table {0}", this.Name);
+
+            this.Table.Open();
+            this.Last = false;
+
+            if (this.Forward)
+            {
+                this.Table.First();
+                if (this.Table.Eof)
+                {
+                    Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, "Opening table and iterating to first element for {0}", this.Name);
+                    this.Iterate();
+                }
+            }
+            else
+            {
+                this.Table.Last();
+                if (this.Table.Bof)
+                {
+                    Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, "Opening table and iterating to last element for {0}", this.Name);
+                    this.Iterate();
+                }
+            }
+
+            this.currentDocument = this.Table.Document();
+
+            Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, "Opened table {0}", this.Name);
+        }
+
+        /// <summary>
         /// Iterating using the ActiveIndex and the Forward property
         /// </summary>
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2202:Do not dispose objects multiple times", Justification = "The table will be opened in again.")]
@@ -227,7 +244,7 @@ namespace RetailProV8SwarmExporter.DataAccess.RDA
                             {
                                 Logger.Trace("Setting Table history to {0}/{1} for {2}", year, month, this.Name);
                                 this.Table.History.SetMonthYear(month, year);
-                                this.Open();
+                                this.ReOpen();
                             }
                         }
                         catch (COMException e)
@@ -264,8 +281,9 @@ namespace RetailProV8SwarmExporter.DataAccess.RDA
 
                             if (year > this.localConfiguration.IgnoreEarlierInvoicesFilter.Year || (year == this.localConfiguration.IgnoreEarlierInvoicesFilter.Year && month >= this.localConfiguration.IgnoreEarlierInvoicesFilter.Month))
                             {
+                                Logger.Trace("Opening new data file for {0}/{1} for {2}", year, month, this.Name);
                                 this.Table.History.SetMonthYear(month, year);
-                                this.Open();
+                                this.ReOpen();
                             }
                             else
                             {
@@ -281,6 +299,45 @@ namespace RetailProV8SwarmExporter.DataAccess.RDA
                         }
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Override history value to the assumed values
+        /// </summary>
+        private void DoOverrideTableHistory()
+        {
+            if (this.Table == null)
+            {
+                Logger.Warn("Table is null");
+                return;
+            }
+
+            if (this.Table.History == null)
+            {
+                Logger.Warn("No history for {0}", this.Table.Name);
+                return;
+            }
+
+            if (this.Forward)
+            {
+                var newValue = this.localConfiguration.IgnoreEarlierInvoicesFilter;
+
+                // By default the Table.History should point to an old date, 
+                // but this can be forcefully overridden
+                const string Message = "Overriding table history value from {0}/{1} to {2}/{3} while iterating forward";
+                Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, Message, this.Table.History.Year, this.Table.History.Month, newValue.Year, newValue.Month);
+
+                this.Table.History.SetMonthYear(newValue.Month, newValue.Year);
+            }
+            else
+            {
+                // By default the Table.History should point to the current date, 
+                // but this can be forcefully overridden
+                const string Message = "Overriding table history value from {0}/{1} to {2}/{3} while iterating backwards";
+                Logger.Debug(System.Globalization.CultureInfo.InvariantCulture, Message, this.Table.History.Year, this.Table.History.Month, DateTime.Now.Year, DateTime.Now.Month);
+
+                this.Table.History.SetMonthYear(DateTime.Now.Month, DateTime.Now.Year);
             }
         }
     }

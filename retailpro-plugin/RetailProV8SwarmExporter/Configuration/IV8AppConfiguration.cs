@@ -50,5 +50,10 @@ namespace RetailProV8SwarmExporter.Configuration
         /// Gets the maximum size of the date dictionary in days
         /// </summary>
         int SyncDaysLimit { get; }
+
+        /// <summary>
+        /// Gets a value indicating whether the RDA2Table.History is overriden when opening the table at start
+        /// </summary>
+        bool OverrideTableHistory { get; }
     }
 }

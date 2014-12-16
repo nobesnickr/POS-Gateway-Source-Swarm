@@ -16,8 +16,6 @@
  */
 package com.sonrisa.swarm.retailpro.rest.controller;
 
-import com.sonrisa.swarm.retailpro.rest.controller.InterfaceDescriptionController;
-import com.sonrisa.swarm.common.rest.controller.BaseSwarmController;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,7 +33,7 @@ import com.sonrisa.swarm.retailpro.dao.RpLogConfigurationDao;
  * @author barna
  */
 @Controller
-public class RpLogConfigurationController extends BaseSwarmController {
+public class RpLogConfigurationController extends BaseRetailProController {
     private static final Logger LOGGER = LoggerFactory.getLogger(InterfaceDescriptionController.class);
     
     /**
