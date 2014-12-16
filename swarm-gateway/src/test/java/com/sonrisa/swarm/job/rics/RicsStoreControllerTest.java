@@ -140,6 +140,8 @@ public class RicsStoreControllerTest extends BaseControllerTest {
         RicsAccountEntity account = new RicsAccountEntity();
         account.setUserName("sonrisa");
         account.setToken("88888888");
+        account.setTimeZone("US/Eastern");
+        account.setStoreCode("0001");
         return account;
 
     }

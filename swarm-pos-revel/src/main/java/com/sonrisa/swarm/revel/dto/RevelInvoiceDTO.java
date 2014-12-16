@@ -90,20 +90,8 @@ public class RevelInvoiceDTO extends InvoiceDTO {
      */
     @Override
     public Timestamp getInvoiceTimestamp() {
-        if(StringUtils.isEmpty(createdAtString)){
-            return null;
-        }
-        
-        Date retVal;
-        if(StringUtils.hasLength(this.timezone)){
-            retVal = ISO8061DateTimeConverter.stringToDate(createdAtString, timezone);
-        } else {
-            retVal = ISO8061DateTimeConverter.stringToDate(createdAtString);
-        }
-        
-        return new Timestamp(retVal.getTime());
+        return ISO8061DateTimeConverter.stringToDateSafeTimestamp(createdAtString, this.timezone);
     }
-    
     /**
      * @param orderPath REST URL containing the invoice id
      * @throws RevelResourcePathFormatException 

@@ -84,7 +84,8 @@ public class RicsStoreController {
             RicsAccount realAccount = ricsStoreService.getAccount(
                     account.getUserName(),
                     account.getToken(),
-                    account.getStoreCode());
+                    account.getStoreCode(), 
+                    account.getTimeZone());
             
             LOGGER.debug("Found valid RICS store: {} for userName: {}", realAccount.getStoreName(), account.getUserName());
             
@@ -110,7 +111,8 @@ public class RicsStoreController {
         RicsAccount account = ricsStoreService.getAccount(
         		request.getUserName(),
         		request.getToken(),
-        		request.getStoreCode());
+        		request.getStoreCode(), 
+        		request.getTimeZone());
         
         RicsAccountResponseEntity response = new RicsAccountResponseEntity();
         response.setStoreCode(account.getStoreCode());

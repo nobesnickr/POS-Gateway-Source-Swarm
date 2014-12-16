@@ -16,11 +16,14 @@
  */
 package com.sonrisa.swarm.posintegration.util;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.xml.bind.DatatypeConverter;
+
+import org.springframework.util.StringUtils;
 
 import com.sonrisa.swarm.common.util.DateUtil;
 
@@ -124,6 +127,26 @@ public class ISO8061DateTimeConverter {
     public static Date stringToDate(String source, String timezone){
         Calendar date = DatatypeConverter.parseDate(source);
         return DateUtil.setTimeZoneWithoutConversion(date, timezone).getTime();
+    }
+    
+    /**
+     * Convert String to Date
+     * @param source Source string using inDateformat
+     * @return Returns date using InDateFormatter
+     */
+    public static Timestamp stringToDateSafeTimestamp(String source, String timezone){
+        if(StringUtils.isEmpty(source)){
+            return null;
+        }
+        
+        Date retVal;
+        if(StringUtils.hasLength(timezone)){
+            retVal = ISO8061DateTimeConverter.stringToDate(source, timezone);
+        } else {
+            retVal = ISO8061DateTimeConverter.stringToDate(source);
+        }
+        
+        return new Timestamp(retVal.getTime());
     }
     
     /**

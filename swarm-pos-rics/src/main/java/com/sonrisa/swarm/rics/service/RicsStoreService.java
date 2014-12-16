@@ -34,5 +34,5 @@ public interface RicsStoreService {
     /**
      * Create new RICS account using its credentials
      */
-    RicsAccount getAccount(String userName, String token, String storeCode) throws RicsStoreServiceException;
+    RicsAccount getAccount(String userName, String token, String storeCode, String timeZone) throws RicsStoreServiceException;
 }

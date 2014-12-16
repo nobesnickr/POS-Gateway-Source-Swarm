@@ -22,7 +22,6 @@ package com.sonrisa.swarm.rics.constants;
  * which can be used to read their data
  */
 public enum RicsUri {
-	LOGIN("/Authenticate/Login", null),
 	INVOICES("/POS/GetPOSTransaction", "Sales"),
 	CUSTOMERS("/Customer/GetCustomerDetails", "CustomerDetails");
 

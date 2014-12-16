@@ -19,6 +19,9 @@ package com.sonrisa.swarm.rics.dto;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
+
+import org.springframework.util.StringUtils;
 
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
@@ -33,11 +36,14 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 	private Timestamp ticketModifiedOn;
 
 	/** Date/Time invoice was created in POS system - local time */
-	private Timestamp ticketDateTime;
+	private String ticketDateTime;
 
 	private BigDecimal total;
 
 	private Long customerId;
+	
+    /** Timezone of the establishment this invoice represents */
+    private String timezone;
 
 	@ExternalField(value = "TicketNumber", required = true)
 	public void setTicketNumber(long ticketNumber) {
@@ -51,7 +57,7 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 
 	@ExternalField(value = "TicketDateTime")
 	public void setTicketDateTime(String ticketDateTime) {
-		this.ticketDateTime = new Timestamp(ISO8061DateTimeConverter.stringToDate(ticketDateTime).getTime());
+		this.ticketDateTime = ticketDateTime;
 	}
 
 	@ExternalField(value = "AccountNumber")
@@ -90,7 +96,10 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 
 	@Override
 	public Timestamp getInvoiceTimestamp() {
-		return ticketDateTime;
+	    return ISO8061DateTimeConverter.stringToDateSafeTimestamp(this.ticketDateTime, this.timezone);
 	}
 
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
 }

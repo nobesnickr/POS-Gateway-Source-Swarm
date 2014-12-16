@@ -79,6 +79,8 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
         account = new RicsAccountEntity();
         account.setUserName("sonrisa");
         account.setToken("88888888");
+        account.setStoreCode("12345");
+        account.setTimeZone("US/Mountain");
 	    
 		/**
 		 * REQUEST:

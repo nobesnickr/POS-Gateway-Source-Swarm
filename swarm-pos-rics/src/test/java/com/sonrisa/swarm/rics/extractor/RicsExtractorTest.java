@@ -18,12 +18,17 @@
 package com.sonrisa.swarm.rics.extractor;
 
 import static org.junit.Assert.assertEquals;
+
 import java.math.BigDecimal;
+import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.TimeZone;
 
 import org.junit.Before;
 import org.junit.Test;
 
+import com.fasterxml.jackson.databind.JsonNode;
+import com.sonrisa.swarm.mock.revel.MockRevelData;
 import com.sonrisa.swarm.mock.rics.MockRicsData;
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
@@ -48,7 +53,10 @@ public class RicsExtractorTest extends BaseExtractorTest<RicsAccount> {
 		RicsApiReader reader = new RicsApiReader(api);
 		reader.setPageSize(50);
 
-		account = new RicsAccount(1L);
+		account = new RicsAccount();
+		
+		// Mock JSON contain items for a store in Kansas
+		account.setTimeZone("US/Central");
 	}
 
 	/**
@@ -85,4 +93,49 @@ public class RicsExtractorTest extends BaseExtractorTest<RicsAccount> {
 		}
 		assertEquals(1734.07, sum.doubleValue(), 0.001);
 	}
+	
+	/**
+     * Test case:
+     *  Extractor is launched
+     *  
+     * Expected:
+     *  Fields of the InvoiceDTO match the expected values
+     *  
+     * Note:
+     *  Test test was inspired by {@link RevelExtractorTest#testCommonInvoiceFields}
+     */
+    @Test
+    public void testCommonInvoiceFields() throws ExternalExtractorException {
+
+        // Act
+        extractor.fetchData(account, dataStore);
+        
+        // Assert
+        List<InvoiceDTO> invoices = getDtoFromCaptor(account, invoiceCaptor, InvoiceDTO.class);
+        
+        InvoiceDTO invoice = invoices.get(0);
+        JsonNode batchJson = firstMockJson(MockRicsData.MOCK_INVOICES_ONE_PAGE_RESPONSE, "Sales");
+        JsonNode invoiceJson = batchJson.get("SaleHeaders").get(0);
+
+        assertEquals(invoiceJson.get("TicketNumber").asText(), Long.toString(invoice.getRemoteId()));
+        assertEquals(invoiceJson.get("TicketNumber").asText(), invoice.getInvoiceNumber());
+        assertEquals(invoiceJson.get("Customer").get("AccountNumber").asText(), Long.toString(invoice.getCustomerId()));
+        
+        SimpleDateFormat centralDateformat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+        centralDateformat.setTimeZone(TimeZone.getTimeZone(account.getTimeZone()));
+        
+        final String expected = invoiceJson.get("TicketDateTime").asText();
+        final String actual = centralDateformat.format(invoice.getInvoiceTimestamp());
+        
+        // For some reason there is a numerical error on the millisecond level for
+        // the actual value, so we remove that part from the assertion
+        assertEquals("Created date should be modified, expected: " + expected,
+                expected.substring(0, expected.length() - 3),
+                actual.substring(0, actual.length() - 3));
+        
+        assertEquals("Updated date should have remote value",
+                invoiceJson.get("TicketModifiedOn").asText(), 
+                dateToAssertionString(invoice.getLastModified(), "yyyy-MM-dd'T'HH:mm:ss.SSS"));
+    }
 }
+
