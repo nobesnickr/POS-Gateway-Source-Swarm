@@ -115,3 +115,5 @@ bin
 .settings
 /swarm-pos-kounta/.classpath
 /swarm-admin/.classpath
+/retailpro-plugin/*/obj/*/
+/retailpro-plugin/RetailProSwarmExporter.Test/*

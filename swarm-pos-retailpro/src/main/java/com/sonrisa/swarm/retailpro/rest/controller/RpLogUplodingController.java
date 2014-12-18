@@ -29,7 +29,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.sonrisa.swarm.common.rest.controller.BaseSwarmController;
 import com.sonrisa.swarm.retailpro.service.RpLogMonitoringService;
 import com.sonrisa.swarm.retailpro.service.RpLogUploadingService;
 import com.sonrisa.swarm.retailpro.util.ControllerUtil;
@@ -39,7 +38,7 @@ import com.sonrisa.swarm.retailpro.util.ControllerUtil;
  * Controller where Retail Pro sends its log messages
  */
 @Controller
-public class RpLogUplodingController extends BaseSwarmController {
+public class RpLogUplodingController extends BaseRetailProController {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(RpLogUplodingController.class);
 

@@ -16,7 +16,11 @@
  */
 package com.sonrisa.swarm.retailpro.rest.controller;
 
-import com.sonrisa.swarm.common.rest.controller.BaseSwarmController;
+import java.io.IOException;
+import java.io.InputStream;
+import java.util.Properties;
+
+import org.apache.commons.io.IOUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
@@ -25,10 +29,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.sonrisa.swarm.retailpro.rest.model.InterfaceDescription;
-import java.io.IOException;
-import java.io.InputStream;
-import java.util.Properties;
-import org.apache.commons.io.IOUtils;
 
 
 /**
@@ -38,7 +38,7 @@ import org.apache.commons.io.IOUtils;
  * @author joe
  */
 @Controller
-public class InterfaceDescriptionController extends BaseSwarmController{
+public class InterfaceDescriptionController extends BaseRetailProController {
     
     private static final Logger LOGGER = LoggerFactory.getLogger(InterfaceDescriptionController.class);
     

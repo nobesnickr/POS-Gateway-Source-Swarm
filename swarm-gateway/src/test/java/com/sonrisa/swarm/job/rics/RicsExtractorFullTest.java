@@ -40,6 +40,7 @@ import com.sonrisa.swarm.job.ExtractorLauncherWriter;
 import com.sonrisa.swarm.legacy.dao.StoreDao;
 import com.sonrisa.swarm.mock.MockDataUtil;
 import com.sonrisa.swarm.mock.rics.MockRicsData;
+import com.sonrisa.swarm.model.legacy.InvoiceEntity;
 import com.sonrisa.swarm.model.legacy.StoreEntity;
 import com.sonrisa.swarm.rics.constants.RicsUri;
 
@@ -64,6 +65,7 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
 	@Autowired
 	@Qualifier("ricsExtractorLauncherTest")
 	private JobLauncherTestUtils ricsExtratorJobUtil;
+	
 	
 	/**
 	 * Account entity sent to the registration REST service
@@ -136,6 +138,12 @@ public class RicsExtractorFullTest extends BaseExtractionIntegrationTest {
 		// assert the legacy
 		assertNonDummyLegacyCount(MockRicsData.getLegacyExtractionDescriptor());
 		assertStagingIsEmpty();
+		
+		// assert that all invoices are marked "completed"
+		List<InvoiceEntity> invoices = invoiceDao.findAll();
+		for(InvoiceEntity invoice : invoices){
+		    assertEquals("Completed not matching for: " + invoice.toString(), Boolean.TRUE,  invoice.getCompleted());
+		}
 	}
 
 	/**

@@ -75,7 +75,7 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 
 	@Override
 	public String getInvoiceNumber() {
-		return null;
+		return ticketNumber != null ? ticketNumber.toString() : null;
 	}
 
 	@Override

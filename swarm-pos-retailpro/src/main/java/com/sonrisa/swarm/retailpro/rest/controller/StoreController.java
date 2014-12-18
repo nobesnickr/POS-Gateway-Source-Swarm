@@ -16,10 +16,8 @@
  */
 package com.sonrisa.swarm.retailpro.rest.controller;
 
-import com.sonrisa.swarm.common.rest.controller.BaseSwarmController;
-import com.sonrisa.swarm.retailpro.rest.model.JsonStore;
-import com.sonrisa.swarm.retailpro.service.RpStoreService;
 import java.util.List;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,6 +30,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sonrisa.swarm.retailpro.rest.model.JsonStore;
+import com.sonrisa.swarm.retailpro.service.RpStoreService;
+
 /**
  * MVC controller responsible for handling the requests related to the RetailPro stores.
  *
@@ -39,7 +40,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(StoreController.URI)
-public class StoreController extends BaseSwarmController {
+public class StoreController extends BaseRetailProController {
     
     /** The URI of this controller. */
     public static final String URI = "/items/store";

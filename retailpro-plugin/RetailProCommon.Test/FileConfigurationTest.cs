@@ -9,6 +9,7 @@ namespace RetailProCommon.Test
 {
     using System;
     using System.IO;
+    using System.Linq;
     using System.Threading.Tasks;
     using Microsoft.VisualStudio.TestTools.UnitTesting;
     using Moq;
@@ -128,6 +129,36 @@ namespace RetailProCommon.Test
 
         /// <summary>
         /// Tested method:
+        ///   FileConfiguration.ctor
+        /// Tested class:
+        ///   FileConfiguration
+        /// Initial data, state:
+        ///   Lajolla's SettingsV8.xml is placed in the AppData folder
+        /// Description:
+        ///   FileConfiguration is read
+        /// Expected behavior, state:
+        ///   Date dictionary is filled with appropriate values
+        /// </summary>
+        [TestMethod]
+        public void FileConfiguration_Loading_With_Production_Data()
+        {
+            // Arrange
+            var swarmServiceMock = new Mock<ISwarmService>();
+
+            // Copy SettingsV8.xml to app data folder
+            var destination = Path.Combine(GetConfigurationDirPath(), appConfigMock.Object.ConfigFileName);
+            File.Copy(@"..\..\TestData\V8-1.7.1.0-Lajolla\Settings.xml", destination);
+
+            // Act
+            var fileConfiguration = new FileConfiguration(appConfigMock.Object, swarmServiceMock.Object);
+
+            #region Assert
+            Assert.AreEqual(Convert.ToDateTime("2014-10-21T21:05:30"), fileConfiguration.LastModifiedInvoiceDate.GetDate(0, "GVM"));
+            #endregion
+        }
+
+        /// <summary>
+        /// Tested method:
         ///   LoadRemoteConfiguration
         /// Tested class:
         ///   FileConfiguration
@@ -210,7 +241,7 @@ namespace RetailProCommon.Test
             #endregion
 
             // Act                        
-            target.LoadRemoteConfiguration();
+            target.LoadRemoteConfiguration().Wait();
 
             #region Assert
             Assert.AreNotEqual(remoteConfig.LastInvoice, target.LastModifiedInvoiceDate);
@@ -246,16 +277,16 @@ namespace RetailProCommon.Test
                 .Returns(Task.Factory.StartNew<RemoteConfiguration>(() => remoteConfig));
 
             var target = new FileConfiguration(appConfigMock.Object, swarmServiceMock.Object);
-            var lastInvoice = target.LastModifiedInvoiceDate;
+            var lastInvoiceDefault = target.LastModifiedInvoiceDate.DefaultDate;
             var lastStore = target.LastModifiedStoreDate;
             var lastVersion = target.LastModifiedVersionDate;
             #endregion
 
             // Act                        
-            target.LoadRemoteConfiguration();
+            target.LoadRemoteConfiguration().Wait();
 
             #region Assert
-            Assert.AreEqual(lastInvoice.DefaultDate, target.LastModifiedInvoiceDate.DefaultDate);
+            Assert.AreEqual(lastInvoiceDefault, target.LastModifiedInvoiceDate.DefaultDate);
             Assert.AreEqual(lastStore, target.LastModifiedStoreDate);
             Assert.AreEqual(lastVersion, target.LastModifiedVersionDate);
             #endregion
@@ -271,10 +302,10 @@ namespace RetailProCommon.Test
         /// Description:
         ///   Tests overwriting file configuration with remote values if the version is greater.
         /// Expected behavior, state:
-        ///   Future remote values will NOT be used.
+        ///   Future remote values will BE used.
         /// </summary>
         [TestMethod]
-        public void LoadRemoteConfigurations_Future_Dates_Not_Used_Test()
+        public void LoadRemoteConfigurations_Future_Dates_Are_Used_Test()
         {
             #region Arrange
             var swarmServiceMock = new Mock<ISwarmService>();
@@ -291,18 +322,18 @@ namespace RetailProCommon.Test
             swarmServiceMock.Setup(svc => svc.GetAsync<RemoteConfiguration>(It.IsAny<string>()))
                 .Returns(Task.Factory.StartNew<RemoteConfiguration>(() => remoteConfig));
             
-            var lastInvoice = target.LastModifiedInvoiceDate;
+            var lastInvoiceDefault = target.LastModifiedInvoiceDate.DefaultDate;
             var lastStore = target.LastModifiedStoreDate;
             var lastVersion = target.LastModifiedVersionDate;
             #endregion
 
             // Act                        
-            target.LoadRemoteConfiguration();
+            target.LoadRemoteConfiguration().Wait();
 
             #region Assert
-            Assert.AreEqual(lastInvoice.DefaultDate, target.LastModifiedInvoiceDate.DefaultDate);
-            Assert.AreEqual(lastStore, target.LastModifiedStoreDate);
-            Assert.AreEqual(lastVersion, target.LastModifiedVersionDate);
+            Assert.AreNotEqual(lastInvoiceDefault, target.LastModifiedInvoiceDate.DefaultDate);
+            Assert.AreNotEqual(lastStore, target.LastModifiedStoreDate);
+            Assert.AreNotEqual(lastVersion, target.LastModifiedVersionDate);
             #endregion
         }
 
