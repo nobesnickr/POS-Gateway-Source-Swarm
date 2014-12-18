@@ -189,8 +189,8 @@ public class InvoiceLineEntity extends BaseLegacyEntity {
 
     @Column(name = "quantity")
     @NotNull
-    @Min(-32767)
-    @Max(32767) // smallint(5)
+    @Min(-2147483648)
+    @Max(2147483647) // int(10)
     public Integer getQuantity() {
         return quantity;
     }

@@ -1,7 +1,6 @@
 package com.sonrisa.swarm.posintegration.dto;
 
 import java.sql.Timestamp;
-import java.util.Calendar;
 
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableAttr;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableType;
@@ -24,9 +23,5 @@ public abstract class RegisterDTO implements DWTransferable {
     
 	/** Timestamp of the outlet entry in the remote system */
     @StageInsertableAttr(dbColumnName = "last_modified", usedAsTimestamp = true)
-	public Timestamp getLastModified(){
-    	return new Timestamp(0);
-	}
-	
-	
+	public abstract Timestamp getLastModified();
 }

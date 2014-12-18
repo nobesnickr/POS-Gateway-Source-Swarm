@@ -77,11 +77,6 @@ public class VendAPITest {
      * Subject being tested
      */
     private VendAccount account;
-
-    /**
-     * OAuth redirect URI
-     */
-    private static final String REDIRECT_URI = "http://swarm.sonrisa/";
     
     
     /**
@@ -302,6 +297,5 @@ public class VendAPITest {
         
         target.setOauthClientId(clientId);
         target.setOauthClientSecret(clientSecret);
-        target.setOauthRedirectUri(REDIRECT_URI);
     }
 }

@@ -42,7 +42,7 @@
             relativeToChangelogFile="false" />
     </changeSet>
 
-    <changeSet author="generated" id="20141015_1200">
+    <changeSet author="generated" id="20131203_1200">
         <preConditions onFail="MARK_RAN">
             <not>
                 <tableExists tableName="staging_invoices" />
@@ -218,14 +218,7 @@
         </createIndex>
     </changeSet>
     
-    <changeSet id="20131205_1314" author="joe">
-    	<preConditions onFail="MARK_RAN">
-            <dbms type="MYSQL" />
-            <not>
-                <indexExists schemaName="pos_production" indexName="RP_STORE_IDENTIFIERS"/>
-            </not>
-        </preConditions>
- 
+    <changeSet id="20131205_1313" author="joe">
         <comment>Add index to the stores_rp table to help the execution of the query that returns the staging 
             invoices for staging loader job.</comment>
         <createIndex tableName="stores_rp" indexName="RP_STORE_IDENTIFIERS">
@@ -235,12 +228,7 @@
         </createIndex>
     </changeSet>
     
-    <changeSet id="20130930_1224" author="barna">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists schemaName="pos_production" tableName="staging_manufacturers"/>
-            </not>
-        </preConditions>
+    <changeSet id="20130930_1223" author="barna">
         <comment> Creation of STAGING_MANUFACTURERS, a table that serves as the staging table for manufacturers.</comment>
         <createTable tableName="staging_manufacturers">
             <column name="id" type="BIGINT(20)" autoIncrement="true">
@@ -257,12 +245,7 @@
     </changeSet>
     
     
-    <changeSet id="20140103_1817" author="barna">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="completed"/>
-            </not>
-        </preConditions>
+    <changeSet id="20140103_1816" author="barna">
     	<comment>Fill in the completed field for invoices received from Merchant OS</comment>
     	<addColumn tableName="staging_invoices">
         	<column name="completed" type="VARCHAR(31)" defaultValueComputed="NULL"/>
@@ -270,12 +253,7 @@
     </changeSet>
     
     
-    <changeSet id="20140110_1005" author="barna">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="stores_rp" columnName="pos_software"/>
-            </not>
-        </preConditions>
+    <changeSet id="20140110_1004" author="barna">
     	<comment>Retail Pro V9 integration</comment>
     	<addColumn tableName="stores_rp">
         	<column name="pos_software" type="VARCHAR(255)" defaultValueComputed="NULL"/>
@@ -283,11 +261,6 @@
     </changeSet>
     
     <changeSet id="20140112_1534" author="barna">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="stores_rp" columnName="pos_timezone"/>
-            </not>
-        </preConditions>
     	<comment>Stores should be able to upload locale information</comment>
     	<addColumn tableName="stores_rp">
         	<column name="pos_timezone" type="VARCHAR(255)" defaultValueComputed="NULL"/>
@@ -296,11 +269,6 @@
     </changeSet>
     
     <changeSet id="20140127_11112" author="barna">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="so_number"/>
-            </not>
-        </preConditions>
     	<comment>Staging invoices should have additional information from Retail Pro to help filter out invalid invoices.</comment>
     	<addColumn tableName="staging_invoices">
     		<column name="so_number" type="VARCHAR(100)" defaultValueComputed="NULL"/>
@@ -311,11 +279,6 @@
     </changeSet>
     
    <changeSet id="20140314_1654" author="barna">
-   		<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="last_modified"/>
-            </not>
-        </preConditions>
         <comment>Adds last modified column to staging_invoices for Shopify fix.</comment>
          <addColumn tableName="staging_invoices">
         	<column name="last_modified" type="varchar(255)"/>
@@ -323,11 +286,6 @@
     </changeSet>
     
     <changeSet id="20140521_1326" author="barna">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="lines_processed"/>
-            </not>
-        </preConditions>
     	<comment>Fill in the linesProcessed field for Kounta invoices</comment>
     	<addColumn tableName="staging_invoices">
         	<column name="lines_processed" type="VARCHAR(31)" defaultValueComputed="NULL"/>
@@ -335,11 +293,6 @@
     </changeSet>
     
    <changeSet id="20140428_1512" author="barna">
-   		<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="stores_rp" columnName="created"/>
-            </not>
-        </preConditions>
     	<comment>Adding created column to the stores_rp table makes the administrative module simpler</comment>
     	<addColumn tableName="stores_rp">
             <column defaultValueComputed="CURRENT_TIMESTAMP"
@@ -351,11 +304,6 @@
     
     
     <changeSet id="20140708_1507" author="barna">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="stores_rp" columnName="state"/>
-            </not>
-        </preConditions>
     	<comment>Retail Pro stores can be ignored the status page</comment>
     	<addColumn tableName="stores_rp">
         	<column name="state" type="VARCHAR(255)" defaultValueComputed="'NORMAL'"/>
@@ -366,11 +314,6 @@
     </changeSet>
     
     <changeSet id="20141112_1127" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists schemaName="pos_production" tableName="staging_outlets"/>
-            </not>
-        </preConditions>
         <comment> Creation of STAGING_OUTLETS, a table that serves as the staging table for outlets.</comment>
         <createTable tableName="staging_outlets">
             <column name="id" type="BIGINT(20)" autoIncrement="true">
@@ -396,45 +339,8 @@
             <column name="last_modified" type="TIMESTAMP"/>
         </createTable>
     </changeSet>
-
-	<changeSet id="20141119_1049" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists schemaName="pos_production" tableName="registers"/>
-            </not>
-        </preConditions>
-        <comment> Creation of registers table that serves as the storage table for registers.</comment>
-        <createTable tableName="registers">
-            <column name="register_id" type="BIGINT(20)" autoIncrement="true">
-                <constraints nullable="false" primaryKey="true" />
-            </column>
-            <column name="store_id" type="BIGINT(20)" />
-            <column name="ls_register_id" type="BIGINT(20)" />
-            <column name="outlet_id" type="BIGINT(20)" />
-            <column name="ls_outlet_id" type="BIGINT(20)" />
-            <column name="name" type="varchar(50)" />
-            <column name="uuid" type="varchar(36)" />
-        </createTable>
-    </changeSet>
-    
-    <changeSet id="20141119_1050" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="registers" columnName="last_modified"/>
-            </not>
-        </preConditions>
-    	<comment>Adding column for vend migration</comment>
-    	<addColumn tableName="registers">
-        	<column name="last_modified" type="TIMESTAMP"/>
-    	</addColumn>
-    </changeSet>
     
     <changeSet id="20141119_1159" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists schemaName="pos_production" tableName="staging_registers"/>
-            </not>
-        </preConditions>
         <comment> Creation of staging_registers, a table that serves as the staging table for registers.</comment>
         <createTable tableName="staging_registers">
             <column name="id" type="BIGINT(20)" autoIncrement="true">
@@ -453,11 +359,6 @@
     </changeSet>
     
     <changeSet id="20141121_1157" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_customers" columnName="postcode"/>
-            </not>
-        </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="staging_customers">
         	<column name="postcode" type="VARCHAR(15)" defaultValueComputed="NULL"/>
@@ -465,11 +366,6 @@
     </changeSet>
     
     <changeSet id="20141124_0143" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="ls_outlet_id"/>
-            </not>
-        </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="staging_invoices">
         	<column name="ls_outlet_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
@@ -477,11 +373,6 @@
     </changeSet>
     
     <changeSet id="20141124_0145" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="ls_register_id"/>
-            </not>
-        </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="staging_invoices">
         	<column name="ls_register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
@@ -489,11 +380,6 @@
     </changeSet>
     
     <changeSet id="20141124_0150" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="outlet_id"/>
-            </not>
-        </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="staging_invoices">
         	<column name="outlet_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
@@ -501,11 +387,6 @@
     </changeSet>
     
     <changeSet id="20141124_0155" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoices" columnName="register_id"/>
-            </not>
-        </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="staging_invoices">
         	<column name="register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
@@ -513,11 +394,6 @@
     </changeSet>
     
     <changeSet id="20141124_1428" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoice_lines" columnName="description"/>
-            </not>
-        </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="staging_invoice_lines">
         	<column name="description" type="VARCHAR(255)"/>
@@ -525,11 +401,6 @@
     </changeSet>
     
     <changeSet id="20141124_1429" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <columnExists schemaName="pos_production" tableName="staging_invoice_lines" columnName="ts"/>
-            </not>
-        </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="staging_invoice_lines">
         	<column name="ts" type="TIMESTAMP"/>

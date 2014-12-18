@@ -171,7 +171,6 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
         DWFilter filter = dataStore.getFilter(store, dataStoreClass);
 
         List<W> itemList = new ArrayList<W>();
-        logger().info("The filter timestamp is: "+filter.getTimestamp());
         Iterable<ExternalDTO> data = remoteRequest(dataStoreClass, store, filter);
  
         for(ExternalDTO node : data){
@@ -187,12 +186,11 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
                     itemList.clear();
                 }
             } catch (ExternalExtractorException extractorException){
-                logger().warn("Error occured while trying to extract data from " + node, extractorException);
+                logger().warn("Error occured while trying to extract data from {}", node, extractorException);
             }
         }
         
         if(!itemList.isEmpty()){
-        	System.out.println("itemList size: "+ itemList.size());
             dataStore.save(store, itemList, dataStoreClass);
         }
     }

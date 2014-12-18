@@ -391,9 +391,7 @@ public class ExternalDTOTransformerTest {
         assertEquals(shortValue, dto.getShortProperty());
         assertEquals(stringValue, dto.getStringProperty());
         assertEquals(bigDecimalValue, dto.getBigDecimalProperty());
-        assertEquals(embededString, dto.getEmbededStringProperty());
-        assertEquals(1399083552793L, dto.getIso8061Property().getTime());
-        			 
+        assertEquals(embededString, dto.getEmbededStringProperty());        			 
         assertEquals(iterableCount, dto.getIterableProperty().size());
         assertEquals(embededString, dto.getIterableProperty().get(0));
     }

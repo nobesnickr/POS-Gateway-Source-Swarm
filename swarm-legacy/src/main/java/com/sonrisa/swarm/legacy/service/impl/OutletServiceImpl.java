@@ -44,10 +44,10 @@ public class OutletServiceImpl extends GenericServiceImpl<Long, OutletEntity, Ou
 
         if (outlet != null) {
             if (outlet.getId() != null) {
-            	LOGGER.info("Doing merge for outlet with ID: "+ outlet.getId());
+            	LOGGER.debug("Doing merge for outlet with ID: "+ outlet.getId());
                 dao.merge(outlet);
             } else {
-            	LOGGER.info("Doing persist for outlet with ID: "+ outlet.getId());
+            	LOGGER.debug("Doing persist for outlet with ID: "+ outlet.getId());
                 dao.persist(outlet);  
             }        
         }

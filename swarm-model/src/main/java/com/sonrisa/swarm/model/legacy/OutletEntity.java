@@ -16,6 +16,9 @@ import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.validation.constraints.Size;
 
+/**
+ * Outlet entity. It represents a record from the "outlets" table in the legacy DB.
+ */
 @Entity
 @Table(name = OutletEntity.TABLE_NAME)
 public class OutletEntity extends BaseLegacyEntity {
@@ -220,128 +223,6 @@ public class OutletEntity extends BaseLegacyEntity {
 
 	public static long getSerialversionuid() {
 		return serialVersionUID;
-	}
-
-	@Override
-	public int hashCode() {
-		final int prime = 31;
-		int result = super.hashCode();
-		result = prime * result
-				+ ((address1 == null) ? 0 : address1.hashCode());
-		result = prime * result
-				+ ((address2 == null) ? 0 : address2.hashCode());
-		result = prime * result + ((city == null) ? 0 : city.hashCode());
-		result = prime * result + ((country == null) ? 0 : country.hashCode());
-		result = prime * result + ((email == null) ? 0 : email.hashCode());
-		result = prime * result + ((fax == null) ? 0 : fax.hashCode());
-		result = prime * result
-				+ ((firstname == null) ? 0 : firstname.hashCode());
-		result = prime * result + ((id == null) ? 0 : id.hashCode());
-		result = prime * result
-				+ ((lastModified == null) ? 0 : lastModified.hashCode());
-		result = prime * result
-				+ ((lastname == null) ? 0 : lastname.hashCode());
-		result = prime * result + ((name == null) ? 0 : name.hashCode());
-		result = prime * result
-				+ ((outletId == null) ? 0 : outletId.hashCode());
-		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
-		result = prime * result
-				+ ((postcode == null) ? 0 : postcode.hashCode());
-		result = prime * result + ((state == null) ? 0 : state.hashCode());
-		result = prime * result + ((website == null) ? 0 : website.hashCode());
-		return result;
-	}
-
-	@Override
-	public boolean equals(Object obj) {
-		if (this == obj)
-			return true;
-		if (!super.equals(obj))
-			return false;
-		if (getClass() != obj.getClass())
-			return false;
-		OutletEntity other = (OutletEntity) obj;
-		if (address1 == null) {
-			if (other.address1 != null)
-				return false;
-		} else if (!address1.equals(other.address1))
-			return false;
-		if (address2 == null) {
-			if (other.address2 != null)
-				return false;
-		} else if (!address2.equals(other.address2))
-			return false;
-		if (city == null) {
-			if (other.city != null)
-				return false;
-		} else if (!city.equals(other.city))
-			return false;
-		if (country == null) {
-			if (other.country != null)
-				return false;
-		} else if (!country.equals(other.country))
-			return false;
-		if (email == null) {
-			if (other.email != null)
-				return false;
-		} else if (!email.equals(other.email))
-			return false;
-		if (fax == null) {
-			if (other.fax != null)
-				return false;
-		} else if (!fax.equals(other.fax))
-			return false;
-		if (firstname == null) {
-			if (other.firstname != null)
-				return false;
-		} else if (!firstname.equals(other.firstname))
-			return false;
-		if (id == null) {
-			if (other.id != null)
-				return false;
-		} else if (!id.equals(other.id))
-			return false;
-		if (lastModified == null) {
-			if (other.lastModified != null)
-				return false;
-		} else if (!lastModified.equals(other.lastModified))
-			return false;
-		if (lastname == null) {
-			if (other.lastname != null)
-				return false;
-		} else if (!lastname.equals(other.lastname))
-			return false;
-		if (name == null) {
-			if (other.name != null)
-				return false;
-		} else if (!name.equals(other.name))
-			return false;
-		if (outletId == null) {
-			if (other.outletId != null)
-				return false;
-		} else if (!outletId.equals(other.outletId))
-			return false;
-		if (phone == null) {
-			if (other.phone != null)
-				return false;
-		} else if (!phone.equals(other.phone))
-			return false;
-		if (postcode == null) {
-			if (other.postcode != null)
-				return false;
-		} else if (!postcode.equals(other.postcode))
-			return false;
-		if (state == null) {
-			if (other.state != null)
-				return false;
-		} else if (!state.equals(other.state))
-			return false;
-		if (website == null) {
-			if (other.website != null)
-				return false;
-		} else if (!website.equals(other.website))
-			return false;
-		return true;
 	}
 
 	@Override

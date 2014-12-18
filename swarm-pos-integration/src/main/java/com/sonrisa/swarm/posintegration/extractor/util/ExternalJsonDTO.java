@@ -230,7 +230,4 @@ public class ExternalJsonDTO implements ExternalDTO {
         return node.toString();
     }
     
-    public void addParameter(String paramKey, String paramValue){
-    	((ObjectNode) node).put(paramKey, paramValue);
-    }
 }

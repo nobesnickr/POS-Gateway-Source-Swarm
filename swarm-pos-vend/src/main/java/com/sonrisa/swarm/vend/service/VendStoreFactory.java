@@ -30,10 +30,7 @@ public class VendStoreFactory implements SwarmStoreFactory<VendAccount> {
      */
     @Override
     public VendAccount getAccount(StoreEntity store) {
-        VendAccount account = new VendAccount(store.getId());
-        
-        LOGGER.info("Store ID: "+store.getId().toString());
-        
+        VendAccount account = new VendAccount(store.getId());        
         
         final String userName = aesUtility.aesDecrypt(store.getUsername()); 
         if(StringUtils.hasLength(userName)){

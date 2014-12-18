@@ -17,9 +17,6 @@
 
 package com.sonrisa.swarm.legacy.util;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.sonrisa.swarm.model.legacy.InvoiceLineEntity;
 import com.sonrisa.swarm.model.legacy.ProductEntity;
 
@@ -30,8 +27,6 @@ import com.sonrisa.swarm.model.legacy.ProductEntity;
  */
 public class InvoiceLineEntityUtil {
 
-	private static final Logger LOGGER = LoggerFactory.getLogger(InvoiceLineEntityUtil.class);
-	
     public static void copyProductToInvoiceLine(InvoiceLineEntity invoiceLine, final ProductEntity source){
         
         if(invoiceLine == null){
@@ -39,7 +34,6 @@ public class InvoiceLineEntityUtil {
         }
         
         if(source == null){
-        	LOGGER.warn("There is no product to copy into the invioce line.");
             // Do nothing, no source means nothing to copy
             return;
         }

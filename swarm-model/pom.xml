@@ -2,10 +2,9 @@
 	<parent>
 		<groupId>com.sonrisa.swarm</groupId>
 		<artifactId>swarm-parent</artifactId>
-		<version>14.09.15-2</version>
+		<version>15.00.00</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
-	<groupId>com.sonrisa.swarm</groupId>
 	<artifactId>swarm-model</artifactId>
 	<packaging>jar</packaging>
 	<name>Swarm Model</name>
@@ -24,7 +23,6 @@
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
-			<version>1.7.7</version>
 		</dependency>
 		<dependency>
 		    <groupId>org.hibernate.javax.persistence</groupId>

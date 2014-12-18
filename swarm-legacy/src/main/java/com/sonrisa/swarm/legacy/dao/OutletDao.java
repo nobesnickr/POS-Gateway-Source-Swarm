@@ -18,10 +18,6 @@ public class OutletDao extends BaseJpaDao<Long, OutletEntity>{
 	
     /**
      * Retrieves an outlet by its store and foreign ID.
-     * 
-     * @param store
-     * @param foreignId
-     * @return 
      */
     public OutletEntity findByStoreAndForeignId(final Long storeId, final Long foreignId){
         SimpleFilter<OutletEntity> filter = new SimpleFilter<OutletEntity>(OutletEntity.class, 

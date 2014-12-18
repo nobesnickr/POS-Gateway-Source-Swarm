@@ -15,6 +15,9 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 
+/**
+ * Register Entity. It represents a record from the "registers" table in the legacy DB.
+ */
 @Entity
 @Table(name = RegisterEntity.TABLE_NAME)
 public class RegisterEntity  extends BaseLegacyEntity {
@@ -103,5 +106,12 @@ public class RegisterEntity  extends BaseLegacyEntity {
 
 	public void setOutlet(OutletEntity outlet) {
 		this.outlet = outlet;
+	}
+
+	@Override
+	public String toString() {
+		return "RegisterEntity [id=" + id + ", registerId=" + registerId
+				+ ", outletId=" + outletId + ", name=" + name + ", uuid="
+				+ uuid + ", outlet=" + outlet + "]";
 	}
 }

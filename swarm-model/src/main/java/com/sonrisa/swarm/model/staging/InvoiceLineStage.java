@@ -26,9 +26,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableAttr;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableType;
 import com.sonrisa.swarm.model.staging.retailpro.RetailProAttr;
@@ -42,7 +39,6 @@ import com.sonrisa.swarm.model.staging.retailpro.RetailProAttr;
 @Table(name = "staging_invoice_lines")
 @StageInsertableType(dbTableName = "invoice_lines")
 public class InvoiceLineStage extends BaseStageEntity {
-	private static final Logger LOGGER = LoggerFactory.getLogger(InvoiceLineStage.class);
     private static final long serialVersionUID = -5078889627224799866L;
 
     private Long id;
@@ -113,7 +109,6 @@ public class InvoiceLineStage extends BaseStageEntity {
     }
 
     public void setId(Long id) {
-    	LOGGER.info("Staging invoice line id:"+id);
         this.id = id;
     }
 

@@ -17,11 +17,6 @@
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
 	<changeSet id="20141112_1121" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-            <not>
-                <tableExists schemaName="pos_production" tableName="outlets"/>
-            </not>
-        </preConditions>
         <comment> Creation of OUTLETS, a table that serves to store outlets.</comment>
         <createTable tableName="outlets">
             <column name="outlet_id" type="BIGINT(20)" autoIncrement="true">
@@ -410,7 +405,7 @@
             <column name="api_id" />
         </createIndex>
     </changeSet>
-    <!--  
+    
     <changeSet id="20141015_1008" author="joe">
         <preConditions onFail="MARK_RAN">
             <not>
@@ -432,7 +427,7 @@
                 END;
         </sql>
     </changeSet>
--->
+
 
     <changeSet id="20141121_1208" author="carlos">
     	<preConditions onFail="MARK_RAN">
@@ -594,6 +589,13 @@
     	</addColumn>
     </changeSet>
     
+    <changeSet id="20140320_1334" author="barna">
+    	<comment>Retail Pro customer ids are 64 bit integeres</comment>
+        <sql>
+         	ALTER TABLE invoices MODIFY COLUMN customer_id BIGINT(64); 
+        </sql>
+    </changeSet>
+    
 	<changeSet id="20140516_1443" author="barna">
         <preConditions onFail="MARK_RAN">
             <sqlCheck expectedResult="0">select count(*) from apis where name LIKE 'kounta'</sqlCheck>
@@ -637,7 +639,7 @@
         </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="invoices">
-        	<column name="ls_outlet_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+        	<column name="ls_outlet_id" type="BIGINT(20)" defaultValueComputed="NULL"/>
     	</addColumn>
     </changeSet>
     
@@ -649,7 +651,7 @@
         </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="invoices">
-        	<column name="ls_register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+        	<column name="ls_register_id" type="BIGINT(20)" defaultValueComputed="NULL"/>
     	</addColumn>
     </changeSet>
 
@@ -662,7 +664,7 @@
         </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="invoices">
-        	<column name="register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+        	<column name="register_id" type="BIGINT(20)" defaultValueComputed="NULL"/>
     	</addColumn>
     </changeSet>
     
@@ -677,7 +679,7 @@
         </preConditions>
     	<comment>Changing quantity from unsigned to signed</comment>
         <sql>
-            ALTER TABLE pos_production.invoice_lines CHANGE COLUMN quantity quantity SMALLINT(5) NULL DEFAULT NULL ;
+            ALTER TABLE pos_production.invoice_lines CHANGE COLUMN quantity quantity INT(10) NULL DEFAULT NULL ;
         </sql>
     </changeSet>
     
@@ -689,6 +691,39 @@
         </preConditions>
     	<comment>Adding column for vend migration</comment>
     	<addColumn tableName="outlets">
+        	<column name="last_modified" type="TIMESTAMP"/>
+    	</addColumn>
+    </changeSet>
+    
+    
+	<changeSet id="20141119_1049" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists schemaName="pos_production" tableName="registers"/>
+            </not>
+        </preConditions>
+        <comment> Creation of registers table that serves as the storage table for registers.</comment>
+        <createTable tableName="registers">
+            <column name="register_id" type="BIGINT(20)" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="store_id" type="BIGINT(20)" />
+            <column name="ls_register_id" type="BIGINT(20)" />
+            <column name="outlet_id" type="BIGINT(20)" />
+            <column name="ls_outlet_id" type="BIGINT(20)" />
+            <column name="name" type="varchar(50)" />
+            <column name="uuid" type="varchar(36)" />
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="20141119_1050" author="carlos">
+    	<preConditions onFail="MARK_RAN">
+            <not>
+                <columnExists schemaName="pos_production" tableName="registers" columnName="last_modified"/>
+            </not>
+        </preConditions>
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="registers">
         	<column name="last_modified" type="TIMESTAMP"/>
     	</addColumn>
     </changeSet>

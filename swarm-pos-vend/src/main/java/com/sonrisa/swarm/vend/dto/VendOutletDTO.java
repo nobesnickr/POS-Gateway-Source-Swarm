@@ -1,9 +1,14 @@
 package com.sonrisa.swarm.vend.dto;
 
+import java.sql.Timestamp;
+
 import com.sonrisa.swarm.posintegration.dto.OutletDTO;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
 
+/**
+ * Representation of a Vend outlet's batch item
+ */
 public class VendOutletDTO extends OutletDTO{
 
 	private Long remoteId;
@@ -171,6 +176,11 @@ public class VendOutletDTO extends OutletDTO{
 		return website;
 	}
 
+	@Override
+	public Timestamp getLastModified() {
+		return new Timestamp(0);
+	}
+	
 	private String getFieldFromInnerDTO(ExternalDTO dto, String field){
 		String fieldValue = null;
 		if(dto != null){
@@ -180,5 +190,16 @@ public class VendOutletDTO extends OutletDTO{
 		fieldValue = ("null".equalsIgnoreCase(fieldValue))?null:fieldValue;
 		
 		return fieldValue;
+	}
+
+	@Override
+	public String toString() {
+		return "VendOutletDTO [remoteId=" + remoteId + ", uuidOutletId="
+				+ uuidOutletId + ", outletName=" + outletName + ", address1="
+				+ address1 + ", address2=" + address2 + ", city=" + city
+				+ ", state=" + state + ", postCode=" + postCode + ", country="
+				+ country + ", firstName=" + firstName + ", lastName="
+				+ lastName + ", email=" + email + ", phone=" + phone + ", fax="
+				+ fax + ", website=" + website + "]";
 	}
 }

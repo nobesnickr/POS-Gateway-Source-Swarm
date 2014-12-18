@@ -10,6 +10,9 @@ import javax.persistence.Table;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableAttr;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableType;
 
+/**
+ * This entity represents a record in the staging_registers table.
+ */
 @Entity
 @Table(name = "staging_registers")
 @StageInsertableType(dbTableName = "registers", storeIdColumnName = "store_id")

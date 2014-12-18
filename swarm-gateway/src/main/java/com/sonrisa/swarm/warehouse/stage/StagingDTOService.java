@@ -96,7 +96,7 @@ public class StagingDTOService extends BaseCachingAndIgnoringDTOService {
      */
     public <T extends DWTransferable> void saveToStage(SwarmStore store, List<? extends T> entities, Class<T> clazz) {
         
-        LOGGER.info("Inserting {} {} entities into staging tables for store {}", entities.size(), clazz.getSimpleName(), store.getStoreId());
+        LOGGER.debug("Inserting {} {} entities into staging tables for store {}", entities.size(), clazz.getSimpleName(), store.getStoreId());
 
         if(clazz == InvoiceDTO.class){
             invoiceStgService.create(entities, store.getStoreId());
@@ -128,10 +128,8 @@ public class StagingDTOService extends BaseCachingAndIgnoringDTOService {
 	 * passes a timestamp to the
 	 */
 	public DWFilter getFilter(SwarmStore store, Class<? extends DWTransferable> dtoClass) {
-		LOGGER.info("Recovering filter");
 	    DWFilter cachedValue = this.getCachedFilter(store, dtoClass); 
 	    if(cachedValue != null) {
-	    	LOGGER.info("Recovering from cache: "+cachedValue.getTimestamp());
 	        return cachedValue;
 	    }
 	    
@@ -174,8 +172,6 @@ public class StagingDTOService extends BaseCachingAndIgnoringDTOService {
                         " FROM " + tableName
                          + " WHERE store_id = ?;";
 	    
-	    LOGGER.info("Executing query: "+query);
-	    
 	    retval = jdbcTemplate.queryForMap(query,new Object[]{ (Long) store.getStoreId() });
 		
 		if(retval != null){
@@ -186,7 +182,6 @@ public class StagingDTOService extends BaseCachingAndIgnoringDTOService {
 		        atLeastOne = true;
 		    }
 		    if(retval.containsKey(timeStampColumn) && retval.get(timeStampColumn) != null){
-		    	LOGGER.info("Timestamp: "+(Timestamp)retval.get(timeStampColumn));
 		        filter.setTime((Timestamp)retval.get(timeStampColumn));
 		        atLeastOne = true;
 		    }

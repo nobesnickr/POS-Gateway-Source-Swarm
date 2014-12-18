@@ -100,7 +100,7 @@ public abstract class StageDaoBaseImpl<T extends SonrisaJPAEntity<Long>>
 	        storeEntityList(entityList, localStoreId);
         }catch(Exception exception){
         	LOGGER.error("A entity can not be inserted into the stage table.", exception);
-        	LOGGER.error("The entity list will be inserted one by one: "+entityList);
+        	LOGGER.error("The entity list will be inserted one by one: {}",entityList);
         	
         	for (StageBatchInsertable entity : entityList){
         		List<StageBatchInsertable> auxList = new ArrayList<StageBatchInsertable>();

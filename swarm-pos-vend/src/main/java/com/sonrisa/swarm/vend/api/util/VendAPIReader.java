@@ -1,8 +1,12 @@
 package com.sonrisa.swarm.vend.api.util;
 
+import java.util.Arrays;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Component;
@@ -11,7 +15,7 @@ import com.sonrisa.swarm.posintegration.api.ExternalAPI;
 import com.sonrisa.swarm.posintegration.api.ExternalCommand;
 import com.sonrisa.swarm.posintegration.api.ExternalResponse;
 import com.sonrisa.swarm.posintegration.api.reader.ExternalAPIReader;
-import com.sonrisa.swarm.posintegration.api.reader.ExternalDataKeyResolver;
+import com.sonrisa.swarm.posintegration.api.request.SimpleExternalDTOIterator;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTOPath;
 import com.sonrisa.swarm.vend.VendAccount;
@@ -51,12 +55,7 @@ public class VendAPIReader implements ExternalAPIReader<VendAccount> {
      * Vend fetch size
      */
     private int fetchSize = 50;
-    
-    /**
-     * Data key resolver common for Vend
-     */
-    private ExternalDataKeyResolver<VendAccount> dataKeyResolver = new VendDataKeyResolver();
-        
+            
     /**
      * Initialize by setting data source
      * @param api
@@ -66,6 +65,9 @@ public class VendAPIReader implements ExternalAPIReader<VendAccount> {
         this.api = api;
     }
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(ExternalAPIReader.class);
+    
+    
     /**
      * {@inheritDoc}
      */
@@ -76,11 +78,14 @@ public class VendAPIReader implements ExternalAPIReader<VendAccount> {
     	params.putAll(command.getParams());
     	params.remove(PAGE_NUMBER_KEY);
     	params.put(PAGE_NUMBER_KEY, Integer.toString(page));
-        
+    	params.remove(PAGE_SIZE_KEY);
+    	params.put(PAGE_SIZE_KEY, Integer.toString(fetchSize));
+    	
     	// Recovering the account and URI from the command
     	VendAccount acount = command.getAccount();
     	String uri = command.getURI();
-        ExternalCommand<VendAccount> newCommand = new ExternalCommand<VendAccount>(acount, uri, params, command.getFlags());
+    	
+        ExternalCommand<VendAccount> newCommand = new ExternalCommand<VendAccount>(acount, uri, params);
         
         return api.sendRequest(newCommand);
     }
@@ -90,19 +95,15 @@ public class VendAPIReader implements ExternalAPIReader<VendAccount> {
      */
     @Override
     public ExternalDTOPath getDataKey(ExternalCommand<VendAccount> command) {
-    	if ("register_sales".equalsIgnoreCase(command.getURI())){
-    		return new ExternalDTOPath("register_sales");
-    	}else if ("customers".equalsIgnoreCase(command.getURI())){
-    		return new ExternalDTOPath("customers");
-    	}else if ("products".equalsIgnoreCase(command.getURI())){
-    		return new ExternalDTOPath("products");
-    	}else if ("outlets".equalsIgnoreCase(command.getURI())){
-    		return new ExternalDTOPath("outlets");
-    	}else if ("registers".equalsIgnoreCase(command.getURI())){
-    		return new ExternalDTOPath("registers");
-    	}else{
-    		return dataKeyResolver.getDataKey(command);
-    	}
+    	
+    	final String lowerCasePath = command.getURI().toLowerCase();
+        final List<String> acceptedURIs = Arrays.asList("register_sales", "customers", "products", "outlets", "registers");
+
+        if(acceptedURIs.contains(lowerCasePath)){
+            return new ExternalDTOPath(lowerCasePath);
+        } else {
+            return ExternalDTOPath.getRootPath();
+        }
     }
 
     /**

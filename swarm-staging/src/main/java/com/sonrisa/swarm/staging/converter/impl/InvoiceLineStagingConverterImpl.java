@@ -68,7 +68,7 @@ public class InvoiceLineStagingConverterImpl extends BaseStagingConverterImpl<In
          try {
              legacyEntity = convertToLegacy(stgLine);
          } catch (AlreadyExistsException ex) {
-             LOGGER.debug("InvoiceLine already exists: {}", stgLine, ex);
+             LOGGER.warn("InvoiceLine already exists: {}", stgLine, ex);
              return new StageAndLegacyHolder<InvoiceLineStage, InvoiceLineEntity>(stgLine, ex.getMessage());
          }
          return new StageAndLegacyHolder<InvoiceLineStage, InvoiceLineEntity>(legacyEntity, stgLine);

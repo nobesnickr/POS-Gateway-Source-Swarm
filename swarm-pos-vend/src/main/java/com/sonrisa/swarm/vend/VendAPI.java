@@ -6,7 +6,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.apache.http.HttpEntity;
 import org.apache.http.client.entity.UrlEncodedFormEntity;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
@@ -64,8 +63,6 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
     @Value("${vend.api.rest.oauth.client.secret}")
     private String oauthClientSecret = "1111";
     
-    @Value("${vend.api.rest.oauth.uri.redirect}")
-    private String oauthRedirectUri = "http://localhost:5555/api/";
     
     /**
      * Relevant HTTP headers for Vend
@@ -93,7 +90,7 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
         queryUrl.append(getRequestUrl(command.getAccount()));
         queryUrl.append(command.getUrlQueryString());
         
-        LOGGER.debug("Complete URL: "+ queryUrl);
+        LOGGER.debug("Complete URL: {}", queryUrl);
         
         HttpGet httpget = new HttpGet(queryUrl.toString());
         
@@ -119,25 +116,9 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
     /**
      * Get Vend account using the temporary token
      */
-    public VendAccount getAccountForTemporaryToken(String code) throws ExternalExtractorException{
+    public VendAccount getAccountForTemporaryToken(String refreshToken) throws ExternalExtractorException{
 
-        HttpPost httpPost = new HttpPost(getRefreshUrl(apiBaseUrl));
-        
-        // Prepare fields
-        Map<String,String> params = new HashMap<String,String>();
-        params.put("client_id", oauthClientId);
-        params.put("client_secret", oauthClientSecret);
-        params.put("grant_type", "refresh_token");
-        params.put("refresh_token", code);
-        
-        HttpEntity preparePost = RestUrlBuilder.preparePostFields(params);
-        
-        httpPost.setEntity(preparePost);
-        LOGGER.debug("Refresh token request:"+ httpPost.getURI());
-        
-        // Execute POST request
-        final JsonNode response = executeRequestForJson(httpPost);
-        LOGGER.info("Refresh token response:"+ preparePost);
+        final JsonNode response = executeRequest(refreshToken, this.tokenRefreshUrl);
         ObjectMapper mapper = new ObjectMapper();
         
         VendAccount acc = new VendAccount(0);
@@ -153,27 +134,37 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
      * @return
      */
     private VendAccessToken getAccessToken(String refreshToken, String apiUrl) throws ExternalExtractorException {
-        HttpPost httpPost = new HttpPost(getRefreshUrl(apiUrl));
+        final JsonNode response = executeRequest(refreshToken, apiUrl);
         
-        // Prepare fields
+        ObjectMapper mapper = new ObjectMapper();
+        
+        return mapper.convertValue(response, VendAccessToken.class);
+    }
+
+	private JsonNode executeRequest(String refreshToken, String apiUrl)
+			throws ExternalExtractorException {
+		HttpPost httpPost = new HttpPost(getRefreshUrl(apiUrl));
+        
+        Map<String, String> params = setParameters(refreshToken);
+        
+        UrlEncodedFormEntity preparePost = (UrlEncodedFormEntity) RestUrlBuilder.preparePostFields(params);
+        
+        httpPost.setEntity(preparePost);
+        
+        // Execute POST request
+        final JsonNode response = executeRequestForJson(httpPost);
+		return response;
+	}
+
+	private Map<String, String> setParameters(String refreshToken) {
+		// Prepare fields
         Map<String,String> params = new HashMap<String,String>();
         params.put("client_id", oauthClientId);
         params.put("client_secret", oauthClientSecret);
         params.put("grant_type", "refresh_token");
         params.put("refresh_token", refreshToken);
-        
-        UrlEncodedFormEntity preparePost = (UrlEncodedFormEntity) RestUrlBuilder.preparePostFields(params);
-        
-        httpPost.setEntity(preparePost);
-        LOGGER.debug("Refresh token request:"+ httpPost.getURI());
-        
-        // Execute POST request
-        final JsonNode response = executeRequestForJson(httpPost);
-        LOGGER.info("Refresh token response:"+ preparePost);
-        ObjectMapper mapper = new ObjectMapper();
-        
-        return mapper.convertValue(response, VendAccessToken.class);
-    }
+		return params;
+	}
     
     /**
      * Updates account token for account
@@ -199,7 +190,7 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
             request.addHeader(BaseRestAPI.AUTHORIZATION_HEADER, account.getOauthAccessToken().getAuthorizationString());
             return executeRequest(request, VEND_HEADERS);
         } catch (ExternalApiBadCredentialsException e){
-            LOGGER.info("Vend API denied access token", e.getMessage(), e);
+            LOGGER.debug("Vend API denied access token", e.getMessage(), e);
             
             // Force refresh access token
             updateOauthToken(account, true);
@@ -225,10 +216,6 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
         this.oauthClientSecret = oauthClientSecret;
     }
 
-    public void setOauthRedirectUri(String oauthRedirectUri) {
-        this.oauthRedirectUri = oauthRedirectUri;
-    }
-    
     private String getRequestUrl(VendAccount account) {
         return String.format(apiBaseUrl, account.getApiUrl());
     }

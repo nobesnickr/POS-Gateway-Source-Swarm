@@ -45,12 +45,17 @@ public class RegisterServiceImpl  extends GenericServiceImpl<Long, RegisterEntit
 
         if (register != null) {
             if (register.getId() != null) {
-            	LOGGER.debug("Doing merge for register with ID: "+ register.getId());
+            	LOGGER.debug("Doing merge for register with ID: {}", register.getId());
                 dao.merge(register);
             } else {
-            	LOGGER.debug("Doing persist for register with ID: "+ register.getId());
+            	LOGGER.debug("Doing persist for register with ID: {}", register.getId());
                 dao.persist(register);  
             }        
         }
+	}
+
+	@Override
+	public RegisterEntity getResgisterFromStoreAndId(Long storeId, Long foreignId) {
+		return dao.findByStoreAndForeignId(storeId, foreignId);
 	}
 }

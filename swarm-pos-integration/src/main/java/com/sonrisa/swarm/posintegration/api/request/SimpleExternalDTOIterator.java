@@ -110,9 +110,7 @@ public class SimpleExternalDTOIterator<T extends SwarmStore> implements External
                 indexWithinPage = 0;
                 LOGGER.debug(" Fetching first page");
             }
-            
             final ExternalDTO currentContent = currentPage.getContent();
-            
             // If there are items on the current page, then
             // there are more items to iterate over globally
             if (indexWithinPage < currentContent.getNestedItemSize(dataReader.getDataKey(command))) {
@@ -135,7 +133,6 @@ public class SimpleExternalDTOIterator<T extends SwarmStore> implements External
                     // one might be the last with zero elements and there
                     // are in fact no more items
                 } else {
-                	LOGGER.debug("Fetching new page. pageNumber="+pageNumber);
                     // Fetch next page
                     currentPage = dataReader.getPage(command, ++pageNumber);
                     indexWithinPage = 0;

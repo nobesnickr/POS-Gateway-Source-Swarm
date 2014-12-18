@@ -1,11 +1,9 @@
 package com.sonrisa.swarm.vend.dto;
 
 import java.sql.Timestamp;
-import java.text.ParseException;
 
 import com.sonrisa.swarm.posintegration.dto.InvoiceLineDTO;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
-import com.sonrisa.swarm.vend.api.util.TimeConversionUtil;
 
 /**
  * Representation of a Vend order item
@@ -56,14 +54,9 @@ public class VendInvoiceLineDTO extends InvoiceLineDTO {
      */
     private int quantity = 0;
     
-    /**
-     * Last modified
-     */
-    private Timestamp lastModified;
-    
     private String name;
     
-    private String ts;
+    private Timestamp ts;
 
     @Override
     public long getRemoteId() {
@@ -95,10 +88,6 @@ public class VendInvoiceLineDTO extends InvoiceLineDTO {
         return unitTax;
     }
 
-    @Override
-    public Timestamp getLastModified() {
-        return lastModified;
-    }
 
     @Override
     public String getName() {
@@ -106,7 +95,7 @@ public class VendInvoiceLineDTO extends InvoiceLineDTO {
     }
     
     @Override
-    public String getTimestamp(){
+    public Timestamp getLastModified(){
     	return ts;
     }
     
@@ -145,11 +134,6 @@ public class VendInvoiceLineDTO extends InvoiceLineDTO {
     public void setQuantity(int quantity) {
         this.quantity = quantity;
     }
-
-    @ExternalField("sale_date")
-    public void setLastModified(String lastModified) throws ParseException {
-        this.lastModified = TimeConversionUtil.stringToDate(lastModified);
-    }
     
 	public String getUuidInvoiceId() {
 		return uuidInvoiceId;
@@ -175,7 +159,7 @@ public class VendInvoiceLineDTO extends InvoiceLineDTO {
 	}
     
     @ExternalField("sale_date")
-    public void setTimestamp(String ts) throws ParseException{
+    public void setTimestamp(Timestamp ts){
 		this.ts = ts;
 	}
 }

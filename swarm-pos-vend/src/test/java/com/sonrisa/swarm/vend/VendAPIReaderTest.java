@@ -27,7 +27,6 @@ import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
 import com.sonrisa.swarm.posintegration.extractor.util.ExternalJsonDTO;
 import com.sonrisa.swarm.test.matcher.ExternalCommandMatcher;
 import com.sonrisa.swarm.vend.api.util.VendAPIReader;
-import com.sonrisa.swarm.vend.api.util.VendTerminationJudge;
 
 /**
  * Unit test for the {@link VendAPIReader}
@@ -68,11 +67,15 @@ public class VendAPIReaderTest {
         // Create JSON array with empty objects, like [{},{},{},...{},{}]
         final JsonNode mockJson = mapper.readValue("[" + StringUtils.repeat("{},", ITEMS_PER_PAGE-1) + "{}]", JsonNode.class);  
         
-        when(api.sendRequest(argThat(new ExternalCommandMatcher<VendAccount>()))).thenReturn(
+        when(api.sendRequest(argThat(new ExternalCommandMatcher<VendAccount>().andUri("some/where.json")))).thenReturn(
                 new ExternalResponse(new ExternalJsonDTO(mockJson), new HashMap<String,String>(){{
                     put("pages", Integer.toString(NUMBER_OF_PAGES));
-                }})
-        );
+                }}));
+        
+        when(api.sendRequest(argThat(new ExternalCommandMatcher<VendAccount>().andUri("some/where.json").andParam("page", "18")))).thenReturn(
+                new ExternalResponse(new ExternalJsonDTO(mapper.readValue("[]", JsonNode.class)), new HashMap<String,String>(){{
+                    put("pages", Integer.toString(NUMBER_OF_PAGES));
+                }}));
     }
     
     /**
@@ -89,11 +92,11 @@ public class VendAPIReaderTest {
 
         VendAccount account = new VendAccount(8L);
         
-        Iterable<ExternalDTO> items = new SimpleApiRequest<VendAccount>(
-                                            target, 
-                                            new ExternalCommand<VendAccount>(account, "some/where.json"),
-                                            new VendTerminationJudge());
-        
+
+        SimpleApiRequest<VendAccount> items = new SimpleApiRequest<VendAccount>(
+                                       target, 
+                                       new ExternalCommand<VendAccount>(account, "some/where.json"));
+        items.setFirstPage(1);
         // Iterate through all of them        
         int numberOfItems = 0;
         for(ExternalDTO item : items){
@@ -103,10 +106,10 @@ public class VendAPIReaderTest {
         // Do we recover all the items?
         assertEquals(ITEMS_PER_PAGE * NUMBER_OF_PAGES, numberOfItems);
         // Do we call the rest API all the times that are needed? (not more not less)
-        verify(api, times(NUMBER_OF_PAGES)).sendRequest(any(ExternalCommand.class));
+        verify(api, times(NUMBER_OF_PAGES+1)).sendRequest(any(ExternalCommand.class));
         // Do we call the rest API only one time for each page?
-        verify(api, times(1)).sendRequest(argThat(new ExternalCommandMatcher<VendAccount>().andParam("page","0")));
+        verify(api, times(1)).sendRequest(argThat(new ExternalCommandMatcher<VendAccount>().andParam("page","1")));
         // For an incorrect input do we call the API unnecessarily?
-        verify(api, never()).sendRequest(argThat(new ExternalCommandMatcher<VendAccount>().andParam("page",Integer.toString(NUMBER_OF_PAGES))));
+        verify(api, never()).sendRequest(argThat(new ExternalCommandMatcher<VendAccount>().andParam("page",Integer.toString(NUMBER_OF_PAGES+2))));
     }
 }

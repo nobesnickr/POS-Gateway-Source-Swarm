@@ -35,7 +35,6 @@ public class VendExtractorLauncher extends ExtractorLauncher {
     @Override
     protected SwarmStore createAccount(final StoreEntity store) {
         VendAccount account = storeFactory.getAccount(store);
-        account.setSite(store.getStoreFilter());
         return account;
     }
 

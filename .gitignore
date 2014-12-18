@@ -116,6 +116,7 @@ bin
 /swarm-pos-kounta/.classpath
 /swarm-admin/.classpath
 
-.project
-/.vagrant/machines/default/virtualbox/action_set_name
+**.project
+/.vagrant/machines/
 provision_sec.sh
+**.classpath

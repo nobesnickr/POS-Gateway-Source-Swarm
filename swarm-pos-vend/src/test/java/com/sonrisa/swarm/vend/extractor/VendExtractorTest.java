@@ -1,14 +1,11 @@
 package com.sonrisa.swarm.vend.extractor;
 
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertNull;
 
-import java.util.Date;
 import java.util.List;
 import java.util.TimeZone;
 
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 
 import com.fasterxml.jackson.databind.JsonNode;
@@ -21,9 +18,7 @@ import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
 import com.sonrisa.swarm.test.extractor.BaseExtractorTest;
 import com.sonrisa.swarm.test.matcher.ExternalCommandMatcher;
 import com.sonrisa.swarm.vend.VendAccount;
-import com.sonrisa.swarm.vend.api.util.TimeConversionUtil;
 import com.sonrisa.swarm.vend.api.util.VendAPIReader;
-import com.sonrisa.swarm.vend.util.VendCommandMatcher;
 
 /**
  * Unit tests for the {@link VendExtractor} class.
@@ -49,35 +44,30 @@ public class VendExtractorTest extends BaseExtractorTest<VendAccount> {
          account.setCompany("100");
         
          addJsonRestService(
-                 new VendCommandMatcher("register_sales")
-                 .andParam("page_size", 50)
-                 .andParam("since", new Date()), 
+                 new ExternalCommandMatcher<VendAccount>("register_sales").andUri("register_sales")
+                 .andParam("page", 1),
                  MockVendData.MOCK_VEND_ORDER_BATCH);
          
 		 addJsonRestService(
-                new VendCommandMatcher("customers")
-                .andParam("page_size", 50)
-                .andParam("since", new Date()), 
+                new ExternalCommandMatcher<VendAccount>("customers").andUri("customers")
+                .andParam("page", 1), 
                 MockVendData.MOCK_VEND_CUSTOMER_BATCH);
          
          
 		 addJsonRestService(
-                new VendCommandMatcher("products")
-                .andParam("page_size", 50)
-                .andParam("since", new Date()), 
+                new ExternalCommandMatcher<VendAccount>("products").andUri("products")
+                .andParam("page", 1), 
                 MockVendData.MOCK_VEND_PRODUCTS_BATCH);
 		 
 		 
 		 addJsonRestService(
-                new VendCommandMatcher("outlets")
-                .andParam("page_size", 50)
-                .andParam("since", new Date()), 
+                new ExternalCommandMatcher<VendAccount>("outlets").andUri("outlets")
+                .andParam("page", 1), 
                 MockVendData.MOCK_VEND_OUTLETS_BATCH);
 		 
 		 addJsonRestService(
-                new VendCommandMatcher("registers")
-                .andParam("page_size", 50)
-                .andParam("since", new Date()), 
+                new ExternalCommandMatcher<VendAccount>("registers").andUri("registers")
+                .andParam("page", 1), 
                 MockVendData.MOCK_VEND_REGISTERS_BATCH);
 		 
          VendAPIReader apiReader = new VendAPIReader(api);

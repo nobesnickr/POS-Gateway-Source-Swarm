@@ -34,6 +34,7 @@ import com.sonrisa.swarm.legacy.dao.CustomerDao;
 import com.sonrisa.swarm.legacy.dao.InvoiceDao;
 import com.sonrisa.swarm.legacy.dao.OutletDao;
 import com.sonrisa.swarm.legacy.dao.RegisterDao;
+import com.sonrisa.swarm.legacy.service.RegisterService;
 import com.sonrisa.swarm.legacy.util.IdConverter;
 import com.sonrisa.swarm.legacy.util.InvoiceEntityUtil;
 import com.sonrisa.swarm.model.StageAndLegacyHolder;
@@ -82,6 +83,9 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
    private TimeZoneService timeZoneService;
    
    @Autowired
+   private RegisterService registerService;
+   
+   @Autowired
    private List<InvoiceStagingFilter> invoiceStagingFilters; 
    
 	/** JDBC template is required to access the legacy databases's updates table */
@@ -127,16 +131,16 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
            }
            
            // Recovering outlet
-           if(stgEntity.getOutletId()!= null){
-		       Long foreignOutletId = Long.valueOf(stgEntity.getOutletId());
+           if(stgEntity.getLsOutletId()!= null){
+		       Long foreignOutletId = Long.valueOf(stgEntity.getLsOutletId());
 
 		       if (foreignOutletId != null){
 		    	   
 		    	   // Check if the Invoice has been marked as incomplete
 		    	   if(foreignOutletId.equals(Long.valueOf(-1))){
 		    		  try{ //Looking for the outlet to complete the staging entity
-		    			  foreignOutletId =  getForeignOutletIdForRegister(stgEntity.getStoreId(), stgEntity.getRegisterId());
-		    			  stgEntity.setOutletId(foreignOutletId);
+		    			  foreignOutletId =  getForeignOutletIdForRegister(stgEntity.getStoreId(), stgEntity.getLsRegisterId());
+		    			  stgEntity.setLsOutletId(foreignOutletId);
 		    		  }catch(EmptyResultDataAccessException e){
 		    			  // If an empty result is returned the outlet has not yet been stored 
 		    			  return null;
@@ -151,12 +155,12 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
 		    	   }
 		       }
        	   }else{
-        	   LOGGER.warn("Outlet not found for invoice: "+newInvoice.getId());
+        	   LOGGER.debug("Outlet not found for invoice: "+newInvoice.getId());
            }
            
 	       // Recovering register
-           if(stgEntity.getRegisterId()!= null){
-	           final Long foreignRegisterId = Long.valueOf(stgEntity.getRegisterId());
+           if(stgEntity.getLsRegisterId()!= null){
+	           final Long foreignRegisterId = Long.valueOf(stgEntity.getLsRegisterId());
 		       
 		       if (foreignRegisterId != null){
 		    	   final RegisterEntity register = registerDao.findByStoreAndForeignId(store.getId(), foreignRegisterId);
@@ -167,7 +171,7 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
 		    	   }
 		       }
            }else{
-        	   LOGGER.warn("Register not found for invoice: "+newInvoice.getId());
+        	   LOGGER.debug("Register not found for invoice: "+newInvoice.getId());
            }
            
            // performs mapping between staging invoice and destination invoice object
@@ -350,18 +354,11 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
         this.invoiceStagingFilters = invoiceStagingFilters;
     }
     
-    private static final String SELECT_OUTLET_FOR_REGISTER = 
-			"SELECT ls_outlet_id FROM registers "
-			+ "WHERE store_id = ? "
-			+ "AND ls_register_id = ?";
-	
 	/**
 	 * This function returns the foreign Id of the outlet associated to a concrete register
 	 */
 	public Long getForeignOutletIdForRegister(Long storeId, Long registerId){
-		
-		Object[] param = new Object[]{ storeId, registerId };
-		
-		return jdbcTemplate.queryForObject(SELECT_OUTLET_FOR_REGISTER, param, Long.class);
+		RegisterEntity register = registerService.getResgisterFromStoreAndId(storeId, registerId);
+		return register.getOutletId();
 	}
 }

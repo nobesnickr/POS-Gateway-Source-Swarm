@@ -451,10 +451,6 @@ public class RetailProIntegrationTest extends BaseIntegrationTest {
         
         assertEquals("All the items should be processed.", 
                 "0", jdbcTemplate.queryForObject("select count(*) from staging_invoice_lines", Integer.class).toString());
-        
-        // Quantity can have a negative value (this test case) is no longer valid.
-        assertEquals("The invalid lines should be missing from here, but the other 4 has been moved to the legacy DB.", 
-                "5", jdbcTemplate.queryForObject("select count(*) from invoice_lines", Integer.class).toString());
     }        
           
     /**     

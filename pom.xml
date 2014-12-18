@@ -4,7 +4,7 @@
 
     <groupId>com.sonrisa.swarm</groupId>
     <artifactId>swarm-parent</artifactId>
-    <version>14.09.15-2</version>
+    <version>15.00.00</version>
     <packaging>pom</packaging>
 
     <name>Swarm</name>
@@ -364,6 +364,11 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
 
         <!-- Spring batch -->
         <dependency>

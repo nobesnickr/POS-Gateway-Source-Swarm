@@ -33,6 +33,7 @@
 			<property name="locations">
 				<list>
 					<value>classpath*:db.properties</value>
+					<value>classpath*:email.properties</value>
                     <value>classpath*:/batchProperties/*-batch.properties</value>
                     <value>classpath*:/batchProperties/*-batch.properties</value>
 					<value>file:///${user.home}/swarm.properties</value>
@@ -74,13 +75,17 @@
 					<prop key="kounta.api.rest.oauth.client.id"></prop>
 					<prop key="kounta.api.rest.oauth.client.secret"></prop>
 					
-					
 					<prop key="vend.api.rest.uri.base">https://%s.vendhq.com/api/</prop>
 					<prop key="vend.api.rest.uri.token.refresh">https://%s.vendhq.com/api/1.0/token</prop>
-					<prop key="vend.api.rest.oauth.uri.authorize">https://secure.vendhq.com/connect</prop>
-					<prop key="vend.api.rest.oauth.uri.redirect">https://swarm-mobile.com/oauth2/</prop>
-					<prop key="vend.api.rest.oauth.client.id">MYvGY6FP9NOB6K6UJAb1Ek8zQzCcu2RO</prop>
-					<prop key="vend.api.rest.oauth.client.secret">pWz1QY7Qxz06gxzZ0Pvo6S9kGj6bSKOw</prop>
+					<prop key="vend.api.rest.oauth.uri.authorize"></prop>
+					<prop key="vend.api.rest.oauth.client.id"></prop>
+					<prop key="vend.api.rest.oauth.client.secret"></prop>
+					
+					<prop key="email.host"></prop>
+  					<prop key="email.port"></prop>
+					<prop key="email.username"></prop>
+    				<prop key="email.password"></prop>
+    				<prop key="email.to"></prop>
 				</props>
 			</property>
 		</bean>
@@ -93,6 +98,7 @@
                 <list>
                     <value>classpath*:batch-test.properties</value>
                     <value>classpath*:db.properties</value>
+                    <value>classpath*:email.properties</value>
                     <value>classpath*:swarm.properties</value>
                     <value>classpath*:/batchProperties/*-batch-test.properties</value>
                 </list>         

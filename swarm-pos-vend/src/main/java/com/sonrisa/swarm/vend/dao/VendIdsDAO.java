@@ -37,7 +37,7 @@ public class VendIdsDAO {
 					new Object[]{ storeId,	typeOfId, stringId });
 		}catch(DuplicateKeyException ex){
 			// The stringId was previously stored, this is not an issue.
-			LOGGER.debug("The String id: "+stringId+"was previously stored.");
+			LOGGER.debug("The String id: {} was previously stored.", stringId);
 		}
 		
 		Long numericId = getNumericId(stringId);

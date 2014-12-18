@@ -67,9 +67,7 @@ public abstract class OutletDTO implements DWTransferable{
     
 	/** Timestamp of the outlet entry in the remote system */
     @StageInsertableAttr(dbColumnName = "last_modified", usedAsTimestamp = true)
-	public Timestamp getLastModified(){
-    	return new Timestamp(0);
-	}
+	public abstract Timestamp getLastModified();
 
 	@Override
 	public String toString() {
