@@ -1,0 +1,2 @@
+#macro(msg $code)$resources.getMessage($code,null,$locale)#end
+#macro(msgParam $code $params)$resources.getMessage($code,$params.toArray(),$locale)#end

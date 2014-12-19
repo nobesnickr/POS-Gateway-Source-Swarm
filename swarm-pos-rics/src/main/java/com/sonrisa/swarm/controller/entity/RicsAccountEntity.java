@@ -30,56 +30,56 @@ public class RicsAccountEntity {
     /**
      * This is the serial number of the store owner in RE that the login belongs to. 
      */
-    @JsonProperty("serial_num")
-    private String serialNum;
+    @JsonProperty("token")
+    private String token;
     
     /**
      * This is the login name for the user in RE. 
      */
-    @JsonProperty("login")
-    private String loginName;
+    @JsonProperty("user_name")
+    private String userName;
     
     /**
-     * This is the password for the RE login. 
-     */
-    private String password;
-    
-    /**
-     * Store 
-    @JsonProperty("serial_num")code that the POS transaction applies to. 
+     * Store code
      */
     @JsonProperty("store_code")
     private String storeCode;
+    
+    /**
+     * Store's timezone
+     */
+    @JsonProperty("time_zone")
+    private String timeZone;
 
-    public String getSerialNum() {
-        return serialNum;
+	public String getToken() {
+		return token;
+	}
+
+	public void setToken(String token) {
+		this.token = token;
+	}
+
+	public String getUserName() {
+		return userName;
+	}
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+
+	public String getStoreCode() {
+		return storeCode;
+	}
+
+	public void setStoreCode(String storeCode) {
+		this.storeCode = storeCode;
+	}
+
+    public String getTimeZone() {
+        return timeZone;
     }
 
-    public void setSerialNum(String serialNum) {
-        this.serialNum = serialNum;
-    }
-
-    public String getLoginName() {
-        return loginName;
-    }
-
-    public void setLoginName(String loginName) {
-        this.loginName = loginName;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getStoreCode() {
-        return storeCode;
-    }
-
-    public void setStoreCode(String storeCode) {
-        this.storeCode = storeCode;
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
     }
 }

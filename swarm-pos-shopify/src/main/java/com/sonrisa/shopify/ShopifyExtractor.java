@@ -19,6 +19,7 @@ package com.sonrisa.shopify;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -44,7 +45,6 @@ import com.sonrisa.swarm.posintegration.warehouse.SwarmDataWarehouse;
 import com.sonrisa.swarm.shopify.dto.ShopifyInvoiceDTO;
 import com.sonrisa.swarm.shopify.dto.ShopifyInvoiceLineDTO;
 import com.sonrisa.swarm.shopify.dto.ShopifyProductDTO;
-import java.util.List;
 
 /**
  * Extractor for {@link ShopifyAccount} stores.
@@ -94,11 +94,11 @@ public class ShopifyExtractor extends BaseIteratingExtractor<ShopifyAccount>{
             params.put("since_id", Long.toString(since.getId()));
         } else if(clazz == InvoiceDTO.class){
             restUrl = "orders.json";
-            params.put("created_at_min", ISO8061DateTimeConverter.dateToMysqlString(new Date(since.getTimestamp().getTime())));
+            params.put("updated_at_min", ISO8061DateTimeConverter.dateToMySqlStringWithTimezone(new Date(since.getTimestamp().getTime())));
             params.put("status", "any");
         } else if(clazz == ProductDTO.class){
             restUrl = "products.json";
-            params.put("updated_at_min", ISO8061DateTimeConverter.dateToMysqlString(new Date(since.getTimestamp().getTime())));
+            params.put("updated_at_min", ISO8061DateTimeConverter.dateToMySqlStringWithTimezone(new Date(since.getTimestamp().getTime())));
         } else {
             throw new IllegalArgumentException("Class should be one of the pos-integration abstract DTO classes");
         }
@@ -171,7 +171,7 @@ public class ShopifyExtractor extends BaseIteratingExtractor<ShopifyAccount>{
                         totalTax = node.getDouble(TOTAL_TAX_JSON_KEY);
                 }
 
-                double total = item.getTotal();
+                double total = item.getLineNetTotal();
                 
                 for(ExternalDTO lineItem : node.getNestedItems("line_items")){
                     ShopifyInvoiceLineDTO invoiceLine = getDtoTransformer().transformDTO(lineItem, ShopifyInvoiceLineDTO.class);
@@ -180,7 +180,7 @@ public class ShopifyExtractor extends BaseIteratingExtractor<ShopifyAccount>{
                     // Line based taxes are not supported in shopify, so we estimate
                     // the tax rate from the totalTax and totalPrice of the invoice
                     if (total > 0.0) {
-                            invoiceLine.setTax(totalTax / total * invoiceLine.getPrice());
+                            invoiceLine.setTax(totalTax / total * invoiceLine.getNetPrice());
                     }
 
                     invoiceLineList.add(invoiceLine);

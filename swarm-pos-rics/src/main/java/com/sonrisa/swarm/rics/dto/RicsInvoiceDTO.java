@@ -19,11 +19,13 @@ package com.sonrisa.swarm.rics.dto;
 
 import java.math.BigDecimal;
 import java.sql.Timestamp;
+import java.util.Date;
+
+import org.springframework.util.StringUtils;
 
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.extractor.annotation.ExternalField;
 import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
-import com.sonrisa.swarm.rics.util.RicsIdGenerator;
 
 public class RicsInvoiceDTO extends InvoiceDTO {
 
@@ -34,19 +36,14 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 	private Timestamp ticketModifiedOn;
 
 	/** Date/Time invoice was created in POS system - local time */
-	private Timestamp ticketDateTime;
+	private String ticketDateTime;
 
 	private BigDecimal total;
 
-	private Timestamp batchStart;
-	
 	private Long customerId;
 	
-	/**
-	 * we use a custom generated id because RICS doesn't supply one.
-	 * Lazy calculated field.
-	 */
-	private Long generatedRemoteId;
+    /** Timezone of the establishment this invoice represents */
+    private String timezone;
 
 	@ExternalField(value = "TicketNumber", required = true)
 	public void setTicketNumber(long ticketNumber) {
@@ -60,7 +57,7 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 
 	@ExternalField(value = "TicketDateTime")
 	public void setTicketDateTime(String ticketDateTime) {
-		this.ticketDateTime = new Timestamp(ISO8061DateTimeConverter.stringToDate(ticketDateTime).getTime());
+		this.ticketDateTime = ticketDateTime;
 	}
 
 	@ExternalField(value = "AccountNumber")
@@ -72,16 +69,9 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 		this.total = total;
 	}
 
-	public void setBatchStart(Timestamp batchStart) {
-		this.batchStart = batchStart;
-	}
-
 	@Override
 	public long getRemoteId() {
-		if (generatedRemoteId == null) {
-			generatedRemoteId = Long.valueOf(RicsIdGenerator.generateInvoiceId(batchStart.getTime(), ticketNumber.shortValue()));
-		}
-		return generatedRemoteId.longValue();
+		return ticketNumber;
 	}
 
 	@Override
@@ -91,7 +81,7 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 
 	@Override
 	public String getInvoiceNumber() {
-		return null;
+		return ticketNumber != null ? ticketNumber.toString() : null;
 	}
 
 	@Override
@@ -106,7 +96,10 @@ public class RicsInvoiceDTO extends InvoiceDTO {
 
 	@Override
 	public Timestamp getInvoiceTimestamp() {
-		return ticketDateTime;
+	    return ISO8061DateTimeConverter.stringToDateSafeTimestamp(this.ticketDateTime, this.timezone);
 	}
 
+    public void setTimezone(String timezone) {
+        this.timezone = timezone;
+    }
 }

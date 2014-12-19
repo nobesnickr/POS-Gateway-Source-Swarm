@@ -53,6 +53,21 @@ public class MockVendData {
     }
     
     /**
+     * Get number of items in the resource json files when testing
+     * @return Map, with keys like "Category", and values like 4
+     */
+	public static Map<String, Integer> getCountOfMockJsonItems() {
+		Map<String, Integer> count = new HashMap<String, Integer>();
+        count.put("CustomerDTO",48);
+        count.put("InvoiceDTO",48);
+        count.put("InvoiceLineDTO",78);
+        count.put("ProductDTO",48);
+        count.put("OutletDTO",7);
+        count.put("RegisterDTO",12);
+		return count;
+	}
+    
+    /**
      * Get number of items in the detailed json files when testing
      */
     public static MockPosDataDescriptor getVendMockDescriptor (){

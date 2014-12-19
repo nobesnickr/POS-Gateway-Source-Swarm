@@ -37,7 +37,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.sonrisa.swarm.common.rest.controller.BaseSwarmController;
 import com.sonrisa.swarm.retailpro.service.RpInvoiceService;
 import com.sonrisa.swarm.retailpro.util.mapper.EntityHolder;
 
@@ -48,7 +47,7 @@ import com.sonrisa.swarm.retailpro.util.mapper.EntityHolder;
  */
 @Controller
 @RequestMapping(InvoiceController.URI)
-public class InvoiceController extends BaseSwarmController {
+public class InvoiceController extends BaseRetailProController {
     private static final Logger LOGGER = LoggerFactory.getLogger(InvoiceController.class);
 
     /** The URI of this controller. */
@@ -136,6 +135,10 @@ public class InvoiceController extends BaseSwarmController {
      */
     private int getListSize(List<?> list) {
         return CollectionUtils.isEmpty(list) ? 0 : list.size();
+    }
+    
+    public void setRpInvoiceService(RpInvoiceService rpInvoiceService) {
+        this.rpInvoiceService = rpInvoiceService;
     }
 
     @Override

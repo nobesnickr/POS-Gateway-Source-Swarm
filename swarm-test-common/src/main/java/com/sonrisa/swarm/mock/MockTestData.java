@@ -96,6 +96,12 @@ public abstract class MockTestData {
     /** Retail Pro JSON with invoice date in the 17th century. (Wildlife sends these) */
     public static final String TEST_RP_INVOICES_WITH_DATE_CENTURIES_AGO = "55_rp_invoices_with_date_centuries_ago.json";
     
+    /** Retail Pro uploaded log containing XML error */
+    public static final String TEST_RP_LOG_WITH_SETTINGS_XML_ERROR = "58_mock_retailpro_client_xml_error.log";
+    
+    /** Retail Pro uploaded log containing XML error for Frye-Production */
+    public static final String TEST_RP9_LOG_WITH_SETTINGS_XML_ERROR = "59_mock_retailpro9_client_xml_error.log";
+    
     /**
      * Creates a mock {@link StoreEntity}.
      * 

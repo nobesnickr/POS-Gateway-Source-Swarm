@@ -21,7 +21,6 @@ import java.io.UnsupportedEncodingException;
 import java.util.HashMap;
 import java.util.Map;
 
-import org.apache.http.ParseException;
 import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.slf4j.Logger;
@@ -43,7 +42,6 @@ import com.sonrisa.swarm.posintegration.exception.ExternalApiException;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
 import com.sonrisa.swarm.rics.RicsAccount;
-import com.sonrisa.swarm.rics.constants.RicsUri;
 
 /**
  * Tool to fetch data from  RICS's REST service.
@@ -91,38 +89,6 @@ public class RicsApi extends BaseRestAPI implements ExternalAPI<RicsAccount> {
 	}
 
 	/**
-	 * Retrieves the authorization token that used to access to RICS
-	 * @param account the account would like to access to the service
-	 * @return 
-	 * @throws ExternalExtractorException
-	 */
-	private String getAuthorizationToken(RicsAccount account) throws ExternalExtractorException {
-		if (!StringUtils.hasLength(account.getLastToken())) {
-			renewToken(account);
-		}
-		return account.getLastToken();
-	}
-
-	/**
-	 * sends a request for a new authentication token for RICS services and sets it to the account for further use
-	 * @throws ExternalExtractorException 
-	 */
-	private void renewToken(RicsAccount account) throws ExternalExtractorException {
-		Map<String, String> jsonData = new HashMap<String, String>();
-		jsonData.put("SerialNumber", account.getSerialNum());
-		jsonData.put("Login", account.getLoginName());
-		jsonData.put("Password", account.getPassword());
-
-		try {
-
-			ExternalDTO responseBody = executeCommand(new ExternalCommand<RicsAccount>(account, RicsUri.LOGIN.uri), jsonData).getContent();
-			account.setToken(responseBody.getText("Token"));
-		} catch (ParseException e) {
-			throw new ExternalExtractorException("Unable to parse response", e);
-		}
-	}
-
-	/**
 	 * Send request to RICS webservice using the account set
 	 * 
 	 * @param command contains the data required to fire the request
@@ -130,34 +96,33 @@ public class RicsApi extends BaseRestAPI implements ExternalAPI<RicsAccount> {
 	 */
 	@Override
 	public ExternalResponse sendRequest(ExternalCommand<RicsAccount> command) throws ExternalExtractorException {
-		RicsAccount acc = command.getAccount();
-
 		Map<String, String> params = new HashMap<String, String>(command.getParams());
-		params.put("Token", getAuthorizationToken(acc)); // add authorization data
-
-		try {
-			return executeCommand(command, params);
-		} catch (ExternalApiBadCredentialsException e) {
-			LOGGER.debug("Request failed (maybe old token)", e);
-			renewToken(acc);
-			return executeCommand(command, params);
-		}
-
+		return executeCommand(command, params);
 	}
 
 	private ExternalResponse executeCommand(ExternalCommand<RicsAccount> command, Map<String, String> params) throws ExternalExtractorException {
-		String url = apiBaseUrl + command.getURI();
+		
+		final RicsAccount account = command.getAccount();
+		final String url = apiBaseUrl + command.getURI();
 		HttpPost request = new HttpPost(url);
 
 		StringEntity json;
 		try {
+			
+			// Prepare payload
 		    final String jsonString = MAPPER.writeValueAsString(params);
 			json = new StringEntity(jsonString);
 			json.setContentType(MediaType.APPLICATION_JSON_VALUE);
 			request.setEntity(json);
 			
+			// Prepare headers
+			if(StringUtils.isEmpty(account.getToken())){
+				throw new ExternalExtractorException("No token provided for RICS");
+			}
+			
+			request.addHeader("Token", account.getToken());
+			
 			LOGGER.debug("Request content: {}", jsonString);
-
 			return executeRequest(request);
 		} catch (UnsupportedEncodingException e) {
 			throw new ExternalExtractorException(e);

@@ -17,7 +17,9 @@
 
 package com.sonrisa.swarm;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.*;
+
+import java.util.List;
 
 import org.junit.Rule;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,6 +35,7 @@ import com.sonrisa.swarm.legacy.service.StoreService;
 import com.sonrisa.swarm.mock.MockPosDataDescriptor;
 import com.sonrisa.swarm.mock.MockTestData;
 import com.sonrisa.swarm.model.legacy.StoreEntity;
+import com.sonrisa.swarm.model.staging.BaseStageEntity;
 import com.sonrisa.swarm.posintegration.dto.CategoryDTO;
 import com.sonrisa.swarm.posintegration.dto.CustomerDTO;
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
@@ -41,6 +44,7 @@ import com.sonrisa.swarm.posintegration.dto.ManufacturerDTO;
 import com.sonrisa.swarm.posintegration.dto.ProductDTO;
 import com.sonrisa.swarm.posintegration.extractor.ExternalExtractor;
 import com.sonrisa.swarm.posintegration.extractor.security.AESUtility;
+import com.sonrisa.swarm.staging.service.BaseStagingService;
 import com.sonrisa.swarm.staging.service.CategoryStagingService;
 import com.sonrisa.swarm.staging.service.CustomerStagingService;
 import com.sonrisa.swarm.staging.service.InvoiceLineStagingService;
@@ -96,12 +100,20 @@ public abstract class BaseExtractionIntegrationTest extends BaseBatchTest {
      * @param dataDescriptor
      */
     protected void assertStagingCount(MockPosDataDescriptor dataDescriptor){
-        assertEquals(dataDescriptor.getCountForDTOClass(CategoryDTO.class), categoryStgService.findAllIds().size());
-        assertEquals(dataDescriptor.getCountForDTOClass(ManufacturerDTO.class), manufacturerStgService.findAllIds().size());
-        assertEquals(dataDescriptor.getCountForDTOClass(CustomerDTO.class), customerStgService.findAllIds().size());
-        assertEquals(dataDescriptor.getCountForDTOClass(InvoiceDTO.class), invoiceStgService.findAllIds().size());
-        assertEquals(dataDescriptor.getCountForDTOClass(InvoiceLineDTO.class), invoiceLineStgService.findAllIds().size());
-        assertEquals(dataDescriptor.getCountForDTOClass(ProductDTO.class), productStgService.findAllIds().size());      
+        assertStagingEntityCount(dataDescriptor.getCountForDTOClass(CategoryDTO.class), categoryStgService);
+        assertStagingEntityCount(dataDescriptor.getCountForDTOClass(ManufacturerDTO.class), manufacturerStgService);
+        assertStagingEntityCount(dataDescriptor.getCountForDTOClass(CustomerDTO.class), customerStgService);
+        assertStagingEntityCount(dataDescriptor.getCountForDTOClass(InvoiceDTO.class), invoiceStgService);
+        assertStagingEntityCount(dataDescriptor.getCountForDTOClass(InvoiceLineDTO.class), invoiceLineStgService);
+        assertStagingEntityCount(dataDescriptor.getCountForDTOClass(ProductDTO.class), productStgService);
+    }
+    
+    /**
+     * Helper method for {@link BaseExtractionIntegrationTest#assertStagingCount(MockPosDataDescriptor)}
+     */
+    private <T extends BaseStageEntity>void assertStagingEntityCount(int expectedCount, BaseStagingService<T> stgService){
+    	List<T> stgEntities = stgService.findByIds(stgService.findAllIds());
+    	assertEquals(stgEntities.toString(), expectedCount, stgEntities.size());
     }
     
     /**

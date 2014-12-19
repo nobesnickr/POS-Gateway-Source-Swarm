@@ -24,21 +24,20 @@
         <module>swarm-pos-lspro</module>
         <module>swarm-pos-kounta</module>
         <module>swarm-pos-vend</module>
-        <module>swarm-pos-shopify</module>      
+        <module>swarm-pos-shopify</module>  
+        <module>swarm-pos-rics</module>    
         <module>swarm-admin</module>         
         <module>swarm-gateway</module>
-        <module>swarm-pos-rics</module>
     </modules>
-    
+
     <distributionManagement>
 
     </distributionManagement>
-  
-    <scm>
-        <connection>scm:git:ssh://gerrit.sonrisa:29418/swarm-mobile</connection>
-        <developerConnection>scm:git:ssh://gerrit.sonrisa:29418/swarm-mobile</developerConnection>
-      <tag>v14.09.15-2</tag>
-  </scm>
+	<scm>
+		<connection>scm:git:ssh://gerrit.sonrisa:29418/swarm-mobile</connection>
+		<developerConnection>scm:git:ssh://gerrit.sonrisa:29418/swarm-mobile</developerConnection>
+		<tag>v14.09.15-2</tag>
+	</scm>
 
     <properties>
         <build.timestamp>${maven.build.timestamp}</build.timestamp>
@@ -74,36 +73,6 @@
             </snapshots>
             <id>springsource.libs.milestone</id>
             <url>http://repo.springsource.org/libs-milestone/</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>false</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>sonrisa.snapshots</id>
-            <url>http://nexus.sonrisa:8080/nexus/content/repositories/snapshots</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>sonrisa.nexus.springsource.external</id>
-            <url>http://nexus.sonrisa:8080/nexus/content/repositories/com.springsource.repository.bundles.external/</url>
-        </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-            <id>sonrisa.nexus.elcipselink.repo</id>
-            <url>http://nexus.sonrisa:8080/nexus/content/repositories/eclipselink-repo</url>
         </repository>
     </repositories>
 
@@ -202,12 +171,6 @@
             <artifactId>swarm-gateway</artifactId>
             <version>${project.version}</version>
             <type>war</type>
-        </dependency>
-        <dependency>
-            <groupId>com.sonrisa.swarm</groupId>
-            <artifactId>swarm-test-integration</artifactId>
-            <version>${project.version}</version>
-            <scope>test</scope>
         </dependency>
         <dependency>
 			<groupId>javax.servlet</groupId>
@@ -544,6 +507,7 @@
                 <artifactId>jetty-maven-plugin</artifactId>
                 <version>8.1.11.v20130520</version>
                 <configuration>
+					<war>${basedir}/swarm-gateway/target/swarm.war</war>
                     <webAppConfig>
                         <contextPath>/swarm</contextPath>
                     </webAppConfig>

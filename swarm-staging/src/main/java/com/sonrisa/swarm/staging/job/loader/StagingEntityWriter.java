@@ -67,7 +67,7 @@ public class StagingEntityWriter implements ItemWriter<StageAndLegacyHolder>{
         			LOGGER.debug("Entity already has legacy id and will be updated: {}", legacyEntity);
         		}
         	}
-        	
+        	LOGGER.info("Saving entity: "+legacyEntity);
             legacyService.saveEntityFromStaging(legacyEntity);
             
             // Save entity

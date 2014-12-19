@@ -1,0 +1,9 @@
+extensions: designer.cs generated.cs
+extensions: .cs
+//-----------------------------------------------------------------------
+// <copyright file="%FileName%" company="Sonrisa">
+//     Copyright (c) Sonrisa  All rights reserved.
+// </copyright>
+// <author>csaba-tfs</author>
+// <date>%CreationYear%. %CreationMonth%. %CreationDay%. %CreationTime%</date>
+//-----------------------------------------------------------------------

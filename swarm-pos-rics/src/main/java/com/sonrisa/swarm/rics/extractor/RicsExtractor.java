@@ -92,8 +92,8 @@ public class RicsExtractor extends BaseIteratingExtractor<RicsAccount> {
 			// iterate over invoices
 			for (ExternalDTO invoiceNode : batchNode.getNestedItems("SaleHeaders")) {
 				RicsInvoiceDTO invoice = getDtoTransformer().transformDTO(invoiceNode, RicsInvoiceDTO.class);
-				invoice.setBatchStart(batchStart);
 				invoice.setCustomerId(extractCustomerId(invoiceNode));
+				invoice.setTimezone(store.getTimeZone());
 
 				// iterate over invoice lines
 				extractLinesAndProducts(invoiceNode.getNestedItems("SaleDetails"), invoice, invoiceLines, products);

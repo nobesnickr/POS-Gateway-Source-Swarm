@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:tx="http://www.springframework.org/schema/tx"
+       xmlns:p="http://www.springframework.org/schema/p"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="
+       http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context
+       http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/tx
+       http://www.springframework.org/schema/tx/spring-tx-2.5.xsd
+       http://www.springframework.org/schema/aop
+       http://www.springframework.org/schema/aop/spring-aop-2.0.xsd">
+
+    <context:annotation-config />
+    <context:component-scan base-package="hu.sonrisa" />	
+    <!-- sytem property r2r.env tells us where to look up configuration data from -->
+    <tx:annotation-driven/>  
+    <bean id="transactionManager" class="org.springframework.orm.jpa.JpaTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+        <property name="entityManagerFactory" ref="entityManagerFactory"/>
+    </bean>
+
+    <bean id="loadTimeWeaver" class="org.springframework.instrument.classloading.InstrumentationLoadTimeWeaver"/>
+    <bean id="liquibase" class="liquibase.integration.spring.SpringLiquibase">
+        <property name="dataSource" ref="dataSource" />
+        <property name="changeLog" value="classpath:backend-dblog.xml" /> 
+    </bean>
+    
+    <bean id="entityManagerFactory" depends-on="liquibase" class="org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean">
+        <property name="persistenceUnitManager" ref="pum"/>
+        <property name="jpaVendorAdapter">
+            <bean class="org.springframework.orm.jpa.vendor.EclipseLinkJpaVendorAdapter" />
+        </property>
+        <property name="persistenceUnitName" value="TEST" />
+        <property name="loadTimeWeaver" ref="loadTimeWeaver"/>
+    </bean>
+
+    <bean id="pum" class="org.springframework.orm.jpa.persistenceunit.DefaultPersistenceUnitManager">
+        <property name="persistenceXmlLocations">
+            <list>
+                <value>classpath:META-INF/persistence.xml</value>
+            </list>
+        </property>
+        <property name="dataSources">
+            <map>
+                <entry key="test" value-ref="dataSource">
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="dataSource" destroy-method="close" class="org.apache.commons.dbcp.BasicDataSource">
+        <property name="driverClassName" value="org.h2.Driver"/>
+        <property name="url" value="jdbc:h2:mem:"/>
+        <property name="username" value=""/>
+        <property name="password" value=""/>
+    </bean>
+
+    <bean id="velocityEngine" class="org.springframework.ui.velocity.VelocityEngineFactoryBean"
+          p:resourceLoaderPath="classpath:/emailtemplate"
+          p:preferFileSystemAccess="false">
+        <property name="velocityProperties">
+            <props>
+                <prop key="velocimacro.library">macro/resourcemsg.vm</prop>	
+            </props>
+        </property>
+    </bean>
+
+    <bean id="messageSource" class="org.springframework.context.support.ResourceBundleMessageSource">
+        <property name="basenames">
+            <list>
+                <value>emailtemplate/mailexception</value>
+            </list>
+        </property>
+    </bean>         
+
+    <bean id="mailSender" class="org.springframework.mail.javamail.JavaMailSenderImpl"
+          p:port="3025"
+          p:host="localhost"
+          p:username=""
+          p:password="">
+    </bean>
+
+    <bean id="emailService" class="hu.sonrisa.backend.mail.EmailServiceImpl">
+        <constructor-arg>
+            <map>
+                <entry key="__EXCEPTION__">
+                    <bean class="hu.sonrisa.backend.mail.Email" 
+                    p:enabled="true" p:to="exception@sonrisa.hu" p:from="exception@sonrisa.hu" p:subject="test exception"
+                    p:templateName="exception.vm"/>
+                </entry>
+            </map>    
+        </constructor-arg>
+        <property name="css">
+            <bean class="org.apache.commons.io.IOUtils" factory-method="toString" >
+                <constructor-arg type="java.io.InputStream" value="classpath:emailtemplate/email.css"/>
+            </bean>
+        </property>
+    </bean>
+
+    
+</beans>

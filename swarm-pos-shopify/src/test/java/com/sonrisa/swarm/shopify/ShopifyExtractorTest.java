@@ -46,8 +46,6 @@ import com.sonrisa.swarm.posintegration.extractor.util.ExternalDTOTransformer;
 import com.sonrisa.swarm.posintegration.util.ISO8061DateTimeConverter;
 import com.sonrisa.swarm.test.extractor.BaseExtractorTest;
 import com.sonrisa.swarm.test.matcher.ExternalCommandMatcher;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  *
@@ -55,10 +53,6 @@ import org.slf4j.LoggerFactory;
  */
 @RunWith(MockitoJUnitRunner.class)
 public class ShopifyExtractorTest extends BaseExtractorTest<ShopifyAccount>{
-    private static final Logger LOGGER = LoggerFactory.getLogger(ShopifyExtractorTest.class);
-    
-     /** Mock token used for authentication */
-    private static final String oauthToken = "abc1a1cc351f3aa31ec2921951e1acee3073b4789770ea6a374432d150fbdc73";
     
     /** Tested class */
     private ShopifyExtractor extractor;
@@ -109,11 +103,11 @@ public class ShopifyExtractorTest extends BaseExtractorTest<ShopifyAccount>{
         
         extractor.fetchData(account, dataStore);
         
-        final String expectedDateFilter = ISO8061DateTimeConverter.dateToMysqlString(filter.getTimestamp());
+        final String expectedDateFilter = ISO8061DateTimeConverter.dateToMySqlStringWithTimezone(filter.getTimestamp());
         final String expectedIdFilter = Long.toString(filter.getId());
         
         assertContainsParams("since_id", expectedIdFilter, "customers.json");
-        assertContainsParams("created_at_min", expectedDateFilter, "orders.json");
+        assertContainsParams("updated_at_min", expectedDateFilter, "orders.json");
         assertContainsParams("updated_at_min", expectedDateFilter, "products.json");
     }
     

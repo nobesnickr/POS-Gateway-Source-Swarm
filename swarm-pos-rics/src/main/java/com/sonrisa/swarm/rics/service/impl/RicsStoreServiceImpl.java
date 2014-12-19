@@ -16,9 +16,12 @@
  */
 package com.sonrisa.swarm.rics.service.impl;
 
+import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Map;
+import java.util.TimeZone;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -65,17 +68,17 @@ public class RicsStoreServiceImpl extends BaseStoreRegistrationService implement
      */
     @Override
     public StoreEntity getStore(RicsAccount dummyAccount) {
-        StoreEntity store = findOrCreateStore(dummyAccount.getStoreName(), dummyAccount.getSerialNum(), dummyAccount.getStoreCode(), ricsApiName);
+        StoreEntity store = findOrCreateStore(dummyAccount.getStoreName(), dummyAccount.getUserName(), dummyAccount.getStoreCode(), ricsApiName);
         
         if(store.getId() != null){
-            LOGGER.info("Found existing Rics store for {} with store id:", dummyAccount.getLoginName(), store.getId());
+            LOGGER.info("Found existing Rics store for {} with store id:", dummyAccount.getUserName(), store.getId());
         } else {
-            LOGGER.info("Creating new Rics store entry for {}", dummyAccount.getLoginName());
+            LOGGER.info("Creating new Rics store entry for {}", dummyAccount.getUserName());
         }
         
-        store.setPassword(aesUtility.aesEncryptToBytes(dummyAccount.getPassword()));
-        store.setApiKey(aesUtility.aesEncryptToBytes(dummyAccount.getLoginName()));
+        store.setApiKey(aesUtility.aesEncryptToBytes(dummyAccount.getToken()));
         store.setStoreFilter(dummyAccount.getStoreCode());
+        store.setTimeZone(dummyAccount.getTimeZone());
         return store;
     }
 
@@ -84,24 +87,31 @@ public class RicsStoreServiceImpl extends BaseStoreRegistrationService implement
      * @throws RicsStoreServiceException 
      */
     @Override
-    public RicsAccount getAccount(String loginName, String password, String serialNum, String storeCode)
-            throws RicsStoreServiceException {
+    public RicsAccount getAccount(String userName, String token, String storeCode, String timeZone) throws RicsStoreServiceException {
 
-        RicsAccount account = new RicsAccount(0L);
-        account.setLoginName(loginName);
-        account.setPassword(password);
-        account.setSerialNum(serialNum);
+        RicsAccount account = new RicsAccount();
+        account.setUserName(userName);
+        account.setToken(token);
         account.setStoreCode(storeCode);
-
-        LOGGER.info("Resolving account for RICS, serialNum: {}, loginName: {}", serialNum, loginName);
+        account.setTimeZone(timeZone);
+        
+        LOGGER.info("Resolving account for RICS, userName: {}", userName);
+        
+        // Store code can't be empty
+        if(StringUtils.isEmpty(storeCode)){
+            throw new RicsStoreServiceException("Store code missing");
+        }
+        
+        // Timezone has to be valid
+        if(StringUtils.isEmpty(timeZone) || !isValidTimeZone(timeZone)){
+            throw new RicsStoreServiceException("Invalid timezone: " + timeZone);
+        }
 
         try {
             // Create filter for store
             Map<String, String> params = new HashMap<String, String>();
-            if (StringUtils.hasLength(storeCode)) {
-                params.put("StoreCode", storeCode);
-            }
-            
+
+            params.put("StoreCode", storeCode);
             params.put("BatchStartDate", RicsApi.DATE_MIN);
             params.put("BatchEndDate", RicsApi.DATE_MAX);
 
@@ -118,10 +128,10 @@ public class RicsStoreServiceImpl extends BaseStoreRegistrationService implement
                 throw new RicsStoreServiceException(getNoInvoicesError(storeCode));
             }
         } catch (ExternalApiException e) {
-            LOGGER.debug("API exception occured for loginName: {}", loginName, e);
+            LOGGER.debug("API exception occured for loginName: {}", userName, e);
             throw new RicsStoreServiceException(e.getMessage());
         } catch (ExternalExtractorException e) {
-            LOGGER.warn("Failed to resolve account for serialNum: {} with loginName: {}", serialNum, loginName, e);
+            LOGGER.warn("Failed to resolve account for userName: {}", userName, e);
             throw new RicsStoreServiceException("Unexpected error while trying to communicate with RICS");
         }
     }
@@ -138,6 +148,11 @@ public class RicsStoreServiceImpl extends BaseStoreRegistrationService implement
             errorMsg.append(" in the store");
         }
         return errorMsg.toString();
+    }
+    
+    private static boolean isValidTimeZone(String timeZone){
+        final List<String> allowedValues = Arrays.asList(TimeZone.getAvailableIDs());
+        return allowedValues.contains(timeZone);
     }
 
     public void setRicsApiName(String ricsApiName) {

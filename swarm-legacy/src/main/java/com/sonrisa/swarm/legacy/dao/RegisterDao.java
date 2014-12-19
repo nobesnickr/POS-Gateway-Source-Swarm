@@ -24,7 +24,7 @@ public class RegisterDao extends BaseJpaDao<Long, RegisterEntity>{
     public RegisterEntity findByStoreAndForeignId(final Long storeId, final Long foreignId){
         SimpleFilter<RegisterEntity> filter = new SimpleFilter<RegisterEntity>(RegisterEntity.class, 
                 new FilterParameter("store.id", storeId),
-                new FilterParameter("registerId", foreignId));                              
+                new FilterParameter("lsRegisterId", foreignId));                              
         
         return findSingleEntity(filter);
     }

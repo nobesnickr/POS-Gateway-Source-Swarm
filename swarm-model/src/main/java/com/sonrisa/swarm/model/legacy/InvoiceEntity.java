@@ -68,7 +68,7 @@ public class InvoiceEntity extends BaseLegacyEntity {
     @Override
     public String toString() {
         return "InvoiceEntity [id=" + id 
-                + ", lsInvoiceId=" + getLegacySystemId() + ", lsCustomeId=" + lsCustomerId
+                + ", lsInvoiceId=" + getLegacySystemId() + ", lsCustomerId=" + lsCustomerId
                 + ", invoiceNo=" + invoiceNo + ", ts=" + ts 
                 + ", total=" + total + ", completed=" + completed
                 + ", linesProcessed=" + linesProcessed + ", store=" + getStore() + "]";

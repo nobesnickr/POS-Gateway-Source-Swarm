@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<databaseChangeLog xmlns="http://www.liquibase.org/xml/ns/dbchangelog" 
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd"
+  logicalFilePath="backend-dblog.xml">
+    <changeSet author="cserepj" id="fromlegacy1">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="AUDIT_LOG"/>
+            </not>
+        </preConditions>
+        <createSequence sequenceName="S_AUDIT_LOG"/>
+        <createTable tableName="AUDIT_LOG">
+            <column name="ID" type="NUMBER(19,0)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_AUDIT_LOG" primaryKeyTablespace="SYSTEM"/>
+            </column>
+            <column name="PARAMETER" type="NVARCHAR2(2000)"/>
+            <column name="ESEMENY" type="NVARCHAR2(40)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="HOST" type="NVARCHAR2(25)"/>
+            <column name="FELHASZNALO_ID" type="NVARCHAR2(25)"/>
+            <column name="FELHASZNALO_NEV" type="NVARCHAR2(100)"/>
+            <column name="SZERVEZET" type="NVARCHAR2(100)"/>
+            <column name="IDOPONT" type="TIMESTAMP(6)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="VERSION" type="NUMBER(19,0)"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet author="golyo" id="golyo_2011_09_30_1">
+        <createIndex tableName="audit_log" indexName="idx_audit_log_idopont">
+            <column name="idopont"/>
+        </createIndex>    
+        <createIndex tableName="audit_log" indexName="idx_audit_log_all">
+            <column name="idopont"/>
+            <column name="host"/>
+            <column name="felhasznalo_id"/>
+            <column name="felhasznalo_nev"/>
+            <column name="szervezet"/>
+            <column name="esemeny"/>
+        </createIndex>    
+    </changeSet>
+    
+    <changeSet author="cserepj" id="rename">
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="ESEMENY" newColumnName="EVENT"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="FELHASZNALO_ID" newColumnName="USER_ID"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="FELHASZNALO_NEV" newColumnName="USER_NAME"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="SZERVEZET" newColumnName="ORGANIZATION"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="IDOPONT" newColumnName="LOG_DATE"/>
+    </changeSet>
+    
+    <changeSet author="joe" id="20111006_1328_rename_revert">
+        <comment>Az elozo changeSet-et vonja vissza, visszanevezi az oszlopokat az AUDIT_LOG tablaban.</comment>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="EVENT" newColumnName="ESEMENY"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="USER_ID" newColumnName="FELHASZNALO_ID"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="USER_NAME" newColumnName="FELHASZNALO_NEV"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="ORGANIZATION" newColumnName="SZERVEZET"/>
+        <renameColumn tableName="AUDIT_LOG" oldColumnName="LOG_DATE" newColumnName="IDOPONT"/>
+    </changeSet>
+    
+    <changeSet author="joe" id="20130610_1022">
+        <createTable tableName="VERZIOZOTT_OBJEKTUM">
+            <column name="ID" type="NVARCHAR2(36)">
+                <constraints nullable="false" primaryKey="true" primaryKeyName="PK_VERZIOZOTT_OBJEKTUM" primaryKeyTablespace="SYSTEM"/>
+            </column>
+            <column name="SZULO" type="NVARCHAR2(36)"/>
+            <column name="VERZIO_NEV" type="NVARCHAR2(255)"/>
+            <column name="TIPUS" type="NVARCHAR2(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="KOD" type="NVARCHAR2(255)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="MEGNEVEZES" type="NVARCHAR2(2000)">
+                <constraints nullable="false"/>
+            </column>
+            <column name="STATUSZ" type="NVARCHAR2(20)"/>
+            <column name="CREATED_BY" type="NVARCHAR2(25)"/>
+            <column name="CREATED_AT" type="TIMESTAMP(6)"/>
+            <column name="UNDERLYING_XML" type="CLOB"/>
+            <column name="VERZIO_MEGJEGYZES" type="NVARCHAR2(2000)"/>
+            <column name="VERSION" type="NUMBER(19,0)"/>
+            <column name="XMLVERSION" type="NUMBER(19,0)"/>
+            <column name="DELETED" type="NUMBER(1,0)"/>
+        </createTable>   
+    </changeSet> 
+    
+</databaseChangeLog>

@@ -22,7 +22,7 @@ public class OutletDao extends BaseJpaDao<Long, OutletEntity>{
     public OutletEntity findByStoreAndForeignId(final Long storeId, final Long foreignId){
         SimpleFilter<OutletEntity> filter = new SimpleFilter<OutletEntity>(OutletEntity.class, 
                 new FilterParameter("store.id", storeId),
-                new FilterParameter("outletId", foreignId));                              
+                new FilterParameter("lsOutletId", foreignId));                              
         
         return findSingleEntity(filter);
     }

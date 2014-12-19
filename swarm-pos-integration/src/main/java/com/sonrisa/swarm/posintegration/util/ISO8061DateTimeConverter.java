@@ -16,11 +16,14 @@
  */
 package com.sonrisa.swarm.posintegration.util;
 
+import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
 import javax.xml.bind.DatatypeConverter;
+
+import org.springframework.util.StringUtils;
 
 import com.sonrisa.swarm.common.util.DateUtil;
 
@@ -42,6 +45,11 @@ public class ISO8061DateTimeConverter {
      * Date format for MySQL
      */
     private static final String MYSQL_DATE_FORMATTER = "yyyy-MM-dd HH:mm:ss";
+    
+    /**
+     * Date format for MySQL with timezone
+     */
+    private static final String MYSQL_DATE_TIMEZONE_FORMATTER = "yyyy-MM-dd HH:mm:ss z";
 
     /**
      * Date format used by Lightspeed Pro, which is the internal date format representation if Microsoft .NET
@@ -69,6 +77,16 @@ public class ISO8061DateTimeConverter {
      */
     public static String dateToMysqlString(Date date){
         SimpleDateFormat outDateformat = new SimpleDateFormat(MYSQL_DATE_FORMATTER);
+        return outDateformat.format(date);
+    }
+    
+    /**
+     * Convert DAte to String using format <code>yyyy-MM-dd HH:mm:ss z</code>
+     * @param date
+     * @return
+     */
+    public static String dateToMySqlStringWithTimezone(Date date){
+        SimpleDateFormat outDateformat = new SimpleDateFormat(MYSQL_DATE_TIMEZONE_FORMATTER);
         return outDateformat.format(date);
     }
     
@@ -109,6 +127,26 @@ public class ISO8061DateTimeConverter {
     public static Date stringToDate(String source, String timezone){
         Calendar date = DatatypeConverter.parseDate(source);
         return DateUtil.setTimeZoneWithoutConversion(date, timezone).getTime();
+    }
+    
+    /**
+     * Convert String to Date
+     * @param source Source string using inDateformat
+     * @return Returns date using InDateFormatter
+     */
+    public static Timestamp stringToDateSafeTimestamp(String source, String timezone){
+        if(StringUtils.isEmpty(source)){
+            return null;
+        }
+        
+        Date retVal;
+        if(StringUtils.hasLength(timezone)){
+            retVal = ISO8061DateTimeConverter.stringToDate(source, timezone);
+        } else {
+            retVal = ISO8061DateTimeConverter.stringToDate(source);
+        }
+        
+        return new Timestamp(retVal.getTime());
     }
     
     /**

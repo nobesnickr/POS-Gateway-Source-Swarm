@@ -45,8 +45,8 @@ public class MockShopifyData {
 		count.put("ManufacturerDTO", 0);
 		count.put("ProductDTO", 5);
 		count.put("CustomerDTO", 1);
-		count.put("InvoiceDTO", 2);
-		count.put("InvoiceLineDTO", 6);
+		count.put("InvoiceDTO", 8);
+		count.put("InvoiceLineDTO", 9);
 		return count;
 	}
 

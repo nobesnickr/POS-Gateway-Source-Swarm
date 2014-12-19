@@ -1,38 +1,752 @@
 {
   "Sales": [
     {
-      "BatchStartDate": "2014-05-13T09:54:06.777",
-      "BatchEndDate": "2014-05-16T07:48:12.497",
+      "BatchStartDate": "2014-01-09T10:21:50.67",
+      "BatchEndDate": "2014-01-09T19:12:12.913",
       "BatchOverShort": 0,
-      "BatchStartingBalance": 0,
-      "BatchEndingBalance": 0,
-      "BatchCreatedOn": "2014-05-13T15:54:12.22",
-      "BatchModifiedOn": "2014-05-16T13:48:21.513",
-      "BatchModifiedBy": "straub / RICS Retail #1 : POS",
-      "BatchTotalDeposit": 251,
-      "TerminalDescription": "ST Test POS",
-      "StoreCode": 100001,
-      "StoreName": "RICS Retail #1",
+      "BatchStartingBalance": 300,
+      "BatchEndingBalance": 300,
+      "BatchCreatedOn": "2014-01-09T16:21:50.527",
+      "BatchModifiedOn": "2014-01-10T01:12:23.823",
+      "BatchModifiedBy": "DYL / Legends Owensboro : POS",
+      "BatchTotalDeposit": 1347.1,
+      "BatchFinancialExportedOn": "2014-01-10T20:29:57.987",
+      "TerminalDescription": "1 - Owensboro POS 1",
+      "StoreCode": 1,
+      "StoreName": "Legends Owensboro",
       "User": {
-        "UserCashierCode": "32",
-        "FirstName": "Shawn",
+        "UserCashierCode": "42",
+        "FirstName": "Dakota",
         "MiddleName": "",
-        "LastName": "Traub",
-        "Login": "straub"
+        "LastName": "Watkins",
+        "Login": "DAK"
       },
       "SaleHeaders": [
         {
-          "TicketDateTime": "2014-05-13T12:12:29.73",
-          "TicketNumber": 19,
+          "TicketDateTime": "2014-01-09T10:35:56.937",
+          "TicketNumber": 35605,
           "Change": 0,
           "TicketVoided": false,
           "ReceiptPrinted": true,
           "TicketSuspended": false,
           "ReceiptEmailed": false,
-          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 01:12 PM          100001/32/19\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n\u001bESpecial Order Deposit\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        1       100.00\r\n                        Deposit    25.00\r\n                    Balance Due    75.00\r\n    Open Text Field, Customer \r\ninformation and specifics\r\ncan be added.\r\n\u001bF\r\n                     Subtotal:     25.00\r\n                         Total:    25.00\r\n                    6 - MC/Visa    25.00\r\n\r\n             Items Sold: 0\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (5), Balance Due $275.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
-          "SaleDateTime": "2014-05-13T12:12:29.73",
-          "TicketModifiedOn": "2014-05-13T18:12:29.73",
-          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 10:35 AM             1/72/35605\r\n\r\n8122040630\r\nAmanda Fazio\r\n609 Danberry\r\nOwensboro  \n\r\n\r\nRegular Sale\r\nPureFlow 2, in Sky \r\nDiver/Orange/Silver/Black/White\r\n  110137-762 10 D         1       110.00\r\n           Discount               -45.01\r\n  Frequent Buyer Reward: DASH Loy -10.74\r\n           Net Price               54.25\r\nJuno Daydream, in Daydream\r\n  350025-546 34 B         1        56.00\r\n  Frequent Buyer Reward: DASH Loya -9.26\r\n           Net Price               46.74\r\n\r\n                     Subtotal:    100.99\r\n                    Sales Tax:      6.06\r\n                         Total:   107.05\r\n           3 - MC/Visa/Discover   107.05\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $63.34\r\nDollars To Go: $186.66\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T10:35:56.937",
+          "TicketModifiedOn": "2014-01-09T16:35:56.937",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 64.99,
+              "RetailPrice": 110,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 64.99,
+              "Cost": 47.51,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T16:35:56.947",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 64.99,
+              "NetSales": 64.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 3.26,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "110137-762",
+                "Style": "",
+                "SupplierCode": "BROOKS",
+                "Supplier": "BROOKS RUNNING",
+                "Summary": "PureFlow 2",
+                "Colors": [
+                  {
+                    "TagTree": "Sky Diver/Orange/Silver/Black/White"
+                  }
+                ],
+                "Column": "10",
+                "ColumnOrdinal": 12,
+                "Row": "D",
+                "RowOrdinal": 4,
+                "UPC": "883439716175"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 56,
+              "RetailPrice": 56,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 56,
+              "Cost": 26.32,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T16:35:57",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 56,
+              "NetSales": 56,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 2.8,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "350025-546",
+                "Style": "",
+                "SupplierCode": "MC",
+                "Supplier": "Moving Comfort",
+                "Summary": "Juno Daydream",
+                "Colors": [
+                  {
+                    "TagTree": "Daydream"
+                  }
+                ],
+                "Column": "34 B",
+                "ColumnOrdinal": 15,
+                "UPC": "400000050768"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 107.05,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "4f08f3b0-d0ce-4326-af99-a00c017a02d8",
+            "AccountNumber": "8122040630",
+            "FirstName": "Amanda",
+            "LastName": "Fazio"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T10:38:07.127",
+          "TicketNumber": 35606,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 10:38 AM             1/72/35606\r\n\r\n2702567176\r\nDALLAS JOINES\r\n549 WATER TOWER LANE\r\nHARTFORD, KY 42347\n\r\n\r\nRegular Sale\r\nREFLECT COMPRESSION , in Neon Orange\r\n  6035-113 L/XL           1        43.99\r\n  Frequent Buyer Reward: OARWC     -4.40\r\n           Net Price               39.59\r\nCharge Payment\r\n                                   58.03\r\n\r\n                     Subtotal:     97.62\r\n                    Sales Tax:      2.38\r\n                         Total:   100.00\r\n                   7- Gift Card   100.00\r\n   3219000619 Card Balance 0.00\r\n\r\n             Items Sold: 1\r\n\r\n               Charge Balance:   -$58.03\r\n\r\n\u001bE\u001bF\r\nGift Cards:\r\n  3219000619 - Current Balance: $0.00\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T10:38:07.127",
+          "TicketModifiedOn": "2014-01-09T16:38:07.763",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 43.99,
+              "RetailPrice": 43.99,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 43.99,
+              "Cost": 22,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T16:38:07.833",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 43.99,
+              "NetSales": 43.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 2.38,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "6035-113",
+                "Style": "",
+                "SupplierCode": "ZENS",
+                "Supplier": "Zensah Company",
+                "Summary": "REFLECT COMPRESSION ",
+                "Colors": [
+                  {
+                    "TagTree": "Neon Orange"
+                  }
+                ],
+                "Column": "L/XL",
+                "ColumnOrdinal": 2,
+                "UPC": "400000040301"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 100,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "7- Gift Card",
+              "GiftCardNumber": "3219000619"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "b1264fec-d08c-4931-8c26-ee24292a5c32",
+            "AccountNumber": "2702567176",
+            "FirstName": "Dallas",
+            "LastName": "Joines"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T10:49:38.447",
+          "TicketNumber": 35607,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 10:49 AM             1/72/35607\r\n\r\n2709261780\r\nChristy Dalton\r\n907 Eastwood Dr.\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\nAsst Poly Maxback, in ASSORTED\r\n  MPFLY7A-970 32          1        70.00\r\n  Frequent Buyer Reward: DASH Loy -20.00\r\n           Net Price               50.00\r\n\r\n                     Subtotal:     50.00\r\n                    Sales Tax:      3.00\r\n                         Total:    53.00\r\n           3 - MC/Visa/Discover    53.00\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $17.99\r\nDollars To Go: $232.01\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T10:49:38.447",
+          "TicketModifiedOn": "2014-01-09T16:49:44.957",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 70,
+              "RetailPrice": 70,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 70,
+              "Cost": 20,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T16:49:44.963",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 70,
+              "NetSales": 70,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 3,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "MPFLY7A-970",
+                "Style": "",
+                "SupplierCode": "TYR",
+                "Supplier": "TYR Sport Inc.",
+                "Summary": "Asst Poly Maxback",
+                "Colors": [
+                  {
+                    "TagTree": "ASSORTED"
+                  }
+                ],
+                "Column": "32",
+                "ColumnOrdinal": 32,
+                "UPC": "036702210362"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 53,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "7eba0fe5-9e84-45e9-b1e2-a0cf01535360",
+            "AccountNumber": "2709261780",
+            "FirstName": "Christy",
+            "LastName": "Dalton"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T11:01:21.77",
+          "TicketNumber": 35608,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 11:01 AM             1/72/35608\r\n\r\n2709293526\r\nHarold Staples\r\n\r\nRegular Sale\r\nPearl Elite Thermal , in Black\r\n  14371210021 S           1        45.00\r\n  Frequent Buyer Reward: Owensboro -6.75\r\n           Net Price               38.25\r\nElite Barrier Shoe C, in Black\r\n  14381105-021 M          1        70.00\r\n  Frequent Buyer Reward: Owensbor -10.50\r\n           Net Price               59.50\r\n\r\n                     Subtotal:     97.75\r\n                    Sales Tax:      5.87\r\n                         Total:   103.62\r\n           3 - MC/Visa/Discover   103.62\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T11:01:21.77",
+          "TicketModifiedOn": "2014-01-09T17:01:25.763",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 45,
+              "RetailPrice": 45,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 45,
+              "Cost": 22.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T17:01:25.79",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 45,
+              "NetSales": 45,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 2.3,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "14371210021",
+                "Style": "",
+                "SupplierCode": "PEARL",
+                "Supplier": "Pearl Izumi",
+                "Summary": "Pearl Elite Thermal ",
+                "Colors": [
+                  {
+                    "TagTree": "Black"
+                  }
+                ],
+                "Column": "S",
+                "ColumnOrdinal": 3
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 70,
+              "RetailPrice": 70,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 70,
+              "Cost": 35,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T17:01:25.89",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 70,
+              "NetSales": 70,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 3.57,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "14381105-021",
+                "Style": "",
+                "SupplierCode": "PEARL",
+                "Supplier": "Pearl Izumi",
+                "Summary": "Elite Barrier Shoe C",
+                "Colors": [
+                  {
+                    "TagTree": "Black"
+                  }
+                ],
+                "Column": "M",
+                "ColumnOrdinal": 2,
+                "UPC": "703051633493"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 103.62,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "db3bf5fa-eed9-4c3e-9e93-9e9601321caa",
+            "AccountNumber": "2709293526",
+            "FirstName": "Harold",
+            "LastName": "Staples"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T11:40:05.213",
+          "TicketNumber": 35609,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 11:40 AM             1/72/35609\r\n\r\n2703147757\r\nJulia Wiman\r\n5 Hilltop Drive\r\nOwensboro, KY 42303\n\r\n\r\nRegular Sale\r\nFoam Roller 5.75x35, in Blue\r\n  PTFMX35BL               1        29.95\r\n           Net Price               29.95\r\n\r\n                     Subtotal:     29.95\r\n                    Sales Tax:      1.80\r\n                         Total:    31.75\r\n           3 - MC/Visa/Discover    31.75\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $204.60\r\nDollars To Go: $45.40\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T11:40:05.213",
+          "TicketModifiedOn": "2014-01-09T17:40:08.087",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 29.95,
+              "RetailPrice": 29.95,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 29.95,
+              "Cost": 15,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T17:40:08.11",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 29.95,
+              "NetSales": 29.95,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 1.8,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "PTFMX35BL",
+                "Style": "",
+                "SupplierCode": "PROT",
+                "Supplier": "Pro-Tec",
+                "Summary": "Foam Roller 5.75x35",
+                "Colors": [
+                  {
+                    "TagTree": "Blue"
+                  }
+                ],
+                "UPC": "785702112267"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 31.75,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "eca5e6ce-bca6-47bf-90bf-a18901331caf",
+            "AccountNumber": "2703147757",
+            "FirstName": "Julia",
+            "LastName": "Wiman"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T12:10:54.327",
+          "TicketNumber": 35610,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 12:10 PM             1/83/35610\r\n\r\n8125298646\r\nJosh Schaad\r\n10368 E co Rd 950n\r\nEVANSTON, IN 47531\n\r\n\r\nRegular Sale\r\nMichelin City 700 x \r\n  TR8343                  1        29.99\r\n           Net Price               29.99\r\n\r\n                     Subtotal:     29.99\r\n                    Sales Tax:      1.80\r\n                         Total:    31.79\r\n           3 - MC/Visa/Discover    31.79\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $29.99\r\nDollars To Go: $220.01\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T12:10:54.327",
+          "TicketModifiedOn": "2014-01-09T18:11:00.34",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 29.99,
+              "RetailPrice": 29.99,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 29.99,
+              "Cost": 14.5371,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T18:11:00.363",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 29.99,
+              "NetSales": 29.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 1.8,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "83",
+                "FirstName": "Ryan",
+                "MiddleName": "",
+                "LastName": "Clark",
+                "Login": "DOC"
+              },
+              "ProductItem": {
+                "Sku": "TR8343",
+                "Style": "",
+                "SupplierCode": "QBP",
+                "Supplier": "Quality Bicycle",
+                "Summary": "Michelin City 700 x ",
+                "Colors": [],
+                "UPC": "3528706192548"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 31.79,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "83",
+            "FirstName": "Ryan",
+            "MiddleName": "",
+            "LastName": "Clark",
+            "Login": "DOC"
+          },
+          "Customer": {
+            "CustomerId": "6c655dc0-2061-4b67-a913-a2ae012b1f91",
+            "AccountNumber": "8125298646",
+            "FirstName": "Josh",
+            "LastName": "Schaad"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T12:41:33.31",
+          "TicketNumber": 35611,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 12:41 PM             1/72/35611\r\n\r\n2702814161\r\nRobin Shelton\r\n6105 Stanford Ct.\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\nDASH-FIT Guarantee\r\n  DASH FIT                1         0.00\r\n           Net Price                0.00\r\nWmns Glycerin 11, in \r\nAquarius/Blue/Silver/Orange\r\n  120137-560 8 B          1       150.00\r\n           Net Price              150.00\r\n\r\n                     Subtotal:    150.00\r\n                    Sales Tax:      9.00\r\n                         Total:   159.00\r\n                       1 - Cash   155.00\r\n           3 - MC/Visa/Discover     4.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $214.00\r\nDollars To Go: $36.00\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T12:41:33.31",
+          "TicketModifiedOn": "2014-01-09T18:41:37.86",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 0,
+              "RetailPrice": 0,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 0,
+              "Cost": 0,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T18:41:37.93",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 0,
+              "NetSales": 0,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "DASH FIT",
+                "SupplierCode": "LEGENDS",
+                "Supplier": "Legends",
+                "Summary": "DASH-FIT Guarantee",
+                "Colors": []
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 150,
+              "Cost": 79.56,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T18:41:38.07",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 150,
+              "NetSales": 150,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 9,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "120137-560",
+                "Style": "",
+                "SupplierCode": "BROOKS",
+                "Supplier": "BROOKS RUNNING",
+                "Summary": "Wmns Glycerin 11",
+                "Colors": [
+                  {
+                    "TagTree": "Aquarius/Blue/Silver/Orange"
+                  }
+                ],
+                "Column": "8",
+                "ColumnOrdinal": 8,
+                "Row": "B",
+                "RowOrdinal": 3,
+                "UPC": "883439703243"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 155,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            },
+            {
+              "AmountTendered": 4,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "0266ddf1-7f6c-4149-994a-d05ebd89b0f1",
+            "AccountNumber": "2702814161",
+            "FirstName": "Robin",
+            "LastName": "Shelton"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T12:49:54.397",
+          "TicketNumber": 35612,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 12:49 PM             1/14/35612\r\n\r\n2702819316\r\nAnn Wink\r\n7150 Roy Wells Rd.\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\nNIKE FREE 5.0+, in DARK GREY\r\n  579959-080 10.5         1       100.00\r\n           Net Price              100.00\r\n\r\n                     Subtotal:    100.00\r\n                    Sales Tax:      6.00\r\n                         Total:   106.00\r\n           3 - MC/Visa/Discover   106.00\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $100.00\r\nDollars To Go: $150.00\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T12:49:54.397",
+          "TicketModifiedOn": "2014-01-09T18:49:59.247",
+          "ModifiedBy": "SUZ / Legends Owensboro : POS",
           "SaleType": "Store Sale",
           "SaleDetails": [
             {
@@ -40,690 +754,1384 @@
               "Quantity": 1,
               "SalePrice": 100,
               "RetailPrice": 100,
+              "CommissionAmount": 0,
               "PerkAmount": 0,
-              "AmountPaid": 25,
-              "Cost": 55,
+              "AmountPaid": 100,
+              "Cost": 50.88,
               "ShippingCharges": 0,
               "ShipToCustomer": false,
-              "SKUComment": "Open Text Field, Customer information and specifics\r\ncan be added.",
-              "ModifiedOn": "2014-05-13T18:12:29.787",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
+              "ModifiedOn": "2014-01-09T18:49:59.257",
+              "ModifiedBy": "SUZ / Legends Owensboro : POS",
+              "IsFBQualified": true,
               "ActivePrice": 100,
-              "NetSales": 0,
-              "TransactionSaleDescription": "Special Order Deposit",
+              "NetSales": 100,
+              "TransactionSaleDescription": "Regular Sale",
               "SaleTax": {
-                "TaxAmount": 0,
+                "TaxAmount": 6,
                 "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
               },
               "SalesPerson": {
-                "UserCashierCode": "32",
-                "FirstName": "Shawn",
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
                 "MiddleName": "",
-                "LastName": "Traub",
-                "Login": "straub"
+                "LastName": "Hammons",
+                "Login": "DYL"
               },
-              "SpecialOrderLayaway": {
-                "OriginalQuantity": 1,
-                "OriginalTicketNumber": 19,
-                "OriginalAmount": 100,
-                "AmountPaidToDate": 25,
-                "Price": 100,
-                "TaxApplied": 0,
-                "PickedUpQuantity": 0,
-                "CancelledQuantity": 0,
-                "RemainingAmountPaid": 25
+              "ProductItem": {
+                "Sku": "579959-080",
+                "Style": "",
+                "SupplierCode": "NIKE AO",
+                "Supplier": "NIKE",
+                "Summary": "NIKE FREE 5.0+",
+                "Colors": [
+                  {
+                    "TagTree": "DARK GREY"
+                  }
+                ],
+                "Column": "10.5",
+                "ColumnOrdinal": 13,
+                "UPC": "884802215097"
               }
             }
           ],
           "Tenders": [
             {
-              "AmountTendered": 25,
+              "AmountTendered": 106,
               "IsAlternateCurrency": false,
               "IsForced": false,
-              "TenderDescription": "6 - MC/Visa"
+              "TenderDescription": "3 - MC/Visa/Discover"
             }
           ],
           "Cashier": {
-            "UserCashierCode": "32",
-            "FirstName": "Shawn",
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
             "MiddleName": "",
-            "LastName": "Traub",
-            "Login": "straub"
+            "LastName": "Hammons",
+            "Login": "DYL"
           },
           "Customer": {
-            "AccountNumber": "olesen",
-            "FirstName": "Brian",
-            "LastName": "Olesen"
+            "CustomerId": "87fce14b-35f3-4ddd-af22-a2ae0135d479",
+            "AccountNumber": "2702819316",
+            "FirstName": "Ann",
+            "LastName": "Wink"
           }
         },
         {
-          "TicketDateTime": "2014-05-13T12:13:25.22",
-          "TicketNumber": 20,
-          "Change": 0,
+          "TicketDateTime": "2014-01-09T14:00:54.693",
+          "TicketNumber": 35613,
+          "Change": 2.2,
           "TicketVoided": false,
           "ReceiptPrinted": true,
           "TicketSuspended": false,
           "ReceiptEmailed": false,
-          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 01:13 PM          100001/32/20\r\n\r\n9073369\r\nVERNA ATTAWAY\r\n822 Fox Point Lane SW\r\nIndianapolis, IN 46256\n\r\n\r\n\u001bESpecial Order Deposit\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n                        Deposit     0.00\r\n                    Balance Due    57.00\r\n    Customization needed....XYZ...\r\n\u001bF\r\n                     Subtotal:      0.00\r\n                         Total:     0.00\r\n\r\n             Items Sold: 0\r\n\r\n\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (1), Balance Due $57.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
-          "SaleDateTime": "2014-05-13T12:13:25.22",
-          "TicketModifiedOn": "2014-05-13T18:13:25.22",
-          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 02:00 PM             1/14/35613\r\n\r\n8127195275\r\nsally houzanme\r\n\r\nRegular Sale\r\nWmns Glycerin 11, in \r\nAnthracite/Caribbean\r\n  120137-440 9 B          1       150.00\r\n  Frequent Buyer Reward: DASH Loy -20.00\r\n           Net Price              130.00\r\n\r\n                     Subtotal:    130.00\r\n                    Sales Tax:      7.80\r\n                         Total:   137.80\r\n                       1 - Cash   140.00\r\n                        Change:     2.20\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $6.00\r\nDollars To Go: $244.00\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T14:00:54.693",
+          "TicketModifiedOn": "2014-01-09T20:01:03.57",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
           "SaleType": "Store Sale",
           "SaleDetails": [
             {
               "TicketLineNumber": 1,
               "Quantity": 1,
-              "SalePrice": 57,
-              "RetailPrice": 115,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "CommissionAmount": 0,
               "PerkAmount": 0,
-              "AmountPaid": 0,
-              "Cost": 52.36,
+              "AmountPaid": 150,
+              "Cost": 76.675,
               "ShippingCharges": 0,
               "ShipToCustomer": false,
-              "SKUComment": "Customization needed....XYZ...",
-              "ModifiedOn": "2014-05-13T18:13:25.243",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
+              "ModifiedOn": "2014-01-09T20:01:03.69",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 150,
+              "NetSales": 150,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 7.8,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "120137-440",
+                "Style": "",
+                "SupplierCode": "BROOKS",
+                "Supplier": "BROOKS RUNNING",
+                "Summary": "Wmns Glycerin 11",
+                "Colors": [
+                  {
+                    "TagTree": "Anthracite/Caribbean"
+                  }
+                ],
+                "Column": "9",
+                "ColumnOrdinal": 10,
+                "Row": "B",
+                "RowOrdinal": 3,
+                "UPC": "883439835456"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 140,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
+            "MiddleName": "",
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "c3140d4b-c8bf-4bf3-9728-a0aa0140ec72",
+            "AccountNumber": "8127195275",
+            "FirstName": "sally",
+            "LastName": "houzanme"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T14:17:33.833",
+          "TicketNumber": 35614,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 02:17 PM             1/72/35614\r\n\r\n2703142034\r\nTonia Durbin\r\n10652 North Jackson Road\r\nUtica, KY 42376\n\r\n\r\nSpecial Order Cancel by 14:Hammons, Dylan\r\nNike+ Sportwatch GPS\r\n  WM0097-006             -1      -149.00\r\n             Refund                 0.00\r\n    Customer needs to exchange watch \r\nwhen new one arrives\r\n\r\n                     Subtotal:      0.00\r\n                         Total:     0.00\r\n\r\n             Items Sold: 0\r\n\r\n\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $164.31\r\nDollars To Go: $85.69\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T14:17:33.833",
+          "TicketModifiedOn": "2014-01-09T20:17:40.127",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 149,
+              "RetailPrice": 149,
+              "PerkAmount": 0,
+              "AmountPaid": 10,
+              "Cost": 80.02,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "SKUComment": "Customer needs to exchange watch when new one arrives",
+              "ModifiedOn": "2014-01-09T20:17:40.14",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
               "IsFBQualified": false,
-              "ActivePrice": 57,
-              "NetSales": 0,
-              "TransactionSaleDescription": "Special Order Deposit",
+              "ActivePrice": 149,
+              "NetSales": 10.0,
+              "TransactionSaleDescription": "Special Order Cancel",
               "SaleTax": {
                 "TaxAmount": 0,
                 "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
               },
               "SalesPerson": {
-                "UserCashierCode": "32",
-                "FirstName": "Shawn",
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
                 "MiddleName": "",
-                "LastName": "Traub",
-                "Login": "straub"
+                "LastName": "Hammons",
+                "Login": "DYL"
               },
               "SpecialOrderLayaway": {
                 "OriginalQuantity": 1,
-                "OriginalTicketNumber": 20,
-                "OriginalAmount": 57,
+                "OriginalTicketNumber": 26669,
+                "OriginalAmount": 157.94,
                 "AmountPaidToDate": 0,
-                "Price": 57,
-                "TaxApplied": 0,
+                "Price": 149,
+                "TaxApplied": 8.94,
                 "PickedUpQuantity": 0,
-                "CancelledQuantity": 0,
+                "CancelledQuantity": 1,
                 "RemainingAmountPaid": 0
               },
               "ProductItem": {
-                "Sku": "E150N-9091",
-                "SupplierCode": "ASIC",
-                "Supplier": "ASICS",
-                "Summary": "Gel Resolution 3",
+                "Sku": "WM0097-006",
+                "Style": "",
+                "SupplierCode": "NIKE AO",
+                "Supplier": "NIKE",
+                "Summary": "Nike+ Sportwatch GPS",
                 "Colors": [
                   {
-                    "TagTree": "BLK/LGHTNG"
+                    "TagTree": "Black/Blue"
                   }
                 ],
-                "Column": "065",
-                "ColumnOrdinal": 6,
-                "Row": "D",
-                "RowOrdinal": 6,
-                "UPC": "440197745382"
+                "UPC": "091206355766"
               }
             }
           ],
           "Tenders": [],
           "Cashier": {
-            "UserCashierCode": "32",
-            "FirstName": "Shawn",
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
             "MiddleName": "",
-            "LastName": "Traub",
-            "Login": "straub"
+            "LastName": "Watkins",
+            "Login": "DAK"
           },
           "Customer": {
-            "AccountNumber": "9073369",
-            "FirstName": "VERNA",
-            "LastName": "ATTAWAY"
+            "CustomerId": "7a9d0b20-8592-4416-a4ba-9f1a01056628",
+            "AccountNumber": "2703142034",
+            "FirstName": "Tonia",
+            "LastName": "Durbin"
           }
         },
         {
-          "TicketDateTime": "2014-05-13T13:03:02.64",
-          "TicketNumber": 22,
+          "TicketDateTime": "2014-01-09T14:20:49.663",
+          "TicketNumber": 35615,
+          "TicketComment": "Check #1674",
           "Change": 0,
           "TicketVoided": false,
           "ReceiptPrinted": true,
           "TicketSuspended": false,
           "ReceiptEmailed": false,
-          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:03 PM          100001/32/22\r\n\r\nReturn by 35:Travis, Randy\r\nWomens Performance, in BLACK\r\n  N454-BLK MED           -2        24.00\r\n           Net Price              -24.00\r\nRegular Sale by 37:Brown, Darrin\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        3       345.00\r\n           Discount              -174.00\r\n           Net Price              171.00\r\nRegular Sale by 5:MAHUSAY, ABE\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        2       200.00\r\n           Discount 10.00 %       -20.00\r\n           Net Price              180.00\r\n\r\n                     Subtotal:    327.00\r\n                         Total:   327.00\r\n                       1 - Cash   100.00\r\n                   7 - Discover   227.00\r\n\r\n             Items Sold: 5\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
-          "SaleDateTime": "2014-05-13T13:03:02.64",
-          "TicketModifiedOn": "2014-05-13T19:03:02.64",
-          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 02:20 PM             1/72/35615\r\n\r\n2703142034\r\nTonia Durbin\r\n10652 North Jackson Road\r\nUtica, KY 42376\n\r\n\r\nRegular Sale\r\nAir Pegasus+ 30, in red/black\r\n  599205-601 11           1       100.00\r\n  Frequent Buyer Reward: DASH Loy -20.00\r\n           Net Price               80.00\r\n\r\n                     Subtotal:     80.00\r\n                    Sales Tax:      4.80\r\n                         Total:    84.80\r\n                      2 - Check    84.80\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFCheck #1674\r\n\r\nDASH Loyalty Club Summary:\r\nDollars Purchased: $0.00\r\nDollars To Go: $250.00\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T14:20:49.663",
+          "TicketModifiedOn": "2014-01-09T20:20:50.73",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
           "SaleType": "Store Sale",
           "SaleDetails": [
             {
               "TicketLineNumber": 1,
-              "Quantity": 2,
-              "SalePrice": 12,
-              "RetailPrice": 12,
-              "CommissionAmount": 0,
-              "PerkAmount": 0,
-              "AmountPaid": 24,
-              "Cost": 5,
-              "ShippingCharges": 0,
-              "ShipToCustomer": false,
-              "ModifiedOn": "2014-05-13T19:03:02.657",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
-              "ActivePrice": 12,
-              "IsSellable": false,
-              "NetSales": 24,
-              "ReturnDescription": "Wrong Size",
-              "TransactionSaleDescription": "Return",
-              "SaleTax": {
-                "TaxAmount": 0,
-                "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
-              },
-              "SalesPerson": {
-                "UserCashierCode": "35",
-                "FirstName": "Randy",
-                "MiddleName": "IToldYouSo1!",
-                "LastName": "Travis",
-                "Login": "RTravis"
-              },
-              "ProductItem": {
-                "Sku": "N454-BLK",
-                "SupplierCode": "N.B.",
-                "Supplier": "new balance",
-                "Summary": "Womens Performance",
-                "Colors": [
-                  {
-                    "TagTree": "BLACK"
-                  }
-                ],
-                "Column": "MED",
-                "ColumnOrdinal": 2,
-                "UPC": "440197126778"
-              }
-            },
-            {
-              "TicketLineNumber": 2,
-              "Quantity": 3,
-              "SalePrice": 57,
-              "RetailPrice": 115,
-              "CommissionAmount": 0,
-              "PerkAmount": 0,
-              "AmountPaid": 171,
-              "Cost": 52.36,
-              "ShippingCharges": 0,
-              "ShipToCustomer": false,
-              "ModifiedOn": "2014-05-13T19:03:02.77",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
-              "ActivePrice": 57,
-              "NetSales": 171,
-              "TransactionSaleDescription": "Regular Sale",
-              "SaleTax": {
-                "TaxAmount": 0,
-                "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
-              },
-              "SalesPerson": {
-                "UserCashierCode": "37",
-                "FirstName": "Darrin",
-                "MiddleName": "",
-                "LastName": "Brown",
-                "Login": "Darrin"
-              },
-              "ProductItem": {
-                "Sku": "E150N-9091",
-                "SupplierCode": "ASIC",
-                "Supplier": "ASICS",
-                "Summary": "Gel Resolution 3",
-                "Colors": [
-                  {
-                    "TagTree": "BLK/LGHTNG"
-                  }
-                ],
-                "Column": "065",
-                "ColumnOrdinal": 6,
-                "Row": "D",
-                "RowOrdinal": 6,
-                "UPC": "440197745382"
-              }
-            },
-            {
-              "TicketLineNumber": 3,
-              "Quantity": 2,
+              "Quantity": 1,
               "SalePrice": 100,
               "RetailPrice": 100,
-              "DiscountRate": 10,
-              "CommissionAmount": 3.6,
+              "CommissionAmount": 0,
               "PerkAmount": 0,
-              "AmountPaid": 180,
-              "Cost": 55,
+              "AmountPaid": 100,
+              "Cost": 50.88,
               "ShippingCharges": 0,
               "ShipToCustomer": false,
-              "ModifiedOn": "2014-05-13T19:03:02.857",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
+              "ModifiedOn": "2014-01-09T20:20:50.75",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
               "ActivePrice": 100,
-              "NetSales": 180,
+              "NetSales": 100,
               "TransactionSaleDescription": "Regular Sale",
-              "DiscountReasonDescription": "City of Rochester",
               "SaleTax": {
-                "TaxAmount": 0,
+                "TaxAmount": 4.8,
                 "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
               },
               "SalesPerson": {
-                "UserCashierCode": "5",
-                "FirstName": "ABE",
-                "LastName": "MAHUSAY",
-                "Login": "AMAHUSAY"
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
               },
               "ProductItem": {
-                "Sku": "110088-621",
-                "SupplierCode": "BROK",
-                "Supplier": "Brooks",
-                "Summary": "Adrenaline-Support",
+                "Sku": "599205-601",
+                "Style": "",
+                "SupplierCode": "NIKE AO",
+                "Supplier": "NIKE",
+                "Summary": "Air Pegasus+ 30",
                 "Colors": [
                   {
-                    "TagTree": "WT/BK/SLV"
+                    "TagTree": "Red/Black"
                   }
                 ],
-                "Column": "095",
-                "ColumnOrdinal": 8,
-                "Row": "B",
-                "RowOrdinal": 2,
-                "UPC": "440199455210"
+                "Column": "11",
+                "ColumnOrdinal": 14,
+                "UPC": "884500512962"
               }
             }
           ],
           "Tenders": [
             {
-              "AmountTendered": 227,
+              "AmountTendered": 84.8,
               "IsAlternateCurrency": false,
               "IsForced": false,
-              "TenderDescription": "7 - Discover"
+              "TenderDescription": "2 - Check"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "7a9d0b20-8592-4416-a4ba-9f1a01056628",
+            "AccountNumber": "2703142034",
+            "FirstName": "Tonia",
+            "LastName": "Durbin"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T15:27:15.947",
+          "TicketNumber": 35616,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 03:27 PM             1/14/35616\r\n\r\n2706838549\r\nLauren Bickel\r\n4518 Oakhurst Bend\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\nUA CC Undeniable SSV, in Knock Out \r\nElectric Tangerine Knock Out\r\n  1236032-656-SM S        1        24.99\r\n           Net Price               24.99\r\nNIKE SPORT HAIRBANDS, in GREEN/BLUE/PINK\r\n  NJN07346                1        10.00\r\n           Net Price               10.00\r\n\r\n                     Subtotal:     34.99\r\n                    Sales Tax:      2.10\r\n                         Total:    37.09\r\n                   7- Gift Card    37.09\r\n  3219000540 Card Balance 12.91\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\r\nGift Cards:\r\n  3219000540 - Current Balance: $12.91\r\n\r\n\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $29.98\r\nDollars To Go: $220.02\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T15:27:15.947",
+          "TicketModifiedOn": "2014-01-09T21:27:19.583",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 24.99,
+              "RetailPrice": 24.99,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 24.99,
+              "Cost": 12.5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T21:27:19.59",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 24.99,
+              "NetSales": 24.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 1.5,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "1236032-656-SM",
+                "SupplierCode": "UNDE",
+                "Supplier": "UNDER ARMOUR",
+                "Summary": "UA CC Undeniable SSV",
+                "Colors": [
+                  {
+                    "TagTree": "Knock Out Electric Tangerine Knock Out"
+                  }
+                ],
+                "Column": "S",
+                "ColumnOrdinal": 3,
+                "UPC": "887162789246"
+              }
             },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 10,
+              "RetailPrice": 10,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 10,
+              "Cost": 5,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T21:27:19.737",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 10,
+              "NetSales": 10,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0.6,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "NJN07346",
+                "Style": "",
+                "SupplierCode": "NIKE AO",
+                "Supplier": "NIKE",
+                "Summary": "NIKE SPORT HAIRBANDS",
+                "Colors": [
+                  {
+                    "TagTree": "GREEN/BLUE/PINK"
+                  }
+                ],
+                "UPC": "887791007520"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 37.09,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "7- Gift Card",
+              "GiftCardNumber": "3219000540"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
+            "MiddleName": "",
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "bab15999-9fa6-4920-80bc-9eb7011a64a0",
+            "AccountNumber": "2706838549",
+            "FirstName": "Lauren",
+            "LastName": "Bickel"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T17:01:48.357",
+          "TicketNumber": 35617,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 05:01 PM             1/83/35617\r\n\r\n2709291745\r\nJaime Forsythe\r\n119 West 19th St.\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\nLIV Moss Short Knick, in Black\r\n  1222 L                  1        59.99\r\n           Net Price               59.99\r\n\r\n                     Subtotal:     59.99\r\n                    Sales Tax:      3.60\r\n                         Total:    63.59\r\n           3 - MC/Visa/Discover    63.59\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $225.98\r\nDollars To Go: $24.02\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T17:01:48.357",
+          "TicketModifiedOn": "2014-01-09T23:01:48.357",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 59.99,
+              "RetailPrice": 59.99,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 59.99,
+              "Cost": 29.19,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T23:01:48.37",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 59.99,
+              "NetSales": 59.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 3.6,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "83",
+                "FirstName": "Ryan",
+                "MiddleName": "",
+                "LastName": "Clark",
+                "Login": "DOC"
+              },
+              "ProductItem": {
+                "Sku": "1222",
+                "Style": "",
+                "SupplierCode": "GIANT",
+                "Supplier": "GIANT",
+                "Summary": "LIV Moss Short Knick",
+                "Colors": [
+                  {
+                    "TagTree": "Black"
+                  }
+                ],
+                "Column": "L",
+                "ColumnOrdinal": 5,
+                "UPC": "400000050010"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 63.59,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "83",
+            "FirstName": "Ryan",
+            "MiddleName": "",
+            "LastName": "Clark",
+            "Login": "DOC"
+          },
+          "Customer": {
+            "CustomerId": "17030c63-ceb1-45e5-acb0-a2ac017f13d2",
+            "AccountNumber": "2709291745",
+            "FirstName": "Jaime",
+            "LastName": "Forsythe"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T17:14:13.643",
+          "TicketNumber": 35618,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 05:14 PM             1/14/35618\r\n\r\n2703135400\r\nAshley Hatcher\r\n\r\nRegular Sale\r\nWNMS Nike Free Flykn, in Atomic \r\nPink/White/Blue\r\n  615806-614 8            1       160.00\r\n  Frequent Buyer Reward: DASH Loy -20.00\r\n           Net Price              140.00\r\n\r\n                     Subtotal:    140.00\r\n                    Sales Tax:      8.40\r\n                         Total:   148.40\r\n           3 - MC/Visa/Discover   148.40\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $17.98\r\nDollars To Go: $232.02\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T17:14:13.643",
+          "TicketModifiedOn": "2014-01-09T23:14:14.13",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 160,
+              "RetailPrice": 160,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 160,
+              "Cost": 83.1,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T23:14:14.15",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 160,
+              "NetSales": 160,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 8.4,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "615806-614",
+                "Style": "",
+                "SupplierCode": "NIKE AO",
+                "Supplier": "NIKE",
+                "Summary": "WNMS Nike Free Flykn",
+                "Colors": [
+                  {
+                    "TagTree": "Atomic Pink/White/Blue"
+                  }
+                ],
+                "Column": "8",
+                "ColumnOrdinal": 8,
+                "UPC": "884499942139"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 148.4,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
+            "MiddleName": "",
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "d0ae8959-cd09-47f1-a534-a29701666cfe",
+            "AccountNumber": "2703135400",
+            "FirstName": "Ashley",
+            "LastName": "Hatcher"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T17:16:19.35",
+          "TicketNumber": 35619,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 05:16 PM             1/14/35619\r\n\r\n2705701230\r\nBryan Haycraft\r\n2221 FAIRVIEW DRIVE\r\nOWENSBORO, KY 42303\n\r\n\r\nReturn\r\nGlacial  Fleece III , in Sea Salt\r\n  AL6437-126 S           -1        50.00\r\n           Net Price              -50.00\r\nGift Card Internal\r\n  3219000619                       53.00\r\n\r\n                     Subtotal:      3.00\r\n                    Sales Tax:     -3.00\r\n                         Total:     0.00\r\n\r\n             Items Sold: 1\r\n\r\n\r\nGift Cards:\r\n  3219000619 - Current Balance: $53.00\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $144.86\r\nDollars To Go: $105.14\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T17:16:19.35",
+          "TicketModifiedOn": "2014-01-09T23:16:24.853",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 50,
+              "RetailPrice": 50,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 50,
+              "Cost": 16.45,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T23:16:24.877",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 50,
+              "IsSellable": true,
+              "NetSales": 50,
+              "ReturnDescription": "Wrong Size",
+              "TransactionSaleDescription": "Return",
+              "SaleTax": {
+                "TaxAmount": -3,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "AL6437-126",
+                "Style": "",
+                "SupplierCode": "COLU",
+                "Supplier": "COLUMBIA",
+                "Summary": "Glacial  Fleece III ",
+                "Colors": [
+                  {
+                    "TagTree": "Sea Salt"
+                  }
+                ],
+                "Column": "S",
+                "ColumnOrdinal": 3,
+                "UPC": "886535842984"
+              }
+            }
+          ],
+          "Tenders": [],
+          "Cashier": {
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
+            "MiddleName": "",
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "0fda1c98-bb83-4e18-a72d-b7afdc6bb128",
+            "AccountNumber": "2705701230",
+            "FirstName": "Bryan",
+            "LastName": "Haycraft"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T17:36:05.913",
+          "TicketNumber": 35620,
+          "Change": 1,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 05:36 PM             1/72/35620\r\n\r\n2706837947\r\nScott Miller\r\n2212 Shefield\r\nOWENSBORO, KY 42301\n\r\n\r\nRegular Sale\r\nNest Pro Goggle Smk, in Smoke\r\n  LGNST-041               1        20.00\r\n           Discount 10.00 %        -2.00\r\n           Net Price               18.00\r\n\r\n                     Subtotal:     18.00\r\n                    Sales Tax:      1.08\r\n                         Total:    19.08\r\n                       1 - Cash    20.08\r\n                        Change:     1.00\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $127.26\r\nDollars To Go: $122.74\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T17:36:05.913",
+          "TicketModifiedOn": "2014-01-09T23:36:05.913",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 20,
+              "RetailPrice": 20,
+              "DiscountRate": 10,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 18,
+              "Cost": 10,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T23:36:05.93",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 20,
+              "NetSales": 18,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Promotion",
+              "SaleTax": {
+                "TaxAmount": 1.08,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "LGNST-041",
+                "SupplierCode": "TYR",
+                "Supplier": "TYR Sport Inc.",
+                "Summary": "Nest Pro Goggle Smk",
+                "Colors": [
+                  {
+                    "TagTree": "Smoke"
+                  }
+                ],
+                "UPC": "036702251174"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 20.08,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "1 - Cash"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "9a056aba-0949-4da9-9a80-9ec70147297e",
+            "AccountNumber": "2706837947",
+            "FirstName": "Scott",
+            "LastName": "Miller"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T17:41:22.38",
+          "TicketNumber": 35621,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 05:41 PM             1/72/35621\r\n\r\n2703139232\r\nCONNOR MCCORMICK\r\n5755 WATERLOO WAY\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\nNike Free 3.0 V5, in Dark Armory \r\nBlue/Black/Blue Hero\r\n  580393-404 12           1       110.00\r\n           Discount               -25.01\r\n  Coupon: Get Movin'              -10.00\r\n  Frequent Buyer Reward: DASH Loy -20.00\r\n           Net Price               54.99\r\n\r\n                     Subtotal:     54.99\r\n                    Sales Tax:      3.30\r\n                         Total:    58.29\r\n           3 - MC/Visa/Discover    58.29\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $0.00\r\nDollars To Go: $250.00\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T17:41:22.38",
+          "TicketModifiedOn": "2014-01-09T23:41:27.06",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 84.99,
+              "RetailPrice": 110,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 84.99,
+              "Cost": 55.97,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-09T23:41:27.073",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 84.99,
+              "NetSales": 84.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 3.3,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "42",
+                "FirstName": "Dakota",
+                "MiddleName": "",
+                "LastName": "Watkins",
+                "Login": "DAK"
+              },
+              "ProductItem": {
+                "Sku": "580393-404",
+                "Style": "",
+                "SupplierCode": "NIKE AO",
+                "Supplier": "NIKE",
+                "Summary": "Nike Free 3.0 V5",
+                "Colors": [
+                  {
+                    "TagTree": "Dark Armory Blue/Black/Blue Hero"
+                  }
+                ],
+                "Column": "12",
+                "ColumnOrdinal": 16,
+                "UPC": "884498345535"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 58.29,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "42",
+            "FirstName": "Dakota",
+            "MiddleName": "",
+            "LastName": "Watkins",
+            "Login": "DAK"
+          },
+          "Customer": {
+            "CustomerId": "465f89ab-ac04-414c-932f-9f2d015610b8",
+            "AccountNumber": "2703139232",
+            "FirstName": "CONNOR",
+            "LastName": "MCCORMICK"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T18:21:02.53",
+          "TicketNumber": 35622,
+          "Change": 27.92,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 06:21 PM             1/83/35622\r\n\r\n2709290757\r\nJoe Higdon\r\n4600 Hunters Ridge\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\n\r\n  BIKE LABOR              1        25.00\r\nCampagnolo Centaur 1\r\n  FD3144                  1        80.00\r\n  Frequent Buyer Reward: Owensbor -12.00\r\n           Net Price               68.00\r\n\r\n                     Subtotal:     93.00\r\n                    Sales Tax:      4.08\r\n                         Total:    97.08\r\n                   7- Gift Card    25.00\r\n   3219000900 Card Balance 0.00\r\n                       1 - Cash   100.00\r\n                        Change:    27.92\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\r\nGift Cards:\r\n  3219000900 - Current Balance: $0.00\r\n\r\n\u001bE\u001bF\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T18:21:02.53",
+          "TicketModifiedOn": "2014-01-10T00:21:09.72",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 25,
+              "RetailPrice": 0,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 25,
+              "Cost": 0,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-10T00:21:09.743",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 0,
+              "NetSales": 25,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0,
+                "IsUserOverridden": false,
+                "TaxRate": 0,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "83",
+                "FirstName": "Ryan",
+                "MiddleName": "",
+                "LastName": "Clark",
+                "Login": "DOC"
+              },
+              "ProductItem": {
+                "Sku": "BIKE LABOR",
+                "Style": "",
+                "SupplierCode": "LEGENDS",
+                "Supplier": "Legends",
+                "Summary": "",
+                "Colors": []
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 80,
+              "RetailPrice": 80,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 80,
+              "Cost": 50,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-10T00:21:09.82",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 80,
+              "NetSales": 80,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 4.08,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "83",
+                "FirstName": "Ryan",
+                "MiddleName": "",
+                "LastName": "Clark",
+                "Login": "DOC"
+              },
+              "ProductItem": {
+                "Sku": "FD3144",
+                "Style": "",
+                "SupplierCode": "QBP",
+                "Supplier": "Quality Bicycle",
+                "Summary": "Campagnolo Centaur 1",
+                "Colors": [
+                  {
+                    "TagTree": ""
+                  }
+                ],
+                "UPC": "400000051840"
+              }
+            }
+          ],
+          "Tenders": [
             {
               "AmountTendered": 100,
               "IsAlternateCurrency": false,
               "IsForced": false,
               "TenderDescription": "1 - Cash"
+            },
+            {
+              "AmountTendered": 25,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "7- Gift Card",
+              "GiftCardNumber": "3219000900"
             }
           ],
           "Cashier": {
-            "UserCashierCode": "32",
-            "FirstName": "Shawn",
+            "UserCashierCode": "83",
+            "FirstName": "Ryan",
             "MiddleName": "",
-            "LastName": "Traub",
-            "Login": "straub"
+            "LastName": "Clark",
+            "Login": "DOC"
+          },
+          "Customer": {
+            "CustomerId": "6ce149b6-7f6f-4009-a86f-9f57018699d4",
+            "AccountNumber": "2709290757",
+            "FirstName": "Joe",
+            "LastName": "Higdon"
           }
         },
         {
-          "TicketDateTime": "2014-05-13T13:16:58.58",
-          "TicketNumber": 23,
-          "TicketComment": "This is an open text field.",
+          "TicketDateTime": "2014-01-09T18:06:46.953",
+          "TicketNumber": 35623,
           "Change": 0,
           "TicketVoided": false,
           "ReceiptPrinted": true,
           "TicketSuspended": false,
           "ReceiptEmailed": false,
-          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:16 PM          100001/32/23\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n\u001bESpecial Order Deposit\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n                        Deposit    25.00\r\n                    Balance Due    32.00\r\n\u001bF\u001bEGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\n                        Deposit    57.00\r\n                    Balance Due     0.00\r\n\u001bF\r\n                     Subtotal:     82.00\r\n                         Total:    82.00\r\n                       1 - Cash    82.00\r\n\r\n             Items Sold: 0\r\n\r\n\u001bE\u001bF\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (7), Balance Due $307.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bFThis is an open text field.\r\n\r\n\u001bE\u001bF",
-          "SaleDateTime": "2014-05-13T13:16:58.58",
-          "TicketModifiedOn": "2014-05-13T19:16:58.58",
-          "ModifiedBy": "straub / RICS Retail #1 : POS",
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 06:06 PM             1/14/35623\r\n\r\n2709226119\r\nJosh Hanks\r\n\r\nRegular Sale\r\nWms Trance 12, in \r\nWhite/Silver/Black/Blue/Neptuen/Sea\r\n  120124-341 10.5         1       150.00\r\n  Frequent Buyer Reward: DASH Loy -20.00\r\n           Net Price              130.00\r\nDASH-FIT Guarantee\r\n  DASH FIT                1         0.00\r\n  Frequent Buyer Reward: DASH Loyal 0.00\r\n           Net Price                0.00\r\n\r\n                     Subtotal:    130.00\r\n                    Sales Tax:      7.80\r\n                         Total:   137.80\r\n           3 - MC/Visa/Discover   137.80\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $0.00\r\nDollars To Go: $250.00\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T18:06:46.953",
+          "TicketModifiedOn": "2014-01-10T00:06:58.713",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
           "SaleType": "Store Sale",
           "SaleDetails": [
             {
               "TicketLineNumber": 1,
               "Quantity": 1,
-              "SalePrice": 57,
-              "RetailPrice": 115,
+              "SalePrice": 150,
+              "RetailPrice": 150,
+              "CommissionAmount": 0,
               "PerkAmount": 0,
-              "AmountPaid": 25,
-              "Cost": 52.36,
+              "AmountPaid": 150,
+              "Cost": 82.5,
               "ShippingCharges": 0,
               "ShipToCustomer": false,
-              "ModifiedOn": "2014-05-13T19:16:58.587",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
-              "ActivePrice": 57,
-              "NetSales": 0,
-              "TransactionSaleDescription": "Special Order Deposit",
+              "ModifiedOn": "2014-01-10T00:06:58.75",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 150,
+              "NetSales": 150,
+              "TransactionSaleDescription": "Regular Sale",
               "SaleTax": {
-                "TaxAmount": 0,
+                "TaxAmount": 7.8,
                 "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
               },
               "SalesPerson": {
-                "UserCashierCode": "32",
-                "FirstName": "Shawn",
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
                 "MiddleName": "",
-                "LastName": "Traub",
-                "Login": "straub"
-              },
-              "SpecialOrderLayaway": {
-                "OriginalQuantity": 1,
-                "OriginalTicketNumber": 23,
-                "OriginalAmount": 57,
-                "AmountPaidToDate": 25,
-                "Price": 57,
-                "TaxApplied": 0,
-                "PickedUpQuantity": 0,
-                "CancelledQuantity": 0,
-                "RemainingAmountPaid": 25
+                "LastName": "Hammons",
+                "Login": "DYL"
               },
               "ProductItem": {
-                "Sku": "E150N-9091",
-                "SupplierCode": "ASIC",
-                "Supplier": "ASICS",
-                "Summary": "Gel Resolution 3",
+                "Sku": "120124-341",
+                "Style": "",
+                "SupplierCode": "BROOKS",
+                "Supplier": "BROOKS RUNNING",
+                "Summary": "Wms Trance 12",
                 "Colors": [
                   {
-                    "TagTree": "BLK/LGHTNG"
+                    "TagTree": "White/Silver/Black/Blue/Neptuen/Sea"
                   }
                 ],
-                "Column": "065",
-                "ColumnOrdinal": 6,
-                "Row": "D",
-                "RowOrdinal": 6,
-                "UPC": "440197745382"
+                "Column": "10.5",
+                "ColumnOrdinal": 13,
+                "UPC": "883439655160"
               }
             },
             {
               "TicketLineNumber": 2,
               "Quantity": 1,
-              "SalePrice": 57,
-              "RetailPrice": 115,
-              "PerkAmount": 0,
-              "AmountPaid": 57,
-              "Cost": 52.36,
-              "ShippingCharges": 0,
-              "ShipToCustomer": false,
-              "ModifiedOn": "2014-05-13T19:16:58.59",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
-              "ActivePrice": 57,
-              "NetSales": 0,
-              "TransactionSaleDescription": "Special Order Deposit",
-              "SaleTax": {
-                "TaxAmount": 0,
-                "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
-              },
-              "SalesPerson": {
-                "UserCashierCode": "32",
-                "FirstName": "Shawn",
-                "MiddleName": "",
-                "LastName": "Traub",
-                "Login": "straub"
-              },
-              "SpecialOrderLayaway": {
-                "OriginalQuantity": 1,
-                "OriginalTicketNumber": 23,
-                "OriginalAmount": 57,
-                "AmountPaidToDate": 57,
-                "Price": 57,
-                "TaxApplied": 0,
-                "PickedUpQuantity": 0,
-                "CancelledQuantity": 0,
-                "RemainingAmountPaid": 57
-              },
-              "ProductItem": {
-                "Sku": "E150N-9091",
-                "SupplierCode": "ASIC",
-                "Supplier": "ASICS",
-                "Summary": "Gel Resolution 3",
-                "Colors": [
-                  {
-                    "TagTree": "BLK/LGHTNG"
-                  }
-                ],
-                "Column": "065",
-                "ColumnOrdinal": 6,
-                "Row": "D",
-                "RowOrdinal": 6,
-                "UPC": "440197745382"
-              }
-            }
-          ],
-          "Tenders": [
-            {
-              "AmountTendered": 82,
-              "IsAlternateCurrency": false,
-              "IsForced": false,
-              "TenderDescription": "1 - Cash"
-            }
-          ],
-          "Cashier": {
-            "UserCashierCode": "32",
-            "FirstName": "Shawn",
-            "MiddleName": "",
-            "LastName": "Traub",
-            "Login": "straub"
-          },
-          "Customer": {
-            "AccountNumber": "olesen",
-            "FirstName": "Brian",
-            "LastName": "Olesen"
-          }
-        },
-        {
-          "TicketDateTime": "2014-05-13T13:22:23.94",
-          "TicketNumber": 24,
-          "Change": 0,
-          "TicketVoided": false,
-          "ReceiptPrinted": true,
-          "TicketSuspended": false,
-          "ReceiptEmailed": false,
-          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:22 PM          100001/32/24\r\n\r\nolesen\r\nBrian Olesen\r\n1234 Main\r\nGRANGER, IA 50109\n\r\n\r\n\u001bESpecial Order Deposit\r\nAdrenaline-Support, in WT/BK/SLV\r\n  110088-621 095 B        1       100.00\r\n                        Deposit     0.00\r\n                    Balance Due   100.00\r\n    coffee brown, dog bed Xl, supplier \r\nxyz\r\n\u001bF\r\n                     Subtotal:      0.00\r\n                         Total:     0.00\r\n\r\n             Items Sold: 0\r\n\r\n\r\n* * * * * * * * * * * * * * * * * * * * *\r\nOrders (8), Balance Due $407.00\r\n* * * * * * * * * * * * * * * * * * * * *\r\n\r\n\u001bE\u001bF\u001bE\u001bF",
-          "SaleDateTime": "2014-05-13T13:22:23.94",
-          "TicketModifiedOn": "2014-05-13T19:22:23.94",
-          "ModifiedBy": "straub / RICS Retail #1 : POS",
-          "SaleType": "Store Sale",
-          "SaleDetails": [
-            {
-              "TicketLineNumber": 1,
-              "Quantity": 1,
-              "SalePrice": 100,
-              "RetailPrice": 100,
+              "SalePrice": 0,
+              "RetailPrice": 0,
+              "CommissionAmount": 0,
               "PerkAmount": 0,
               "AmountPaid": 0,
-              "Cost": 55,
+              "Cost": 0,
               "ShippingCharges": 0,
               "ShipToCustomer": false,
-              "SKUComment": "coffee brown, dog bed Xl, supplier xyz",
-              "ModifiedOn": "2014-05-13T19:22:23.943",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
-              "ActivePrice": 100,
+              "ModifiedOn": "2014-01-10T00:06:58.833",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 0,
               "NetSales": 0,
-              "TransactionSaleDescription": "Special Order Deposit",
-              "SaleTax": {
-                "TaxAmount": 0,
-                "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
-              },
-              "SalesPerson": {
-                "UserCashierCode": "32",
-                "FirstName": "Shawn",
-                "MiddleName": "",
-                "LastName": "Traub",
-                "Login": "straub"
-              },
-              "SpecialOrderLayaway": {
-                "OriginalQuantity": 1,
-                "OriginalTicketNumber": 24,
-                "OriginalAmount": 100,
-                "AmountPaidToDate": 0,
-                "Price": 100,
-                "TaxApplied": 0,
-                "PickedUpQuantity": 0,
-                "CancelledQuantity": 0,
-                "RemainingAmountPaid": 0
-              },
-              "ProductItem": {
-                "Sku": "110088-621",
-                "SupplierCode": "BROK",
-                "Supplier": "Brooks",
-                "Summary": "Adrenaline-Support",
-                "Colors": [
-                  {
-                    "TagTree": "WT/BK/SLV"
-                  }
-                ],
-                "Column": "095",
-                "ColumnOrdinal": 8,
-                "Row": "B",
-                "RowOrdinal": 2,
-                "UPC": "440199455210"
-              }
-            }
-          ],
-          "Tenders": [],
-          "Cashier": {
-            "UserCashierCode": "32",
-            "FirstName": "Shawn",
-            "MiddleName": "",
-            "LastName": "Traub",
-            "Login": "straub"
-          },
-          "Customer": {
-            "AccountNumber": "olesen",
-            "FirstName": "Brian",
-            "LastName": "Olesen"
-          }
-        },
-        {
-          "TicketDateTime": "2014-05-13T13:33:14.767",
-          "TicketNumber": 26,
-          "Change": 0,
-          "TicketVoided": false,
-          "ReceiptPrinted": true,
-          "TicketSuspended": false,
-          "ReceiptEmailed": false,
-          "ReceiptText": "\u001bE\u001bF\r\n5/13/2014 02:33 PM          100001/32/26\r\n\r\nRegular Sale\r\nGel Resolution 3, in BLK/LGHTNG\r\n  E150N-9091 065 D        1       115.00\r\n           Discount               -58.00\r\n           Net Price               57.00\r\nWomens Performance, in BLACK\r\n  N454-BLK MED            1        12.00\r\n\r\n                     Subtotal:     69.00\r\n                         Total:    69.00\r\n                       1 - Cash    69.00\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bF\u001bE\u001bF",
-          "SaleDateTime": "2014-05-13T13:33:14.767",
-          "TicketModifiedOn": "2014-05-13T19:33:14.767",
-          "ModifiedBy": "straub / RICS Retail #1 : POS",
-          "SaleType": "Store Sale",
-          "SaleDetails": [
-            {
-              "TicketLineNumber": 1,
-              "Quantity": 1,
-              "SalePrice": 57,
-              "RetailPrice": 115,
-              "CommissionAmount": 0,
-              "PerkAmount": 0,
-              "AmountPaid": 57,
-              "Cost": 52.36,
-              "ShippingCharges": 0,
-              "ShipToCustomer": false,
-              "ModifiedOn": "2014-05-13T19:33:14.77",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
-              "ActivePrice": 57,
-              "NetSales": 57,
               "TransactionSaleDescription": "Regular Sale",
               "SaleTax": {
                 "TaxAmount": 0,
                 "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
               },
               "SalesPerson": {
-                "UserCashierCode": "32",
-                "FirstName": "Shawn",
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
                 "MiddleName": "",
-                "LastName": "Traub",
-                "Login": "straub"
+                "LastName": "Hammons",
+                "Login": "DYL"
               },
               "ProductItem": {
-                "Sku": "E150N-9091",
-                "SupplierCode": "ASIC",
-                "Supplier": "ASICS",
-                "Summary": "Gel Resolution 3",
-                "Colors": [
-                  {
-                    "TagTree": "BLK/LGHTNG"
-                  }
-                ],
-                "Column": "065",
-                "ColumnOrdinal": 6,
-                "Row": "D",
-                "RowOrdinal": 6,
-                "UPC": "440197745382"
-              }
-            },
-            {
-              "TicketLineNumber": 2,
-              "Quantity": 1,
-              "SalePrice": 12,
-              "RetailPrice": 12,
-              "CommissionAmount": 0,
-              "PerkAmount": 0,
-              "AmountPaid": 12,
-              "Cost": 5,
-              "ShippingCharges": 0,
-              "ShipToCustomer": false,
-              "ModifiedOn": "2014-05-13T19:33:14.813",
-              "ModifiedBy": "straub / RICS Retail #1 : POS",
-              "IsFBQualified": false,
-              "ActivePrice": 12,
-              "NetSales": 12,
-              "TransactionSaleDescription": "Regular Sale",
-              "SaleTax": {
-                "TaxAmount": 0,
-                "IsUserOverridden": false,
-                "TaxRate": 0,
-                "OrganizationTaxDescription": "State"
-              },
-              "SalesPerson": {
-                "UserCashierCode": "32",
-                "FirstName": "Shawn",
-                "MiddleName": "",
-                "LastName": "Traub",
-                "Login": "straub"
-              },
-              "ProductItem": {
-                "Sku": "N454-BLK",
-                "SupplierCode": "N.B.",
-                "Supplier": "new balance",
-                "Summary": "Womens Performance",
-                "Colors": [
-                  {
-                    "TagTree": "BLACK"
-                  }
-                ],
-                "Column": "MED",
-                "ColumnOrdinal": 2,
-                "UPC": "440197126778"
+                "Sku": "DASH FIT",
+                "SupplierCode": "LEGENDS",
+                "Supplier": "Legends",
+                "Summary": "DASH-FIT Guarantee",
+                "Colors": []
               }
             }
           ],
           "Tenders": [
             {
-              "AmountTendered": 69,
+              "AmountTendered": 137.8,
               "IsAlternateCurrency": false,
               "IsForced": false,
-              "TenderDescription": "1 - Cash"
+              "TenderDescription": "3 - MC/Visa/Discover"
             }
           ],
           "Cashier": {
-            "UserCashierCode": "32",
-            "FirstName": "Shawn",
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
             "MiddleName": "",
-            "LastName": "Traub",
-            "Login": "straub"
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "2dc43aea-54ad-4374-a6ab-a285013efbf9",
+            "AccountNumber": "2709226119",
+            "FirstName": "Josh",
+            "LastName": "Hanks"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T18:23:14.77",
+          "TicketNumber": 35624,
+          "TicketComment": "240999",
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 06:23 PM             1/14/35624\r\n\r\n2703180005\r\nAHS GIRLS SOCCER DREW TAYLOR\r\n228- TAMARACK RD\r\nOWENSBORO, KY 42301\n\r\n\r\nRegular Sale\r\nNIKE5 ROLINHO MENOR, in Black\r\n  SC2005-071 Pro          6       120.00\r\n           Net Price              120.00\r\n\r\n                     Subtotal:    120.00\r\n                         Total:   120.00\r\n                9- House Charge   120.00\r\n\r\n             Items Sold: 6\r\n\r\n\u001bE\u001bF\u001bE\u001bF240999\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T18:23:14.77",
+          "TicketModifiedOn": "2014-01-10T00:23:20.393",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 6,
+              "SalePrice": 20,
+              "RetailPrice": 20,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 120,
+              "Cost": 9.4,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-10T00:23:20.41",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": false,
+              "ActivePrice": 20,
+              "NetSales": 120,
+              "TransactionSaleDescription": "Regular Sale",
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "SC2005-071",
+                "SupplierCode": "NIKE AO",
+                "Supplier": "NIKE",
+                "Summary": "NIKE5 ROLINHO MENOR",
+                "Colors": [
+                  {
+                    "TagTree": "Black"
+                  }
+                ],
+                "Column": "Pro",
+                "ColumnOrdinal": 6,
+                "UPC": "640135995866"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 120,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "9- House Charge"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
+            "MiddleName": "",
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "72199225-5786-4f86-bbfa-9f4e01347098",
+            "AccountNumber": "2703180005",
+            "FirstName": "AHS GIRLS SOCCER",
+            "LastName": "DREW TAYLOR"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T18:37:01.497",
+          "TicketNumber": 35625,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 06:37 PM             1/14/35625\r\n\r\n2709936433\r\nDenise Jarboe\r\n701 Main Street\r\nGRANDVIEW, IN 47615\n\r\n\r\nRegular Sale\r\nThick Sweaty's\r\n  TH SWEAT                1        17.99\r\n           Discount 10.00 %        -1.80\r\n           Net Price               16.19\r\n\r\n                     Subtotal:     16.19\r\n                    Sales Tax:      0.97\r\n                         Total:    17.16\r\n           3 - MC/Visa/Discover    17.16\r\n\r\n             Items Sold: 1\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $227.76\r\nDollars To Go: $22.24\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T18:37:01.497",
+          "TicketModifiedOn": "2014-01-10T00:37:01.5",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 17.99,
+              "RetailPrice": 17.99,
+              "DiscountRate": 10,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 16.19,
+              "Cost": 9,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-10T00:37:01.517",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 17.99,
+              "NetSales": 16.19,
+              "TransactionSaleDescription": "Regular Sale",
+              "DiscountReasonDescription": "Promotion",
+              "SaleTax": {
+                "TaxAmount": 0.97,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "TH SWEAT",
+                "SupplierCode": "SWEA",
+                "Supplier": "Sweaty Bands",
+                "Summary": "Thick Sweaty's",
+                "Colors": [],
+                "UPC": "400000009452"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 17.16,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
+            "MiddleName": "",
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "1106705f-5b90-4f0c-b86d-9f36015ea20e",
+            "AccountNumber": "2709936433",
+            "FirstName": "Denise",
+            "LastName": "Jarboe"
+          }
+        },
+        {
+          "TicketDateTime": "2014-01-09T18:38:20.453",
+          "TicketNumber": 35626,
+          "Change": 0,
+          "TicketVoided": false,
+          "ReceiptPrinted": true,
+          "TicketSuspended": false,
+          "ReceiptEmailed": false,
+          "ReceiptText": "\u001bE                Legends\r\n           325 Park Plaza Dr.\r\n          Owensboro, KY 42301\r\n              270-684-9600\r\n\u001bF\r\n1/9/2014 06:38 PM             1/14/35626\r\n\r\n110541022248932\r\nAudree Hunter\r\n\r\nOWENSBORO, KY 42303\n\r\n\r\nRegular Sale\r\nSwimple Goggle , in BERRY FIZZ\r\n  LGSW-479                1        10.99\r\n           Net Price               10.99\r\nErgo Swim Clip, in Lime\r\n  LERGO-339               1         4.00\r\n           Net Price                4.00\r\n\r\n                     Subtotal:     14.99\r\n                    Sales Tax:      0.90\r\n                         Total:    15.89\r\n           3 - MC/Visa/Discover    15.89\r\n\r\n             Items Sold: 2\r\n\r\n\u001bE\u001bF\u001bE\u001bFDASH Loyalty Club Summary:\r\nDollars Purchased: $36.94\r\nDollars To Go: $213.06\r\n\r\n\u001bE         www.thenextlegend.com\r\n        facebook.com/yourlegends\r\n\u001bF",
+          "SaleDateTime": "2014-01-09T18:38:20.453",
+          "TicketModifiedOn": "2014-01-10T00:38:27.04",
+          "ModifiedBy": "DYL / Legends Owensboro : POS",
+          "SaleType": "Store Sale",
+          "SaleDetails": [
+            {
+              "TicketLineNumber": 1,
+              "Quantity": 1,
+              "SalePrice": 10.99,
+              "RetailPrice": 10.99,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 10.99,
+              "Cost": 5.15,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-10T00:38:27.053",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 10.99,
+              "NetSales": 10.99,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0.66,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "LGSW-479",
+                "SupplierCode": "TYR",
+                "Supplier": "TYR Sport Inc.",
+                "Summary": "Swimple Goggle ",
+                "Colors": [
+                  {
+                    "TagTree": "BERRY FIZZ"
+                  }
+                ],
+                "UPC": "036702350457"
+              }
+            },
+            {
+              "TicketLineNumber": 2,
+              "Quantity": 1,
+              "SalePrice": 4,
+              "RetailPrice": 4,
+              "CommissionAmount": 0,
+              "PerkAmount": 0,
+              "AmountPaid": 4,
+              "Cost": 2,
+              "ShippingCharges": 0,
+              "ShipToCustomer": false,
+              "ModifiedOn": "2014-01-10T00:38:27.2",
+              "ModifiedBy": "DYL / Legends Owensboro : POS",
+              "IsFBQualified": true,
+              "ActivePrice": 4,
+              "NetSales": 4,
+              "TransactionSaleDescription": "Regular Sale",
+              "SaleTax": {
+                "TaxAmount": 0.24,
+                "IsUserOverridden": false,
+                "TaxRate": 6,
+                "OrganizationTaxDescription": "Sales Tax"
+              },
+              "SalesPerson": {
+                "UserCashierCode": "14",
+                "FirstName": "Dylan",
+                "MiddleName": "",
+                "LastName": "Hammons",
+                "Login": "DYL"
+              },
+              "ProductItem": {
+                "Sku": "LERGO-339",
+                "SupplierCode": "TYR",
+                "Supplier": "TYR Sport Inc.",
+                "Summary": "Ergo Swim Clip",
+                "Colors": [
+                  {
+                    "TagTree": "Lime"
+                  }
+                ],
+                "UPC": "036702027854"
+              }
+            }
+          ],
+          "Tenders": [
+            {
+              "AmountTendered": 15.89,
+              "IsAlternateCurrency": false,
+              "IsForced": false,
+              "TenderDescription": "3 - MC/Visa/Discover"
+            }
+          ],
+          "Cashier": {
+            "UserCashierCode": "14",
+            "FirstName": "Dylan",
+            "MiddleName": "",
+            "LastName": "Hammons",
+            "Login": "DYL"
+          },
+          "Customer": {
+            "CustomerId": "3c9eac3c-921a-4ae9-86f3-9e93010dd28e",
+            "AccountNumber": "2703132507",
+            "FirstName": "Audree",
+            "LastName": "Hunter"
           }
         }
       ]
@@ -731,8 +2139,8 @@
   ],
   "ResultStatistics": {
     "StartRecord": 0,
-    "EndRecord": 10,
-    "TotalRecords": 10
+    "EndRecord": 29,
+    "TotalRecords": 29
   },
   "IsSuccessful": true
 }

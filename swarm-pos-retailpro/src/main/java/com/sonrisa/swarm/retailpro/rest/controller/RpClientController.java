@@ -16,14 +16,6 @@
  */
 package com.sonrisa.swarm.retailpro.rest.controller;
 
-import com.sonrisa.swarm.common.rest.controller.BaseSwarmController;
-import com.sonrisa.swarm.retailpro.rest.RetailProApiConstants;
-import com.sonrisa.swarm.retailpro.rest.model.RpHeartbeatJson;
-import com.sonrisa.swarm.retailpro.service.RpClientService;
-import com.sonrisa.swarm.retailpro.service.RpLogUploadingService;
-import com.sonrisa.swarm.retailpro.util.ControllerUtil;
-
-
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -37,6 +29,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.sonrisa.swarm.retailpro.rest.RetailProApiConstants;
+import com.sonrisa.swarm.retailpro.rest.model.RpHeartbeatJson;
+import com.sonrisa.swarm.retailpro.service.RpClientService;
+import com.sonrisa.swarm.retailpro.service.RpLogUploadingService;
+import com.sonrisa.swarm.retailpro.util.ControllerUtil;
+
 /**
  * MVC controller responsible for handling the RetailPro client version requests.
  * With this controller the RetailPro clients can send information about their versions and etc.
@@ -45,7 +43,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
  */
 @Controller
 @RequestMapping(RpClientController.URI_BASE)
-public class RpClientController extends BaseSwarmController {
+public class RpClientController extends BaseRetailProController {
     
     /** The URI of this controller. */
     public static final String URI_BASE = "/items";

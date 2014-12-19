@@ -35,10 +35,6 @@ public class MockRicsData {
 	public static final String MOCK_SALES_SECOND_PAGE = "44_mock_rics_sales_second_page.json";
 
 	/**
-	 * Successful token response
-	 */
-	public static final String MOCK_TOKEN = "47_mock_rics_authenticated.json";
-	/**
 	 * Sample json response is response is something went wrong
 	 */
 	public static final String MOCK_UNSUCCESS = "45_mock_rics_unsuccess.json";
@@ -58,39 +54,23 @@ public class MockRicsData {
 	 */
 	public static final String MOCK_EMPTY_RESPONSE = "49_mock_empty_page_received.json";
 
-	/**
-	 * @param staging true if the descriptor should not contain duplicates (staging tables can contain duplicates while legacy table can not)
-	 * @return an instance of {@link MockPosDataDescriptor} that contains the number of items should be extracted during an extraction
-	 */
-	public static MockPosDataDescriptor getExtractionDescriptor(boolean staging) {
+
+	private static MockPosDataDescriptor getRealExtractionDescriptor(boolean staging) {
 		Map<String, Integer> count = new HashMap<String, Integer>();
-		if (staging) {
-			count.put("CategoryDTO", 0);
-			count.put("ManufacturerDTO", 0);
-			count.put("ProductDTO", 9);
-			count.put("CustomerDTO", 35);
-			count.put("InvoiceDTO", 6);
-			count.put("InvoiceLineDTO", 10);
-		} else {
-			count.put("CategoryDTO", 0);
-			count.put("ManufacturerDTO", 0);
-			count.put("ProductDTO", 3);
-			count.put("CustomerDTO", 35);
-			count.put("InvoiceDTO", 6);
-			count.put("InvoiceLineDTO", 10);
-		}
+		count.put("CategoryDTO", 0);
+		count.put("ManufacturerDTO", 0);
+		count.put("ProductDTO", staging ? 29 : 26);
+		count.put("CustomerDTO", 35);
+		count.put("InvoiceDTO", 22);
+		count.put("InvoiceLineDTO", 29);
 		return new MockPosDataDescriptor(count);
 	}
-
-	// we should use another descriptor for RicsExtractor (why????)
-	public static MockPosDataDescriptor getForQuantity() {
-		Map<String, Integer> count = new HashMap<String, Integer>();
-		count.put("RicsCategoryDTO", 0);
-		count.put("RicsManufacturerDTO", 0);
-		count.put("RicsProductDTO", 3);
-		count.put("RicsCustomerDTO", 35);
-		count.put("RicsInvoiceDTO", 6);
-		count.put("RicsInvoiceLineDTO", 10);
-		return new MockPosDataDescriptor(count);
+	
+	public static MockPosDataDescriptor getExtractionDescriptor() {
+		return getRealExtractionDescriptor(true);
+	}
+	
+	public static MockPosDataDescriptor getLegacyExtractionDescriptor() {
+		return getRealExtractionDescriptor(false);
 	}
 }
