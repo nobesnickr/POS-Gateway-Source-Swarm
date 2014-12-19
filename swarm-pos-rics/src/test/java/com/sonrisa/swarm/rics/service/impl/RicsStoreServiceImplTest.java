@@ -32,6 +32,7 @@ import com.sonrisa.swarm.rics.RicsAccount;
 import com.sonrisa.swarm.rics.RicsApiReader;
 import com.sonrisa.swarm.rics.api.RicsApi;
 import com.sonrisa.swarm.rics.constants.RicsUri;
+import com.sonrisa.swarm.rics.service.exception.RicsStoreServiceException;
 import com.sonrisa.swarm.test.matcher.ExternalCommandMatcher;
 import com.sonrisa.swarm.test.service.store.BaseStoreServiceTest;
 
@@ -67,6 +68,11 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
     private static final String STORE_NAME = "Legends Owensboro";
     
     /**
+     * Store code in the mock JSON
+     */
+    private static final String STORE_CODE = "0001";
+    
+    /**
      * Sets up target and its dependencies
      */
     @Before
@@ -81,6 +87,13 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
         target.setApiService(mockApiService);
         
         target.setRicsApiReader(new RicsApiReader(mockApi));
+        
+        when(mockApi.sendRequest(argThat(new ExternalCommandMatcher<RicsAccount>(RicsUri.INVOICES.uri)
+                .andParam("StoreCode",STORE_CODE)
+                .andParam("BatchStartDate",RicsApi.DATE_MIN)
+                .andParam("BatchEndDate",RicsApi.DATE_MAX))))
+                .thenReturn(MockDataUtil.getResourceAsExternalResponse(MockRicsData.MOCK_INVOICES_ONE_PAGE_RESPONSE));
+     
     }
     
     /**
@@ -95,18 +108,10 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
         
         final String userName = "sonrisa";
         final String token = "token";
-        final String storeCode = "0001";
-        
-        // Arrange
-        when(mockApi.sendRequest(argThat(new ExternalCommandMatcher<RicsAccount>(RicsUri.INVOICES.uri)
-                                .andParam("StoreCode",storeCode)
-                                .andParam("BatchStartDate",RicsApi.DATE_MIN)
-                                .andParam("BatchEndDate",RicsApi.DATE_MAX))))
-                                .thenReturn(MockDataUtil.getResourceAsExternalResponse(MockRicsData.MOCK_INVOICES_ONE_PAGE_RESPONSE));
-        
-        
+        final String timeZone = "US/Eastern";
+         
         // Act
-        RicsAccount account = target.getAccount(userName, token, storeCode);
+        RicsAccount account = target.getAccount(userName, token, STORE_CODE, timeZone);
         StoreEntity store = target.getStore(account);
         
         // Assert
@@ -114,48 +119,30 @@ public class RicsStoreServiceImplTest extends BaseStoreServiceTest<RicsAccount> 
         assertEquals(userName, aesUtility.aesDecrypt(store.getUsername()));
         assertEquals(token, aesUtility.aesDecrypt(store.getApiKey()));
         assertEquals(STORE_NAME, store.getName());
-        assertEquals(storeCode, store.getStoreFilter());
+        assertEquals(STORE_CODE, store.getStoreFilter());
         assertEquals(Boolean.FALSE, store.getActive());
+        assertEquals(timeZone, store.getTimeZone());
     }
     
     /**
      * Test case:
-     *  Saving RICS store with its credentials
+     *  Saving RICS store with invalid timezone
      *  
      * Expected:
-     *  All fields are mapped as expected, and existing 
-     *  entity is not overridden
+     *  Exception is thrown
      */
-    @Test
-    public void testExistingMultiLocationStore() throws Exception {
+    @Test(expected = RicsStoreServiceException.class)
+    public void testSavingRicsStoreWithInvalidTimezone() throws Exception {
         
         final String userName = "sonrisa";
         final String token = "token";
-        final String serialNum = "123000";
-        
-        /**
-         * Password can be any value it doesn't matter, since both the password and the
-         * API is automatically overridden once a matching user name is found in the DB.
-         */
-        final String password = "ANY-VALUE";
+        final String timeZone = "US/Invalid";
         
         // Arrange
         when(mockApi.sendRequest(argThat(new ExternalCommandMatcher<RicsAccount>(RicsUri.INVOICES.uri))))
                                 .thenReturn(MockDataUtil.getResourceAsExternalResponse(MockRicsData.MOCK_INVOICES_ONE_PAGE_RESPONSE));
         
-        StoreEntity existingEntity = setupSingleActiveExistingStore(RICS_API_ID, serialNum, password, null);
-        
-        
         // Act
-        RicsAccount account = target.getAccount(userName, token, null);
-        StoreEntity store = target.getStore(account);
-        
-        // Assert
-        assertEquals(RICS_API_ID, store.getApiId());
-        assertEquals("Store userName should be serialNum", aesUtility.aesDecrypt(store.getUsername()), serialNum);
-        assertEquals("Credentials should be updated", aesUtility.aesDecrypt(store.getApiKey()),token);
-        assertEquals("Name shouldn't be changed", existingEntity.getName(), store.getName());
-        assertNull(store.getStoreFilter());
-        assertEquals(Boolean.TRUE, store.getActive());
+        target.getAccount(userName, token, STORE_CODE, timeZone);
     }
 }

@@ -17,62 +17,46 @@
 
 package com.sonrisa.swarm.rics;
 
-import com.sonrisa.swarm.posintegration.extractor.impl.BaseSwarmAccount;
+import com.sonrisa.swarm.model.legacy.StoreEntity;
+import com.sonrisa.swarm.posintegration.extractor.impl.SimpleSwarmAccount;
 import com.sonrisa.swarm.posintegration.extractor.security.AESUtility;
 
 /**
  * A class to hold the authentication credentials (serial number, login name, password) and base URL for RICS's REST service.
  */
-public class RicsAccount extends BaseSwarmAccount {
+public class RicsAccount extends SimpleSwarmAccount {
     
     /**
-     * Store's name
-     */
-    private String storeName;
-    
-    /**
-     * Username
-     */
-    private String userName;
-
-	/**
 	 * The authorization token for access the RICS's REST service set last time
 	 */
 	private String token = "";
 
 	/**
-	 * store identifier 
-	 */
-	private String storeCode;
-
-	/**
-	 * creates a new account object for accessing the RICS's REST service
+	 * Creates a new account object for accessing the RICS's REST service
 	 * @param storeId
 	 */
-	public RicsAccount(long storeId) {
-		super(storeId);
+	public RicsAccount(StoreEntity store, AESUtility aesUtility) {
+	    super(store, aesUtility);
+
+        final byte[] token = store.getApiKey();
+
+        if(token == null){
+            throw new IllegalArgumentException("No token for RICS store" + store);
+        }
+        
+        this.token = aesUtility.aesDecrypt(token);
 	}
 	
 	/**
-	 * Set token number from encrypted field
-	 * @param token encrypted token
-	 * @param aesUtility encryption utility
+	 * Create dummy account, one which isn't created using the store table
+	 * but for instance when attempting to register a store
 	 */
-	public void setEncryptedToken(byte[] token, AESUtility aesUtility) {
-		this.token = aesUtility.aesDecrypt(token);
-	}
-	
-	/**
-	 * Set username
-	 * @param username encrypted username
-	 * @param aesUtility encryption utility
-	 */
-	public void setEncryptedUsername(byte[] userName, AESUtility aesUtility) {
-		this.userName = aesUtility.aesDecrypt(userName);
+	public RicsAccount(){
+	    super();
 	}
 	
 	public void setUserName(String userName) {
-		this.userName = userName;
+		setAccountId(userName);
 	}
 
 	public void setToken(String token) {
@@ -80,32 +64,18 @@ public class RicsAccount extends BaseSwarmAccount {
 	}
 
 	public String getUserName() {
-		return userName;
+		return getAccountId();
 	}
 
 	public String getStoreCode() {
-		return storeCode;
+		return getStoreFilter();
 	}
-
 
 	public String getToken() {
 		return token;
 	}
 
 	public void setStoreCode(String storeCode) {
-		this.storeCode = storeCode;
+		setStoreFilter(storeCode);
 	}
-
-    public String getStoreName() {
-        return storeName;
-    }
-
-    public void setStoreName(String storeName) {
-        this.storeName = storeName;
-    }
-
-    @Override
-    public String getAccountId() {
-        return getUserName();
-    }
 }

@@ -44,6 +44,12 @@ public class RicsAccountEntity {
      */
     @JsonProperty("store_code")
     private String storeCode;
+    
+    /**
+     * Store's timezone
+     */
+    @JsonProperty("time_zone")
+    private String timeZone;
 
 	public String getToken() {
 		return token;
@@ -68,4 +74,12 @@ public class RicsAccountEntity {
 	public void setStoreCode(String storeCode) {
 		this.storeCode = storeCode;
 	}
+
+    public String getTimeZone() {
+        return timeZone;
+    }
+
+    public void setTimeZone(String timeZone) {
+        this.timeZone = timeZone;
+    }
 }

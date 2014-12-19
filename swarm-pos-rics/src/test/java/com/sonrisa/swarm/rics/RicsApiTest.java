@@ -75,7 +75,7 @@ public class RicsApiTest {
 		aesUtility = new AESUtility();
 		api = new RicsApi();
 
-		ricsAccount = new RicsAccount(1L);
+		ricsAccount = new RicsAccount();
 		ricsAccount.setToken("SONRISA");
 		api.setApiBaseUrl(String.format("http://localhost:%d/", API_PORT));
 
@@ -138,9 +138,9 @@ public class RicsApiTest {
 	public void testExecute() throws ExternalExtractorException, JsonParseException, JsonMappingException, ParseException, IOException {
 		final String url = "https://enterprise.ricssoftware.com/api/";
 	    
-		ricsAccount = new RicsAccount(1L);
-		ricsAccount.setEncryptedToken(aesUtility.aesEncryptToBytes("232812B6-5838-4A2E-B5FE-CA37A6705653"), aesUtility);
-		ricsAccount.setEncryptedUsername(aesUtility.aesEncryptToBytes("Swarm201$"), aesUtility);
+		ricsAccount = new RicsAccount();
+		ricsAccount.setToken("232812B6-5838-4A2E-B5FE-CA37A6705653");
+		ricsAccount.setUserName("Swarm201$");
 		api.setApiBaseUrl(url);
 
 		Map<String, String> jsonData = new HashMap<String, String>();

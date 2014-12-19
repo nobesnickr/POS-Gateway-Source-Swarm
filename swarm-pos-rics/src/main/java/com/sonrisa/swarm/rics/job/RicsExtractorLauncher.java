@@ -64,24 +64,6 @@ public class RicsExtractorLauncher extends ExtractorLauncher {
 	 */
 	@Override
 	protected SwarmStore createAccount(StoreEntity store) {
-		RicsAccount account = new RicsAccount(store.getId());
-
-		final byte[] userName = store.getUsername();
-		final byte[] token = store.getApiKey();
-
-		if (userName == null) {
-			throw new IllegalArgumentException("No serial number for RICS store: " + store);
-		}
-		
-		if(token == null){
-		    throw new IllegalArgumentException("No token for RICS store" + store);
-		}
-
-		account.setEncryptedUsername(userName, aesUtility);
-		account.setEncryptedToken(token, aesUtility);
-		account.setStoreCode(store.getStoreFilter());
-		account.setStoreName(store.getName());
-
-		return account;
+		return new RicsAccount(store, aesUtility);
 	}
 }
