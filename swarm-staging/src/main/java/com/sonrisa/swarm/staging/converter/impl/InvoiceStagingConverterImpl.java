@@ -359,6 +359,6 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
 	 */
 	public Long getForeignOutletIdForRegister(Long storeId, Long registerId){
 		RegisterEntity register = registerService.getResgisterFromStoreAndId(storeId, registerId);
-		return register.getOutletId();
+		return register.getLsOutletId();
 	}
 }

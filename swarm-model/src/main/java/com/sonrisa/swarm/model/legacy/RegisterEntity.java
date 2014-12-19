@@ -27,8 +27,8 @@ public class RegisterEntity  extends BaseLegacyEntity {
 	public static final String TABLE_NAME = "registers";
 	/** Private key in the staging_registersts table */
     private Long id;
-	private Long registerId;
-    private Long outletId;
+	private Long lsRegisterId;
+    private Long lsOutletId;
     private String name;
     private String uuid;
     private OutletEntity outlet;
@@ -61,21 +61,21 @@ public class RegisterEntity  extends BaseLegacyEntity {
     }
 	
 	@Column(name = "ls_register_id")
-    public Long getRegisterId() {
-		return registerId;
+    public Long getLsRegisterId() {
+		return lsRegisterId;
 	}
 
-	public void setRegisterId(Long registerId) {
-		this.registerId = registerId;
+	public void setLsRegisterId(Long registerId) {
+		this.lsRegisterId = registerId;
 	}
 
 	@Column(name = "ls_outlet_id")
-	public Long getOutletId() {
-		return outletId;
+	public Long getLsOutletId() {
+		return lsOutletId;
 	}
 
-	public void setOutletId(Long outletId) {
-		this.outletId = outletId;
+	public void setLsOutletId(Long outletId) {
+		this.lsOutletId = outletId;
 	}
 	
 	@Column(name = "name")
@@ -110,8 +110,8 @@ public class RegisterEntity  extends BaseLegacyEntity {
 
 	@Override
 	public String toString() {
-		return "RegisterEntity [id=" + id + ", registerId=" + registerId
-				+ ", outletId=" + outletId + ", name=" + name + ", uuid="
+		return "RegisterEntity [id=" + id + ", registerId=" + lsRegisterId
+				+ ", outletId=" + lsOutletId + ", name=" + name + ", uuid="
 				+ uuid + ", outlet=" + outlet + "]";
 	}
 }

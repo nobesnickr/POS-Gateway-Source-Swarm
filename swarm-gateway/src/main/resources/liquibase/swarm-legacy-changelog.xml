@@ -38,9 +38,30 @@
             <column name="fax" type="varchar(50)" />
             <column name="website" type="varchar(255)" />
             <column name="uuid" type="varchar(36)">
-            	<constraints nullable="false" unique="true" />
             </column>
         </createTable>
+    </changeSet>
+    
+    <changeSet id="20141218_1008" author="carlos">
+        <preConditions onFail="MARK_RAN">
+            <not>
+                <dbms type="h2" />
+            </not>
+            <sqlCheck expectedResult="0">
+                SELECT COUNT(*)
+                FROM information_schema.triggers 
+                WHERE trigger_name LIKE 'outlets_uuid_trigger';
+            </sqlCheck>
+        </preConditions>
+        <sql splitStatements="false">
+            CREATE TRIGGER outlets_uuid_trigger
+            BEFORE INSERT ON outlets
+            FOR EACH ROW
+                BEGIN
+                    IF new.uuid IS NULL THEN SET new.uuid=uuid();
+                    END IF;
+                END;
+        </sql>
     </changeSet>
 
     <changeSet author="generated" id="20141112_1154">
@@ -432,7 +453,7 @@
     <changeSet id="20141121_1208" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <columnExists schemaName="pos_production" tableName="customers" columnName="postcode"/>
+                <columnExists tableName="customers" columnName="postcode"/>
             </not>
         </preConditions>
     	<comment>Adding column for vend migration</comment>
@@ -496,10 +517,21 @@
         </insert>
     </changeSet>
     
+    <changeSet id="20141218" author="carlos">
+        <preConditions onFail="MARK_RAN">
+            <sqlCheck expectedResult="0">select count(*) from apis
+                where name LIKE 'vend' OR name like 'VEND'</sqlCheck>
+        </preConditions>
+        <comment>Inserts Vend as an API.</comment>
+        <insert tableName="apis">
+            <column name="name" value="vend" />
+        </insert>
+    </changeSet>
+    
     <changeSet id="20131002_1232" author="barna">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <columnExists schemaName="pos_production" tableName="stores" columnName="oauth_token"/>
+                <columnExists tableName="stores" columnName="oauth_token"/>
             </not>
         </preConditions>
         <comment>OAuth token added to Stores table for Merchant OS</comment>
@@ -634,7 +666,7 @@
 	<changeSet id="20141124_0144" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <columnExists schemaName="pos_production" tableName="invoices" columnName="ls_outlet_id"/>
+                <columnExists tableName="invoices" columnName="ls_outlet_id"/>
             </not>
         </preConditions>
     	<comment>Adding column for vend migration</comment>
@@ -646,7 +678,7 @@
     <changeSet id="20141124_0146" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <columnExists schemaName="pos_production" tableName="invoices" columnName="ls_register_id"/>
+                <columnExists tableName="invoices" columnName="ls_register_id"/>
             </not>
         </preConditions>
     	<comment>Adding column for vend migration</comment>
@@ -659,7 +691,7 @@
     <changeSet id="20141124_0148" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <columnExists schemaName="pos_production" tableName="invoices" columnName="register_id"/>
+                <columnExists tableName="invoices" columnName="register_id"/>
             </not>
         </preConditions>
     	<comment>Adding column for vend migration</comment>
@@ -674,19 +706,18 @@
             <sqlCheck expectedResult="1">select count(*) from information_schema.COLUMNS 
 				where TABLE_NAME='invoice_lines' 
 				and COLUMN_TYPE LIKE '%unsigned%' 
-				and TABLE_SCHEMA = 'pos_production'
 				and COLUMN_NAME LIKE 'quantity'</sqlCheck>
         </preConditions>
     	<comment>Changing quantity from unsigned to signed</comment>
         <sql>
-            ALTER TABLE pos_production.invoice_lines CHANGE COLUMN quantity quantity INT(10) NULL DEFAULT NULL ;
+            ALTER TABLE invoice_lines CHANGE COLUMN quantity quantity INT(10) NULL DEFAULT NULL ;
         </sql>
     </changeSet>
     
         <changeSet id="20141211_1055" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <columnExists schemaName="pos_production" tableName="outlets" columnName="last_modified"/>
+                <columnExists tableName="outlets" columnName="last_modified"/>
             </not>
         </preConditions>
     	<comment>Adding column for vend migration</comment>
@@ -699,7 +730,7 @@
 	<changeSet id="20141119_1049" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <tableExists schemaName="pos_production" tableName="registers"/>
+                <tableExists tableName="registers"/>
             </not>
         </preConditions>
         <comment> Creation of registers table that serves as the storage table for registers.</comment>
@@ -719,7 +750,7 @@
     <changeSet id="20141119_1050" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
-                <columnExists schemaName="pos_production" tableName="registers" columnName="last_modified"/>
+                <columnExists tableName="registers" columnName="last_modified"/>
             </not>
         </preConditions>
     	<comment>Adding column for vend migration</comment>

@@ -35,17 +35,17 @@ public class OutletStagingConverterImpl extends BaseStagingConverterImpl<OutletS
             LOGGER.debug("Staging outlet can not be saved because its store does not exists: " + stageEntity);
         } else {
             try {
-                final Long foreignOutletId = stageEntity.getOutletId();
+                final Long foreignOutletId = stageEntity.getLsOutletId();
                 outlet = findOrCreateOutlet(store.getId(), foreignOutletId);
             } catch (NumberFormatException e){
-                final String errorMsg = "Illegal foreign id: " + stageEntity.getOutletId();
+                final String errorMsg = "Illegal foreign id: " + stageEntity.getLsOutletId();
                 LOGGER.debug("Failed to convert OutletStage to OutletEntity because: {}", errorMsg, e);
                 return new StageAndLegacyHolder<OutletStage, OutletEntity>(stageEntity, errorMsg);
             }
 
             // performs mapping between staging outlet and destination outlet object
             copyStgOutlet(stageEntity, outlet);
-            outlet.setOutletId(IdConverter.positiveCustomerId(stageEntity.getOutletId()));
+            outlet.setLsOutletId(IdConverter.positiveCustomerId(stageEntity.getLsOutletId()));
             outlet.setStore(store);   // sets the reference to the store
         }
                

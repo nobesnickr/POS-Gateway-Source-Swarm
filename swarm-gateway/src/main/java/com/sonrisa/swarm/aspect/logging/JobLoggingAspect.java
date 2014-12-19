@@ -12,6 +12,9 @@ import org.springframework.beans.factory.annotation.Value;
 import com.sonrisa.swarm.message.MessageService;
 import com.sonrisa.swarm.posintegration.extractor.SwarmStore;
 
+/**
+ * This class define all the advise that will be use to log the system
+ */
 @Aspect
 public class JobLoggingAspect {
 	private static final Logger LOGGER = LoggerFactory.getLogger(JobLoggingAspect.class);
@@ -27,6 +30,11 @@ public class JobLoggingAspect {
 	@Autowired
 	private MessageService messageService;
 	
+	
+	/**
+	 * This function captures all the exceptions thrown by the different extractors, it recovers 
+	 * the context in which the exception was thrown and send an email with the information.
+	 */
 	@AfterThrowing(
 			pointcut = "execution(* com.sonrisa.swarm.*.extractor.*.fetchData(..))", 
 			throwing = "error")
@@ -52,6 +60,11 @@ public class JobLoggingAspect {
     }
 	
 	
+	
+	/**
+	 * This function measure the execution time for the function defined in the poincut.
+	 * For performance issues this function is commented and only should be use during development. 
+	 */
 	/*
 	@Around("execution(* com.sonrisa.swarm.*.job.*.process(..))")
 	public Object logExecutionTime(ProceedingJoinPoint pjp) throws Throwable {      
@@ -70,7 +83,7 @@ public class JobLoggingAspect {
 	*/
 	
 	/**
-	 * 
+	 * Obtain the POS name from the package
 	 */
 	private static String getPOSNameFromPackage(String pkg){
 		String posName = "NOT FOUND";
@@ -79,9 +92,5 @@ public class JobLoggingAspect {
 			posName = splitPkg[3]; 			
 		}
 		return posName;
-	}
-	
-	public static void main(String[] args) {
-		System.out.println(getPOSNameFromPackage("class com.sonrisa.swarm.kounta.extractor.KountaExtractor"));
 	}
 }

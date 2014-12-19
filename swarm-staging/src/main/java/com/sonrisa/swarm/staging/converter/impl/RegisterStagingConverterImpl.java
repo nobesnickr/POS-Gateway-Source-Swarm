@@ -43,7 +43,7 @@ public class RegisterStagingConverterImpl  extends BaseStagingConverterImpl<Regi
 
 
             // check whether its outlet exists
-	        final Long foreignOutletId = Long.valueOf(stageEntity.getOutletId());
+	        final Long foreignOutletId = Long.valueOf(stageEntity.getLsOutletId());
 	        final OutletEntity outlet = outletDao.findByStoreAndForeignId(store.getId(), foreignOutletId);           
 	        if (outlet == null) {
 	            LOGGER.debug("Staging register can not be saved because its outlet (foreignId:"
@@ -53,17 +53,17 @@ public class RegisterStagingConverterImpl  extends BaseStagingConverterImpl<Regi
 	        // OK, outlet exists
       
 	        try {
-                final Long foreignRegisterId = stageEntity.getRegisterId();
+                final Long foreignRegisterId = stageEntity.getLsRegisterId();
                 register = findOrCreateRegister(store.getId(), foreignRegisterId, outlet);
             } catch (NumberFormatException e){
-                final String errorMsg = "Illegal foreign id: " + stageEntity.getRegisterId();
+                final String errorMsg = "Illegal foreign id: " + stageEntity.getLsRegisterId();
                 LOGGER.debug("Failed to convert RegisterStage to RegisterEntity because: {}", errorMsg, e);
                 return new StageAndLegacyHolder<RegisterStage, RegisterEntity>(stageEntity, errorMsg);
             }            
             
             // performs mapping between staging register and destination register object
             copyStgRegister(stageEntity, register);
-            register.setRegisterId(IdConverter.positiveCustomerId(stageEntity.getRegisterId()));
+            register.setLsRegisterId(IdConverter.positiveCustomerId(stageEntity.getLsRegisterId()));
             register.setStore(store);   // sets the reference to the store
         }
                

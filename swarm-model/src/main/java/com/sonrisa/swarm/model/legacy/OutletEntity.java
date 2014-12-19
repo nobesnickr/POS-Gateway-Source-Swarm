@@ -33,7 +33,7 @@ public class OutletEntity extends BaseLegacyEntity {
        
     
     /** Store id for the instance */
-    private Long outletId;    
+    private Long lsOutletId;    
     
     private String name;
     private String address1;    
@@ -83,12 +83,12 @@ public class OutletEntity extends BaseLegacyEntity {
     }
 
     @Column(name = "ls_outlet_id")
-	public Long getOutletId() {
-		return outletId;
+	public Long getLsOutletId() {
+		return lsOutletId;
 	}
 
-	public void setOutletId(Long outletId) {
-		this.outletId = outletId;
+	public void setLsOutletId(Long lsOutletId) {
+		this.lsOutletId = lsOutletId;
 	}
 
 	@Column(name = "name")
@@ -227,7 +227,7 @@ public class OutletEntity extends BaseLegacyEntity {
 
 	@Override
 	public String toString() {
-		return "OutletEntity [id=" + id + ", outletId=" + outletId + ", name="
+		return "OutletEntity [id=" + id + ", lsOutletId=" + lsOutletId + ", name="
 				+ name + ", address1=" + address1 + ", address2=" + address2
 				+ ", city=" + city + ", state=" + state + ", postcode="
 				+ postcode + ", country=" + country + ", firstname="

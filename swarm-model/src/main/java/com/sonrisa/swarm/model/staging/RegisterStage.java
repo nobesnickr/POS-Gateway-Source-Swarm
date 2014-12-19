@@ -28,8 +28,8 @@ public class RegisterStage extends BaseStageEntity{
     /** Store id for the instance */
     private Long storeId;    
     
-	private Long outletId;
-	private Long registerId;
+	private Long lsOutletId;
+	private Long lsRegisterId;
     private String name;
     private String lastModified;
 	
@@ -73,8 +73,8 @@ public class RegisterStage extends BaseStageEntity{
     
     @StageInsertableAttr(dbColumnName="ls_outlet_id")
     @Column(name = "ls_outlet_id")
-    public Long getOutletId() {
-		return outletId;
+    public Long getLsOutletId() {
+		return lsOutletId;
 	}
 
     @StageInsertableAttr(dbColumnName="name")
@@ -89,8 +89,8 @@ public class RegisterStage extends BaseStageEntity{
 		return lastModified;
 	}
 
-	public void setOutletId(Long outletId) {
-		this.outletId = outletId;
+	public void setLsOutletId(Long outletId) {
+		this.lsOutletId = outletId;
 	}
 
 	public void setName(String name) {
@@ -103,12 +103,12 @@ public class RegisterStage extends BaseStageEntity{
 
 	@StageInsertableAttr(dbColumnName="ls_register_id")
     @Column(name = "ls_register_id")
-	public Long getRegisterId() {
-		return registerId;
+	public Long getLsRegisterId() {
+		return lsRegisterId;
 	}
 
-	public void setRegisterId(Long registerId) {
-		this.registerId = registerId;
+	public void setLsRegisterId(Long lsRegisterId) {
+		this.lsRegisterId = lsRegisterId;
 	}
 
 	public void setStoreId(Long storeId) {

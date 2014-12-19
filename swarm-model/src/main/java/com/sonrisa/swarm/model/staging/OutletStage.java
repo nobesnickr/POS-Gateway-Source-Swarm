@@ -29,7 +29,7 @@ public class OutletStage extends BaseStageEntity{
     private Long storeId;    
     
     /** Store id for the instance */
-    private Long outletId;    
+    private Long lsOutletId;    
     
     private String name;
     private String address1;    
@@ -68,8 +68,8 @@ public class OutletStage extends BaseStageEntity{
 
 	@StageInsertableAttr(dbColumnName="ls_outlet_id")
     @Column(name = "ls_outlet_id")
-	public Long getOutletId() {
-		return this.outletId;
+	public Long getLsOutletId() {
+		return this.lsOutletId;
 	}
 		
 	@Override
@@ -238,8 +238,8 @@ public class OutletStage extends BaseStageEntity{
 		this.storeId = storeId;
 	}
 
-	public void setOutletId(Long outletId) {
-		this.outletId = outletId;
+	public void setLsOutletId(Long outletId) {
+		this.lsOutletId = outletId;
 	}
 	
 	@StageInsertableAttr(dbColumnName="last_modified")
@@ -271,7 +271,7 @@ public class OutletStage extends BaseStageEntity{
 				+ ((lastname == null) ? 0 : lastname.hashCode());
 		result = prime * result + ((name == null) ? 0 : name.hashCode());
 		result = prime * result
-				+ ((outletId == null) ? 0 : outletId.hashCode());
+				+ ((lsOutletId == null) ? 0 : lsOutletId.hashCode());
 		result = prime * result + ((phone == null) ? 0 : phone.hashCode());
 		result = prime * result
 				+ ((postcode == null) ? 0 : postcode.hashCode());
@@ -342,10 +342,10 @@ public class OutletStage extends BaseStageEntity{
 				return false;
 		} else if (!name.equals(other.name))
 			return false;
-		if (outletId == null) {
-			if (other.outletId != null)
+		if (lsOutletId == null) {
+			if (other.lsOutletId != null)
 				return false;
-		} else if (!outletId.equals(other.outletId))
+		} else if (!lsOutletId.equals(other.lsOutletId))
 			return false;
 		if (phone == null) {
 			if (other.phone != null)
@@ -388,7 +388,7 @@ public class OutletStage extends BaseStageEntity{
 	@Override
 	public String toString() {
 		return "OutletStage [id=" + id + ", swarmId=" + swarmId + ", storeId="
-				+ storeId + ", outletId=" + outletId + ", name=" + name
+				+ storeId + ", outletId=" + lsOutletId + ", name=" + name
 				+ ", address1=" + address1 + ", address2=" + address2
 				+ ", city=" + city + ", state=" + state + ", postcode="
 				+ postcode + ", country=" + country + ", firstname="
