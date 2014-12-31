@@ -93,7 +93,7 @@ public class VendExtractorFullTest extends BaseExtractionIntegrationTest{
 	    @Test
 		public void testUsedPrice() {
 			launchJob(vendExtratorJobUtil);
-			InvoiceStage invoice = invoiceStgService.findSingle(new SimpleFilter<InvoiceStage>(InvoiceStage.class, new FilterParameter("lsInvoiceId", "323")));
+			InvoiceStage invoice = invoiceStgService.findSingle(new SimpleFilter<InvoiceStage>(InvoiceStage.class, new FilterParameter("lsInvoiceId", "211")));
 			assertEquals(Double.parseDouble(invoice.getTotal()), 219, 0.01d);
 		}
 	    

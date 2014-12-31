@@ -1,11 +1,20 @@
 package com.sonrisa.swarm.vend.dao;
 
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.dao.DuplicateKeyException;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
+import org.springframework.jdbc.support.GeneratedKeyHolder;
+import org.springframework.jdbc.support.KeyHolder;
 import org.springframework.stereotype.Component;
 
 
@@ -30,23 +39,58 @@ public class VendIdsDAO {
     private static final String INSERT_ID =
 			"INSERT INTO vend_ids (account_id, type, uuid) VALUES (?, ?, ?)";
     
-	public long storeId(long storeId, String typeOfId, String stringId){
-		
+	public long storeId(final long storeId, final String typeOfId, final String stringId){
+		Long numericId = null;
+		System.out.println(storeId+" "+typeOfId+" "+stringId);
 		try{
-			jdbcTemplate.update(INSERT_ID, 
-					new Object[]{ storeId,	typeOfId, stringId });
-		}catch(DuplicateKeyException ex){
-			// The stringId was previously stored, this is not an issue.
-			LOGGER.debug("The String id: {} was previously stored.", stringId);
+			numericId = getNumericId(stringId);
+		}catch(EmptyResultDataAccessException e){
+			// empty result is a good result
 		}
 		
-		Long numericId = getNumericId(stringId);
+		if (numericId == null){
+			numericId = generateNumericId(storeId, typeOfId, stringId);
+		}
 		
 		if (numericId == null){
 			LOGGER.warn("Numeric id should not be null.");
 		}		
 		
 		return numericId.longValue();
+	}
+
+	private Long generateNumericId(final long storeId, final String typeOfId,
+			final String stringId) {
+		Long numericId;
+		KeyHolder keyHolder = new GeneratedKeyHolder();
+		final PreparedStatementCreator psc = getPrepareStamentCreator(storeId, typeOfId, stringId);
+		
+		try{
+			jdbcTemplate.update(psc, keyHolder);
+		}catch(DuplicateKeyException ex){
+			// The stringId was previously stored, this is not an issue.
+			LOGGER.debug("The String id: {} was previously stored.", stringId);
+		}
+		
+		System.out.println("Key: "+keyHolder.getKey());
+		
+		numericId = (Long) keyHolder.getKey();
+		return numericId;
+	}
+
+	private PreparedStatementCreator getPrepareStamentCreator(
+			final long storeId, final String typeOfId, final String stringId) {
+		return new PreparedStatementCreator() {
+	      @Override
+	      public PreparedStatement createPreparedStatement(final Connection connection) throws SQLException {
+	        final PreparedStatement ps = connection.prepareStatement(INSERT_ID,
+	            Statement.RETURN_GENERATED_KEYS);
+	        ps.setLong(1, storeId);
+	        ps.setString(2, typeOfId);
+	        ps.setString(3, stringId);
+	        return ps;
+	      }
+	    };
 	}
     
 	private static final String SELECT_OUTLET_FOR_REGISTER = 

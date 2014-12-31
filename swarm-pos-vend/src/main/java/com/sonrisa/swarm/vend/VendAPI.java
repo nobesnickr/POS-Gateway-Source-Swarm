@@ -150,7 +150,7 @@ public class VendAPI extends BaseRestAPI implements ExternalAPI<VendAccount>{
         UrlEncodedFormEntity preparePost = (UrlEncodedFormEntity) RestUrlBuilder.preparePostFields(params);
         
         httpPost.setEntity(preparePost);
-        LOGGER.info("PreparePost: {}", httpPost);
+        LOGGER.debug("PreparePost: {}", httpPost);
         // Execute POST request
         final JsonNode response = executeRequestForJson(httpPost);
 		return response;

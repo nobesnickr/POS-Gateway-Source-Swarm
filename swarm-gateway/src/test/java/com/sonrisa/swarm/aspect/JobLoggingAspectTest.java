@@ -8,6 +8,7 @@ import static org.mockito.Mockito.when;
 import java.net.UnknownHostException;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.InjectMocks;
@@ -38,13 +39,15 @@ public class JobLoggingAspectTest {
 	 * Testing case:
 	 * 	- Exception captured.
 	 *  - The email is send.
+	 * @throws Throwable 
 	 */
 	@Test
-	public void testSendErrors(){
-		JoinPoint joinPoint = mock(JoinPoint.class);
+	public void testSendErrors() throws Throwable{
+		ProceedingJoinPoint joinPoint = mock(ProceedingJoinPoint.class);
 		when(joinPoint.getTarget()).thenReturn(extractor);
-
-		jobLoggingApect.sendErrors(joinPoint, new UnknownHostException());
+		when(joinPoint.proceed()).thenThrow(new UnknownHostException());
+		
+		jobLoggingApect.processErrors(joinPoint);
 		
 		Mockito.verify(messageService).sendMessage(anyString(), anyString(), eq("Failure in VEND extractor."));
 	}
@@ -54,12 +57,14 @@ public class JobLoggingAspectTest {
 	 * 	- Exception captured.
 	 *  - New exception is thrown sending the email.
 	 *  - New exception is ignored
+	 * @throws Throwable 
 	 */
 	@Test
-	public void testErrorSendEmails(){
-		JoinPoint joinPoint = mock(JoinPoint.class);
+	public void testErrorSendEmails() throws Throwable{
+		ProceedingJoinPoint joinPoint = mock(ProceedingJoinPoint.class);
+		when(joinPoint.proceed()).thenThrow(new UnknownHostException());
 		when(joinPoint.getTarget()).thenThrow(new NullPointerException("Exception sending emails"));
 
-		jobLoggingApect.sendErrors(joinPoint, new UnknownHostException());
+		jobLoggingApect.processErrors(joinPoint);
 	}
 }

@@ -76,7 +76,7 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
      */
     @Override
     public void fetchData(T account, SwarmDataWarehouse dataStore) throws ExternalExtractorException {
-        logger().debug("Importing data for: {}", account);
+        logger().debug("Importing data for: {}", account.getStoreId());
 
         fetchCategories(account, dataStore);
         fetchProducts(account, dataStore);

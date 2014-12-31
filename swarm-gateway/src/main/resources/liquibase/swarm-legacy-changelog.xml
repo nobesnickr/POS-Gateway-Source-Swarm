@@ -17,6 +17,11 @@
             http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
 
 	<changeSet id="20141112_1121" author="carlos">
+	    <preConditions onFail="MARK_RAN">
+            <not>
+                <tableExists tableName="outlets" />
+            </not>
+        </preConditions>
         <comment> Creation of OUTLETS, a table that serves to store outlets.</comment>
         <createTable tableName="outlets">
             <column name="outlet_id" type="BIGINT(20)" autoIncrement="true">
@@ -700,7 +705,7 @@
     	</addColumn>
     </changeSet>
     
-    <changeSet id="20141201_1429" author="carlos">
+    <changeSet id="20141201_1430" author="carlos">
     	<preConditions onFail="MARK_RAN">
     	    <dbms type="MYSQL" />
             <sqlCheck expectedResult="1">select count(*) from information_schema.COLUMNS 

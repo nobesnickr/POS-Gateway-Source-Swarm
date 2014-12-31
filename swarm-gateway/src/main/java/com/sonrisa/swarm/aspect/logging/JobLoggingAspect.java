@@ -2,7 +2,8 @@ package com.sonrisa.swarm.aspect.logging;
 
 import org.apache.commons.lang.exception.ExceptionUtils;
 import org.aspectj.lang.JoinPoint;
-import org.aspectj.lang.annotation.AfterThrowing;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -32,13 +33,26 @@ public class JobLoggingAspect {
 	
 	
 	/**
-	 * This function captures all the exceptions thrown by the different extractors, it recovers 
-	 * the context in which the exception was thrown and send an email with the information.
+	 * This function captures all the exceptions thrown by the different extractors, exceptions are 
+	 * logged and sent by email. This function prevent the exception to be propagated upward, this way 
+	 * the remaining stores in the job can keep fetching their data.
 	 */
-	@AfterThrowing(
-			pointcut = "execution(* com.sonrisa.swarm.*.extractor.*.fetchData(..))", 
-			throwing = "error")
-    public void sendErrors(JoinPoint point, Throwable error){
+	@Around("execution(* com.sonrisa.swarm.*.extractor.*.fetchData(..))")
+    public void processErrors(ProceedingJoinPoint point){
+		try{
+			point.proceed();
+		}catch(Throwable e){
+			LOGGER.error("Exception fetching data: ", e);
+			sendEmail(point, e);
+		}
+    }
+
+
+	/**
+	 * This function receives an exception and a joinPoint, it recovers the context in which 
+	 * the exception was thrown and send an email with this information.
+	 */
+	private void sendEmail(JoinPoint point, Throwable e) {
 		try{
 			String packageName = point.getTarget().getClass().toString();
 			String posName = getPOSNameFromPackage(packageName).toUpperCase();
@@ -50,16 +64,12 @@ public class JobLoggingAspect {
 				msg += ACCOUNT_MSG + store.getAccountId() + "\n";
 				msg += STORE_MSG + store.getStoreId() + "\n";
 			}
-			
-			msg += EXCEPTION_MSG+ExceptionUtils.getStackTrace(error);
-	
+			msg += EXCEPTION_MSG+ExceptionUtils.getStackTrace(e);
 			messageService.sendMessage(msg, to, "Failure in "+posName+" extractor.");
-		}catch(Exception e){
-			LOGGER.error("Exception: ",e);
+		}catch(Exception emailException){
+			LOGGER.warn("Error sending an email:", e);
 		}
-    }
-	
-	
+	}
 	
 	/**
 	 * This function measure the execution time for the function defined in the poincut.

@@ -205,7 +205,7 @@ public class VendExtractor extends BaseIteratingExtractor<VendAccount> {
 				Long outletId =  vendIdsDAO.getForeignOutletIdForRegister(store.getStoreId(), registerId);
 				invoiceDTO.setOutletId(outletId);
 			}catch(EmptyResultDataAccessException e){
-				LOGGER.warn("Register {} has not been stored yet. The object has been marked for future reprocessing.", registerId);
+				LOGGER.debug("Register {} has not been stored yet. The object has been marked for future reprocessing.", registerId);
 				invoiceDTO.setOutletId(-1L);
 			}
 		}
