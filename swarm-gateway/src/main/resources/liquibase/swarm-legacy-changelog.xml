@@ -705,17 +705,10 @@
     	</addColumn>
     </changeSet>
     
-    <changeSet id="20141201_1430" author="carlos">
-    	<preConditions onFail="MARK_RAN">
-    	    <dbms type="MYSQL" />
-            <sqlCheck expectedResult="1">select count(*) from information_schema.COLUMNS 
-				where TABLE_NAME='invoice_lines' 
-				and COLUMN_TYPE LIKE '%unsigned%' 
-				and COLUMN_NAME LIKE 'quantity'</sqlCheck>
-        </preConditions>
+    <changeSet id="20150102_1030" author="carlos">
     	<comment>Changing quantity from unsigned to signed</comment>
         <sql>
-            ALTER TABLE invoice_lines CHANGE COLUMN quantity quantity INT(10) NULL DEFAULT NULL ;
+            ALTER TABLE invoice_lines MODIFY COLUMN quantity INT(10) NULL DEFAULT NULL
         </sql>
     </changeSet>
     
