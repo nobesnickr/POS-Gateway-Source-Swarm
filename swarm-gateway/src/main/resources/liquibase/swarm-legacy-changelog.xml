@@ -364,10 +364,6 @@
             tableName="manufacturers" unique="true">
             <column name="id" />
         </createIndex>
-        <createIndex indexName="outlet_id" tableName="outlets"
-            unique="true">
-            <column name="outlet_id" />
-        </createIndex>
         <createIndex indexName="uuid" tableName="outlets"
             unique="true">
             <column name="uuid" />
