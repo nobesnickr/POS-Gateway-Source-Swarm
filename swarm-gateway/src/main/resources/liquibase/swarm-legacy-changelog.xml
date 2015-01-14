@@ -708,7 +708,7 @@
         </sql>
     </changeSet>
     
-        <changeSet id="20141211_1055" author="carlos">
+    <changeSet id="20141211_1055" author="carlos">
     	<preConditions onFail="MARK_RAN">
             <not>
                 <columnExists tableName="outlets" columnName="last_modified"/>
@@ -752,4 +752,5 @@
         	<column name="last_modified" type="TIMESTAMP"/>
     	</addColumn>
     </changeSet>
+    
 </databaseChangeLog>

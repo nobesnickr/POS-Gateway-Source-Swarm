@@ -32,7 +32,10 @@ public class VendStoreFactory implements SwarmStoreFactory<VendAccount> {
     public VendAccount getAccount(StoreEntity store) {
         VendAccount account = new VendAccount(store.getId());        
         
-        final String userName = aesUtility.aesDecrypt(store.getUsername()); 
+        boolean isUserNameNull = store.getUsername() == null;
+        
+        final String userName = (isUserNameNull)?
+        								null : aesUtility.aesDecrypt(store.getUsername()); 
         if(StringUtils.hasLength(userName)){
             account.setCompany(userName);
         } else {
@@ -52,5 +55,4 @@ public class VendStoreFactory implements SwarmStoreFactory<VendAccount> {
         }
         return account;
     }
-
 }

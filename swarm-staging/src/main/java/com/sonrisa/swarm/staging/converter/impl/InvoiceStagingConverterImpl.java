@@ -49,6 +49,7 @@ import com.sonrisa.swarm.staging.converter.InvoiceStagingConverter;
 import com.sonrisa.swarm.staging.converter.TimeZoneService;
 import com.sonrisa.swarm.staging.filter.InvoiceStagingFilter;
 import com.sonrisa.swarm.staging.filter.StagingFilterValue;
+import com.sonrisa.swarm.staging.job.exception.RegisterNotFoundException;
 import com.sonrisa.swarm.staging.service.InvoiceStagingService;
 
 /**
@@ -142,9 +143,16 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
 		    			  foreignOutletId =  getForeignOutletIdForRegister(stgEntity.getStoreId(), stgEntity.getLsRegisterId());
 		    			  stgEntity.setLsOutletId(foreignOutletId);
 		    		  }catch(EmptyResultDataAccessException e){
-		    			  // If an empty result is returned the outlet has not yet been stored 
+		    			  // If an empty result is returned the outlet/register has not yet been stored 
+		    			  LOGGER.warn("An invoice couldn't be processed because its register hasn't be processed yet. "
+		    			  		+ "The invoice will be processed later. Afected store: {}. Affected Invoice: {}",store.getId(), foreignId);
 		    			  return null;
-		    		  }
+		    		  } catch (RegisterNotFoundException e) {
+						  // If this exception is returned the outlet/register has not yet been stored
+		    			  LOGGER.warn("An invoice couldn't be processed because its register hasn't be processed yet. "
+			    			  		+ "The invoice will be processed later. Afected store: {}. Affected Invoice: {}",store.getId(), foreignId);
+		    			  return null;
+				      }
 		    	   }
 		    	   
 		    	   final OutletEntity outlet = outletDao.findByStoreAndForeignId(store.getId(), foreignOutletId);
@@ -356,9 +364,13 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
     
 	/**
 	 * This function returns the foreign Id of the outlet associated to a concrete register
+	 * @throws RegisterNotFoundException 
 	 */
-	public Long getForeignOutletIdForRegister(Long storeId, Long registerId){
+	public Long getForeignOutletIdForRegister(Long storeId, Long registerId) throws RegisterNotFoundException{
 		RegisterEntity register = registerService.getResgisterFromStoreAndId(storeId, registerId);
+		if(register == null){
+			throw new RegisterNotFoundException(storeId, registerId);
+		}
 		return register.getLsOutletId();
 	}
 }

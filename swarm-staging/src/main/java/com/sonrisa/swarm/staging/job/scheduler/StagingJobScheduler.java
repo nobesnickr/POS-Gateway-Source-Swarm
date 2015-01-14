@@ -41,6 +41,10 @@ public class StagingJobScheduler extends BaseJobScheduler {
     @Qualifier("cleanerJob")
     private Job cleanerJob;
     
+    @Autowired
+    @Qualifier("informationJob")
+    private Job informationJob;
+    
     /**
      * This method invokes the invoice job based on the given cron expression.
      */
@@ -55,5 +59,13 @@ public class StagingJobScheduler extends BaseJobScheduler {
     @Scheduled(cron = "${jobScheduler.staging.cleaner.job.cron.expession}")
     public void launchCleanerJob(){
         startJob(cleanerJob);
+    }
+    
+    /**
+     * This method invokes the information job based on the given cron expression.
+     */
+    @Scheduled(cron = "${jobScheduler.staging.information.job.cron.expession}")
+    public void informationCleanerJob(){
+        startJob(informationJob);
     }
 }

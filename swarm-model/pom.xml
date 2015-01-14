@@ -2,7 +2,7 @@
 	<parent>
 		<groupId>com.sonrisa.swarm</groupId>
 		<artifactId>swarm-parent</artifactId>
-		<version>15.00.00</version>
+		<version>12.01.15</version>
 	</parent>
 	<modelVersion>4.0.0</modelVersion>
 	<artifactId>swarm-model</artifactId>

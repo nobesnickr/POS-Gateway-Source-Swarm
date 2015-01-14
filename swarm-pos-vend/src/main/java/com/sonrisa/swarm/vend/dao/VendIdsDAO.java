@@ -41,7 +41,6 @@ public class VendIdsDAO {
     
 	public long storeId(final long storeId, final String typeOfId, final String stringId){
 		Long numericId = null;
-		System.out.println(storeId+" "+typeOfId+" "+stringId);
 		try{
 			numericId = getNumericId(stringId);
 		}catch(EmptyResultDataAccessException e){
@@ -70,10 +69,7 @@ public class VendIdsDAO {
 		}catch(DuplicateKeyException ex){
 			// The stringId was previously stored, this is not an issue.
 			LOGGER.debug("The String id: {} was previously stored.", stringId);
-		}
-		
-		System.out.println("Key: "+keyHolder.getKey());
-		
+		}		
 		numericId = (Long) keyHolder.getKey();
 		return numericId;
 	}

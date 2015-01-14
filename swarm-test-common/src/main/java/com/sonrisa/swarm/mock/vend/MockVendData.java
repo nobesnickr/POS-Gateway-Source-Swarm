@@ -10,7 +10,17 @@ import com.sonrisa.swarm.mock.MockPosDataDescriptor;
  */
 public class MockVendData {
 
-    /**
+    private static final String OUTLET_DTO = "OutletDTO";
+
+	private static final String PRODUCT_DTO = "ProductDTO";
+
+	private static final String INVOICE_LINE_DTO = "InvoiceLineDTO";
+
+	private static final String CUSTOMER_DTO = "CustomerDTO";
+
+	private static final String INVOICE_DTO = "InvoiceDTO";
+
+	/**
      * Mock response for refreshing access tokens
      */
     public static final String MOCK_VEND_ACCESS_TOKEN = "44_mock_vend_access_token.json";
@@ -43,11 +53,11 @@ public class MockVendData {
      */
     public static MockPosDataDescriptor getVendBatchMockDescriptor (){
         Map<String,Integer> count = new HashMap<String,Integer>();
-        count.put("CustomerDTO",48);
-        count.put("InvoiceDTO",48);
-        count.put("InvoiceLineDTO",78);
-        count.put("ProductDTO",48);
-        count.put("OutletDTO",7);
+        count.put(CUSTOMER_DTO,48);
+        count.put(INVOICE_DTO,48);
+        count.put(INVOICE_LINE_DTO,78);
+        count.put(PRODUCT_DTO,48);
+        count.put(OUTLET_DTO,7);
         count.put("RegisterDTO",12);
         return new MockPosDataDescriptor(count);
     }
@@ -58,11 +68,11 @@ public class MockVendData {
      */
 	public static Map<String, Integer> getCountOfMockJsonItems() {
 		Map<String, Integer> count = new HashMap<String, Integer>();
-        count.put("CustomerDTO",48);
-        count.put("InvoiceDTO",48);
-        count.put("InvoiceLineDTO",78);
-        count.put("ProductDTO",48);
-        count.put("OutletDTO",7);
+        count.put(CUSTOMER_DTO,48);
+        count.put(INVOICE_DTO,48);
+        count.put(INVOICE_LINE_DTO,78);
+        count.put(PRODUCT_DTO,48);
+        count.put(OUTLET_DTO,7);
         count.put("RegisterDTO",12);
 		return count;
 	}
@@ -72,10 +82,10 @@ public class MockVendData {
      */
     public static MockPosDataDescriptor getVendMockDescriptor (){
         Map<String,Integer> count = new HashMap<String,Integer>();
-        count.put("InvoiceDTO",1);
-        count.put("CustomerDTO",1);
-        count.put("InvoiceLineDTO",2);
-        count.put("ProductDTO",2);
+        count.put(INVOICE_DTO,1);
+        count.put(CUSTOMER_DTO,1);
+        count.put(INVOICE_LINE_DTO,2);
+        count.put(PRODUCT_DTO,2);
         return new MockPosDataDescriptor(count);
     }
     
@@ -84,10 +94,10 @@ public class MockVendData {
      */
     public static MockPosDataDescriptor getVendMockProcessedBatchDescriptor (){
         Map<String,Integer> count = new HashMap<String,Integer>();
-        count.put("InvoiceDTO",3);
-        count.put("CustomerDTO",3);
-        count.put("InvoiceLineDTO",6);
-        count.put("ProductDTO",6);
+        count.put(INVOICE_DTO,3);
+        count.put(CUSTOMER_DTO,3);
+        count.put(INVOICE_LINE_DTO,6);
+        count.put(PRODUCT_DTO,6);
         return new MockPosDataDescriptor(count);
     }
 }

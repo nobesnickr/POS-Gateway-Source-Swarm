@@ -39,6 +39,5 @@ public class ShopifyRestApiServiceIntegrationTest extends BaseIntegrationTest{
     public void testSomeMethod() {
         final JsonNode storeInfo = restApiService.getStoreInfo("sondev2", "a173d948c294baaac5f1a96694d1022f");
         assertNotNull(storeInfo);
-        System.out.println("storeInfo = " + storeInfo);
     }
 }

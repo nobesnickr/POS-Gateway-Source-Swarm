@@ -38,10 +38,10 @@ with Sonrisa.
   
   	<!--Spring Aspect support-->
   	<aop:aspectj-autoproxy proxy-target-class="true">
-        <aop:include name="jobLoggingAspect"/>
+        <aop:include name="processAspect"/>
     </aop:aspectj-autoproxy>
 
-    <bean id="jobLoggingAspect" class="com.sonrisa.swarm.aspect.logging.JobLoggingAspect"/>
+  	<bean id="processAspect" class="com.sonrisa.swarm.newrelic.aspect.ProcessLogging"/>
   	
     <!--Spring job infrastructure--> 
     <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">

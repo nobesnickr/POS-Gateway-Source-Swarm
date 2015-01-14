@@ -20,6 +20,7 @@ import com.sonrisa.swarm.posintegration.dto.InvoiceLineDTO;
 import com.sonrisa.swarm.posintegration.dto.OutletDTO;
 import com.sonrisa.swarm.posintegration.dto.ProductDTO;
 import com.sonrisa.swarm.posintegration.dto.RegisterDTO;
+import com.sonrisa.swarm.posintegration.exception.EmptyIdentifierException;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
 import com.sonrisa.swarm.posintegration.extractor.SwarmStore;
@@ -70,9 +71,10 @@ public class VendExtractor extends BaseIteratingExtractor<VendAccount> {
     
     /**
      * {@inheritDoc}
+     * @throws EmptyIdentifierException 
      */
     @Override
-    protected <W extends DWTransferable, T extends SwarmStore> W preprocessItem(W item, T store){   	
+    protected <W extends DWTransferable, T extends SwarmStore> W preprocessItem(W item, T store) throws EmptyIdentifierException{   	
     	
     	//Conversion to numeric Ids for Invoices and invoices_lines are 
 		if(item instanceof VendCustomerDTO){
@@ -99,10 +101,15 @@ public class VendExtractor extends BaseIteratingExtractor<VendAccount> {
 
     /**
      * This function translate a String UUID into a numeric ID using table Vend Ids table
+     * @throws EmptyIdentifierException 
      */
-	private <T extends SwarmStore> long getNumericId(T store, String elemenType ,String uuid) {
+	private <T extends SwarmStore> long getNumericId(T store, String elemenType ,String uuid) throws EmptyIdentifierException {
 		long id = -1;
-
+		
+		if (uuid == ""){
+			throw new EmptyIdentifierException(store.getStoreId(), elemenType);
+		}
+		
 		if (vendIdsDAO == null){
     		LOGGER.warn("VendsIdsDAO has not been initialized.");
     	}else{
@@ -159,16 +166,24 @@ public class VendExtractor extends BaseIteratingExtractor<VendAccount> {
         // Iterate through all invoices
         for (ExternalDTO element : data) {
             VendInvoiceDTO invoice = getDtoTransformer().transformDTO(element, VendInvoiceDTO.class);
-            setInvoiceNumericIDs(store, invoice);
-            invoiceList.add(invoice);
+            try {
+				setInvoiceNumericIDs(store, invoice);
+				invoiceList.add(invoice);
+			} catch (EmptyIdentifierException e1) {
+				LOGGER.warn("There was an exception storing invoice : {} ",invoice, e1);
+			}
 
             // invoice has array of rows for invoice lines
             for (ExternalDTO row : element.getNestedItems(INVOICE_LINE_PATH)) {
                     VendInvoiceLineDTO lineItem = getDtoTransformer().transformDTO(row, VendInvoiceLineDTO.class);
                     lineItem.setInvoiceId(invoice.getRemoteId());
                     lineItem.setTimestamp(invoice.getLastModified());
-                    setInvoiceLineNumericIDs(store, lineItem);
-                    invoiceLineList.add(lineItem);
+                    try {
+						setInvoiceLineNumericIDs(store, lineItem);
+						invoiceLineList.add(lineItem);
+					} catch (EmptyIdentifierException e) {
+						LOGGER.warn("There was an exception storing invoice line: {} ",lineItem,e);
+					}
             }
 
             // if limit exceeded save them to staging tables
@@ -189,15 +204,30 @@ public class VendExtractor extends BaseIteratingExtractor<VendAccount> {
     }
     
 
-	private <T extends SwarmStore> void setInvoiceLineNumericIDs(T store, VendInvoiceLineDTO invoiceLineDTO) {
+	private <T extends SwarmStore> void setInvoiceLineNumericIDs(T store, VendInvoiceLineDTO invoiceLineDTO) throws EmptyIdentifierException {
 		invoiceLineDTO.setLineNumber(getNumericId(store, "sale_line", invoiceLineDTO.getStringLineNumber()));
 		invoiceLineDTO.setProductId(getNumericId(store, "product", invoiceLineDTO.getUuidProductId()));
 	}
 
-	private <T extends SwarmStore> void setInvoiceNumericIDs(T store, VendInvoiceDTO invoiceDTO) {
+	private <T extends SwarmStore> void setInvoiceNumericIDs(T store, VendInvoiceDTO invoiceDTO) throws EmptyIdentifierException {
 		invoiceDTO.setId(getNumericId(store, "sale", invoiceDTO.getStringId()));
-		invoiceDTO.setCustomerId(getNumericId(store, "customer", invoiceDTO.getStringCustomerId()));
-		long registerId = getNumericId(store, "register", invoiceDTO.getUuidRegisterId());
+		
+		long customerId = 0;
+		try {
+			customerId = getNumericId(store, "customer", invoiceDTO.getStringCustomerId());
+		} catch (EmptyIdentifierException e1) {
+			//There is no customer associated with this invoice
+			LOGGER.warn("There is no customer associated with invoice {} the invoice will be stored without customer.", invoiceDTO.getRemoteId());
+		}
+		invoiceDTO.setCustomerId(customerId);
+		
+		long registerId = 0;
+		try {
+			registerId = getNumericId(store, "register", invoiceDTO.getUuidRegisterId());
+		} catch (EmptyIdentifierException e1) {
+			//There is no register associated with this invoice
+			LOGGER.warn("There is no register associated with invoice {} the invoice will be stored without register.",invoiceDTO.getRemoteId());
+		}
 		invoiceDTO.setRegisterId(registerId);
 		
 		if (vendIdsDAO != null){

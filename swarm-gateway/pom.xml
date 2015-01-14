@@ -2,7 +2,7 @@
     <parent>
         <groupId>com.sonrisa.swarm</groupId>
         <artifactId>swarm-parent</artifactId>
-        <version>15.00.00</version>
+        <version>12.01.15</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>swarm-gateway</artifactId>
@@ -77,6 +77,16 @@
 			<artifactId>mail</artifactId>
 		</dependency>
 
+		<!-- New Relic -->
+		<dependency>
+		  <groupId>com.newrelic.agent.java</groupId>
+		  <artifactId>newrelic-agent</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>com.newrelic.agent.java</groupId>
+		  <artifactId>newrelic-api</artifactId>
+		</dependency>
+		
         <!-- Mock and test data source -->
         <dependency>
             <groupId>commons-dbcp</groupId>
