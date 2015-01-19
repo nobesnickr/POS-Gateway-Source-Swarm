@@ -17,6 +17,7 @@
 
 package com.sonrisa.swarm.posintegration.api.util.impl;
 
+import java.lang.reflect.InvocationTargetException;
 import java.util.Map;
 import java.util.Map.Entry;
 import java.util.Set;
@@ -96,10 +97,18 @@ public abstract class BaseRestResponseVerifier<E extends ExternalExtractorExcept
     protected E buildException(String message) {
         try {
             return exceptionClass.getConstructor(String.class).newInstance(message);
-        } catch (ReflectiveOperationException e){
-            throw new RuntimeException(e);
         } catch (SecurityException e) {
             throw new RuntimeException(e);
-        }
+        } catch (IllegalArgumentException e) {
+        	throw new RuntimeException(e);
+		} catch (InstantiationException e) {
+			throw new RuntimeException(e);
+		} catch (IllegalAccessException e) {
+			throw new RuntimeException(e);
+		} catch (InvocationTargetException e) {
+			throw new RuntimeException(e);
+		} catch (NoSuchMethodException e) {
+			throw new RuntimeException(e);
+		}
     }
 }

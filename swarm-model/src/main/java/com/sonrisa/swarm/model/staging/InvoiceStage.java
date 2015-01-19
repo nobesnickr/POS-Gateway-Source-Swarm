@@ -102,6 +102,10 @@ public class InvoiceStage extends BaseStageEntity implements StageBatchInsertabl
     @RetailProAttr(value = "Tender", maxLength = 20)
     private String tender;
 
+	private Long lsOutletId;
+	
+	private Long lsRegisterId;
+	
     /**  
      *  If the sale is completed the inventory will have been removed and the payments will have to equal the total. 
      */
@@ -317,6 +321,52 @@ public class InvoiceStage extends BaseStageEntity implements StageBatchInsertabl
         return result;
     }
 
+    /**
+     * Invoices have two timestamps, the timestamp for the purchase,
+     * and the timestamp when the invoice entity was last modified.
+     * 
+     * Some POS systems (e.g. Shopify) change invoices, because e.g. 
+     * they became paid/canceled, therefore both timestamps have to
+     * stored in certain cases.
+     */
+    @Column(name = "last_modified")
+    public String getLastModified() {
+        return lastModified;
+    }
+
+    public void setLastModified(String lastModified) {
+        this.lastModified = lastModified;
+    }
+
+    @Column(name = "lines_processed")
+    public String getLinesProcessed() {
+        return linesProcessed;
+    }
+
+    public void setLinesProcessed(String linesProcessed) {
+        this.linesProcessed = linesProcessed;
+    }
+
+    @StageInsertableAttr(dbColumnName="ls_outlet_id")
+    @Column(name = "ls_outlet_id")    
+	public Long getLsOutletId() {
+		return lsOutletId;
+	}
+
+    @StageInsertableAttr(dbColumnName="ls_register_id")
+    @Column(name = "ls_register_id") 
+	public Long getLsRegisterId() {
+		return lsRegisterId;
+	}
+
+	public void setLsOutletId(Long outletId) {
+		this.lsOutletId = outletId;
+	}
+
+	public void setLsRegisterId(Long registerId) {
+		this.lsRegisterId = registerId;
+	} 
+
     @Override
     public boolean equals(Object obj) {
         if (this == obj)
@@ -362,30 +412,4 @@ public class InvoiceStage extends BaseStageEntity implements StageBatchInsertabl
                 + ", receiptType=" + receiptType + ", receiptStatus=" + receiptStatus + ", tender=" + tender
                 + ", completed=" + completed + "]";
     }
-
-    /**
-     * Invoices have two timestamps, the timestamp for the purchase,
-     * and the timestamp when the invoice entity was last modified.
-     * 
-     * Some POS systems (e.g. Shopify) change invoices, because e.g. 
-     * they became paid/canceled, therefore both timestamps have to
-     * stored in certain cases.
-     */
-    @Column(name = "last_modified")
-    public String getLastModified() {
-        return lastModified;
-    }
-
-    public void setLastModified(String lastModified) {
-        this.lastModified = lastModified;
-    }
-
-    @Column(name = "lines_processed")
-    public String getLinesProcessed() {
-        return linesProcessed;
-    }
-
-    public void setLinesProcessed(String linesProcessed) {
-        this.linesProcessed = linesProcessed;
-    } 
 }

@@ -29,22 +29,22 @@ public class ExternalCommandMatcher<T extends SwarmStore> extends ArgumentMatche
     /**
      * Matcher matching the parameters or null if not matching any
      */
-    private MapContainsMatcher<String, String> parameterMatcher = null;
+    protected MapContainsMatcher<String, String> parameterMatcher = null;
     
     /**
      * Matcher matching the parameters or null if not matching any
      */
-    private MapContainsMatcher<String, String> configMatcher = null;
+    protected MapContainsMatcher<String, String> configMatcher = null;
 
     /**
      * URI expected, or null if non expected
      */
-    private String expectedUri = null;
+    protected String expectedUri = null;
 
     /**
      * Account expected or null if non expected
      */
-    private SwarmStore expectedAccount = null;
+    protected SwarmStore expectedAccount = null;
 
     public ExternalCommandMatcher() {
         // Nothing-to-expect yet

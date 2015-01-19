@@ -1,5 +1,5 @@
 /*
- *   Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
+  *   Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
  * 
  *  This software is the confidential and proprietary information of
  *  Sonrisa Informatikai Kft. ("Confidential Information").
@@ -34,7 +34,9 @@ import com.sonrisa.swarm.posintegration.dto.CustomerDTO;
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.dto.InvoiceLineDTO;
 import com.sonrisa.swarm.posintegration.dto.ManufacturerDTO;
+import com.sonrisa.swarm.posintegration.dto.OutletDTO;
 import com.sonrisa.swarm.posintegration.dto.ProductDTO;
+import com.sonrisa.swarm.posintegration.dto.RegisterDTO;
 import com.sonrisa.swarm.posintegration.extractor.SwarmStore;
 import com.sonrisa.swarm.posintegration.extractor.annotation.DWFilteredAs;
 import com.sonrisa.swarm.posintegration.warehouse.DWFilter;
@@ -45,7 +47,9 @@ import com.sonrisa.swarm.staging.service.CustomerStagingService;
 import com.sonrisa.swarm.staging.service.InvoiceLineStagingService;
 import com.sonrisa.swarm.staging.service.InvoiceStagingService;
 import com.sonrisa.swarm.staging.service.ManufacturerStagingService;
+import com.sonrisa.swarm.staging.service.OutletStagingService;
 import com.sonrisa.swarm.staging.service.ProductStagingService;
+import com.sonrisa.swarm.staging.service.RegisterStagingService;
 
 /**
  * Staging data store is an implementation of a SwarmDataStore, so it is 
@@ -72,7 +76,11 @@ public class StagingDTOService extends BaseCachingAndIgnoringDTOService {
     private CategoryStagingService categoryStgService;
     @Autowired
     private ManufacturerStagingService manufacturerStgService;
-        
+    @Autowired
+    private OutletStagingService outletStgService;
+    @Autowired
+    private RegisterStagingService registerStgService;
+    
 	/** JDBC template is required to access the legacy databases's updates table */
     @Autowired
     private JdbcTemplate jdbcTemplate;
@@ -88,7 +96,7 @@ public class StagingDTOService extends BaseCachingAndIgnoringDTOService {
      */
     public <T extends DWTransferable> void saveToStage(SwarmStore store, List<? extends T> entities, Class<T> clazz) {
         
-        LOGGER.info("Inserting {} {} entities into staging tables for {}", entities.size(), clazz.getSimpleName(), store.getStoreId());
+        LOGGER.debug("Inserting {} {} entities into staging tables for store {}", entities.size(), clazz.getSimpleName(), store.getStoreId());
 
         if(clazz == InvoiceDTO.class){
             invoiceStgService.create(entities, store.getStoreId());
@@ -102,6 +110,10 @@ public class StagingDTOService extends BaseCachingAndIgnoringDTOService {
             productStgService.create(entities, store.getStoreId());
         } else if(clazz == CategoryDTO.class){
             categoryStgService.create(entities, store.getStoreId());
+        } else if(clazz == OutletDTO.class){
+        	outletStgService.create(entities, store.getStoreId());
+        } else if(clazz == RegisterDTO.class){
+        	registerStgService.create(entities, store.getStoreId());
         } else {
             throw new RuntimeException("Unexpected entity type!");
         }

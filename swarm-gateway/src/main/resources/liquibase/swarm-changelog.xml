@@ -313,4 +313,97 @@
 		</update>
     </changeSet>
     
+    <changeSet id="20141112_1127" author="carlos">
+        <comment> Creation of STAGING_OUTLETS, a table that serves as the staging table for outlets.</comment>
+        <createTable tableName="staging_outlets">
+            <column name="id" type="BIGINT(20)" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="swarm_id" type="VARCHAR(255)" />
+            <column name="ls_outlet_id" type="BIGINT(20)" />
+            <column name="store_id" type="BIGINT(20)" />
+            <column name="name" type="varchar(50)" />
+            <column name="address1" type="varchar(50)" />
+            <column name="address2" type="varchar(50)" />
+            <column name="city" type="varchar(50)" />
+            <column name="state" type="varchar(50)" />
+            <column name="postcode" type="varchar(15)" />
+            <column name="country" type="varchar(50)" />
+            <column name="firstname" type="varchar(50)" />
+            <column name="lastname" type="varchar(50)" />
+            <column name="email" type="varchar(100)" />
+            <column name="phone" type="varchar(50)" />
+            <column name="fax" type="varchar(50)" />
+            <column name="website" type="varchar(255)" />
+            <column name="uuid" type="varchar(36)" />
+            <column name="last_modified" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="20141119_1159" author="carlos">
+        <comment> Creation of staging_registers, a table that serves as the staging table for registers.</comment>
+        <createTable tableName="staging_registers">
+            <column name="id" type="BIGINT(20)" autoIncrement="true">
+                <constraints nullable="false" primaryKey="true" />
+            </column>
+            <column name="register_id" type="BIGINT(20)"/>
+            <column name="swarm_id" type="VARCHAR(255)" />
+            <column name="ls_register_id" type="BIGINT(20)" />
+            <column name="store_id" type="BIGINT(20)" />
+            <column name="outlet_id" type="BIGINT(20)" />
+            <column name="ls_outlet_id" type="BIGINT(20)" />
+            <column name="name" type="varchar(50)" />
+            <column name="uuid" type="varchar(36)" />
+            <column name="last_modified" type="TIMESTAMP"/>
+        </createTable>
+    </changeSet>
+    
+    <changeSet id="20141121_1157" author="carlos">
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="staging_customers">
+        	<column name="postcode" type="VARCHAR(15)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141124_0143" author="carlos">
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="staging_invoices">
+        	<column name="ls_outlet_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141124_0145" author="carlos">
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="staging_invoices">
+        	<column name="ls_register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141124_0150" author="carlos">
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="staging_invoices">
+        	<column name="outlet_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141124_0155" author="carlos">
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="staging_invoices">
+        	<column name="register_id" type="VARCHAR(100)" defaultValueComputed="NULL"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141124_1428" author="carlos">
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="staging_invoice_lines">
+        	<column name="description" type="VARCHAR(255)"/>
+    	</addColumn>
+    </changeSet>
+    
+    <changeSet id="20141124_1429" author="carlos">
+    	<comment>Adding column for vend migration</comment>
+    	<addColumn tableName="staging_invoice_lines">
+        	<column name="ts" type="TIMESTAMP"/>
+    	</addColumn>
+    </changeSet>
 </databaseChangeLog>

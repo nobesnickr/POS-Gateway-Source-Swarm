@@ -25,7 +25,6 @@ import com.sonrisa.swarm.posintegration.extractor.SwarmStore;
 import com.sonrisa.swarm.posintegration.warehouse.DWFilter;
 import com.sonrisa.swarm.posintegration.warehouse.DWTransferable;
 import com.sonrisa.swarm.posintegration.warehouse.SwarmDataWarehouse;
-import com.sonrisa.swarm.posintegration.warehouse.csvdump.CsvDumpDTOService;
 
 /**
  * Data store that provides the combined of a CsvDumpDataStore and
@@ -34,21 +33,13 @@ import com.sonrisa.swarm.posintegration.warehouse.csvdump.CsvDumpDTOService;
  * @author sonrisa
  */
 @Component
-public class StageAndDumpDataWarehouse implements SwarmDataWarehouse {
-
+public class StageAndDumpDataWarehouse implements SwarmDataWarehouse {	
     /**
-     * Base data store where data is saved and which is used the
-     * get the timestamp variables
+     * Base data store where data is saved and whichis used the
+     * get the timestamp variables 
      */
     @Autowired
     private StagingDTOService baseDataStore;
-    
-    /**
-     * Secondary datastore where data is only written to,
-     * but never used for anything else
-     */
-    @Autowired
-    private CsvDumpDTOService secondoryDataStore;
     
     /**
      * {@inheritDoc}
@@ -56,7 +47,6 @@ public class StageAndDumpDataWarehouse implements SwarmDataWarehouse {
     @Override
     public <T extends DWTransferable> void save(SwarmStore store, List<? extends T> entities, Class<T> clazz) {
         baseDataStore.saveToStage(store, entities, clazz);
-        secondoryDataStore.saveToDump(store, entities, clazz);
     }
 
     /**

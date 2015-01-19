@@ -32,11 +32,11 @@ import com.sonrisa.swarm.posintegration.warehouse.DWTransferable;
 public abstract class InvoiceLineDTO implements DWTransferable {
 		
     /** The value that identifies the product within the Invoice, should be unique throughout the store */ 
-    @StageInsertableAttr(dbColumnName = "ls_line_id")
+    @StageInsertableAttr(dbColumnName = "ls_line_id", usedAsTimestamp=true)
 	public abstract long getRemoteId();
 
     /** The invoice this line is present in */
-    @StageInsertableAttr(dbColumnName = "ls_invoice_id",usedAsTimestamp=true)
+    @StageInsertableAttr(dbColumnName = "ls_invoice_id")
 	public abstract Long getInvoiceId();
 
     /** The product in this line of the invoice*/
@@ -52,6 +52,16 @@ public abstract class InvoiceLineDTO implements DWTransferable {
 
     @StageInsertableAttr(dbColumnName = "tax")
 	public abstract double getTax();
+    
+    @StageInsertableAttr(dbColumnName = "description")
+	public String getName(){
+    	return null;
+    }
+    
+    @StageInsertableAttr(dbColumnName = "ts")
+	public String getTimestamp(){
+    	return null;
+    }
     
 	public abstract Timestamp getLastModified();
 

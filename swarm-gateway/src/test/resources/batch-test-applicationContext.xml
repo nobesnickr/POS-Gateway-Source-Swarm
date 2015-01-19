@@ -55,6 +55,12 @@ with Sonrisa.
         <property name="jobLauncher" ref="jobLauncher"/>
     </bean>  
     
+    <bean id="vendExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
+        <property name="job" ref="vendExtractorJob"/>
+        <property name="jobRepository" ref="jobRepository"/>
+        <property name="jobLauncher" ref="jobLauncher"/>
+    </bean>
+    
     <bean id="revelExtractorLauncherTest" class="org.springframework.batch.test.JobLauncherTestUtils" >
         <property name="job" ref="revelExtractorJob"/>
         <property name="jobRepository" ref="jobRepository"/>

@@ -17,8 +17,10 @@
 package com.sonrisa.swarm.posintegration.extractor.impl;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import com.sonrisa.swarm.posintegration.dto.CategoryDTO;
@@ -26,7 +28,9 @@ import com.sonrisa.swarm.posintegration.dto.CustomerDTO;
 import com.sonrisa.swarm.posintegration.dto.InvoiceDTO;
 import com.sonrisa.swarm.posintegration.dto.InvoiceLineDTO;
 import com.sonrisa.swarm.posintegration.dto.ManufacturerDTO;
+import com.sonrisa.swarm.posintegration.dto.OutletDTO;
 import com.sonrisa.swarm.posintegration.dto.ProductDTO;
+import com.sonrisa.swarm.posintegration.exception.EmptyIdentifierException;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorException;
 import com.sonrisa.swarm.posintegration.exception.ExternalExtractorNamingConventionException;
 import com.sonrisa.swarm.posintegration.extractor.ExternalDTO;
@@ -36,7 +40,6 @@ import com.sonrisa.swarm.posintegration.extractor.util.ExternalDTOTransformer;
 import com.sonrisa.swarm.posintegration.warehouse.DWFilter;
 import com.sonrisa.swarm.posintegration.warehouse.DWTransferable;
 import com.sonrisa.swarm.posintegration.warehouse.SwarmDataWarehouse;
-import java.util.List;
 
 /**
  * Base classes for Extractors operating with an external API
@@ -45,6 +48,8 @@ import java.util.List;
  */
 public abstract class BaseIteratingExtractor<T extends SwarmStore> implements ExternalExtractor<T>{
 
+	private static final Logger LOGGER = LoggerFactory.getLogger(BaseIteratingExtractor.class);
+	
     /** Service transforming ExternalDTO objects into DataStoreTransferable entities */
     @Autowired
     private ExternalDTOTransformer dtoTransformer;
@@ -75,14 +80,17 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
      */
     @Override
     public void fetchData(T account, SwarmDataWarehouse dataStore) throws ExternalExtractorException {
-        logger().debug("Importing data for: {}", account);
-
+        logger().debug("Importing data for: {}", account.getStoreId());
+        
+        fetchOutlets(account, dataStore);
+        fetchRegisters(account, dataStore);
         fetchCategories(account, dataStore);
         fetchProducts(account, dataStore);
         fetchInvoices(account, dataStore);
         fetchInvoiceLines(account, dataStore);
         fetchCustomers(account, dataStore);
         fetchManufacturers(account, dataStore);
+        
     }
     
     /**
@@ -128,6 +136,22 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
     }
     
     /**
+     * Fetches the POS specific {@link OutletDTO}. Its current behavior is empty.
+     * This class can be override in order to import outlets
+     */
+    protected void fetchOutlets(T store, SwarmDataWarehouse dataStore) throws ExternalExtractorException{
+        return;
+    }
+    
+    /**
+     * Fetches the POS specific {@link OutletDTO}. Its current behavior is empty.
+     * This class can be override in order to import outlets
+     */
+    protected void fetchRegisters(T store, SwarmDataWarehouse dataStore) throws ExternalExtractorException{
+        return;
+    }  
+    
+    /**
      * Fired when the iteration needs a new kind of data, e.g. CustomerDTO
      * @param clazz Type of warehouse DTO
      * @param since Filtering based on this value
@@ -146,7 +170,7 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
      * @param clazz Class of the DTO expected from the REST URL request
      * @param timeStampClass Indicates which DTO class's timeStamp is used for filtering remote data
      */
-    private <W extends DWTransferable, S extends W>void fetchRemoteData(
+    protected <W extends DWTransferable, S extends W>void fetchRemoteData(
             T store, SwarmDataWarehouse dataStore, Class<W> dataStoreClass, Class<S> clazz){
 
         DWFilter filter = dataStore.getFilter(store, dataStoreClass);
@@ -159,6 +183,14 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
                 W item = this.dtoTransformer.transformDTO(node, clazz);
                 itemList.add(item);
                 
+                try {
+					item = preprocessItem(item, store);
+				} catch (EmptyIdentifierException e) {
+					LOGGER.warn("There was an exception preprocessing an item the item will not be stored: "+item);
+					// If the item doesn't have identifier it must not be stored
+					itemList.remove(item);
+				}
+                
                 // If list reaches a limit, save items into the stage, and 
                 // clear the list
                 if(itemList.size() > QUEUE_LIMIT){
@@ -166,13 +198,23 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
                     itemList.clear();
                 }
             } catch (ExternalExtractorException extractorException){
-                logger().warn("Error occured while trying to extract data from " + node, extractorException);
+                logger().warn("Error occured while trying to extract data from {}", node, extractorException);
             }
         }
         
         if(!itemList.isEmpty()){
             dataStore.save(store, itemList, dataStoreClass);
         }
+    }
+    
+    /**
+     * This function can be override to the additional preprocessing over the item.
+     * @param item
+     * @return
+     * @throws EmptyIdentifierException 
+     */
+    protected <W extends DWTransferable, T extends SwarmStore> W preprocessItem(W item, T store) throws EmptyIdentifierException{
+    	return item;
     }
     
     protected abstract Logger logger();
@@ -184,7 +226,7 @@ public abstract class BaseIteratingExtractor<T extends SwarmStore> implements Ex
      * @return
      */
     @SuppressWarnings("unchecked")
-    private <T extends DWTransferable> Class<? extends T> getPosSpecificClass(Class<T> clazz){
+	protected <T extends DWTransferable> Class<? extends T> getPosSpecificClass(Class<T> clazz){
         Class<?> retval;
         try {
             retval = Class.forName(this.dtoClassPrefix + clazz.getSimpleName());

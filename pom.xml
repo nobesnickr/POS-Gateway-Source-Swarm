@@ -4,7 +4,7 @@
 
     <groupId>com.sonrisa.swarm</groupId>
     <artifactId>swarm-parent</artifactId>
-    <version>14.10.13-3-SNAPSHOT</version>
+    <version>12.01.15</version>
     <packaging>pom</packaging>
 
     <name>Swarm</name>
@@ -23,6 +23,7 @@
         <module>swarm-pos-revel</module>        
         <module>swarm-pos-lspro</module>
         <module>swarm-pos-kounta</module>
+        <module>swarm-pos-vend</module>
         <module>swarm-pos-shopify</module>  
         <module>swarm-pos-rics</module>    
         <module>swarm-admin</module>         
@@ -30,14 +31,7 @@
     </modules>
 
     <distributionManagement>
-        <repository>
-            <id>nexus</id>
-            <url>http://nexus.sonrisa:8080/nexus/content/repositories/releases</url>
-        </repository>
-        <snapshotRepository>
-            <id>nexus-snapshots</id>
-            <url>http://nexus.sonrisa:8080/nexus/content/repositories/snapshots/</url>
-        </snapshotRepository>
+
     </distributionManagement>
 	<scm>
 		<connection>scm:git:ssh://gerrit.sonrisa:29418/swarm-mobile</connection>
@@ -55,6 +49,7 @@
         <slf4j.version>1.7.7</slf4j.version>
         <log4j.version>1.2.17</log4j.version>
         <mysql.version>5.1.32</mysql.version>
+        <newrelic.version>3.12.1</newrelic.version>
         <h2.version>1.3.173</h2.version>
         <liquibase.version>3.2.2</liquibase.version>
 		<!-- Sonar -->
@@ -164,6 +159,11 @@
         </dependency>
         <dependency>
             <groupId>com.sonrisa.swarm</groupId>
+            <artifactId>swarm-pos-vend</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.sonrisa.swarm</groupId>
             <artifactId>swarm-admin</artifactId>
             <version>${project.version}</version>
         </dependency>	
@@ -184,6 +184,20 @@
             <artifactId>jstl</artifactId>
             <version>1.2</version>
         </dependency>
+
+		<!-- New Relic -->
+		<dependency>
+		  <groupId>com.newrelic.agent.java</groupId>
+		  <artifactId>newrelic-agent</artifactId>
+		  <version>${newrelic.version}</version>
+		  <scope>provided</scope>
+		</dependency>
+		<dependency>
+		  <groupId>com.newrelic.agent.java</groupId>
+		  <artifactId>newrelic-api</artifactId>
+		  <version>${newrelic.version}</version>
+		  <scope>compile</scope>
+		</dependency>
 
         <!-- Mock and test data source -->
         <dependency>
@@ -328,6 +342,11 @@
             <artifactId>spring-tx</artifactId>
             <version>${spring.version}</version>
         </dependency>
+        <dependency>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
+		</dependency>
 
         <!-- Spring batch -->
         <dependency>

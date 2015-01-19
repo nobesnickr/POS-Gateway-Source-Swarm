@@ -16,9 +16,9 @@
  */
 package com.sonrisa.swarm.revel;
 
-import org.eclipse.persistence.jpa.jpql.Assert.AssertException;
+import static org.junit.Assert.assertEquals;
+
 import org.junit.Test;
-import static org.junit.Assert.*;
 
 import com.sonrisa.swarm.revel.exception.RevelResourcePathFormatException;
 import com.sonrisa.swarm.revel.util.RevelResourcePathConverter;

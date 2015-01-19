@@ -41,7 +41,7 @@ public abstract class BaseMonitoringWriter<T extends BaseSwarmEntity> implements
     @Override
     public void write(List<? extends T> items) throws Exception {
         for (T item : items){
-            logger().info("Extraction of this item has been finished: " + item);
+            logger().debug("Extraction of this item has been finished: " + item);
         }
         
         countFetchedItems(items);

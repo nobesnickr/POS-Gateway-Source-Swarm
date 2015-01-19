@@ -25,16 +25,23 @@ import org.dozer.MappingException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.dao.EmptyResultDataAccessException;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 
 import com.sonrisa.swarm.legacy.dao.CustomerDao;
 import com.sonrisa.swarm.legacy.dao.InvoiceDao;
+import com.sonrisa.swarm.legacy.dao.OutletDao;
+import com.sonrisa.swarm.legacy.dao.RegisterDao;
+import com.sonrisa.swarm.legacy.service.RegisterService;
 import com.sonrisa.swarm.legacy.util.IdConverter;
 import com.sonrisa.swarm.legacy.util.InvoiceEntityUtil;
 import com.sonrisa.swarm.model.StageAndLegacyHolder;
 import com.sonrisa.swarm.model.legacy.CustomerEntity;
 import com.sonrisa.swarm.model.legacy.InvoiceEntity;
+import com.sonrisa.swarm.model.legacy.OutletEntity;
+import com.sonrisa.swarm.model.legacy.RegisterEntity;
 import com.sonrisa.swarm.model.legacy.StoreEntity;
 import com.sonrisa.swarm.model.staging.InvoiceStage;
 import com.sonrisa.swarm.model.staging.retailpro.enums.RpReceiptType;
@@ -42,6 +49,7 @@ import com.sonrisa.swarm.staging.converter.InvoiceStagingConverter;
 import com.sonrisa.swarm.staging.converter.TimeZoneService;
 import com.sonrisa.swarm.staging.filter.InvoiceStagingFilter;
 import com.sonrisa.swarm.staging.filter.StagingFilterValue;
+import com.sonrisa.swarm.staging.job.exception.RegisterNotFoundException;
 import com.sonrisa.swarm.staging.service.InvoiceStagingService;
 
 /**
@@ -56,7 +64,7 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
       
    /**
     * DAO of invoices in the data warehouse (aka legacy DB).
-    */
+    */  
    @Autowired
    private InvoiceDao dao;
    
@@ -67,10 +75,23 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
    private CustomerDao customerDao;
    
    @Autowired
+   private OutletDao outletDao;
+   
+   @Autowired
+   private RegisterDao registerDao;
+   
+   @Autowired
    private TimeZoneService timeZoneService;
    
    @Autowired
+   private RegisterService registerService;
+   
+   @Autowired
    private List<InvoiceStagingFilter> invoiceStagingFilters; 
+   
+	/** JDBC template is required to access the legacy databases's updates table */
+   @Autowired
+   private JdbcTemplate jdbcTemplate;
           
    /**
     * {@inheritDoc}
@@ -108,6 +129,57 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
            if(existingInvoice != null){
                LOGGER.debug("Found invoice in legacy DB, it will be updated: {}", stgEntity);
                newInvoice.setId(existingInvoice.getId());
+           }
+           
+           // Recovering outlet
+           if(stgEntity.getLsOutletId()!= null){
+		       Long foreignOutletId = Long.valueOf(stgEntity.getLsOutletId());
+
+		       if (foreignOutletId != null){
+		    	   
+		    	   // Check if the Invoice has been marked as incomplete
+		    	   if(foreignOutletId.equals(Long.valueOf(-1))){
+		    		  try{ //Looking for the outlet to complete the staging entity
+		    			  foreignOutletId =  getForeignOutletIdForRegister(stgEntity.getStoreId(), stgEntity.getLsRegisterId());
+		    			  stgEntity.setLsOutletId(foreignOutletId);
+		    		  }catch(EmptyResultDataAccessException e){
+		    			  // If an empty result is returned the outlet/register has not yet been stored 
+		    			  LOGGER.warn("An invoice couldn't be processed because its register hasn't be processed yet. "
+		    			  		+ "The invoice will be processed later. Afected store: {}. Affected Invoice: {}",store.getId(), foreignId);
+		    			  return null;
+		    		  } catch (RegisterNotFoundException e) {
+						  // If this exception is returned the outlet/register has not yet been stored
+		    			  LOGGER.warn("An invoice couldn't be processed because its register hasn't be processed yet. "
+			    			  		+ "The invoice will be processed later. Afected store: {}. Affected Invoice: {}",store.getId(), foreignId);
+		    			  return null;
+				      }
+		    	   }
+		    	   
+		    	   final OutletEntity outlet = outletDao.findByStoreAndForeignId(store.getId(), foreignOutletId);
+		       
+		    	   if (outlet != null && newInvoice != null){
+		    		   newInvoice.setOutlet(outlet);
+		    		   newInvoice.setLsOutletId(foreignOutletId);
+		    	   }
+		       }
+       	   }else{
+        	   LOGGER.debug("Outlet not found for invoice: "+newInvoice.getId());
+           }
+           
+	       // Recovering register
+           if(stgEntity.getLsRegisterId()!= null){
+	           final Long foreignRegisterId = Long.valueOf(stgEntity.getLsRegisterId());
+		       
+		       if (foreignRegisterId != null){
+		    	   final RegisterEntity register = registerDao.findByStoreAndForeignId(store.getId(), foreignRegisterId);
+		       
+		    	   if (register != null && newInvoice != null){
+		    		   newInvoice.setRegister(register);
+		    		   newInvoice.setLsRegisterId(foreignRegisterId);
+		    	   }
+		       }
+           }else{
+        	   LOGGER.debug("Register not found for invoice: "+newInvoice.getId());
            }
            
            // performs mapping between staging invoice and destination invoice object
@@ -289,4 +361,16 @@ public class InvoiceStagingConverterImpl extends BaseStagingConverterImpl<Invoic
     public void setInvoiceStagingFilters(List<InvoiceStagingFilter> invoiceStagingFilters) {
         this.invoiceStagingFilters = invoiceStagingFilters;
     }
+    
+	/**
+	 * This function returns the foreign Id of the outlet associated to a concrete register
+	 * @throws RegisterNotFoundException 
+	 */
+	public Long getForeignOutletIdForRegister(Long storeId, Long registerId) throws RegisterNotFoundException{
+		RegisterEntity register = registerService.getResgisterFromStoreAndId(storeId, registerId);
+		if(register == null){
+			throw new RegisterNotFoundException(storeId, registerId);
+		}
+		return register.getLsOutletId();
+	}
 }

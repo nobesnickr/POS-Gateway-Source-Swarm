@@ -115,5 +115,13 @@ bin
 .settings
 /swarm-pos-kounta/.classpath
 /swarm-admin/.classpath
+<<<<<<< HEAD
+
+**.project
+/.vagrant/machines/
+provision_sec.sh
+**.classpath
+=======
 /retailpro-plugin/*/obj/*/
 /retailpro-plugin/RetailProSwarmExporter.Test/*
+>>>>>>> pos-gateway/master

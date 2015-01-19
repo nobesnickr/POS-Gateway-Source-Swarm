@@ -406,54 +406,7 @@ public class RetailProIntegrationTest extends BaseIntegrationTest {
                 "0", jdbcTemplate.queryForObject("select count(*) from staging_invoices", Integer.class).toString());
         assertEquals("The invalid invoice should be missing from here, but the other 3 has to be moved to the legacy DB.", 
                 "3", jdbcTemplate.queryForObject("select count(*) from invoices", Integer.class).toString());
-      }    
-    
-    /**
-     * Test case: a few valid and an invalid invoice item are received from the RetailPro.
-     * Expected result: The valid ones will be moved to the legacy DB, but the invalid
-     * one will be deleted.
-     * 
-     * @throws IOException
-     * @throws Exception 
-     */
-    @Test
-    public void testInvoicesWithInvalidItems() throws IOException, Exception{
-        final Long storeId = createMockStores("myStore", "0", "SMF");
-         
-        // Create staging products with price set to null,
-        // so there's no chance the price value is copied onto the 
-        // invoice line
-        final Long lsProductId1 = 12l;
-        final Long lsProductId2 = 46l;
-        final ProductStage stgProd1 = MockTestData.mockProductStage(lsProductId1.toString(), storeId);
-        stgProd1.setPrice(null);
-        final ProductStage stgProd2 = MockTestData.mockProductStage(lsProductId2.toString(), storeId);
-        stgProd2.setPrice(null);
-        productStagingService.save(stgProd1);
-        productStagingService.save(stgProd2);
-        
-        // creates a staging customer 
-        final Long lsCustomerId = 1l;
-        final CustomerStage stgCust = MockTestData.mockCustomerStage(lsCustomerId.toString(), "name", storeId);
-        customerStagingService.save(stgCust);     
-        
-        InputStream jsonStream = MockDataUtil.getResourceAsStream(MockTestData.TEST_RP_INVOICES_WITH_INVALID_ITEMS);
-        Map<String, Object> content = objectMapper.readValue(jsonStream, Map.class);                
-        String requestBody = objectMapper.writeValueAsString(content);       
-        performRequest(requestBody);
-        assertEquals("1", jdbcTemplate.queryForObject("select count(*) from staging_invoices", Integer.class).toString());
-        assertEquals("6", jdbcTemplate.queryForObject("select count(*) from staging_invoice_lines", Integer.class).toString());
-        runStagingLoaderJob();                        
-        assertEquals("The staging table should be empty because all of the invoices had been processed.", 
-                "0", jdbcTemplate.queryForObject("select count(*) from staging_invoices", Integer.class).toString());
-        assertEquals("The invoice should be moved to the legacy DB.", 
-                "1", jdbcTemplate.queryForObject("select count(*) from invoices", Integer.class).toString());
-        
-        assertEquals("All the items should be processed.", 
-                "0", jdbcTemplate.queryForObject("select count(*) from staging_invoice_lines", Integer.class).toString());
-        assertEquals("The invalid lines should be missing from here, but the other 4 has been moved to the legacy DB.", 
-                "4", jdbcTemplate.queryForObject("select count(*) from invoice_lines", Integer.class).toString());
-    }        
+      }           
           
     /**     
      * 

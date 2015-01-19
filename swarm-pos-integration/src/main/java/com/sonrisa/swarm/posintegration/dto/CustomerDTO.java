@@ -59,6 +59,7 @@ public abstract class CustomerDTO implements DWTransferable {
     @StageInsertableAttr(dbColumnName = "city", maxLength = 50)
 	public abstract String getCity();
 
+    @StageInsertableAttr(dbColumnName = "postcode", maxLength = 15)
 	public abstract String getPostalCode();
 
     /** The state of the customer, only used for US, CA, MX, AU */
@@ -69,19 +70,18 @@ public abstract class CustomerDTO implements DWTransferable {
 	
     @StageInsertableAttr(dbColumnName = "notes", maxLength = 0)
 	public abstract String getNotes();
-
-    /* (non-Javadoc)
-     * @see java.lang.Object#toString()
-     */
+    
     @Override
-    public String toString() {
-        return "CustomerDTO [getCustomerId()=" + getRemoteId()
-                + ", getLastModified()=" + getLastModified() + ", getName()="
-                + getName() + ", getEmail()=" + getEmail()
-                + ", getPhoneNumber()=" + getPhoneNumber() + ", getAddress()="
-                + getAddress() + ", getAddress2()=" + getAddress2()
-                + ", getCity()=" + getCity() + ", getPostalCode()="
-                + getPostalCode() + ", getState()=" + getState()
-                + ", getCountry()=" + getCountry() + "]";
-    }
+	public String toString() {
+		return "CustomerDTO [getRemoteId()=" + getRemoteId()
+				+ ", getLastModified()=" + getLastModified() + ", getName()="
+				+ getName() + ", getFirstName()=" + getFirstName()
+				+ ", getLastName()=" + getLastName() + ", getEmail()="
+				+ getEmail() + ", getPhoneNumber()=" + getPhoneNumber()
+				+ ", getAddress()=" + getAddress() + ", getAddress2()="
+				+ getAddress2() + ", getCity()=" + getCity()
+				+ ", getPostalCode()=" + getPostalCode() + ", getState()="
+				+ getState() + ", getCountry()=" + getCountry()
+				+ ", getNotes()=" + getNotes() + "]";
+	}
 }

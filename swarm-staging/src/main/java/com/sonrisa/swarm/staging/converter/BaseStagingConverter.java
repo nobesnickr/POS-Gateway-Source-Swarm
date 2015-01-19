@@ -20,9 +20,7 @@ import com.sonrisa.swarm.legacy.model.EntityValidationResult;
 import com.sonrisa.swarm.model.BaseSwarmEntity;
 import com.sonrisa.swarm.model.StageAndLegacyHolder;
 import com.sonrisa.swarm.model.legacy.BaseLegacyEntity;
-import com.sonrisa.swarm.model.legacy.CustomerEntity;
 import com.sonrisa.swarm.model.staging.BaseStageEntity;
-import com.sonrisa.swarm.model.staging.CustomerStage;
 import com.sonrisa.swarm.staging.job.loader.StagingEntityProcessor;
 
 /**

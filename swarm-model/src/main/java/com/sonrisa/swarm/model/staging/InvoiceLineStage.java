@@ -17,6 +17,8 @@
 package com.sonrisa.swarm.model.staging;
 
 
+import java.sql.Timestamp;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -37,7 +39,6 @@ import com.sonrisa.swarm.model.staging.retailpro.RetailProAttr;
 @Table(name = "staging_invoice_lines")
 @StageInsertableType(dbTableName = "invoice_lines")
 public class InvoiceLineStage extends BaseStageEntity {
-    
     private static final long serialVersionUID = -5078889627224799866L;
 
     private Long id;
@@ -91,6 +92,10 @@ public class InvoiceLineStage extends BaseStageEntity {
 
     @RetailProAttr(value = "TaxAmt", maxLength = 10, truncatingAllowed = false)
     private String tax;
+        
+    private String description;
+    
+    private Timestamp ts;
         
     // ------------------------------------------------------------------------
     // ~ Getters / setters
@@ -218,6 +223,26 @@ public class InvoiceLineStage extends BaseStageEntity {
         this.lsSbsNo = lsSbsNo;
     }
 
+    @StageInsertableAttr(dbColumnName="description")
+    @Column(name = "description")
+	public String getDescription() {
+		return description;
+	}
+
+    @StageInsertableAttr(dbColumnName="ts")
+    @Column(name = "ts")
+	public Timestamp getTs() {
+		return ts;
+	}
+
+	public void setDescription(String name) {
+		this.description = name;
+	}
+
+	public void setTs(Timestamp ts) {
+		this.ts = ts;
+	}
+
     // ------------------------------------------------------------------------
     // ~ Object methods
     // ------------------------------------------------------------------------   
@@ -283,4 +308,5 @@ public class InvoiceLineStage extends BaseStageEntity {
                 + lsStoreNo + ", lsSbsNo=" + lsSbsNo + ", lsInvoiceId=" + lsInvoiceId + ", lsLineId=" + lsLineId
                 + ", lsProductId=" + lsProductId + ", quantity=" + quantity + ", price=" + price + ", tax=" + tax + "]";
     }
+
 }

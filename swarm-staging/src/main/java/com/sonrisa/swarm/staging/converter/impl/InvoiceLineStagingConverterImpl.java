@@ -16,6 +16,8 @@
  */
 package com.sonrisa.swarm.staging.converter.impl;
 
+import hu.sonrisa.backend.dao.filter.SimpleFilter;
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -68,7 +70,7 @@ public class InvoiceLineStagingConverterImpl extends BaseStagingConverterImpl<In
          try {
              legacyEntity = convertToLegacy(stgLine);
          } catch (AlreadyExistsException ex) {
-             LOGGER.debug("InvoiceLine already exists: {}", stgLine, ex);
+             LOGGER.warn("InvoiceLine already exists: {}", stgLine, ex);
              return new StageAndLegacyHolder<InvoiceLineStage, InvoiceLineEntity>(stgLine, ex.getMessage());
          }
          return new StageAndLegacyHolder<InvoiceLineStage, InvoiceLineEntity>(legacyEntity, stgLine);
@@ -84,7 +86,8 @@ public class InvoiceLineStagingConverterImpl extends BaseStagingConverterImpl<In
     private InvoiceLineEntity convertToLegacy(InvoiceLineStage stgLine) throws NumberFormatException, AlreadyExistsException {
         
         // check whether its store exists
-        final StoreEntity store = invoiceLineStagingService.findStore(stgLine);        
+        final StoreEntity store = invoiceLineStagingService.findStore(stgLine);  
+
         if (store == null) {
             LOGGER.debug("Staging invoice line can not be saved because its store does not exists: " + stgLine);
             return null;

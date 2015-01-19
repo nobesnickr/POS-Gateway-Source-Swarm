@@ -16,7 +16,6 @@
  */
 package com.sonrisa.swarm.staging.dao;
 
-import com.sonrisa.swarm.common.exception.ItemMappingException;
 import hu.sonrisa.backend.dao.BaseJpaDao;
 import hu.sonrisa.backend.entity.SonrisaJPAEntity;
 
@@ -26,6 +25,7 @@ import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Timestamp;
 import java.sql.Types;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Locale;
@@ -37,11 +37,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.BatchPreparedStatementSetter;
 import org.springframework.jdbc.core.JdbcTemplate;
 
-import com.sonrisa.swarm.staging.dao.jdbc.JdbcTemplateBasedDao;
+import com.sonrisa.swarm.common.exception.ItemMappingException;
 import com.sonrisa.swarm.model.StageBatchInsertable;
-import com.sonrisa.swarm.model.staging.retailpro.RetailProAttr;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableAttr;
 import com.sonrisa.swarm.model.staging.annotation.StageInsertableType;
+import com.sonrisa.swarm.model.staging.retailpro.RetailProAttr;
+import com.sonrisa.swarm.staging.dao.jdbc.JdbcTemplateBasedDao;
 
 /**
  * Common base class for the Swarm DAO classes with some basic methods.
@@ -91,25 +92,46 @@ public abstract class StageDaoBaseImpl<T extends SonrisaJPAEntity<Long>>
      *            The local id of the swarm partner
      */
     public void create(final List<? extends StageBatchInsertable> entityList,
-            final Long localStoreId) {
+            final Long localStoreId) {	
         if (entityList == null || entityList.isEmpty()) {
             return;
+        }       
+        try{
+	        storeEntityList(entityList, localStoreId);
+        }catch(Exception exception){
+        	LOGGER.error("A entity can not be inserted into the stage table.", exception);
+        	LOGGER.error("The entity list will be inserted one by one: {}",entityList);
+        	
+        	for (StageBatchInsertable entity : entityList){
+        		List<StageBatchInsertable> auxList = new ArrayList<StageBatchInsertable>();
+        		auxList.add(entity);
+        		try{
+        			storeEntityList(auxList, localStoreId);
+        		}catch(Exception e){
+        			LOGGER.error("Entity: "+entity+ "could not be stored due to:", exception);
+        		}
+        	}
         }
-        jdbcTemplate.batchUpdate(getSqlInsert(entityList.get(0).getClass()),
-                new BatchPreparedStatementSetter() {
-                    @Override
-                    public void setValues(PreparedStatement ps, int i)
-                            throws SQLException {
-                        setPreparedStatement(ps, entityList.get(i),
-                                localStoreId);
-                    }
-
-                    @Override
-                    public int getBatchSize() {
-                        return entityList.size();
-                    }
-                });
     }
+
+	private void storeEntityList(
+			final List<? extends StageBatchInsertable> entityList,
+			final Long localStoreId) {
+		jdbcTemplate.batchUpdate(getSqlInsert(entityList.get(0).getClass()),
+		        new BatchPreparedStatementSetter() {
+		            @Override
+		            public void setValues(PreparedStatement ps, int i)
+		                    throws SQLException {
+		                setPreparedStatement(ps, entityList.get(i),
+		                        localStoreId);
+		            }
+
+		            @Override
+		            public int getBatchSize() {
+		                return entityList.size();
+		            }
+		        });
+	}
 
     /**
      * Gets the first class in the inheritance chain (upwards), which

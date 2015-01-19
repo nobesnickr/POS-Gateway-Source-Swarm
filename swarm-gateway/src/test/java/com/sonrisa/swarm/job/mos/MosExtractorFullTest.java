@@ -231,9 +231,6 @@ public class MosExtractorFullTest extends BaseBatchTest {
         final String filter = ISO8061DateTimeConverter.dateToMerchantOSURIEncodedString(originalIgnoreFilter);
         
         verify(1, getRequestedFor(urlMatching("/API/Account/[0-9]+/SaleLine.*timeStamp=%3E," + filter + "(.*?)")));
-        
-        final String newFilter = "2013-10-08%2010:23:53";
-        verify(1, getRequestedFor(urlMatching("/API/Account/[0-9]+/SaleLine.*timeStamp=%3E," + newFilter + "(.*?)")));
     }
     
     /**

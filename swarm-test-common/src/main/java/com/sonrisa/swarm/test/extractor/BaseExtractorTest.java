@@ -17,8 +17,12 @@
 
 package com.sonrisa.swarm.test.extractor;
 
-import static org.junit.Assert.*;
-import static org.mockito.Mockito.*;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
+import static org.mockito.Matchers.argThat;
+import static org.mockito.Mockito.atLeast;
+import static org.mockito.Mockito.verify;
+import static org.mockito.Mockito.when;
 
 import java.sql.Timestamp;
 import java.text.SimpleDateFormat;
@@ -146,6 +150,15 @@ public abstract class BaseExtractorTest<T extends SwarmStore> extends BaseWareho
     protected static String getKountaDate(Timestamp date, TimeZone timezone){
         SimpleDateFormat lsProDateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ssX:00");
         lsProDateFormat.setTimeZone(timezone);
+        return lsProDateFormat.format(date);
+    }
+    
+    /**
+     * Format Date as in LsPro jsons
+     */
+    protected static String getVendDate(Timestamp date, TimeZone timezone){
+        SimpleDateFormat lsProDateFormat = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        //lsProDateFormat.setTimeZone(timezone);
         return lsProDateFormat.format(date);
     }
 

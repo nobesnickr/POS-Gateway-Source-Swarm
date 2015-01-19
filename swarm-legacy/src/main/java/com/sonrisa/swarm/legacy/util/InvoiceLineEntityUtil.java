@@ -17,8 +17,6 @@
 
 package com.sonrisa.swarm.legacy.util;
 
-import java.math.BigDecimal;
-
 import com.sonrisa.swarm.model.legacy.InvoiceLineEntity;
 import com.sonrisa.swarm.model.legacy.ProductEntity;
 

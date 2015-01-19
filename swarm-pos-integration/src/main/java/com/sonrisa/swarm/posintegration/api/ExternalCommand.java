@@ -69,6 +69,7 @@ public class ExternalCommand<T extends SwarmStore> {
         this(account, request, params, new HashMap<String,String>());        
     }
 
+    
     /**
      * Create new command which can be executed by {@link ExternalAPI}
      * 
@@ -93,7 +94,7 @@ public class ExternalCommand<T extends SwarmStore> {
      * Clone the command with different configuration parameters
 
      * @param params Additional parameters, e.g. HTTP headers
-     * @return Command with the connfig specified (ignoring original parameters)
+     * @return Command with the config specified (ignoring original parameters)
      */
     public ExternalCommand<T> withConfig(Map<String, String> newConfig) {
         return new ExternalCommand<T>(account, uri, params, newConfig);
@@ -144,7 +145,7 @@ public class ExternalCommand<T extends SwarmStore> {
         return config;
     }
 
-    @Override
+	@Override
     public String toString() {
         return "ExternalCommand [accountClass=" + account.getClass().getSimpleName() + ", getoUrlQueryString()=" + getUrlQueryString() + "]";
     }

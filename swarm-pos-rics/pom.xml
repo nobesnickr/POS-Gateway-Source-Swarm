@@ -3,7 +3,7 @@
 	<parent>
 		<groupId>com.sonrisa.swarm</groupId>
 		<artifactId>swarm-parent</artifactId>
-		<version>14.10.13-3-SNAPSHOT</version>
+		<version>12.01.15</version>
 	</parent>
 	<artifactId>swarm-pos-rics</artifactId>
 	<name>Swarm RICS integration</name>

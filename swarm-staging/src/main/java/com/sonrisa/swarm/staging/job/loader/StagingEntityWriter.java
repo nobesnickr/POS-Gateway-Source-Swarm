@@ -67,7 +67,6 @@ public class StagingEntityWriter implements ItemWriter<StageAndLegacyHolder>{
         			LOGGER.debug("Entity already has legacy id and will be updated: {}", legacyEntity);
         		}
         	}
-        	
             legacyService.saveEntityFromStaging(legacyEntity);
             
             // Save entity
@@ -86,7 +85,7 @@ public class StagingEntityWriter implements ItemWriter<StageAndLegacyHolder>{
         
         if(items.size() > 0){
             final String className = items.get(0).getStagingEntity().getClass().getSimpleName();
-            LOGGER.info("Processed and deleted {} {} entities from the staging DB in", numOfDeleted, className);
+            LOGGER.debug("Processed and deleted {} {} entities from the staging DB in", numOfDeleted, className);
             
             final long durationMillis = System.currentTimeMillis() - startTime;
             TimingLogger.debug("Processed and deleted {} {} entities from the staging DB", durationMillis, stagingEntitesToDelete.size(), className);

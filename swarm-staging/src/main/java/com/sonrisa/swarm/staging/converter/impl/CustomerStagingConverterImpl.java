@@ -67,10 +67,16 @@ public class CustomerStagingConverterImpl extends BaseStagingConverterImpl<Custo
                 customer = findOrCreateCustomer(store.getId(), foreignCustomerId);
             } catch (NumberFormatException e){
                 final String errorMsg = "Illegal foreign id: " + stgCust.getLsCustomerId();
-                LOGGER.debug("Failed to convert CustomerStage to CustomerEntity because: {}", errorMsg, e);
+                LOGGER.warn("Failed to convert CustomerStage to CustomerEntity because: {}", errorMsg);
                 return new StageAndLegacyHolder<CustomerStage, CustomerEntity>(stgCust, errorMsg);
             }
 
+            if(stgCust == null || customer == null){
+            	final String errorMsg = "One of the mapped objects is null";
+                LOGGER.warn("Failed to convert CustomerStage to CustomerEntity because: {}", errorMsg);
+                return new StageAndLegacyHolder<CustomerStage, CustomerEntity>(stgCust, errorMsg);
+            }
+            
             // performs mapping between staging customer and destination customer object
             copyStgCustomer(stgCust, customer);
             customer.setLsCustomerId(IdConverter.positiveCustomerId(stgCust.getLsCustomerId()));

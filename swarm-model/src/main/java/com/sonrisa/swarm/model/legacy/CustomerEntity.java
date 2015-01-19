@@ -40,7 +40,7 @@ import javax.validation.constraints.Size;
 @Entity
 @Table(name = CustomerEntity.TABLE_NAME)
 public class CustomerEntity extends BaseLegacyEntity {
-    
+    	
     /** Name of the DB table. */
     public static final String TABLE_NAME = "customers";
 
@@ -61,6 +61,7 @@ public class CustomerEntity extends BaseLegacyEntity {
     private String address2;
     private String city;
     private String state;
+    private String postalCode;
     private String notes;
     private Date lastModified;
 
@@ -217,4 +218,14 @@ public class CustomerEntity extends BaseLegacyEntity {
     public void setLastModified(Date lastModified) {
         this.lastModified = lastModified;
     }        
+    
+    @Column(name = "postcode")
+    @Size(max=15)
+	public String getPostCode() {
+		return postalCode;
+	}
+
+	public void setPostCode(String postCode) {
+		this.postalCode = postCode;
+	}
 }

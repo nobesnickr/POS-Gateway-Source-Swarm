@@ -18,6 +18,7 @@ package com.sonrisa.swarm.staging.service.impl;
 
 import hu.sonrisa.backend.dao.filter.FilterParameter;
 import hu.sonrisa.backend.dao.filter.QueryFilter;
+import hu.sonrisa.backend.dao.filter.SimpleFilter;
 import hu.sonrisa.backend.entity.SonrisaJPAEntity;
 import hu.sonrisa.backend.service.GenericServiceImpl;
 
@@ -129,7 +130,6 @@ public abstract class BaseStagingServiceImpl<T extends SonrisaJPAEntity<Long> & 
             dao.persist(entity);
             dao.flush();
         }
-                
         return entity.getId();
     }
     

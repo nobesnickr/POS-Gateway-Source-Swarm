@@ -24,6 +24,7 @@
         <class-a>com.sonrisa.swarm.model.staging.CustomerStage</class-a>
         <class-b>com.sonrisa.swarm.model.legacy.CustomerEntity</class-b>   
         <field-exclude>
+    
             <a>id</a>
             <b>id</b>
         </field-exclude>
@@ -90,5 +91,22 @@
             <b>id</b>
         </field-exclude>
     </mapping>              
+    
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.OutletStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.OutletEntity</class-b>   
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+    </mapping>        
+    <mapping> 
+        <class-a>com.sonrisa.swarm.model.staging.RegisterStage</class-a>
+        <class-b>com.sonrisa.swarm.model.legacy.RegisterEntity</class-b>   
+        <field-exclude>
+            <a>id</a>
+            <b>id</b>
+        </field-exclude>
+    </mapping>          
     
 </mappings>

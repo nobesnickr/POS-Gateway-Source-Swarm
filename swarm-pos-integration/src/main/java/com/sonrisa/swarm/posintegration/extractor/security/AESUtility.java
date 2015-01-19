@@ -1,4 +1,5 @@
 /*
+
  *   Copyright (c) 2013 Sonrisa Informatikai Kft. All Rights Reserved.
  * 
  *  This software is the confidential and proprietary information of

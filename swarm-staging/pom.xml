@@ -2,7 +2,7 @@
     <parent>
         <groupId>com.sonrisa.swarm</groupId>
         <artifactId>swarm-parent</artifactId>
-        <version>14.10.13-3-SNAPSHOT</version>
+        <version>12.01.15</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <groupId>com.sonrisa.swarm</groupId>
@@ -36,7 +36,17 @@
         <dependency>
             <groupId>com.sonrisa.swarm</groupId>
             <artifactId>swarm-legacy</artifactId>
-        </dependency>                   
+        </dependency>
+        
+        <!-- New Relic -->
+		<dependency>
+		  <groupId>com.newrelic.agent.java</groupId>
+		  <artifactId>newrelic-agent</artifactId>
+		</dependency>
+		<dependency>
+		  <groupId>com.newrelic.agent.java</groupId>
+		  <artifactId>newrelic-api</artifactId>
+		</dependency>                   
         
         <!-- Database -->
         <dependency>

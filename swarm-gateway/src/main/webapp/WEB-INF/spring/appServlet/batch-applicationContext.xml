@@ -36,6 +36,13 @@ with Sonrisa.
         http://www.springframework.org/schema/jdbc 
         http://www.springframework.org/schema/jdbc/spring-jdbc-3.0.xsd">
   
+  	<!--Spring Aspect support-->
+  	<aop:aspectj-autoproxy proxy-target-class="true">
+        <aop:include name="processAspect"/>
+    </aop:aspectj-autoproxy>
+
+  	<bean id="processAspect" class="com.sonrisa.swarm.newrelic.aspect.ProcessLogging"/>
+  	
     <!--Spring job infrastructure--> 
     <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">
         <property name="jobRepository" ref="jobRepository" />

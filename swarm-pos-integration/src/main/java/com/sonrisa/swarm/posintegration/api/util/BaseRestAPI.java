@@ -38,6 +38,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.MediaType;
 
 import com.fasterxml.jackson.core.JsonParseException;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -76,9 +77,10 @@ public abstract class BaseRestAPI {
     private JsonAndHeaderHolder executeRequestForJson(HttpClient client, HttpUriRequest request, Collection<String> relevantHeaders) throws ExternalExtractorException {
         HttpResponse response;
         ObjectMapper mapper = new ObjectMapper();
+        mapper.configure(JsonParser.Feature.ALLOW_UNQUOTED_CONTROL_CHARS, true);
         try {
             // Send HTTP request
-            LOGGER.debug("Remote remote request: {}", request.getURI());
+            LOGGER.debug("Remote request: {}", request.getURI());
             
             request.addHeader("Accept", MediaType.APPLICATION_JSON_VALUE);
             response = client.execute(request);
@@ -100,9 +102,11 @@ public abstract class BaseRestAPI {
             try {
                 rootNode = mapper.readValue(responseText, JsonNode.class);                
             } catch (JsonParseException e) {
-                LOGGER.debug("Json returned from {} couldn't be parsed", request.getURI(), e);
+            	LOGGER.info("Response: {}", responseText);
+                LOGGER.error("Json returned from {} couldn't be parsed", request.getURI(), e);
             } catch (JsonMappingException e) {
-                LOGGER.debug("Json is invalid", request.getURI(), e);
+            	LOGGER.info("Response: {}", responseText);
+                LOGGER.error("Json is invalid", request.getURI(), e);
             }
             
             // Verify JSON response
